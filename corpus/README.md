@@ -1,12 +1,12 @@
 # GATech workshop seed corpus – deterrence and red lines
 
-**Built 2026-08-27** for the RuBase / StratBase methods workshop, Georgia Tech, 31 August to
+A starter corpus for the RuBase / StratBase methods workshop, Georgia Tech, 31 August to
 4 September 2026. It exists so that every hands-on block is attendable by someone who walked in
 that morning with nothing.
 
-Harvested with the sanctioned `litpipe` OpenAlex tool (`lit_oa_search`), which logs the exact
-submitted query before each request, reconstructs abstracts from `abstract_inverted_index`, and
-appends per record so a run is resumable.
+Harvested from OpenAlex. Every query was logged verbatim **before** the request that used it, and
+abstracts are reconstructed from OpenAlex's inverted index rather than stringified, which is the
+difference between an abstract and a dictionary of word positions in your corpus.
 
 ---
 
@@ -99,7 +99,6 @@ subset, not a complete one** – which is exactly the trade this workshop is abo
 | `seed_corpus.csv` / `.csv.gz` | the clean 4,534: on-domain, with abstracts | 10.0 / 3.2 MB |
 | `seed_corpus.jsonl` / `.jsonl.gz` | the same records, one JSON object per line | 11.0 / 3.3 MB |
 | `seed_corpus_quickstart.csv` | 442 records, stratified across all ten bands, for the room | 0.8 MB |
-| `oa_records.jsonl` | the full recall-first harvest, every field OpenAlex returned | 317 MB, local only |
 | `ledger.json` | the exact submitted query and record count per band | small |
 
 Columns: `id · year · title · authors · venue · cited_by · subfield · band · doi · keywords ·
@@ -108,6 +107,6 @@ title-abstract-keywords, and they are the cheapest classification signal you hav
 
 ## Reproducing it
 
-The ledger holds every submitted query string. Re-running `lit_oa_search` with the same bands skips
-what is already complete and fetches only what is missing. Counts will drift upward as OpenAlex
-grows, which is why line 2 of the methods block carries the date.
+The ledger holds every submitted query string, so the harvest can be re-run exactly as it was.
+Counts will drift upward as OpenAlex grows, which is precisely why line 2 of the methods block
+carries the date it was run.
