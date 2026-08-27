@@ -23,6 +23,9 @@ html,body{margin:0;height:100%;background:#050d1a;color:var(--body);font-family:
   padding:4.4% 5%;display:none;flex-direction:column;container-type:inline-size;overflow:hidden;
 }
 .slide.on{display:flex}
+.slide.img{padding:0;background:#000}
+.slide.img img{width:100%;height:100%;object-fit:contain;display:block}
+.slide.img .src{position:absolute;right:.8%;bottom:.8%;font-size:11px;color:#5c7291;letter-spacing:.06em}
 h2{margin:0 0 .5em;color:var(--title);font-weight:700;font-size:clamp(18px,3.5cqw,52px);
    line-height:1.04;letter-spacing:-.01em;text-wrap:balance}
 .sub{margin:-.3em 0 1.1em;color:var(--muted);font-size:clamp(10px,1.55cqw,22px);line-height:1.4;max-width:62ch}
@@ -64,9 +67,14 @@ tbody tr:nth-child(even){background:rgba(20,40,70,.5)}
 
 .split{display:grid;grid-template-columns:1fr 1fr;gap:3%;flex:1;min-height:0;align-items:center}
 .stack{display:flex;flex-direction:column;gap:.8em}
-.arrowrow{display:flex;align-items:center;gap:1.6%;flex:1;min-height:0}
-.arrowrow .card{flex:1;height:70%}
-.arrowrow .ar{color:var(--title);font-size:clamp(14px,2.6cqw,38px);font-weight:700;opacity:.7}
+.arrowrow{display:flex;align-items:center;gap:1.2%;flex:1;min-height:0;min-width:0}
+.arrowrow .card{flex:1 1 0;min-width:0;height:70%;padding:3% 2.4%}
+.arrowrow .ar{color:var(--title);font-size:clamp(11px,1.9cqw,28px);font-weight:700;opacity:.7;flex:0 0 auto}
+/* the funding-chain slide carries a row AND a grid: constrain both */
+.slide[data-t="The actionable knowledge chain"] .sub{margin-bottom:.55em}
+.slide[data-t="The actionable knowledge chain"] .arrowrow{flex:0 0 32%}
+.slide[data-t="The actionable knowledge chain"] .arrowrow .card{height:100%}
+.slide[data-t="The actionable knowledge chain"] .grid{flex:1 1 auto;margin-top:2%}
 .pillar{position:relative;padding-top:7%}
 .pillar::after{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:var(--title);opacity:.5}
 .pillar.now::after{opacity:1;height:6px} .pillar.now{border-color:var(--title)}
@@ -177,27 +185,14 @@ tbody tr:nth-child(even){background:rgba(20,40,70,.5)}
   </div>
 </section>
 
-<section class="slide" data-t="Yesterday: the four humors" data-n="Medicine's operating system for ~2,000 years. Internally coherent, richly theorised, taught in universities, and wrong. Ask: how would a practitioner have known?">
-  <h2>Yesterday</h2>
-  <p class="sub">Humors. Spirits of the body. Passions. Temperaments. The operating system of medicine for two thousand years.</p>
-  <div class="grid c4">
-    <div class="card"><div class="k">Blood</div><div class="d"><b>Sanguine</b><br>Air &middot; Spring &middot; warm and moist<br>Cheerful, optimistic, energetic</div></div>
-    <div class="card"><div class="k">Yellow bile</div><div class="d"><b>Choleric</b><br>Fire &middot; Summer &middot; hot and dry<br>Ambitious, leading, quick-tempered</div></div>
-    <div class="card"><div class="k">Black bile</div><div class="d"><b>Melancholic</b><br>Earth &middot; Autumn &middot; cold and dry<br>Introspective, thoughtful</div></div>
-    <div class="card"><div class="k">Phlegm</div><div class="d"><b>Phlegmatic</b><br>Water &middot; Winter &middot; cold and moist<br>Calm, reliable, sluggish</div></div>
-  </div>
-  <div class="small-note">Internally coherent. Richly theorised. Taught in universities. Entirely wrong.</div>
+<section class="slide img" data-t="Yesterday: the four humors" data-n="Medicine's operating system for ~2,000 years. Internally coherent, taught in universities, and wrong. Ask the room: how would a practitioner have known?">
+  <img src="img/humors.png" alt="The four humors and their temperaments">
+  <span class="src">GaTech Session 1, 2 Sep 2025</span>
 </section>
 
-<section class="slide" data-t="The 'omics" data-n="What replaced it was not a better theory. It was measurement at a scale that made the old categories unnecessary.">
-  <h2>And then: the &lsquo;omics</h2>
-  <p class="sub">What replaced the humors was not a better theory. It was measurement at a scale that made the old categories redundant.</p>
-  <div class="grid c4">
-    <div class="card"><div class="v">30&ndash;40<span style="font-size:.42em"> trillion</span></div><div class="d">cells in a human body, now addressable as data</div></div>
-    <div class="card"><div class="k">Genomics</div><div class="d">Transcription</div></div>
-    <div class="card"><div class="k">Transcriptomics</div><div class="d">Expression</div></div>
-    <div class="card"><div class="k">Proteomics</div><div class="d">Function</div></div>
-  </div>
+<section class="slide img" data-t="The 'omics" data-n="What replaced the humors was not a better theory - it was measurement at a scale that made the old categories redundant.">
+  <img src="img/omics.png" alt="The omics stack">
+  <span class="src">GaTech Session 1, 2 Sep 2025</span>
 </section>
 
 <section class="slide" data-t="BioNLP" data-n="Biology built shared ontologies and a text-mining discipline on top of them. That is precisely what IR has not done.">
@@ -210,17 +205,9 @@ tbody tr:nth-child(even){background:rgba(20,40,70,.5)}
   </div>
 </section>
 
-<section class="slide" data-t="The AlphaFold moment" data-n="The headline number. 200 million vs 100,000 in decades. Let it sit before the IR line.">
-  <h2>The AlphaFold moment</h2>
-  <div class="grid c2">
-    <div class="card"><div class="v">200M</div><div class="k">structures predicted</div><div class="d">Surpassing roughly <b>100,000</b> from decades of previous research&nbsp;&ndash; now done in minutes.</div></div>
-    <div class="card">
-      <div class="d" style="font-size:clamp(9px,1.35cqw,19px)">
-        <b>Beyond proteins.</b> AlphaFold 3 predicts DNA, RNA and small-molecule interactions
-        ~50% more accurately than traditional methods.<br><br>
-        <b>Real-world impact.</b> Drug discovery, food security, and more.</div>
-    </div>
-  </div>
+<section class="slide img" data-t="The AlphaFold moment" data-n="200 million structures against ~100,000 in decades. Let the number sit before you pivot to IR.">
+  <img src="img/alphafold.png" alt="The AlphaFold moment">
+  <span class="src">GaTech Session 1, 2 Sep 2025</span>
 </section>
 
 <section class="slide" data-t="For IR" data-n="The pivot. Say it as a question, not a promise. This is the whole reason the week exists.">
@@ -232,33 +219,14 @@ tbody tr:nth-child(even){background:rgba(20,40,70,.5)}
   </div>
 </section>
 
-<section class="slide" data-t="Paradigm shifts 1/2" data-n="Walk two or three rows, not all of them. The Sociology row is the one that matters for us.">
-  <h2>Paradigm shifts across disciplines <span style="color:var(--muted);font-weight:400">1/2</span></h2>
-  <table>
-    <thead><tr><th>Discipline</th><th>Conventional wisdom</th><th>New understanding</th><th>Key insight</th></tr></thead>
-    <tbody>
-      <tr><td>Medicine</td><td>Doctors decide from clinical judgement</td><td>Evidence-based medicine guided by data analytics</td><td>Medical data volume <b>doubles every 40 days</b></td></tr>
-      <tr><td>Economics</td><td>Automation does not cause permanent unemployment</td><td>AI could substitute for human cognitive capability</td><td>Potential for widespread displacement</td></tr>
-      <tr style="background:rgba(0,255,255,.09)"><td><b>Sociology</b></td><td>Social research relies on <b>sampling</b></td><td>Big data allows analysis of entire populations <b>(n = all)</b></td><td>Comprehensive analysis; privacy questions</td></tr>
-      <tr><td>Physics</td><td>Complex systems are chaotic and unpredictable</td><td>AI can mine information from complex systems</td><td>Controlling chaos has wide applications</td></tr>
-      <tr><td>Biology</td><td>Research focuses on individual genes and proteins</td><td>High-throughput technologies enable whole-genome studies</td><td>Holistic study has profound implications</td></tr>
-    </tbody>
-  </table>
+<section class="slide img" data-t="Paradigm shifts 1/2" data-n="Walk two or three rows, not all of them. The Sociology row - sampling versus n = all - is the one that matters for us.">
+  <img src="img/paradigm1.png" alt="Paradigm shifts across disciplines, part 1">
+  <span class="src">GaTech Session 1, 2 Sep 2025</span>
 </section>
 
-<section class="slide" data-t="Paradigm shifts 2/2" data-n="Political Science is last on purpose. Note that it is the one row where the 'new understanding' is mostly about being studied, not about studying.">
-  <h2>Paradigm shifts across disciplines <span style="color:var(--muted);font-weight:400">2/2</span></h2>
-  <table>
-    <thead><tr><th>Discipline</th><th>Conventional wisdom</th><th>New understanding</th><th>Key insight</th></tr></thead>
-    <tbody>
-      <tr><td>Environmental science</td><td>Material discovery is slow and intuition-based</td><td>AI accelerates discovery through data analysis</td><td>Revolutionises energy storage</td></tr>
-      <tr><td>History</td><td>Research relies on limited surviving records</td><td>AI deciphers previously unreadable ancient texts</td><td>New sources change historical understanding</td></tr>
-      <tr><td>Linguistics</td><td>Language analysis relies on predefined rules</td><td>Generative AI learns patterns and produces outputs</td><td>Breaks down language barriers</td></tr>
-      <tr><td>Psychology</td><td>Controlled experiments with small samples</td><td>Big data enables real-world behaviour study</td><td>Ecological validity</td></tr>
-      <tr style="background:rgba(255,255,0,.10)"><td><b>Political science</b></td><td>Campaigns rely on traditional outreach</td><td>AI analyses voter data and personalises</td><td><b>Raises concerns about manipulation</b></td></tr>
-    </tbody>
-  </table>
-  <div class="small-note">Ten disciplines. Nine of them changed how they <em style="color:var(--title);font-style:normal">know</em> things. Ours mostly changed how it is <em style="color:var(--accent);font-style:normal">acted upon</em>.</div>
+<section class="slide img" data-t="Paradigm shifts 2/2" data-n="Political science last, on purpose: the one row where the change is mostly about being acted upon rather than about knowing.">
+  <img src="img/paradigm2.png" alt="Paradigm shifts across disciplines, part 2">
+  <span class="src">GaTech Session 1, 2 Sep 2025</span>
 </section>
 
 <section class="slide" data-t="So why not us?" data-n="Transition into the indictment. Three reasons follow: no data, no pipeline, and no innocence.">
@@ -300,12 +268,12 @@ tbody tr:nth-child(even){background:rgba(20,40,70,.5)}
   <h2>The &lsquo;actionable knowledge&rsquo; production chain</h2>
   <p class="sub">US DoD research and development, built out end to end&nbsp;&ndash; for one kind of science.</p>
   <div class="arrowrow">
-    <div class="card tint" style="height:78%"><div class="d"><b>6.1</b> Basic</div></div><span class="ar">&rarr;</span>
-    <div class="card tint" style="height:78%"><div class="d"><b>6.2</b> Applied</div></div><span class="ar">&rarr;</span>
-    <div class="card tint" style="height:78%"><div class="d"><b>6.3</b> Adv tech dev</div></div><span class="ar">&rarr;</span>
-    <div class="card tint" style="height:78%"><div class="d"><b>6.4</b> Prototypes</div></div><span class="ar">&rarr;</span>
-    <div class="card tint" style="height:78%"><div class="d"><b>6.5</b> Engineering</div></div><span class="ar">&rarr;</span>
-    <div class="card tint" style="height:78%"><div class="d"><b>6.7</b> Operational</div></div>
+    <div class="card tint"><div class="d"><b>6.1</b> Basic</div></div><span class="ar">&rarr;</span>
+    <div class="card tint"><div class="d"><b>6.2</b> Applied</div></div><span class="ar">&rarr;</span>
+    <div class="card tint"><div class="d"><b>6.3</b> Adv tech dev</div></div><span class="ar">&rarr;</span>
+    <div class="card tint"><div class="d"><b>6.4</b> Prototypes</div></div><span class="ar">&rarr;</span>
+    <div class="card tint"><div class="d"><b>6.5</b> Engineering</div></div><span class="ar">&rarr;</span>
+    <div class="card tint"><div class="d"><b>6.7</b> Operational</div></div>
   </div>
   <div class="grid c3" style="flex:0 0 auto;margin-top:1.4%">
     <div class="card"><div class="v">$140&ndash;156B</div><div class="d">per year, hard sciences (FY2020&ndash;21)</div></div>
@@ -329,72 +297,39 @@ tbody tr:nth-child(even){background:rgba(20,40,70,.5)}
   </div>
 </section>
 
-<section class="slide" data-t="Towards strategic analysis 3.0" data-n="Now we turn from diagnosis to method. Three eras.">
-  <h2>Towards strategic analysis 3.0</h2>
-  <div class="grid c3 top">
-    <div class="card"><div class="n" style="color:var(--accent);font-size:clamp(8px,1cqw,13px);letter-spacing:.16em;text-transform:uppercase;font-weight:700">Analysis 1.0</div><div class="k">The expert / the scholar</div><div class="d">From analogue to digital. One authoritative reading.</div></div>
-    <div class="card"><div class="n" style="color:var(--accent);font-size:clamp(8px,1cqw,13px);letter-spacing:.16em;text-transform:uppercase;font-weight:700">Analysis 2.0</div><div class="k">Multiple perspectives</div><div class="d"><em>Text is data.</em> Many readings, systematically compared.</div></div>
-    <div class="card hot"><div class="n" style="color:var(--accent);font-size:clamp(8px,1cqw,13px);letter-spacing:.16em;text-transform:uppercase;font-weight:700">Analysis 3.0</div><div class="k">Towards knowledge</div><div class="d">Cumulative knowledge building. Findings that compose.</div></div>
-  </div>
+<section class="slide img" data-t="Towards strategic analysis 3.0" data-n="Three eras: the expert, multiple perspectives, cumulative knowledge.">
+  <img src="img/analysis3.png" alt="Towards strategic analysis 3.0">
+  <span class="src">GaTech Session 1, 2 Sep 2025</span>
 </section>
 
-<section class="slide" data-t="Pub-centric to knowledge-centric" data-n="The publication is a delivery format, not a knowledge store. That is the shift.">
-  <h2>From pub-centric to knowledge-centric</h2>
-  <div class="arrowrow">
-    <div class="card"><div class="k">The publication</div><div class="d">Knowledge arrives as a pile of documents. Retrieval is reading.</div></div>
-    <span class="ar">&rarr;</span>
-    <div class="card"><div class="k">The knowledge base</div><div class="d">Findings are structured, queryable and reusable independently of the document they arrived in.</div></div>
-    <span class="ar">&rarr;</span>
-    <div class="card hot"><div class="k">&hellip; and then LLMs</div><div class="d">Text becomes tractable at corpus scale. The bottleneck moves from reading to <em>asking well</em>.</div></div>
-  </div>
+<section class="slide img" data-t="Pub-centric to knowledge-centric" data-n="The publication is a delivery format, not a knowledge store.">
+  <img src="img/pubcentric.png" alt="From pub-centric to knowledge-centric to ChatGPT">
+  <span class="src">GaTech Session 1, 2 Sep 2025</span>
 </section>
 
-<section class="slide" data-t="The 'real' IR vs 'our' IR" data-n="DIKW. The gap between the ladder and what we actually operate on is the whole problem.">
-  <h2>From data to decisions: the &lsquo;real&rsquo; IR vs &lsquo;our&rsquo; IR</h2>
-  <div class="grid c5 top">
-    <div class="card"><div class="n" style="color:var(--muted);font-size:clamp(8px,1cqw,13px);text-transform:uppercase;letter-spacing:.14em">given context</div><div class="k">Data</div><div class="d">Numbers, text, audio, images, video. On their own, they know nothing.</div></div>
-    <div class="card"><div class="n" style="color:var(--muted);font-size:clamp(8px,1cqw,13px);text-transform:uppercase;letter-spacing:.14em">given meaning</div><div class="k">Information</div><div class="d">Useful, organised, structured.</div></div>
-    <div class="card"><div class="n" style="color:var(--muted);font-size:clamp(8px,1cqw,13px);text-transform:uppercase;letter-spacing:.14em">given focus</div><div class="k">Knowledge</div><div class="d">Contextual, synthesised, learned.</div></div>
-    <div class="card"><div class="n" style="color:var(--muted);font-size:clamp(8px,1cqw,13px);text-transform:uppercase;letter-spacing:.14em">given purpose</div><div class="k">Insight</div><div class="d">Applied, integrated, actionable.</div></div>
-    <div class="card hot"><div class="n" style="color:var(--accent);font-size:clamp(8px,1cqw,13px);text-transform:uppercase;letter-spacing:.14em">becomes</div><div class="k">Decisions</div><div class="d">Change. Movement.</div></div>
-  </div>
+<section class="slide img" data-t="The 'real' IR vs 'our' IR" data-n="The DIKW ladder. The gap between it and what we actually operate on is the whole problem.">
+  <img src="img/dikw.png" alt="DIKW pyramid, real IR versus our IR">
+  <span class="src">GaTech Session 1, 2 Sep 2025</span>
 </section>
 
-<section class="slide" data-t="RuBase: what's in a name" data-n="Ru = Russia, but the method is topic-agnostic. Say that out loud here, or half the room files this under 'Russia people'.">
-  <h2>RuBase&nbsp;&ndash; what's in a name</h2>
-  <div class="split">
-    <div class="stack">
-      <div class="body-lg"><span style="color:var(--accent)">Ru</span> &middot; <span style="color:var(--title)">Base</span></div>
-      <div class="sub" style="margin:0">The topic happens to be Russia. <em style="color:var(--title);font-style:normal">The approach applies to any topic&nbsp;&ndash; including yours.</em></div>
-    </div>
-    <div class="stack">
-      <div class="card"><div class="k">A knowledge base</div></div>
-      <div class="card"><div class="k">The base of the IR DIKW pyramid</div></div>
-      <div class="card hot"><div class="k">A new foundation for collaborative, cumulative knowledge building</div></div>
-    </div>
-  </div>
+<section class="slide img" data-t="RuBase: what's in a name" data-n="Ru happens to be Russia. Say out loud that the approach is topic-agnostic, or half an INTA room files you under Russia people.">
+  <img src="img/name.png" alt="RuBase - what's in a name">
+  <span class="src">GaTech Session 1, 2 Sep 2025</span>
 </section>
 
-<section class="slide" data-t="Spiral development" data-n="The project's signature diagram. Three lines that keep crossing: text, collaboration, data. SMEs run through all of it.">
-  <h2>How? Spiral development</h2>
-  <p class="sub">Three lines that keep crossing, with subject-matter experts running through all of them.</p>
-  <div class="grid c3 top">
-    <div class="card"><div class="k">Text</div><div class="d">Building text corpora &rarr; assembling text-mining tools &rarr; text-mining the corpora</div></div>
-    <div class="card"><div class="k">Collaboration</div><div class="d">New forms of working together &rarr; interaction with SMEs at every turn</div></div>
-    <div class="card"><div class="k">Data</div><div class="d">Collating and joining existing datasets &rarr; data-mining &rarr; building new datasets</div></div>
-  </div>
-  <div class="grid c2" style="flex:0 0 auto;margin-top:1.6%">
-    <div class="card tint"><div class="k">Meshing text &times; data &rarr; findings &rarr; the data warehouse &rarr; exploitation</div></div>
-    <div class="card hot"><div class="k">Can this be made sustainable?</div></div>
-  </div>
+<section class="slide img" data-t="Spiral development" data-n="The project's signature diagram. Text, collaboration and data as three lines that keep crossing, with SMEs throughout.">
+  <img src="img/spiral.png" alt="Spiral development: text, collaboration, data">
+  <span class="src">GaTech Session 1, 2 Sep 2025</span>
 </section>
 
-<section class="slide" data-t="Wissensanhaeufung 3.0" data-n="Standing on the shoulders of giants. But how, concretely? That question is the bridge into the rest of the week.">
-  <div class="fill">
-    <div class="kicker">Wissensanh&auml;ufung 3.0</div>
-    <div class="body-lg">Standing on the shoulders of giants.</div>
-    <div class="body-lg" style="color:var(--accent);font-size:clamp(18px,4cqw,58px)">But how?!?</div>
-  </div>
+<section class="slide img" data-t="Wissensanhaeufung 3.0" data-n="Standing on the shoulders of giants - but how, concretely? That question is the bridge into the rest of the week.">
+  <img src="img/wissens.png" alt="Wissensanhaeufung 3.0">
+  <span class="src">GaTech Session 1, 2 Sep 2025</span>
+</section>
+
+<section class="slide img" data-t="The Sunburst app" data-n="Open on a live artefact. Say 'think of your own use case' and leave a pause - this is the moment they picture their own topic.">
+  <img src="img/sunburst.png" alt="The RuBase-RUW sunburst app">
+  <span class="src">GaTech Session 1, 2 Sep 2025</span>
 </section>
 
 <section class="slide" data-t="What this has produced" data-n="Evidence for a claim already made, not a portfolio. Repeat: any topic, not just Russia.">
