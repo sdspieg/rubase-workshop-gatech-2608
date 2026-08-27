@@ -75,7 +75,6 @@ body{font-family:var(--font);background:var(--bg);color:var(--wh);overflow:hidde
 .sidebar-item.active{background:rgba(219,173,80,.12);border-color:var(--gold)}
 .sidebar-item-title{font-size:.83rem;font-weight:600;line-height:1.3}
 .sidebar-item.active .sidebar-item-title{color:var(--gold)}
-a.sidebar-item,a.sidebar-item:visited{color:var(--wh);text-decoration:none}
 .sidebar-badge{font-size:.66rem;color:var(--lb);font-variant-numeric:tabular-nums;flex-shrink:0}
 .content-area{flex:1;min-width:0;display:flex;flex-direction:column;background:var(--bg)}
 
@@ -257,6 +256,8 @@ body.present #stage{padding:0}
 body.present .slide{border:0;border-radius:0;box-shadow:none}
 body.present #notes{position:fixed;left:0;right:0;bottom:0;z-index:60}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+a.sidebar-item,a.sidebar-item:visited{color:var(--wh);text-decoration:none}
+.slide .small-note a{color:var(--gold)}
 </style></head>
 <body>
 <div id="app">
@@ -279,6 +280,7 @@ body.present #notes{position:fixed;left:0;right:0;bottom:0;z-index:60}
       <button id="navDeck" onclick="showDeck()">Slides</button>
       <button onclick="toggleOv()">Overview</button>
       <button onclick="present()">Present &#x2922;</button>
+      <a href="index.html#materials">Materials</a>
       <a href="https://rubase.org/" target="_blank" rel="noopener">RuBase dashboard</a>
     </nav>
   </div>
@@ -393,7 +395,7 @@ body.present #notes{position:fixed;left:0;right:0;bottom:0;z-index:60}
 <section class="slide img" data-t="Four layers of deterrence scholarship" data-n="The worked example of a real multi-level taxonomy over a real literature."><img src="img/x_4layers.jpg" alt="Four layers of deterrence scholarship"></section>
 <section class="slide img" data-t="Animal deterrent strategies" data-n="The broadening move, made concrete. This is what looking outside your own field buys you."><img src="img/x_animal.jpg" alt="Animal deterrent strategies"></section>
 <section class="slide img" data-t="The declining utility of instrumentalising fear" data-n="And this is the finding that only became visible from the broad view."><img src="img/x_fear.jpg" alt="The declining utility of instrumentalising fear"></section>
-<section class="slide" data-t="The independence test" data-n="The quality gate. Peer-swap taxonomies here and let them break each other&#x27;s."><h2>The independence test</h2><p class="sub">A taxonomy is only an instrument if its dimensions are actually independent.</p><div class="grid c3"><div class="card " data-frag="1"><div class="k">Can a case score high on A and low on B?</div><div class="d">If not, A and B are the same dimension wearing two names.</div></div><div class="card " data-frag="2"><div class="k">Does every taxon have a plausible negative case?</div><div class="d">If nothing could fail to qualify, the taxon measures nothing.</div></div><div class="card hot" data-frag="3"><div class="k">Would a second coder assign the same label?</div><div class="d">If not, you have a vocabulary, not a scheme.</div></div></div><div class="small-note" data-frag="4">Target for your own: <b>8&ndash;12 dimensions</b>, tested for independence, before you classify anything.</div></section>
+<section class="slide" data-t="The independence test" data-n="The quality gate. Peer-swap taxonomies here and let them break each other&#x27;s."><h2>The independence test</h2><p class="sub">A taxonomy is only an instrument if its dimensions are actually independent.</p><div class="grid c3"><div class="card " data-frag="1"><div class="k">Can a case score high on A and low on B?</div><div class="d">If not, A and B are the same dimension wearing two names.</div></div><div class="card " data-frag="2"><div class="k">Does every taxon have a plausible negative case?</div><div class="d">If nothing could fail to qualify, the taxon measures nothing.</div></div><div class="card hot" data-frag="3"><div class="k">Would a second coder assign the same label?</div><div class="d">If not, you have a vocabulary, not a scheme.</div></div></div><div class="small-note" data-frag="4">Target for your own: <b>8&ndash;12 dimensions</b>, tested for independence, before you classify anything. The prompt that generates one is in <a href="index.html#materials">Materials</a> &ndash; it is the real one we use, with the domain left blank.</div></section>
 <section class="slide" data-t="What your instrument cannot see" data-n="The RRLS blind spot, generalised. This is the idea they should still have in five years."><h2>What your instrument cannot see</h2><p class="sub">The most transferable idea of the week.</p><div class="split"><div class="stack"><div class="card " data-frag="1"><div class="k">A real filter, from our own work</div><div class="d">A statement enters the set only if it carries <b>both</b> a boundary span <b>and</b> a threatened-consequence span.</div></div><div class="card hot" data-frag="2"><div class="k">The consequence</div><div class="d">Deliberately deniable coercion is invisible <b>by construction</b>. Two documents sit in the corpus and produced <b>zero</b> hits.</div></div></div><div class="stack"><div class="body-lg">The rejections were <em>correct</em> on the coding scheme.<br>It is not a bug.</div><p class="sub" style="margin:0">An instrument only sees what its definition admits. Write down, today, what yours is built to miss.</p></div></div></section>
 <section class="slide" data-t="Day 3 close" data-n="Two instructions, but the second one is the point."><h2>Before tomorrow</h2><div class="fill" style="border-left:5px solid var(--accent);padding-left:4%"><div class="body-lg" style="font-size:clamp(16px,3.3cqw,48px)">Extend one branch of your taxonomy to L3.</div><p class="sub" style="margin:0">And write one sentence on what it is built to miss. <em class="c">Tomorrow we run it over your corpus.</em></p></div></section>
 <section class="slide divider" data-t="Day 4 &amp;middot; Thursday 3 September - Classification" data-n="Day divider. Recap where we are on the five-day map, then go."><div class="fill daycard"><div class="kicker">Day 4 &middot; Thursday 3 September</div><div class="daytitle">Classification</div><div class="daysub">Applying the taxonomy at scale &ndash; and being honest about how well it worked</div><div class="daymins">11:00 &ndash; 13:30</div></div></section>
@@ -681,6 +683,8 @@ function paintSidebar(){
        '<button class="sidebar-item" onclick="present()"><span class="sidebar-item-title">Present full screen</span><span class="sidebar-badge">F</span></button></div>'+
        '<div class="sidebar-section"><div class="sidebar-section-title">Reference</div>'+
        '<a class="sidebar-item" href="index.html"><span class="sidebar-item-title">Back to the programme</span><span class="sidebar-badge">&#8599;</span></a>'+
+       '<a class="sidebar-item" href="casestudy.html"><span class="sidebar-item-title">Worked case study</span><span class="sidebar-badge">&#8599;</span></a>'+
+       '<a class="sidebar-item" href="index.html#materials"><span class="sidebar-item-title">Prompts and materials</span><span class="sidebar-badge">&#8599;</span></a>'+
        '<a class="sidebar-item" href="https://rubase.org/" target="_blank" rel="noopener"><span class="sidebar-item-title">RuBase dashboard</span><span class="sidebar-badge">&#8599;</span></a>'+
        '<a class="sidebar-item" href="https://sdspieg.github.io/rubase-workshop-5day/"><span class="sidebar-item-title">5-day full programme</span><span class="sidebar-badge">&#8599;</span></a></div>';
     sb.innerHTML=h;return;

@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The Twilight of Maneuver? &middot; worked case study</title>
+<meta name="description" content="A worked case study: one research question taken end to end, with its limits published.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,300;0,400;0,600;0,700;0,900;1,400&display=swap">
+<style>
+/* == StratBase house palette - identical tokens to the sibling workshop apps == */
+:root{
+  --bg:#09182f; --db:#132f59; --db2:#173966; --gold:#dbad50;
+  --lb:#9db8d6; --wh:#f3f6fb; --line:rgba(255,255,255,.12); --r:8px;
+  --font:"Titillium Web",-apple-system,"Segoe UI",Roboto,Helvetica,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%}
+body{font-family:var(--font);background:var(--bg);color:var(--wh);overflow:hidden}
+#app{display:flex;flex-direction:column;height:100%}
+
+/* ---------- house header ---------- */
+.header{background:var(--db);border-bottom:1px solid var(--line);padding:8px 1.5rem;
+ display:grid;grid-template-rows:auto auto;row-gap:6px;box-shadow:0 2px 8px rgba(0,0,0,.25);z-index:100;flex-shrink:0}
+.header-row1{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:1rem}
+.header-row2{display:flex;align-items:center;justify-content:center;gap:.5rem;padding-top:6px;
+ border-top:1px solid rgba(255,255,255,.06);flex-wrap:wrap}
+.h-left,.h-right{display:flex;align-items:center;gap:1rem}
+.h-right{justify-content:flex-end}
+.h-logo{height:34px;width:auto;flex-shrink:0;display:inline-flex;align-items:center;border-radius:4px;
+ transition:opacity .15s,transform .15s;opacity:.9}
+.h-logo:hover,.h-logo:focus-visible{opacity:1;transform:translateY(-1px)}
+.h-logo:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.h-logo img{height:34px;width:auto;display:block}
+.h-logo.invert img{filter:brightness(0) invert(1)}
+.header-title{font-size:1.06rem;font-weight:700;color:var(--wh);letter-spacing:.4px;text-align:center;
+ white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.header-title span{color:var(--gold)}
+.header-nav{display:flex;gap:.5rem;align-items:center;flex-wrap:wrap;justify-content:center}
+.header-nav a,.header-nav button,.header-nav select{background:transparent;border:1px solid var(--gold);
+ color:var(--gold);padding:.34rem .78rem;border-radius:6px;cursor:pointer;font-family:inherit;font-weight:700;
+ font-size:.8rem;text-decoration:none;white-space:nowrap;transition:background .15s,color .15s}
+.header-nav a:hover,.header-nav button:hover{background:var(--gold);color:var(--db)}
+.header-nav button.on{background:var(--gold);color:var(--db)}
+.header-nav select option{background:var(--db);color:var(--wh)}
+@media (max-width:1200px){.h-logo,.h-logo img{height:28px}.header-title{font-size:.94rem}
+ .header-nav a,.header-nav button,.header-nav select{font-size:.75rem;padding:.3rem .6rem}}
+@media (max-width:980px){.header-row1{grid-template-columns:auto 1fr}.h-right{display:none}
+ .header-title{white-space:normal}}
+
+/* ---------- day timeline ---------- */
+.timeline-bar{background:var(--db2);padding:9px 24px;border-bottom:1px solid var(--line);
+ display:flex;align-items:center;gap:0;overflow-x:auto;flex-shrink:0}
+.timeline-block{flex:1;text-align:center;padding:7px 8px;cursor:pointer;transition:background .14s;
+ min-width:126px;border-radius:6px;border:0;background:transparent;font-family:inherit;color:inherit}
+.timeline-block:hover{background:rgba(219,173,80,.08)}
+.timeline-block.active{background:rgba(219,173,80,.14);box-shadow:inset 0 -2px 0 var(--gold)}
+.timeline-time{font-size:.7rem;color:var(--gold);font-weight:600;margin-bottom:3px;text-transform:uppercase;letter-spacing:.5px}
+.timeline-label{font-size:.85rem;font-weight:700;color:var(--wh)}
+.timeline-duration{font-size:.68rem;color:var(--lb);margin-top:2px}
+.timeline-connector{width:18px;height:2px;background:var(--line);flex-shrink:0}
+
+/* ---------- layout ---------- */
+.main-container{display:flex;flex:1;min-height:0}
+.sidebar{width:284px;flex-shrink:0;background:var(--db);border-right:1px solid var(--line);
+ padding:16px 16px 26px;overflow-y:auto}
+.sidebar-section{margin-bottom:18px}
+.sidebar-section-title{color:var(--gold);font-size:.76rem;text-transform:uppercase;letter-spacing:1px;
+ margin-bottom:9px;padding-bottom:5px;border-bottom:1px solid rgba(219,173,80,.25)}
+.sidebar-item{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:6px 10px;
+ margin:2px 0;border-radius:6px;cursor:pointer;transition:all .14s;border:1px solid transparent;
+ background:transparent;font-family:inherit;color:inherit;width:100%;text-align:left}
+.sidebar-item:hover{border-color:var(--gold);background:rgba(219,173,80,.06);transform:translateX(3px)}
+.sidebar-item.active{background:rgba(219,173,80,.12);border-color:var(--gold)}
+.sidebar-item-title{font-size:.83rem;font-weight:600;line-height:1.3}
+.sidebar-item.active .sidebar-item-title{color:var(--gold)}
+.sidebar-badge{font-size:.66rem;color:var(--lb);font-variant-numeric:tabular-nums;flex-shrink:0}
+.content-area{flex:1;min-width:0;display:flex;flex-direction:column;background:var(--bg)}
+
+/* ---------- stage ---------- */
+#stage{flex:1;min-height:0;display:none;place-items:center;padding:14px;container-type:size}
+#stage.on{display:grid}
+.slide{position:relative;width:min(100%,100cqh * 16/9);aspect-ratio:16/9;background:var(--bg);
+ border:1px solid var(--line);border-radius:var(--r);padding:3.1% 3.6%;display:none;flex-direction:column;
+ container-type:inline-size;overflow:hidden;box-shadow:0 10px 40px rgba(0,0,0,.45);--sc:1}
+.slide.on{display:flex}
+.slide.img{padding:0;background:#000}
+.slide.img img{width:100%;height:100%;object-fit:contain;display:block;border-radius:var(--r)}
+.src{position:absolute;right:.6%;top:.6%;background:rgba(9,24,47,.72);padding:2px 6px;border-radius:3px;
+ font-size:10px;color:#5d7a9d;letter-spacing:.05em}
+
+/* ---- type scale: every size is cqw * --sc; the autofit engine grows --sc to fill ---- */
+h2{margin:0 0 .34em;color:var(--gold);font-weight:700;font-size:calc(4.5cqw * var(--sc));
+ line-height:1.04;letter-spacing:-.01em;text-wrap:balance}
+.sub{margin:-.1em 0 .8em;color:var(--lb);font-size:calc(1.95cqw * var(--sc));line-height:1.35;max-width:62ch}
+.sub2{color:var(--lb);font-weight:400;font-size:.62em}
+.body-lg{font-size:calc(3.4cqw * var(--sc));line-height:1.24;font-weight:600;text-wrap:balance}
+.kicker{font-size:calc(1.25cqw * var(--sc));letter-spacing:.2em;text-transform:uppercase;color:var(--gold);
+ font-weight:700;margin-bottom:.9em}
+.fill{flex:1;min-height:0;display:flex;flex-direction:column;justify-content:center;gap:calc(1.6cqw * var(--sc))}
+.small-note{margin-top:.8em;color:var(--lb);font-size:calc(1.4cqw * var(--sc));line-height:1.4}
+.small-note b{color:var(--wh)}
+.title-slide .t{font-size:calc(7.6cqw * var(--sc));font-weight:900;color:var(--gold);line-height:1.06;letter-spacing:-.02em}
+.title-slide .s{font-size:calc(2.9cqw * var(--sc));color:var(--wh);font-weight:600}
+.title-slide .m{font-size:calc(1.5cqw * var(--sc));color:var(--lb);margin-top:.7em;line-height:1.6}
+.slide.divider{background:linear-gradient(135deg,#09182f 0%,#173966 58%,#09182f 100%);border-color:var(--gold)}
+.daycard{justify-content:center;gap:.28em}
+.daytitle{font-size:calc(9cqw * var(--sc));font-weight:900;color:var(--gold);line-height:1.02;letter-spacing:-.025em}
+.daysub{font-size:calc(2.6cqw * var(--sc));color:var(--wh);font-weight:600;max-width:30ch;line-height:1.25}
+.daymins{font-size:calc(1.45cqw * var(--sc));color:var(--lb);margin-top:.9em;letter-spacing:.12em}
+
+/* grids: rows STRETCH so cards fill the frame (align-content:center was the bug) */
+.grid{display:grid;gap:1.8%;flex:1;min-height:0;align-content:stretch;grid-auto-rows:1fr}
+.c2{grid-template-columns:repeat(2,1fr)}.c3{grid-template-columns:repeat(3,1fr)}
+.c4{grid-template-columns:repeat(4,1fr)}.c5{grid-template-columns:repeat(5,1fr)}
+.r2{grid-template-rows:repeat(2,1fr)}
+.top .card{justify-content:flex-start}
+.card{background:var(--db);border:1px solid var(--line);border-left:3px solid var(--gold);border-radius:var(--r);
+ padding:3.4% 4%;display:flex;flex-direction:column;justify-content:center;gap:.4em;min-height:0;min-width:0;overflow:hidden}
+.card .k{font-size:calc(2.45cqw * var(--sc));font-weight:700;line-height:1.16;text-wrap:balance;color:var(--wh)}
+.card .d{font-size:calc(1.55cqw * var(--sc));color:var(--lb);line-height:1.4}
+.card .v{font-size:calc(5.4cqw * var(--sc));font-weight:900;color:var(--gold);line-height:1.02;
+ font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.num .k{color:var(--gold)}
+.q .k{font-weight:400;font-style:italic;color:var(--wh)}
+.q .k::before{content:"\201C"}.q .k::after{content:"\201D"}
+.q{border-left-color:var(--lb)}
+.tint{background:transparent;border-left-color:var(--lb)}
+.hot{border-color:var(--gold);background:rgba(219,173,80,.10)}
+.hot .k{color:var(--gold)}
+.y,.c{color:var(--gold)}
+ul.big{margin:auto 0;padding-left:1.05em;display:flex;flex-direction:column;gap:.6em}
+ul.big li{font-size:calc(2.55cqw * var(--sc));line-height:1.26}
+ul.big li::marker{color:var(--gold)}
+ul.big li b{color:var(--gold)}
+ul.big li em{color:var(--wh);font-style:normal;font-weight:700}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:3%;flex:1;min-height:0;align-items:stretch}
+.stack{display:flex;flex-direction:column;gap:.7em;min-width:0;justify-content:center}
+/* was flex:0 0 30% - a fixed band that left half the slide empty */
+.arrowrow{display:flex;align-items:stretch;gap:1.2%;flex:1 1 auto;min-height:0;min-width:0;margin-bottom:2%}
+.arrowrow .card{flex:1 1 0;min-width:0;height:100%;padding:2.6% 2.4%}
+.arrowrow .ar{color:var(--gold);font-size:calc(2.4cqw * var(--sc));font-weight:700;opacity:.75;flex:0 0 auto;align-self:center}
+
+
+/* confusion matrix */
+table.cm{border-collapse:collapse;width:100%;font-variant-numeric:tabular-nums}
+table.cm td{border:1px solid var(--line);padding:3.2% 2%;text-align:center;
+ font-size:calc(2.6cqw * var(--sc));font-weight:800;line-height:1.05}
+table.cm td.h{background:transparent;border:0;color:var(--lb);font-weight:600;
+ font-size:calc(1.5cqw * var(--sc));text-align:right;padding:1.4% 2%}
+table.cm td.ok{background:var(--db);color:var(--wh)}
+table.cm td.dis{background:rgba(219,173,80,.16);color:var(--gold);border-color:var(--gold)}
+
+
+/* paradigm-shift tables */
+table.shift{border-collapse:collapse;width:100%;flex:1;min-height:0;table-layout:fixed}
+table.shift th{background:var(--db2);color:var(--gold);font-size:calc(1.35cqw * var(--sc));
+ text-transform:uppercase;letter-spacing:.06em;padding:.7% .8%;text-align:left;
+ border-bottom:1px solid var(--gold);font-weight:700}
+table.shift td{border-bottom:1px solid var(--line);padding:.75% .8%;vertical-align:top;
+ color:var(--lb);font-size:calc(1.35cqw * var(--sc));line-height:1.28}
+table.shift td.d{color:var(--wh);font-weight:700}
+table.shift td.k{color:var(--wh)}
+table.shift tr:nth-child(even) td{background:rgba(255,255,255,.025)}
+table.shift ul{margin:0;padding-left:1em;list-style:none}
+table.shift ul li{position:relative;padding-left:.15em}
+table.shift ul li::before{content:"\2022";color:var(--gold);position:absolute;left:-.8em}
+table.shift col:first-child{width:12%}
+
+
+/* ---------- build-up fragments ----------
+   Fragments use OPACITY, not display, so they still occupy layout: the autofit
+   engine measures the fully-built slide and must not resize mid-build. */
+.slide [data-frag]{opacity:0;transform:translateY(.28em);
+ transition:opacity .26s ease,transform .26s ease}
+.slide [data-frag].shown{opacity:1;transform:none}
+/* geometry must always be measured in the BUILT state: an unbuilt fragment is
+   translated a little, and the overflow detector correctly reads that shift as
+   clipping. Autofit and the detector both raise this flag while measuring. */
+body.measuring .slide [data-frag]{opacity:1;transform:none;transition:none}
+body.nobuild .slide [data-frag]{opacity:1;transform:none}
+#buildpip{margin-left:2px;color:var(--gold);font-variant-numeric:tabular-nums;font-weight:700}
+@media (prefers-reduced-motion:reduce){.slide [data-frag]{transition:none}}
+
+
+/* prompt blocks: the originals were screenshots of 6pt code, unreadable past row two */
+pre.prompt{margin:0;flex:1 1 auto;background:#0c2038;border:1px solid var(--line);border-left:3px solid var(--gold);
+ border-radius:var(--r);padding:2.4% 2.8%;overflow:hidden;white-space:pre-wrap;
+ font-family:"SFMono-Regular",Consolas,"Liberation Mono",Menlo,monospace;
+ font-size:calc(1.5cqw * var(--sc));line-height:1.5;color:var(--lb)}
+pre.prompt b{color:var(--gold);font-weight:700}
+pre.prompt i{color:var(--wh);font-style:normal}
+pre.prompt .c{color:#6e88a8}
+.promptwrap{display:flex;flex:1 1 auto;min-height:0;gap:2%;align-items:stretch}
+.promptwrap>*{flex:1 1 0;min-width:0;display:flex;flex-direction:column}
+
+/* ---------- deck toolbar ---------- */
+.deckbar{flex-shrink:0;display:none;align-items:center;gap:10px;padding:7px 16px 10px;
+ border-top:1px solid var(--line);background:var(--db);font-size:.78rem;color:var(--lb)}
+.deckbar.on{display:flex}
+.deckbar button{background:transparent;border:1px solid var(--line);color:var(--lb);font:inherit;
+ padding:4px 11px;border-radius:6px;cursor:pointer;font-weight:700}
+.deckbar button:hover,.deckbar button:focus-visible{border-color:var(--gold);color:var(--gold);outline:none}
+.deckbar .spacer{flex:1}
+#counter{font-variant-numeric:tabular-nums;color:var(--gold);font-weight:700}
+#slidetitle{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:34ch}
+#keyhelp{color:#6e88a8;font-size:.72rem}
+#notes{flex-shrink:0;max-height:26vh;overflow:auto;background:#0d2038;border-top:1px solid var(--line);
+ padding:11px 18px 14px;display:none;color:var(--lb);font-size:.86rem;line-height:1.6}
+#notes.on{display:block}
+#notes b{color:var(--wh)}
+
+/* ---------- home ---------- */
+#home{flex:1;min-height:0;overflow-y:auto;padding:28px;display:none}
+#home.on{display:block}
+.welcome-screen{text-align:center;padding:12px 10px 28px}
+.welcome-title{font-size:2.5rem;margin-bottom:14px;color:var(--gold);font-weight:800;letter-spacing:.5px}
+.welcome-subtitle{font-size:1.08rem;color:var(--lb);margin-bottom:8px;line-height:1.55;max-width:860px;margin-left:auto;margin-right:auto}
+.welcome-meta{font-size:.94rem;color:var(--gold);margin-bottom:24px}
+.pipeline{display:flex;align-items:stretch;justify-content:center;gap:8px;flex-wrap:wrap;margin:0 auto 30px;
+ padding:16px;background:rgba(219,173,80,.06);border:1px dashed var(--line);border-radius:var(--r);max-width:1200px}
+.pipe-step{text-align:center;padding:8px 14px;min-width:114px;cursor:pointer;border-radius:6px;
+ transition:background .14s;border:0;background:transparent;font-family:inherit}
+.pipe-step:hover{background:rgba(219,173,80,.1)}
+.pipe-step .step-label{font-size:.68rem;color:var(--lb);text-transform:uppercase;letter-spacing:1px}
+.pipe-step .step-name{font-size:.96rem;font-weight:700;margin-top:4px;color:var(--gold)}
+.pipe-arrow{color:var(--gold);font-size:1.25rem;align-self:center}
+@media (max-width:900px){.pipe-arrow{display:none}}
+.session-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(252px,1fr));gap:17px;max-width:1320px;margin:0 auto;text-align:left}
+.session-card{background:var(--db);border:1px solid rgba(255,255,255,.08);border-left:4px solid var(--gold);
+ border-radius:var(--r);padding:20px;cursor:pointer;transition:transform .14s,border-color .14s,box-shadow .14s;
+ font-family:inherit;color:inherit;text-align:left}
+.session-card:hover{transform:translateY(-3px);border-color:var(--gold);box-shadow:0 8px 24px rgba(0,0,0,.35)}
+.card-num{font-size:2.15rem;line-height:1;color:var(--gold);font-weight:900;margin-bottom:6px}
+.card-time{font-size:.74rem;color:var(--gold);font-weight:700;margin-bottom:6px;text-transform:uppercase;letter-spacing:.5px}
+.card-title{font-size:1.06rem;font-weight:700;margin-bottom:8px;color:var(--wh)}
+.card-desc{color:var(--lb);font-size:.85rem;line-height:1.55}
+.card-items{margin-top:11px;border-top:1px solid var(--line);padding-top:9px}
+.card-item{display:flex;align-items:baseline;gap:8px;padding:2px 0;font-size:.8rem;color:var(--lb)}
+.card-item-bullet{width:6px;height:6px;border-radius:50%;flex-shrink:0;background:var(--gold)}
+
+/* ---------- overview ---------- */
+#ov{position:fixed;inset:0;z-index:200;background:rgba(9,24,47,.985);display:none;overflow:auto;padding:22px}
+#ov.on{display:block}
+#ovg{display:grid;grid-template-columns:repeat(auto-fill,minmax(152px,1fr));gap:9px;max-width:1600px;margin:0 auto}
+#ovg button{aspect-ratio:16/9;background:var(--db);border:1px solid var(--line);color:var(--lb);font:inherit;
+ font-size:10px;text-align:left;padding:7px;cursor:pointer;line-height:1.22;overflow:hidden;border-radius:5px}
+#ovg button.d{background:#173966;border-color:var(--gold);color:var(--gold);font-weight:700}
+#ovg button:hover,#ovg button:focus-visible{border-color:var(--gold);color:var(--wh);outline:none}
+#ovg button i{display:block;color:var(--gold);font-style:normal;font-weight:700;margin-bottom:4px;font-variant-numeric:tabular-nums}
+
+/* ---------- present mode ---------- */
+body.present .header,body.present .timeline-bar,body.present .sidebar,body.present .deckbar{display:none}
+body.present #stage{padding:0}
+body.present .slide{border:0;border-radius:0;box-shadow:none}
+body.present #notes{position:fixed;left:0;right:0;bottom:0;z-index:60}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+a.sidebar-item,a.sidebar-item:visited{color:var(--wh);text-decoration:none}
+.slide .card a{color:var(--gold)}
+</style></head>
+<body>
+<div id="app">
+<header class="header">
+  <div class="header-row1">
+    <div class="h-left">
+      <a class="h-logo invert" href="https://hcss.nl" target="_blank" rel="noopener" title="HCSS"><img src="assets/logos/hcss_logo.svg" alt="HCSS"></a>
+      <a class="h-logo" href="https://gatech.edu" target="_blank" rel="noopener" title="Georgia Tech"><img src="assets/logos/gt.svg" alt="Georgia Tech"></a>
+    </div>
+    <div class="header-title">The Twilight of Maneuver?&nbsp;&ndash; <span>a worked case study</span></div>
+    <div class="h-right">
+      <a class="h-logo invert" href="https://www.carnegie.org" target="_blank" rel="noopener" title="Carnegie Corporation of New York"><img src="assets/logos/ccny_logo.svg" alt="Carnegie Corporation of New York"></a>
+      <a class="h-logo" href="https://rubase.org/" target="_blank" rel="noopener" title="RuBase dashboard"><img src="assets/logos/rubase_logo.svg" alt="RuBase"></a>
+    </div>
+  </div>
+  <div class="header-row2">
+    <nav class="header-nav">
+      <a href="index.html">&larr; Programme</a>
+      <button id="navHome" onclick="showHome()">Deck home</button>
+      <button id="navDeck" onclick="showDeck()">Slides</button>
+      <button onclick="toggleOv()">Overview</button>
+      <button onclick="present()">Present &#x2922;</button>
+      <a href="index.html#materials">Materials</a>
+      <a href="https://rubase.org/" target="_blank" rel="noopener">RuBase dashboard</a>
+    </nav>
+  </div>
+</header>
+<div class="timeline-bar" id="timelineBar"></div>
+<div class="main-container">
+  <aside class="sidebar" id="sidebar"></aside>
+  <main class="content-area">
+    <div id="home"></div>
+    <div id="stage"></div>
+    <div class="deckbar" id="deckbar">
+      <button onclick="go(cur-1)" aria-label="Previous slide">&larr;</button>
+      <button onclick="go(cur+1)" aria-label="Next slide">&rarr;</button>
+      <span id="counter"></span>
+      <span id="slidetitle"></span><span id="buildpip"></span>
+      <span class="spacer"></span>
+      <span id="keyhelp">&larr; &rarr; build/slide &#183; &uarr; &darr; day &#183; B builds off &#183; O overview &#183; N notes &#183; F present</span>
+      <button onclick="toggleNotes()">Notes</button>
+      <button onclick="present()">Present &#x2922;</button>
+    </div>
+    <div id="notes"></div>
+  </main>
+</div>
+</div>
+<div id="ov"><div id="ovg"></div></div>
+<template id="deck">
+<section class="slide" data-t="Title" data-n="This is a real project, still running. Everything in this deck comes from its own records, not from a teaching example."><div class="fill"><div class="body-lg">The Twilight of <span class="y">Maneuver?</span></div><div class="body-lg"><span class="sub2">One research question, worked end to end &ndash; and its limits, published.</span></div></div></section>
+<section class="slide" data-t="Why this case" data-n="The third card is the reason. Most published method sections hide exactly what this one prints."><h2>Why this case, and not a tidy one</h2><p class="sub">A clean case study teaches you a method that has never met a problem.</p><div class="grid c3"><div class="card " data-frag="1"><div class="k">It is real</div><div class="d">A live HCSS research programme on the Russo-Ukrainian war, running now &ndash; not a reconstruction.</div></div><div class="card " data-frag="2"><div class="k">It is open to you</div><div class="d">The dashboard is on RuBase and you have logins. You can walk every stage yourself.</div></div><div class="card hot" data-frag="3"><div class="k">It publishes its limits</div><div class="d">Every pipeline in it ships a stated open seam. That is the part you cannot get from a textbook.</div></div></div></section>
+<section class="slide" data-t="The question" data-n="Read it out. Then ask them how they would answer it with the methods they have now. Let the silence do the work."><h2>The question</h2><p class="sub">Stated plainly, before any tooling enters the room.</p><div class="fill"><div class="body-lg">Has <span class="y">maneuver</span> stopped working?</div><div class="body-lg"><span class="sub2">Mobility, position and the changing character of war in the Russo-Ukrainian conflict, 2022&ndash;2026.</span></div></div></section>
+<section class="slide" data-t="Three altitudes" data-n="The architecture is the contribution. Most projects only ever ask the L1 question and call the L3 one speculation."><h2>The same question at three altitudes</h2><p class="sub">Not a summary and its expansions. Three genuinely different questions that share a spine.</p><div class="grid c3"><div class="card hot" data-frag="1"><div class="k">L1 &middot; the war</div><div class="d"><b>The Twilight of Maneuver?</b> The Russo-Ukrainian case, read through a Russian and military lens.</div></div><div class="card " data-frag="2"><div class="k">L2 &middot; beyond the battlefield</div><div class="d">Does the same maneuver / positional / attrition dialectic appear in <b>other domains</b>?</div></div><div class="card " data-frag="3"><div class="k">L3 &middot; movement vs mass</div><div class="d">Is it a <b>universal</b> dialectic? The meta-theoretical question, argued from primary texts.</div></div></div></section>
+<section class="slide" data-t="The outputs" data-n="The 769 is the one that lands. Point out that it is DRAFT, pending author line-edit - and that this is stated on the artefact itself."><h2>What that actually produced</h2><p class="sub">Word counts and page counts, measured &ndash; not adjectives.</p><div class="grid c4"><div class="card num " data-frag="1"><div class="v">12,000</div><div class="k">words &middot; L1</div><div class="d">46-page report. The war itself.</div></div><div class="card num " data-frag="2"><div class="v">5,000</div><div class="k">words &middot; L2</div><div class="d">27 pages. Six domains compared.</div></div><div class="card num " data-frag="3"><div class="v">3,100</div><div class="k">words &middot; L3</div><div class="d">20 pages. The meta-dialectic.</div></div><div class="card num hot" data-frag="4"><div class="v">769</div><div class="k">pages &middot; evidence</div><div class="d">The middleware report the three rest on.</div></div></div></section>
+<section class="slide" data-t="Evidence vs argument" data-n="This is the single most portable idea in the deck. Separate the thing you generate from the thing you argue."><h2>Read the shape of that</h2><p class="sub">Three short arguments standing on one very large evidence base.</p><div class="split"><div class="stack"><div class="card " data-frag="1"><div class="k">What students usually build</div><div class="d">One document, in which the evidence and the argument are the same object. It cannot be re-read at a different altitude, and it cannot be re-run.</div></div></div><div class="stack"><div class="card hot" data-frag="2"><div class="k">What this does instead</div><div class="d">The <b>evidence base</b> is a product in its own right, generated from the corpus. The three arguments are <b>separate, short, and human-written</b> on top of it.</div></div><div class="card tint" data-frag="3"><div class="k">Why it matters to you</div><div class="d">When the corpus grows, the evidence base regenerates. The arguments get revisited, not rewritten from scratch.</div></div></div></div></section>
+<section class="slide" data-t="The spine" data-n="Walk it once at speed. You will come back to stages 2 and 5 in detail."><h2>The evidence spine, stage by stage</h2><p class="sub">Seven stages. Each one is a place where a decision gets made and recorded.</p><div class="grid c4"><div class="card " data-frag="1"><div class="k">1 &middot; Recall arms</div><div class="d">Several independent harvests, each deliberately over-broad.</div></div><div class="card hot" data-frag="2"><div class="k">2 &middot; Labels</div><div class="d">Relevance applied as a <b>label</b>, never as a deletion.</div></div><div class="card " data-frag="3"><div class="k">3 &middot; Full text</div><div class="d">Acquire what the metadata only points at.</div></div><div class="card " data-frag="4"><div class="k">4 &middot; Chunks</div><div class="d">Split into units a model can actually judge.</div></div><div class="card " data-frag="5"><div class="k">5 &middot; Two-pass relevance</div><div class="d">A cheap broad gate, then a costly precise one.</div></div><div class="card " data-frag="6"><div class="k">6 &middot; Dimensions</div><div class="d">Classify against the taxonomies.</div></div><div class="card " data-frag="7"><div class="k">7 &middot; Middleware</div><div class="d">Assemble the evidence product the reports stand on.</div></div></div></section>
+<section class="slide" data-t="The golden rule" data-n="THE slide of this deck. It is the project&#x27;s own stated golden rule, verbatim. Let it sit before you explain it."><div class="fill"><div class="body-lg">Nothing is <span class="y">ever</span> deleted.</div><div class="body-lg"><span class="sub2">&ldquo;Filtering&rdquo; means adding a label, not removing a record.</span></div></div></section>
+<section class="slide" data-t="Non-destructive filtering" data-n="The fourth card is the argument. Everything else is a benefit; that one is a risk you cannot walk back."><h2>Why non-destructive filtering is not fussiness</h2><p class="sub">The raw harvest is never modified or pruned. Precision comes from a sidecar label file.</p><div class="grid c2 r2"><div class="card " data-frag="1"><div class="k">You can re-threshold</div><div class="d">Decide later that 0.7 was too strict. No re-harvest, no re-payment.</div></div><div class="card hot" data-frag="2"><div class="k">You can audit</div><div class="d">Someone asks why a paper is missing. You can answer, because it is not missing.</div></div><div class="card " data-frag="3"><div class="k">You can regenerate</div><div class="d">Any &ldquo;clean&rdquo; corpus is a <b>derived view</b>, rebuilt from raw plus labels at any time.</div></div><div class="card hot" data-frag="4"><div class="k">You cannot un-delete</div><div class="d">The one operation with no inverse. A deleted record and a record that was never found look identical.</div></div></div></section>
+<section class="slide" data-t="Two-pass relevance" data-n="Connect this back to the classification prompt in Materials: the gate is Phase 1, the labels are Phase 2. Same shape."><h2>Two passes, not one</h2><p class="sub">The order is a cost decision before it is a quality decision.</p><div class="split"><div class="stack"><div class="card tint" data-frag="1"><div class="k">Pass 1 &middot; broad relevance</div><div class="d">Cheap. Runs over everything. Its only job is to say <em>this is not about our topic at all</em>.</div></div></div><div class="stack"><div class="card hot" data-frag="2"><div class="k">Pass 2 &middot; evidence-span classification</div><div class="d">Expensive. Runs only on what survived. Returns the span of text that justifies each label.</div></div><div class="card " data-frag="3"><div class="k">The saving</div><div class="d">You never pay the precise model to read the obviously irrelevant. And you keep the reason for every label.</div></div></div></div></section>
+<section class="slide" data-t="Two taxonomies" data-n="Direct callback to the taxonomy session. This is what passing the independence test looks like downstream."><h2>Two taxonomies, not one</h2><p class="sub">The project runs a <b>content</b> taxonomy and a <b>mechanism</b> taxonomy side by side.</p><div class="split"><div class="stack"><div class="card " data-frag="1"><div class="k">Content</div><div class="d">What is this text <em>about</em>? Terrain, logistics, command, doctrine.</div></div><div class="card " data-frag="2"><div class="k">Mechanism</div><div class="d">How does the effect it describes <em>work</em>? Seven mechanisms, M1 to M7.</div></div></div><div class="stack"><div class="card hot" data-frag="3"><div class="k">Why they are separate</div><div class="d">Because they vary independently. The same mechanism appears across unrelated content; the same content runs on different mechanisms.</div></div><div class="card tint" data-frag="4"><div class="k">Which is the test you ran</div><div class="d">This is the MDTDF independence test, in production. Two dimensions survived it, so they are two taxonomies.</div></div></div></div></section>
+<section class="slide" data-t="Ten pipelines" data-n="One of the four levels carries seven of the ten pipelines. That asymmetry is the honest shape of the project, not a drafting accident."><h2>Ten pipelines, four levels</h2><p class="sub">The map is deliberately asymmetric, because the projects are.</p><div class="grid c2 r2"><div class="card " data-frag="1"><div class="k">Across eras &amp; domains</div><div class="d"><b>MW0</b> &ndash; what evidence exists, and how was it produced?</div></div><div class="card hot" data-frag="2"><div class="k">The Twilight of Maneuver?</div><div class="d"><b>MW1 &middot; Kursk &middot; Middle Strike &middot; Deep Strike &middot; OPP &middot; Next Stop Europe &middot; Transparent Battlefield</b> &ndash; the war itself, from seven angles.</div></div><div class="card " data-frag="3"><div class="k">Beyond the battlefield</div><div class="d"><b>MW2</b> &ndash; the six-domain comparison.</div></div><div class="card " data-frag="4"><div class="k">Movement vs mass</div><div class="d"><b>MW3</b> &ndash; the primary-text genealogy.</div></div></div></section>
+<section class="slide" data-t="Open seams" data-n="Ask them how many published papers they have read that state this clearly. The answer is the point."><h2>Every pipeline ships its open seam</h2><p class="sub">Not in an appendix. On the surface, next to the result.</p><div class="grid c3 r2"><div class="card " data-frag="1"><div class="k">MW0 &middot; evidence spine</div><div class="d">Human line-edit and primary-canon integration <b>remain open</b>.</div></div><div class="card " data-frag="2"><div class="k">MW1 &middot; causal convergence</div><div class="d">Seventeen covariate products catalogued; <b>ingestion is not complete</b>.</div></div><div class="card hot" data-frag="3"><div class="k">MW2 &middot; six-domain comparison</div><div class="d">Domain harvest and systematic extraction <b>have not run</b>.</div></div><div class="card hot" data-frag="4"><div class="k">MW3 &middot; primary-text genealogy</div><div class="d">The authorised primary-text pilot <b>has not run</b>.</div></div><div class="card " data-frag="5"><div class="k">OPP &middot; three-arm discovery</div><div class="d">Discovery is strong; the tension matrix <b>is not built</b>.</div></div></div></section>
+<section class="slide" data-t="Red stays red" data-n="The small note is the slide. A status system with no failing state is decoration."><h2>Red means unfinished, and stays red</h2><p class="sub">The interface refuses to imply completion it has not earned.</p><div class="grid c3"><div class="card " data-frag="1"><div class="k">Red nodes</div><div class="d">Show uncompleted work rather than implying completion.</div></div><div class="card hot" data-frag="2"><div class="k">Dated funnels</div><div class="d">Project-specific and dated &ndash; not presented as one synchronised live number.</div></div><div class="card " data-frag="3"><div class="k">Colour is readiness</div><div class="d">The status colours are <b>readiness states, not quality ranks</b>, and the denominator is printed alongside them.</div></div></div><div class="small-note">Measured status across the ten products: <b>green 10%</b> &middot; gold 40% &middot; blue 30% &middot; <b>red 20%</b>. A dashboard that cannot go red is a dashboard that cannot tell you anything.</div></section>
+<section class="slide" data-t="Visual verification" data-n="The three defects: an inherited sticky header covering the colour key, a stale tooltip after rerender, and clipping provenance IDs. None of them is visible in code."><h2>How the surface was actually checked</h2><p class="sub">Not &ldquo;it renders&rdquo;. A counted, eyeballed corpus of images.</p><div class="grid c4"><div class="card num " data-frag="1"><div class="v">82</div><div class="k">stages</div><div class="d">Every stage of all ten pipelines.</div></div><div class="card num " data-frag="2"><div class="v">4</div><div class="k">widths</div><div class="d">1280, 1366, 1440 and 1600 pixels.</div></div><div class="card num hot" data-frag="3"><div class="v">1,105</div><div class="k">images</div><div class="d">Shells, viewports, tooltips and panels &ndash; all read.</div></div><div class="card num hot" data-frag="4"><div class="v">3</div><div class="k">real defects</div><div class="d">Found by looking. None was visible in the source.</div></div></div></section>
+<section class="slide" data-t="The 404 lesson" data-n="Five PDFs, a cover and a deck. Every link was correct; the files had never reached the server. The fix was a deploy helper that refuses missing or implausibly small files and verifies every remote hash."><h2>The failure worth stealing</h2><p class="sub">A live audit found <b>seven hard 404s</b> on the deployed app.</p><div class="fill"><div class="body-lg">&ldquo;The config strings survived <span class="y">while the bytes did not</span>.&rdquo;</div></div></section>
+<section class="slide" data-t="Transfer" data-n="This is the actionable slide. If they take one thing, it is card one."><h2>What you can copy on Monday</h2><p class="sub">None of this needs our infrastructure.</p><div class="grid c2 r2"><div class="card hot" data-frag="1"><div class="k">Label, never delete</div><div class="d">One sidecar file of per-record relevance. Costs you nothing and buys back every decision you make later.</div></div><div class="card " data-frag="2"><div class="k">Cheap gate, then expensive pass</div><div class="d">Two passes over the corpus, in that order.</div></div><div class="card " data-frag="3"><div class="k">Separate evidence from argument</div><div class="d">Generate the evidence base. Write the argument by hand on top of it.</div></div><div class="card hot" data-frag="4"><div class="k">Write the seam down</div><div class="d">One line per stage: what this stage cannot see. Put it next to the result, not in an appendix.</div></div></div></section>
+<section class="slide" data-t="Boundary" data-n="End the substantive part here. Do not oversell a project that is itself careful not to oversell."><h2>What this case does not show you</h2><p class="sub">Being honest about the case study is part of the case study.</p><div class="grid c3"><div class="card " data-frag="1"><div class="k">It does not validate the findings</div><div class="d">Visual and structural verification says the surface is sound. It says nothing about whether the argument is right.</div></div><div class="card hot" data-frag="2"><div class="k">It is not finished</div><div class="d">Two of ten products are red. Several arms are catalogued but not ingested.</div></div><div class="card " data-frag="3"><div class="k">It had a large team and budget</div><div class="d">Your version will be smaller. The habits transfer; the scale does not.</div></div></div></section>
+<section class="slide" data-t="Hands on" data-n="Give them ten minutes on this in the room. It is worth more than another slide."><h2>Walk it yourself</h2><p class="sub">You have logins. This is the part you should do rather than watch.</p><div class="grid c2 r2"><div class="card hot" data-frag="1"><div class="k">Open the app</div><div class="d"><b><a href="https://rubase.org/maneuver/" target="_blank" rel="noopener">the Maneuver dashboard</a></b> &ndash; then pick a level, and open its <b>Method</b> subtab.</div></div><div class="card " data-frag="2"><div class="k">Pick one stage</div><div class="d">Hover it to read the sourced explanation. Click it to open the operational subpipeline.</div></div><div class="card " data-frag="3"><div class="k">Go one level deeper</div><div class="d">Click a green node for its input contract, transformation and <b>acceptance gate</b>.</div></div><div class="card hot" data-frag="4"><div class="k">Then find a red one</div><div class="d">Read what it says is missing. Ask whether your own project could print that sentence.</div></div></div></section>
+<section class="slide" data-t="Close" data-n="Stop talking after this one."><div class="fill"><div class="body-lg">Every stage you cannot describe</div><div class="body-lg"><span class="c">is a stage someone else cannot check.</span></div></div></section></template>
+<script>
+/* ---------------- data ---------------- */
+var DAYS=[
+ {n:1,label:"Day 1",title:"Foundations",when:"Mon 31 Aug",time:"11:00 &ndash; 13:30",
+  desc:"Why current practice does not hold &ndash; and what changed everywhere else.",
+  items:["The four humors to AlphaFold","How we actually search today","The reliability crisis","Strategic analysis 3.0"]},
+ {n:2,label:"Day 2",title:"Corpora",when:"Tue 1 Sep",time:"11:00 &ndash; 13:30",
+  desc:"Finding what you have been missing &ndash; and proving that you found it.",
+  items:["The size of your own field","Misleading tips of icebergs","Two ways to explore the record","Build a seed corpus"]},
+ {n:3,label:"Day 3",title:"Taxonomies",when:"Wed 2 Sep",time:"11:00 &ndash; 13:30",
+  desc:"Building an instrument, not a filing system.",
+  items:["What a taxonomy is for","Deductive and inductive","Levels and definitions","Draft one live"]},
+ {n:4,label:"Day 4",title:"Classification",when:"Thu 3 Sep",time:"11:00 &ndash; 13:30",
+  desc:"Applying the taxonomy at scale &ndash; and being honest about how well it worked.",
+  items:["Prompt to schema","Run it over the corpus","Measure whether it worked","Reading a kappa"]},
+ {n:5,label:"Day 5",title:"Your projects",when:"Fri 4 Sep",time:"11:00 &ndash; 13:30",
+  desc:"What to take, what to build next, and what is not transferable.",
+  items:["Where this is going","The kit, part by part","Your project, mapped","What not to promise"]}];
+var PIPE=[["Stage 1","Frame"],["Stage 2","Discover"],["Stage 3","Instrument"],["Stage 4","Extract"],["Stage 5","Deliver"]];
+
+/* ---------------- boot ---------------- */
+var stage=document.getElementById('stage'),tpl=document.getElementById('deck');
+stage.appendChild(tpl.content.cloneNode(true));
+var slides=[].slice.call(stage.querySelectorAll('.slide'));
+var dividers=[];slides.forEach(function(s,i){if(s.classList.contains('divider'))dividers.push(i);});
+var cur=0,fitted=[],view='home';
+
+/* ---------------- AUTOFIT: grow --sc until the slide is as full as it can be ----------------
+   Every type size on a slide is calc(N cqw * var(--sc)). We binary-search the largest --sc at
+   which nothing overflows its box. That is what makes a slide FILL its frame instead of
+   floating a small block of text in the middle of it. Runs once per slide, then is cached;
+   the cache is dropped on resize because cqw is relative to the frame.                        */
+function overflows(s){
+  var body=document.body, had=body.classList.contains('measuring');
+  if(!had)body.classList.add('measuring');
+  try{ return _overflows(s); } finally { if(!had)body.classList.remove('measuring'); }
+}
+function _overflows(s){
+  /* Two independent failure modes.
+     (1) VERTICAL/BLOCK overflow: a child escapes a box that clips. Rect containment, not
+         scrollHeight - with line-height near 1 a glyph box is taller than its element box, so
+         scrollHeight>clientHeight fires on every heading even when the layout is perfect.
+         Every layout box must be checked, INCLUDING .fill: checking only the slide's direct
+         children passes any .fill, because .fill is flex:1 and so always fits by construction
+         while its children spill straight out of the frame.
+     (2) HORIZONTAL text overflow: a long word that cannot wrap ("Classification", "Foundations")
+         overflows its element without moving that element's rect at all. Rect containment is
+         blind to it; scrollWidth is the only signal. Tolerance 4px absorbs letter-spacing,
+         which adds trailing space after the last glyph. */
+  var TOL=2, WTOL=4;
+  function inner(el){
+    var r=el.getBoundingClientRect(),cs=getComputedStyle(el);
+    return {left:r.left+parseFloat(cs.paddingLeft),right:r.right-parseFloat(cs.paddingRight),
+            top:r.top+parseFloat(cs.paddingTop),bottom:r.bottom-parseFloat(cs.paddingBottom)};
+  }
+  function outside(box,r){
+    return r.left<box.left-TOL||r.right>box.right+TOL||r.top<box.top-TOL||r.bottom>box.bottom+TOL;
+  }
+  var boxes=[s].concat([].slice.call(
+    s.querySelectorAll('.fill,.card,.grid,.split,.stack,.arrowrow,ul.big')));
+  for(var i=0;i<boxes.length;i++){
+    var bb=inner(boxes[i]),kids=boxes[i].children;
+    for(var j=0;j<kids.length;j++){
+      if(outside(bb,kids[j].getBoundingClientRect()))return true;
+    }
+  }
+  /* A <pre> clips its own content without moving any rect, so rect containment
+     cannot see it. Its line-height is 1.5, well clear of the glyph-overflow
+     artefact that makes scrollHeight useless on tight-leading headings, so
+     scrollHeight is the right test here and only here. */
+  var pres=s.querySelectorAll('pre.prompt');
+  for(var q=0;q<pres.length;q++){
+    if(pres[q].scrollHeight>pres[q].clientHeight+2)return true;
+  }
+  var text=s.querySelectorAll('h2,.sub,.body-lg,.kicker,.small-note,.card .k,.card .d,.card .v,'
+    +'li,.daytitle,.daysub,.daymins,.title-slide .t,.title-slide .s,.title-slide .m,.ar');
+  for(var t=0;t<text.length;t++){
+    if(text[t].scrollWidth>text[t].clientWidth+WTOL)return true;
+  }
+  return false;
+}
+function autofit(i){
+  var s=slides[i];
+  document.body.classList.add('measuring');
+  try{ _autofit(i); } finally { document.body.classList.remove('measuring'); }
+}
+function _autofit(i){
+  var s=slides[i];
+  if(s.classList.contains('img'))return;
+  if(fitted[i])return;
+  var lo=0.5,hi=3.2,best=0.5;
+  s.style.setProperty('--sc',hi);
+  if(!overflows(s)){best=hi;}
+  else{
+    for(var k=0;k<9;k++){
+      var mid=(lo+hi)/2;
+      s.style.setProperty('--sc',mid);
+      if(overflows(s)){hi=mid;}else{best=mid;lo=mid;}
+    }
+  }
+  s.style.setProperty('--sc',best);
+  fitted[i]=true;
+}
+
+/* ---------------- navigation ---------------- */
+function dayOf(i){var d=0;for(var k=0;k<dividers.length;k++){if(i>=dividers[k])d=k+1;}return d;}
+/* ---------------- build-up fragments ----------------
+   Right arrow reveals the next fragment before advancing; left arrow un-reveals
+   before going back. Entering forwards starts unbuilt; entering backwards, or by
+   jump or deep link, starts fully built, so a link never lands on a half-drawn
+   slide. B toggles builds off. */
+var buildOff=false;
+function frags(i){return slides[i].querySelectorAll('[data-frag]');}
+function fragShown(i){return slides[i].querySelectorAll('[data-frag].shown').length;}
+function setFrags(i,n){
+  var f=frags(i);
+  for(var k=0;k<f.length;k++){f[k].classList.toggle('shown',k<n);}
+  paintPip(i);
+}
+function paintPip(i){
+  var el=document.getElementById('buildpip'),n=frags(i).length;
+  if(!el)return;
+  el.textContent=(n&&!buildOff)?('  \u25CF '+fragShown(i)+'/'+n):'';
+}
+function stepFwd(){
+  if(buildOff)return false;
+  var f=frags(cur),n=fragShown(cur);
+  if(n<f.length){setFrags(cur,n+1);return true;}
+  return false;
+}
+function stepBack(){
+  if(buildOff)return false;
+  var n=fragShown(cur);
+  if(n>0){setFrags(cur,n-1);return true;}
+  return false;
+}
+function toggleBuild(){
+  buildOff=!buildOff;
+  document.body.classList.toggle('nobuild',buildOff);
+  setFrags(cur,buildOff?frags(cur).length:fragShown(cur));
+}
+function go(i,push,built){
+  if(i<0)i=0;if(i>=slides.length)i=slides.length-1;
+  slides[cur].classList.remove('on');
+  cur=i;
+  slides[cur].classList.add('on');
+  autofit(cur);
+  setFrags(cur, (buildOff || built===true) ? frags(cur).length : 0);
+  document.getElementById('counter').textContent=(cur+1)+' / '+slides.length;
+  document.getElementById('slidetitle').innerHTML=slides[cur].dataset.t||'';
+  document.getElementById('notes').innerHTML=slides[cur].dataset.n?('<b>Note</b> &nbsp;'+slides[cur].dataset.n):'<i>No note on this slide.</i>';
+  paintTimeline();paintSidebar();
+  if(push!==false)history.replaceState(null,'','#'+(cur+1));
+}
+function showDeck(i,built){
+  view='deck';
+  document.getElementById('home').classList.remove('on');
+  stage.classList.add('on');document.getElementById('deckbar').classList.add('on');
+  document.getElementById('navHome').classList.remove('on');
+  document.getElementById('navDeck').classList.add('on');
+  go(typeof i==='number'?i:cur, true, built!==false ? true : false);
+}
+function showHome(){
+  view='home';
+  stage.classList.remove('on');document.getElementById('deckbar').classList.remove('on');
+  document.getElementById('notes').classList.remove('on');
+  document.getElementById('home').classList.add('on');
+  document.getElementById('navHome').classList.add('on');
+  document.getElementById('navDeck').classList.remove('on');
+  history.replaceState(null,'','#home');
+  paintTimeline();paintSidebar();
+}
+function goDay(d){showDeck(d===0?0:dividers[d-1]);}
+function toggleNotes(){document.getElementById('notes').classList.toggle('on');}
+function toggleOv(){
+  var ov=document.getElementById('ov');
+  if(!ov.classList.contains('on'))buildOv();
+  ov.classList.toggle('on');
+}
+function present(){
+  if(view!=='deck')showDeck();
+  document.body.classList.add('present');
+  fitted=[];autofit(cur);
+  if(document.documentElement.requestFullscreen)document.documentElement.requestFullscreen().catch(function(){});
+}
+function unpresent(){
+  document.body.classList.remove('present');
+  fitted=[];autofit(cur);
+  if(document.fullscreenElement&&document.exitFullscreen)document.exitFullscreen().catch(function(){});
+}
+
+/* ---------------- chrome painting ---------------- */
+function paintTimeline(){
+  var bar=document.getElementById('timelineBar');
+  if(!bar.dataset.built){
+    var h='';
+    DAYS.forEach(function(d,k){
+      if(k)h+='<div class="timeline-connector"></div>';
+      h+='<button class="timeline-block" data-d="'+(k+1)+'" onclick="goDay('+(k+1)+')">'+
+         '<div class="timeline-time">'+d.label+' &#183; '+d.when+'</div>'+
+         '<div class="timeline-label">'+d.title+'</div>'+
+         '<div class="timeline-duration">'+d.time+'</div></button>';
+    });
+    bar.innerHTML=h;bar.dataset.built='1';
+  }
+  var d=view==='deck'?dayOf(cur):0;
+  [].forEach.call(bar.querySelectorAll('.timeline-block'),function(b){
+    b.classList.toggle('active',parseInt(b.dataset.d,10)===d);});
+}
+function paintSidebar(){
+  var sb=document.getElementById('sidebar'),h='';
+  if(view==='home'){
+    h+='<div class="sidebar-section"><div class="sidebar-section-title">The week</div>';
+    DAYS.forEach(function(d,k){
+      h+='<button class="sidebar-item" onclick="goDay('+(k+1)+')"><span class="sidebar-item-title">'+
+         d.label+' &#183; '+d.title+'</span><span class="sidebar-badge">'+d.when+'</span></button>';});
+    h+='</div><div class="sidebar-section"><div class="sidebar-section-title">Deck</div>'+
+       '<button class="sidebar-item" onclick="showDeck(0)"><span class="sidebar-item-title">Open from the start</span><span class="sidebar-badge">'+slides.length+'</span></button>'+
+       '<button class="sidebar-item" onclick="toggleOv()"><span class="sidebar-item-title">Slide overview</span><span class="sidebar-badge">O</span></button>'+
+       '<button class="sidebar-item" onclick="present()"><span class="sidebar-item-title">Present full screen</span><span class="sidebar-badge">F</span></button></div>'+
+       '<div class="sidebar-section"><div class="sidebar-section-title">Reference</div>'+
+       '<a class="sidebar-item" href="index.html"><span class="sidebar-item-title">Back to the programme</span><span class="sidebar-badge">&#8592;</span></a>'+
+       '<a class="sidebar-item" href="casestudy.html"><span class="sidebar-item-title">Worked case study</span><span class="sidebar-badge">&#8599;</span></a>'+
+       '<a class="sidebar-item" href="index.html#materials"><span class="sidebar-item-title">Prompts and materials</span><span class="sidebar-badge">&#8599;</span></a>'+
+       '<a class="sidebar-item" href="https://rubase.org/" target="_blank" rel="noopener"><span class="sidebar-item-title">RuBase dashboard</span><span class="sidebar-badge">&#8599;</span></a>'+
+       '<a class="sidebar-item" href="deck.html"><span class="sidebar-item-title">Main workshop deck</span><span class="sidebar-badge">&#8592;</span></a></div>';
+    sb.innerHTML=h;return;
+  }
+  var d=dayOf(cur);
+  var start=d===0?0:dividers[d-1];
+  var end=d<dividers.length?dividers[d]:slides.length;
+  if(d===0){start=0;end=dividers.length?dividers[0]:slides.length;}
+  h+='<div class="sidebar-section"><div class="sidebar-section-title">'+
+     (d===0?'Opening':('Day '+d+' &#183; '+DAYS[d-1].title))+'</div>';
+  for(var i=start;i<end;i++){
+    h+='<button class="sidebar-item'+(i===cur?' active':'')+'" onclick="showDeck('+i+')">'+
+       '<span class="sidebar-item-title">'+(slides[i].dataset.t||('Slide '+(i+1)))+'</span>'+
+       '<span class="sidebar-badge">'+(i+1)+'</span></button>';
+  }
+  h+='</div><div class="sidebar-section"><div class="sidebar-section-title">Jump to a day</div>';
+  DAYS.forEach(function(dd,k){
+    h+='<button class="sidebar-item'+(k+1===d?' active':'')+'" onclick="goDay('+(k+1)+')">'+
+       '<span class="sidebar-item-title">'+dd.label+' &#183; '+dd.title+'</span>'+
+       '<span class="sidebar-badge">'+dd.when+'</span></button>';});
+  h+='</div>';
+  sb.innerHTML=h;
+  var act=sb.querySelector('.sidebar-item.active');
+  if(act&&act.scrollIntoViewIfNeeded)act.scrollIntoViewIfNeeded();
+}
+function buildHome(){
+  var h='<div class="welcome-screen">'+
+    '<div class="welcome-title">Out of the Dark Ages?</div>'+
+    '<div class="welcome-subtitle">Supercharging your research workflow with LLMs. Five afternoons in which we take one research pipeline apart&nbsp;&ndash; from the question, through the corpus and the instrument, to a result you can defend&nbsp;&ndash; and put it back together with tools that did not exist when most of our methods were written.</div>'+
+    '<div class="welcome-meta">Sam Nunn School of International Affairs &#183; 31 August &ndash; 4 September 2026 &#183; 11:00&ndash;13:30 daily &#183; Nunn Conference Room</div>'+
+    '<div class="pipeline">';
+  PIPE.forEach(function(p,k){
+    if(k)h+='<div class="pipe-arrow">&rarr;</div>';
+    h+='<button class="pipe-step" onclick="goDay('+(k+1)+')"><div class="step-label">'+p[0]+'</div><div class="step-name">'+p[1]+'</div></button>';});
+  h+='</div><div class="session-grid">';
+  DAYS.forEach(function(d,k){
+    h+='<button class="session-card" onclick="goDay('+(k+1)+')">'+
+       '<div class="card-num">'+d.n+'</div>'+
+       '<div class="card-time">'+d.when+' &#183; '+d.time+'</div>'+
+       '<div class="card-title">'+d.title+'</div>'+
+       '<div class="card-desc">'+d.desc+'</div><div class="card-items">';
+    d.items.forEach(function(it){h+='<div class="card-item"><span class="card-item-bullet"></span><span>'+it+'</span></div>';});
+    h+='</div></button>';});
+  h+='</div></div>';
+  document.getElementById('home').innerHTML=h;
+}
+function buildOv(){
+  var g=document.getElementById('ovg'),h='';
+  slides.forEach(function(s,i){
+    h+='<button class="'+(s.classList.contains('divider')?'d':'')+'" onclick="document.getElementById(\'ov\').classList.remove(\'on\');showDeck('+i+')">'+
+       '<i>'+(i+1)+'</i>'+(s.dataset.t||'')+'</button>';});
+  g.innerHTML=h;
+}
+
+/* ---------------- keys ---------------- */
+document.addEventListener('keydown',function(e){
+  if(e.target.tagName==='SELECT'||e.target.tagName==='INPUT')return;
+  var k=e.key;
+  if(k==='Escape'){
+    if(document.getElementById('ov').classList.contains('on')){document.getElementById('ov').classList.remove('on');return;}
+    if(document.body.classList.contains('present')){unpresent();return;}
+  }
+  if(view!=='deck'&&['ArrowRight','ArrowLeft','ArrowUp','ArrowDown','n','N'].indexOf(k)>-1){showDeck();if(k==='ArrowRight'||k==='ArrowLeft')return;}
+  if(k==='ArrowRight'||k===' '||k==='PageDown'){e.preventDefault();if(!stepFwd())go(cur+1);}
+  else if(k==='ArrowLeft'||k==='PageUp'){e.preventDefault();if(!stepBack())go(cur-1,true,true);}
+  else if(k==='ArrowDown'){e.preventDefault();var d=dayOf(cur);goDay(Math.min(d+1,DAYS.length));}
+  else if(k==='ArrowUp'){e.preventDefault();var d2=dayOf(cur);goDay(Math.max(d2-1,0));}
+  else if(k==='Home'){e.preventDefault();go(0);}
+  else if(k==='End'){e.preventDefault();go(slides.length-1);}
+  else if(k==='o'||k==='O'){toggleOv();}
+  else if(k==='n'||k==='N'){toggleNotes();}
+  else if(k==='b'||k==='B'){toggleBuild();}
+  else if(k==='f'||k==='F'){document.body.classList.contains('present')?unpresent():present();}
+});
+document.addEventListener('fullscreenchange',function(){
+  if(!document.fullscreenElement&&document.body.classList.contains('present'))document.body.classList.remove('present');
+  fitted=[];autofit(cur);
+});
+var rt;window.addEventListener('resize',function(){clearTimeout(rt);rt=setTimeout(function(){fitted=[];autofit(cur);},140);});
+
+/* ---------------- start ---------------- */
+buildHome();
+var hash=(location.hash||'').replace('#','');
+if(hash&&hash!=='home'&&!isNaN(parseInt(hash,10))){showDeck(parseInt(hash,10)-1);}
+else{showHome();}
+</script>
+</body>
+</html>
