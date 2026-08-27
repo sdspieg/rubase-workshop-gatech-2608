@@ -143,6 +143,14 @@
             padding: 20px;
             overflow-y: auto;
             transition: transform .3s;
+            /* Stay in view while the content scrolls. The offset cannot be a
+               constant: the header is sticky at top:0 and REWRAPS at narrow
+               widths, so --stick-top is measured from the rendered header and
+               refreshed on resize. Falls back to 0 if the script never runs. */
+            position: sticky;
+            top: var(--stick-top, 0px);
+            align-self: flex-start;
+            height: calc(100vh - var(--stick-top, 0px));
         }
         .sidebar-section { margin-bottom: 22px; }
         .sidebar-section-title {
@@ -386,6 +394,7 @@
                 position: fixed;
                 left: -100%;
                 top: 0;
+                max-height: none;
                 z-index: 999;
                 height: 100vh;
                 width: 85%;

@@ -86,6 +86,19 @@ function closeSidebar(){
   document.getElementById('sidebarOverlay').classList.remove('active');
 }
 document.addEventListener('keydown',function(e){ if(e.key==='Escape'){closeSidebar();} });
+// The sidebar sticks below the header. The header is sticky at top:0 and rewraps at
+// narrow widths, so its height is measured rather than assumed and refreshed whenever
+// it changes. Without this the sidebar would either scroll away or slide under it.
+(function(){
+  var h=document.querySelector('.header'); if(!h) return;
+  function sync(){
+    document.documentElement.style.setProperty('--stick-top', h.offsetHeight+'px');
+  }
+  sync();
+  if(window.ResizeObserver){ new ResizeObserver(sync).observe(h); }
+  window.addEventListener('resize', sync);
+  window.addEventListener('load', sync);
+})();
 (function(){
   var h=(location.hash||'').replace('#','');
   // Old deep links pointed a bare slide number at this URL, back when it served
