@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Out of the Dark Ages &middot; GaTech Day 1</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,300;0,400;0,600;0,700;0,900;1,400&display=swap">
+<style>
+:root{
+  --ground:#0A192F; --card:#142846; --edge:#1E3A63; --title:#00FFFF;
+  --body:#FFFFFF; --muted:#C8C8C8; --accent:#FFFF00; --warn:#FF6347; --ok:#00FF7F;
+  --rule:rgba(0,255,255,.25);
+  --font:"Titillium Web","Titillium Bd",-apple-system,"Segoe UI",Roboto,sans-serif;
+}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:#050d1a;color:var(--body);font-family:var(--font);overflow:hidden}
+#stage{position:fixed;inset:0;display:grid;place-items:center;padding:2vmin}
+.slide{
+  position:relative;width:min(100vw - 4vmin, (100vh - 4vmin) * 16 / 9);
+  aspect-ratio:16/9;background:var(--ground);border:1px solid var(--edge);
+  padding:4.4% 5%;display:none;flex-direction:column;container-type:inline-size;overflow:hidden;
+}
+.slide.on{display:flex}
+.slide.img{padding:0;background:#000}
+.slide.img img{width:100%;height:100%;object-fit:contain;display:block}
+.slide.img .src{position:absolute;right:.8%;bottom:.8%;font-size:11px;color:#5c7291;letter-spacing:.06em}
+h2{margin:0 0 .5em;color:var(--title);font-weight:700;font-size:clamp(18px,3.5cqw,52px);
+   line-height:1.04;letter-spacing:-.01em;text-wrap:balance}
+.sub{margin:-.3em 0 1.1em;color:var(--muted);font-size:clamp(10px,1.55cqw,22px);line-height:1.4;max-width:62ch}
+.body-lg{font-size:clamp(13px,2.3cqw,34px);line-height:1.25;font-weight:600;text-wrap:balance}
+.kicker{font-size:clamp(9px,1.05cqw,14px);letter-spacing:.2em;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:1.2em}
+.fill{flex:1;min-height:0;display:flex;flex-direction:column;justify-content:center;gap:1.1em}
+
+.grid{display:grid;gap:2.1%;flex:1;min-height:0;align-content:center}
+.c2{grid-template-columns:repeat(2,1fr)} .c3{grid-template-columns:repeat(3,1fr)}
+.c4{grid-template-columns:repeat(4,1fr)} .c5{grid-template-columns:repeat(5,1fr)}
+.r2{grid-template-rows:repeat(2,1fr)}
+.card{background:var(--card);border:1px solid var(--edge);padding:4.5% 5%;
+      display:flex;flex-direction:column;justify-content:center;gap:.45em;min-height:0}
+.card .k{font-size:clamp(11px,1.95cqw,28px);font-weight:700;line-height:1.15;text-wrap:balance}
+.card .d{font-size:clamp(8px,1.2cqw,16px);color:var(--muted);line-height:1.4}
+.card .v{font-size:clamp(18px,4.1cqw,58px);font-weight:900;color:var(--accent);line-height:.95;
+         font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.q .k{font-weight:400;font-style:italic}
+.q .k::before{content:"\201C"} .q .k::after{content:"\201D"}
+.top .card{justify-content:flex-start}
+.tint{background:transparent;border-color:var(--rule)}
+.hot{border-color:var(--accent)} .hot .k{color:var(--accent)}
+
+ul.big{margin:0;padding-left:1.1em;display:flex;flex-direction:column;gap:.7em}
+ul.big li{font-size:clamp(11px,1.85cqw,26px);line-height:1.25}
+ul.big li b{color:var(--accent)}
+ul.big li em{color:var(--title);font-style:normal;font-weight:600}
+.small-note{margin-top:1em;color:var(--muted);font-size:clamp(9px,1.15cqw,16px);line-height:1.45}
+
+table{width:100%;border-collapse:collapse;font-size:clamp(7px,1.02cqw,15px)}
+th,td{text-align:left;padding:.5em .6em;border-bottom:1px solid var(--edge);vertical-align:top}
+th{color:var(--title);font-weight:700;text-transform:uppercase;letter-spacing:.07em;font-size:.85em}
+td b{color:var(--accent);font-weight:700}
+tbody tr:nth-child(even){background:rgba(20,40,70,.5)}
+/* centre a table (and its trailing note) in the space under the title */
+.slide > table{margin-top:auto}
+.slide > .small-note{margin-bottom:auto}
+.slide > ul.big{margin-top:auto;margin-bottom:auto}
+
+.split{display:grid;grid-template-columns:1fr 1fr;gap:3%;flex:1;min-height:0;align-items:center}
+.stack{display:flex;flex-direction:column;gap:.8em}
+.arrowrow{display:flex;align-items:center;gap:1.2%;flex:1;min-height:0;min-width:0}
+.arrowrow .card{flex:1 1 0;min-width:0;height:70%;padding:3% 2.4%}
+.arrowrow .ar{color:var(--title);font-size:clamp(11px,1.9cqw,28px);font-weight:700;opacity:.7;flex:0 0 auto}
+/* the funding-chain slide carries a row AND a grid: constrain both */
+.slide[data-t="The actionable knowledge chain"] .sub{margin-bottom:.55em}
+.slide[data-t="The actionable knowledge chain"] .arrowrow{flex:0 0 32%}
+.slide[data-t="The actionable knowledge chain"] .arrowrow .card{height:100%}
+.slide[data-t="The actionable knowledge chain"] .grid{flex:1 1 auto;margin-top:2%}
+.pillar{position:relative;padding-top:7%}
+.pillar::after{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:var(--title);opacity:.5}
+.pillar.now::after{opacity:1;height:6px} .pillar.now{border-color:var(--title)}
+.pillar .n{font-size:clamp(8px,1cqw,13px);letter-spacing:.16em;text-transform:uppercase;color:var(--accent);font-weight:700}
+.pillar .k{font-size:clamp(10px,1.6cqw,22px)}
+.title-slide{justify-content:center;gap:.5em}
+.title-slide .t{font-size:clamp(22px,5.4cqw,76px);font-weight:900;color:var(--title);line-height:1;letter-spacing:-.02em}
+.title-slide .s{font-size:clamp(12px,2.3cqw,32px);color:var(--body);font-weight:600}
+.title-slide .m{font-size:clamp(9px,1.3cqw,18px);color:var(--muted);margin-top:1.2em;line-height:1.6}
+
+/* chrome */
+#bar{position:fixed;left:0;top:0;height:3px;background:var(--title);width:0;z-index:40;transition:width .18s ease}
+#hud{position:fixed;right:14px;bottom:12px;z-index:40;display:flex;align-items:center;gap:10px;
+     font-size:12px;color:var(--muted);letter-spacing:.08em}
+#hud button{background:transparent;border:1px solid var(--edge);color:var(--muted);
+     font:inherit;font-size:14px;padding:4px 11px;cursor:pointer;border-radius:2px}
+#hud button:hover,#hud button:focus-visible{border-color:var(--title);color:var(--title);outline:none}
+#counter{font-variant-numeric:tabular-nums;min-width:5.5em;text-align:right}
+#notes{position:fixed;left:0;right:0;bottom:0;max-height:34vh;overflow:auto;z-index:39;
+  background:rgba(5,13,26,.97);border-top:1px solid var(--edge);padding:14px 20px 18px;display:none;
+  color:var(--muted);font-size:14px;line-height:1.6}
+#notes.on{display:block}
+#notes b{color:var(--body)}
+#ov{position:fixed;inset:0;z-index:50;background:rgba(5,13,26,.98);display:none;overflow:auto;padding:26px}
+#ov.on{display:block}
+#ovg{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:12px;max-width:1500px;margin:0 auto}
+#ovg button{aspect-ratio:16/9;background:var(--card);border:1px solid var(--edge);color:var(--muted);
+  font:inherit;font-size:11px;text-align:left;padding:9px;cursor:pointer;line-height:1.25;overflow:hidden}
+#ovg button:hover,#ovg button:focus-visible{border-color:var(--title);color:var(--body);outline:none}
+#ovg button i{display:block;color:var(--accent);font-style:normal;font-weight:700;margin-bottom:5px;font-variant-numeric:tabular-nums}
+#help{position:fixed;left:14px;bottom:12px;z-index:40;font-size:11px;color:#5c7291;letter-spacing:.06em}
+@media (prefers-reduced-motion:reduce){#bar{transition:none}}
+</style>
+</head>
+<body>
+<div id="bar"></div>
+<div id="stage"></div>
+
+<div id="notes"></div>
+<div id="ov"><div id="ovg"></div></div>
+<div id="help">&larr; &rarr; navigate &middot; O overview &middot; N notes</div>
+<div id="hud">
+  <button id="prev" aria-label="Previous slide">&larr;</button>
+  <button id="next" aria-label="Next slide">&rarr;</button>
+  <span id="counter"></span>
+</div>
+
+<template id="deck">
+
+<section class="slide title-slide" data-t="Title" data-n="Welcome. Adam opens. 150 minutes, five days, one running example.">
+  <div class="kicker">Sam Nunn School of International Affairs &middot; 31 August 2026</div>
+  <div class="t">Out of the Dark Ages?</div>
+  <div class="s">Supercharging your research workflow with LLMs</div>
+  <div class="m">Day 1 of 5 &middot; 11:00&ndash;13:30 &middot; Nunn Conference Room<br>
+    Stephan De Spiegeleire, The Hague Centre for Strategic Studies</div>
+</section>
+
+<section class="slide" data-t="How this week works" data-n="Fletcher text, verbatim. The third card is the important one: it frames a 150-minute day honestly AND tells drop-in students they can join on Wednesday.">
+  <h2>How this week works</h2>
+  <p class="sub">Three ground rules. The third is the important one.</p>
+  <div class="grid c3">
+    <div class="card"><div class="k">Please interrupt</div><div class="d">Questions welcome at any time. Do not wait for a pause.</div></div>
+    <div class="card"><div class="k">Topics will bleed into the next day</div><div class="d">Perfectly fine. The days are not sealed off from each other.</div></div>
+    <div class="card hot"><div class="k">We won't finish everything today&nbsp;&ndash; by design</div><div class="d">Quality over coverage. Each day stands alone, so arriving late costs you nothing.</div></div>
+  </div>
+</section>
+
+<section class="slide" data-t="Five pillars, five days" data-n="THE structural slide. Reuse it as the opening we-are-here slide every morning. Pillar n = day n.">
+  <h2>Five pillars, five days</h2>
+  <p class="sub">The approach has five parts. So does the week. They are the same five.</p>
+  <div class="grid c5 top">
+    <div class="card pillar now"><div class="n">Day 1 &middot; today</div><div class="k">Broad exploration of the topic</div><div class="d">Why the way we work now doesn't hold.</div></div>
+    <div class="card pillar"><div class="n">Day 2</div><div class="k">A rich, multi-layered taxonomy</div><div class="d">An instrument, not a filing system.</div></div>
+    <div class="card pillar"><div class="n">Day 3</div><div class="k">A multilingual corpus</div><div class="d">Finding what you have been missing.</div></div>
+    <div class="card pillar"><div class="n">Day 4</div><div class="k">A documented classification pipeline</div><div class="d">The taxonomy, applied and evaluated.</div></div>
+    <div class="card pillar"><div class="n">Day 5</div><div class="k">Analysis and deliverables</div><div class="d">Your project, and the usable kit.</div></div>
+  </div>
+</section>
+
+<section class="slide" data-t="Sound familiar?" data-n="Show of hands on each. This is the only audience survey you get. From 'Stop Drowning in PDFs'.">
+  <h2>Sound familiar?</h2>
+  <p class="sub">Which of these is yours?</p>
+  <div class="grid c3 r2">
+    <div class="card q"><div class="k">Have I read enough? What am I missing?</div></div>
+    <div class="card q"><div class="k">I found 3,000 papers. Now what?</div></div>
+    <div class="card q"><div class="k">My lit review is 50 pages of summary. Where's the actual insight?</div></div>
+    <div class="card q"><div class="k">Everyone cites the same 10 papers. Is that really the whole field?</div></div>
+    <div class="card q"><div class="k">How do I deal with sources in languages I don't understand?</div></div>
+    <div class="card q"><div class="k">My committee wants &lsquo;systematic analysis&rsquo; but I'm just&hellip; reading and highlighting?</div></div>
+  </div>
+</section>
+
+<section class="slide" data-t="You are not alone" data-n="Land this line, then pivot to the side-story. Do not rush it.">
+  <div class="fill">
+    <div class="kicker">The honest diagnosis</div>
+    <div class="body-lg">Traditional research methods were not built for an era of
+      <b style="color:var(--accent)">200 million</b> scholarly articles, multilingual corpora
+      and information overload.</div>
+    <div class="body-lg" style="color:var(--title)">But new tools are.</div>
+  </div>
+</section>
+
+<section class="slide" data-t="A salutary side-story" data-n="Deliberate change of gear. We are going to look at another discipline before we look at ours.">
+  <div class="fill">
+    <div class="kicker">Let's start somewhere else</div>
+    <div class="body-lg">A salutary side-story.</div>
+    <div class="sub" style="font-size:clamp(11px,1.8cqw,26px);margin:0">Not about international affairs. About medicine.</div>
+  </div>
+</section>
+
+<section class="slide img" data-t="Yesterday: the four humors" data-n="Medicine's operating system for ~2,000 years. Internally coherent, taught in universities, and wrong. Ask the room: how would a practitioner have known?">
+  <img src="img/humors.png" alt="The four humors and their temperaments">
+  <span class="src">GaTech Session 1, 2 Sep 2025</span>
+</section>
+
+<section class="slide img" data-t="The 'omics" data-n="What replaced the humors was not a better theory - it was measurement at a scale that made the old categories redundant.">
+  <img src="img/omics.png" alt="The omics stack">
+  <span class="src">GaTech Session 1, 2 Sep 2025</span>
+</section>
+
+<section class="slide" data-t="BioNLP" data-n="Biology built shared ontologies and a text-mining discipline on top of them. That is precisely what IR has not done.">
+  <h2>BioNLP and biomedical ontologies</h2>
+  <p class="sub">Biology did not just collect data. It built <em>shared vocabularies</em> so that findings could accumulate across labs, languages and decades.</p>
+  <div class="grid c3">
+    <div class="card"><div class="k">Shared ontologies</div><div class="d">Gene Ontology, MeSH, UMLS. One agreed structure, used by everyone.</div></div>
+    <div class="card"><div class="k">Text mining as a discipline</div><div class="d">Millions of papers read by machine, findings extracted and pooled.</div></div>
+    <div class="card hot"><div class="k">Cumulative knowledge</div><div class="d">A result from 2004 still composes with a result from 2024.</div></div>
+  </div>
+</section>
+
+<section class="slide img" data-t="The AlphaFold moment" data-n="200 million structures against ~100,000 in decades. Let the number sit before you pivot to IR.">
+  <img src="img/alphafold.png" alt="The AlphaFold moment">
+  <span class="src">GaTech Session 1, 2 Sep 2025</span>
+</section>
+
+<section class="slide" data-t="For IR" data-n="The pivot. Say it as a question, not a promise. This is the whole reason the week exists.">
+  <div class="fill">
+    <div class="kicker">The question this week asks</div>
+    <div class="body-lg" style="font-size:clamp(15px,3cqw,44px)">What would the equivalent moment look like
+      for <span style="color:var(--title)">international affairs</span>?</div>
+    <div class="sub" style="margin:0">Not prediction with false precision. Measurement where we currently have anecdote.</div>
+  </div>
+</section>
+
+<section class="slide img" data-t="Paradigm shifts 1/2" data-n="Walk two or three rows, not all of them. The Sociology row - sampling versus n = all - is the one that matters for us.">
+  <img src="img/paradigm1.png" alt="Paradigm shifts across disciplines, part 1">
+  <span class="src">GaTech Session 1, 2 Sep 2025</span>
+</section>
+
+<section class="slide img" data-t="Paradigm shifts 2/2" data-n="Political science last, on purpose: the one row where the change is mostly about being acted upon rather than about knowing.">
+  <img src="img/paradigm2.png" alt="Paradigm shifts across disciplines, part 2">
+  <span class="src">GaTech Session 1, 2 Sep 2025</span>
+</section>
+
+<section class="slide" data-t="So why not us?" data-n="Transition into the indictment. Three reasons follow: no data, no pipeline, and no innocence.">
+  <div class="fill">
+    <div class="kicker">The obvious question</div>
+    <div class="body-lg">Every neighbouring discipline crossed over.<br>Why didn't ours?</div>
+    <div class="sub" style="margin:0">Three reasons. The third one is about us.</div>
+  </div>
+</section>
+
+<section class="slide" data-t="Deterrence: we hardly know ye" data-n="Our own words, from the 2021 deck. Read the first bullet slowly. 'Deterrence-broad' vs 'deterrence-narrow' is the aperture point.">
+  <h2>(Russian) deterrence: we hardly know ye</h2>
+  <p class="sub">Our own assessment of the field, unchanged since we first made it.</p>
+  <ul class="big">
+    <li>We have virtually <b>no solid empirical datasets</b> on actual deterrent behaviour and dynamics&nbsp;&ndash; a <em>stark contrast to deterrence-broad</em>.</li>
+    <li>The field has been almost entirely <b>&lsquo;analogue&rsquo;</b>, foregoing benefits that proved abundant in other disciplines.</li>
+    <li>Strong <em>internally and externally imposed</em> <b>disincentives for collaboration</b>&nbsp;&ndash; differently for think tanks than for academia, with equally pernicious consequences.</li>
+  </ul>
+</section>
+
+<section class="slide" data-t="And we are not innocent" data-n="This is the slide that earns the right to make demands of the room. Do not soften it.">
+  <h2>And we are not innocent</h2>
+  <div class="split">
+    <div class="stack">
+      <div class="card tint"><div class="k" style="font-style:italic;font-weight:400">&ldquo;We are quick to blame others&nbsp;&ndash; they've neglected the field as we were telling them not to, send more money.&rdquo;</div></div>
+    </div>
+    <div class="stack">
+      <div class="sub" style="margin:0">Even at current funding we could produce far higher value if we:</div>
+      <ul class="big" style="gap:.45em">
+        <li><b>Build and share datasets</b>&nbsp;&ndash; and <em>text IS data</em> now</li>
+        <li>Start <b>collaborating</b> more and better</li>
+        <li>Accelerate our knowledge production <b>rate and quality</b></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="slide" data-t="The actionable knowledge chain" data-n="The funding argument, normally a hidden reserve slide. For this room it is central. Minerva is a gesture, not a pipeline.">
+  <h2>The &lsquo;actionable knowledge&rsquo; production chain</h2>
+  <p class="sub">US DoD research and development, built out end to end&nbsp;&ndash; for one kind of science.</p>
+  <div class="arrowrow">
+    <div class="card tint"><div class="d"><b>6.1</b> Basic</div></div><span class="ar">&rarr;</span>
+    <div class="card tint"><div class="d"><b>6.2</b> Applied</div></div><span class="ar">&rarr;</span>
+    <div class="card tint"><div class="d"><b>6.3</b> Adv tech dev</div></div><span class="ar">&rarr;</span>
+    <div class="card tint"><div class="d"><b>6.4</b> Prototypes</div></div><span class="ar">&rarr;</span>
+    <div class="card tint"><div class="d"><b>6.5</b> Engineering</div></div><span class="ar">&rarr;</span>
+    <div class="card tint"><div class="d"><b>6.7</b> Operational</div></div>
+  </div>
+  <div class="grid c3" style="flex:0 0 auto;margin-top:1.4%">
+    <div class="card"><div class="v">$140&ndash;156B</div><div class="d">per year, hard sciences (FY2020&ndash;21)</div></div>
+    <div class="card hot"><div class="k">Soft sciences: 6.1 and 6.2 only</div><div class="d">Academia and FFRDCs/UARCs. <b>6.3 onward is blank&nbsp;&ndash; &ldquo;Managed by ?&rdquo;</b></div></div>
+    <div class="card"><div class="k">Minerva</div><div class="d">A gesture, not a pipeline.</div></div>
+  </div>
+</section>
+
+<section class="slide" data-t="It wasn't always this way" data-n="RAND/UCLA Center for Soviet Studies, 1990-91. My own lineage. Pair with the previous slide: funding gap first, then historical precedent.">
+  <h2>It was not always this way</h2>
+  <div class="split">
+    <div class="stack">
+      <div class="body-lg">Post-war America built a serious academic infrastructure&nbsp;&ndash;
+        people, institutions, training programmes, language investment&nbsp;&ndash;
+        to understand a peer competitor.</div>
+    </div>
+    <div class="stack">
+      <div class="card"><div class="k">RAND / UCLA Center for Soviet Studies</div><div class="d">1990&ndash;91 programme. Sovietology as national infrastructure: Title VI, Title VIII, the NDEA era. A Soviet TV monitoring facility. A generation of trained analysts&nbsp;&ndash; including this one.</div></div>
+      <div class="card hot"><div class="k">We let it atrophy</div><div class="d">And the funding pipeline for soft-science strategic analysis never caught up.</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide img" data-t="Towards strategic analysis 3.0" data-n="Three eras: the expert, multiple perspectives, cumulative knowledge.">
+  <img src="img/analysis3.png" alt="Towards strategic analysis 3.0">
+  <span class="src">GaTech Session 1, 2 Sep 2025</span>
+</section>
+
+<section class="slide img" data-t="Pub-centric to knowledge-centric" data-n="The publication is a delivery format, not a knowledge store.">
+  <img src="img/pubcentric.png" alt="From pub-centric to knowledge-centric to ChatGPT">
+  <span class="src">GaTech Session 1, 2 Sep 2025</span>
+</section>
+
+<section class="slide img" data-t="The 'real' IR vs 'our' IR" data-n="The DIKW ladder. The gap between it and what we actually operate on is the whole problem.">
+  <img src="img/dikw.png" alt="DIKW pyramid, real IR versus our IR">
+  <span class="src">GaTech Session 1, 2 Sep 2025</span>
+</section>
+
+<section class="slide img" data-t="RuBase: what's in a name" data-n="Ru happens to be Russia. Say out loud that the approach is topic-agnostic, or half an INTA room files you under Russia people.">
+  <img src="img/name.png" alt="RuBase - what's in a name">
+  <span class="src">GaTech Session 1, 2 Sep 2025</span>
+</section>
+
+<section class="slide img" data-t="Spiral development" data-n="The project's signature diagram. Text, collaboration and data as three lines that keep crossing, with SMEs throughout.">
+  <img src="img/spiral.png" alt="Spiral development: text, collaboration, data">
+  <span class="src">GaTech Session 1, 2 Sep 2025</span>
+</section>
+
+<section class="slide img" data-t="Wissensanhaeufung 3.0" data-n="Standing on the shoulders of giants - but how, concretely? That question is the bridge into the rest of the week.">
+  <img src="img/wissens.png" alt="Wissensanhaeufung 3.0">
+  <span class="src">GaTech Session 1, 2 Sep 2025</span>
+</section>
+
+<section class="slide img" data-t="The Sunburst app" data-n="Open on a live artefact. Say 'think of your own use case' and leave a pause - this is the moment they picture their own topic.">
+  <img src="img/sunburst.png" alt="The RuBase-RUW sunburst app">
+  <span class="src">GaTech Session 1, 2 Sep 2025</span>
+</section>
+
+<section class="slide" data-t="What this has produced" data-n="Evidence for a claim already made, not a portfolio. Repeat: any topic, not just Russia.">
+  <h2>What this has actually produced</h2>
+  <p class="sub">Four projects, one method&nbsp;&ndash; the same one you will use on your own question this week.</p>
+  <div class="grid c4">
+    <div class="card"><div class="v">2,500+</div><div class="k">WACKO</div><div class="d">Contemporary official documents, tested against the semantic echoes of <b>1,000+</b> Russian philosopher books. Russia's geostrategic operating system.</div></div>
+    <div class="card"><div class="v">1958&ndash;2020</div><div class="k">Red Lines</div><div class="d">Deterrent rhetoric over time. Red lines do <b>not&nbsp;&ndash; yet&nbsp;&ndash;</b> track Western provocations, or the reverse.</div></div>
+    <div class="card"><div class="v">1,400</div><div class="k">Grey Horizon</div><div class="d">Taxa across <b>13</b> dimensions of below-threshold conflict.</div></div>
+    <div class="card"><div class="v">1M+</div><div class="k">Russian Regeneration</div><div class="d">Taxonomically annotated text chunks in one working corpus.</div></div>
+  </div>
+</section>
+
+<section class="slide" data-t="Where to get data?" data-n="Set up the problem before showing The Lens. Every one of these complaints is something they have felt.">
+  <h2>Where do you actually get the data?</h2>
+  <p class="sub">The honest state of bibliographic infrastructure.</p>
+  <div class="grid c3 r2">
+    <div class="card"><div class="k">Subscription-based</div></div>
+    <div class="card"><div class="k">(Very) expensive</div></div>
+    <div class="card"><div class="k">Hard to access in quantity</div></div>
+    <div class="card"><div class="k">Disappointing quality</div><div class="d">Inconsistencies and omissions <em>even within</em> a single database.</div></div>
+    <div class="card"><div class="k">Significant overlap across them</div></div>
+    <div class="card hot"><div class="k">Surprisingly few value-added services</div></div>
+  </div>
+</section>
+
+<section class="slide" data-t="The Lens" data-n="Free, large, liberal download policy. This is the tool they will use in the hands-on block.">
+  <h2>The Lens</h2>
+  <div class="split">
+    <div class="stack">
+      <div class="card"><div class="k">Free for academic use</div></div>
+      <div class="card"><div class="k">Large, and online visual exploration</div></div>
+      <div class="card hot"><div class="k">50,000 publications per batch when logged in</div><div class="d">Which is what makes a genuinely <em>broad</em> literature review possible&nbsp;&ndash; our deterrence <b>epistemic MRI</b>.</div></div>
+    </div>
+    <div class="stack">
+      <div class="sub" style="margin:0">And then straight into <em style="color:var(--title);font-style:normal">Zotero</em>, so the corpus is yours and stays yours.</div>
+    </div>
+  </div>
+</section>
+
+<section class="slide" data-t="An epistemic MRI" data-n="Real numbers from our own deterrence work. This is what a field looks like when you can see all of it at once.">
+  <h2>An epistemic MRI of a field</h2>
+  <p class="sub">Deterrence in international studies, as a measurable object rather than a reading list.</p>
+  <div class="grid c4">
+    <div class="card"><div class="v">810</div><div class="k">articles</div><div class="d">Scopus, Deterrence-IS, 1958&ndash;2020</div></div>
+    <div class="card"><div class="v">2,312</div><div class="k">terms</div><div class="d">Title, abstract, keywords</div></div>
+    <div class="card"><div class="v">41,868</div><div class="k">links</div><div class="d">Co-occurrence structure of the field</div></div>
+    <div class="card hot"><div class="k">Where is Russia in this?</div><div class="d">Which clusters, which decades, which bursts&nbsp;&ndash; and which conversations it never entered.</div></div>
+  </div>
+</section>
+
+<section class="slide" data-t="Note the small Ns" data-n="The moment the room realises how thin the field is. Let them read the number themselves.">
+  <div class="fill">
+    <div class="kicker">When you look at who is actually producing the work</div>
+    <div class="body-lg">Note the small <span style="color:var(--accent)">N</span>s.</div>
+    <div class="sub" style="margin:0">Top institutions, most active authors, top fields of study. The field you assumed was crowded is not.</div>
+  </div>
+</section>
+
+<section class="slide" data-t="What the databases cannot see" data-n="The recall problem. Coverage of the Chinese scholarly record, and FSU-bias. Verify exact wording against the 2025 deck before delivering.">
+  <h2>And then: what the databases cannot see</h2>
+  <p class="sub">Recall is not a technicality. It decides what your field is allowed to contain.</p>
+  <div class="grid c3">
+    <div class="card"><div class="k">The Chinese scholarly record</div><div class="d">Coverage in Western bibliographic databases is far from complete&nbsp;&ndash; and few researchers know it.</div></div>
+    <div class="card"><div class="k">FSU bias</div><div class="d">Coverage of the field is small, and skewed. What you retrieve is not what exists.</div></div>
+    <div class="card hot"><div class="k">The consequence</div><div class="d">An unexamined query is a claim about the world. Usually a false one.</div></div>
+  </div>
+</section>
+
+<section class="slide" data-t="LLMs: pros and cons" data-n="Give the cons honestly. Then the line that matters: these apply to humans as well, and arguably more.">
+  <h2>LLMs: pros and cons</h2>
+  <div class="split">
+    <div class="stack">
+      <div class="kicker" style="margin:0;color:var(--ok)">What they give you</div>
+      <ul class="big" style="gap:.4em">
+        <li>A <b>broader aperture</b> to frame the question</li>
+        <li>Rapid summarisation at corpus scale</li>
+        <li>Idea generation and counterargument</li>
+        <li>Drafting and visualisation support</li>
+      </ul>
+    </div>
+    <div class="stack">
+      <div class="kicker" style="margin:0;color:var(--warn)">What they cost you</div>
+      <ul class="big" style="gap:.4em">
+        <li><b>Hallucination</b>&nbsp;&ndash; plausible, ungrounded, needs checking</li>
+        <li><b>Bias</b> inherited from training data</li>
+        <li>Pattern recognition <em>without</em> causal understanding</li>
+      </ul>
+      <div class="small-note" style="color:var(--accent)">But every one of these applies to humans as well&nbsp;&ndash; and arguably more.</div>
+    </div>
+  </div>
+</section>
+
+<section class="slide" data-t="Bibliographical RAG" data-n="Name the pattern, then the tools. Tools change; the pattern does not.">
+  <h2>Bibliographical RAG</h2>
+  <p class="sub">Retrieval-augmented generation, pointed at the literature: retrieve real sources first, generate second.</p>
+  <div class="grid c4 r2">
+    <div class="card tint"><div class="k">Scholar GPT</div></div>
+    <div class="card tint"><div class="k">Dimensions Research GPT</div></div>
+    <div class="card tint"><div class="k">Consensus</div></div>
+    <div class="card tint"><div class="k">scite_</div></div>
+    <div class="card tint"><div class="k">Elicit</div></div>
+    <div class="card tint"><div class="k">NotebookLM</div></div>
+    <div class="card tint"><div class="k">Deep Research</div></div>
+    <div class="card tint"><div class="k">OpenScholar</div></div>
+  </div>
+  <div class="small-note">The tools will change before the semester ends. The <em style="color:var(--title);font-style:normal">verification habit</em> will not: never trust, always check.</div>
+</section>
+
+<section class="slide" data-t="Your turn" data-n="Hands-on block, 30 minutes. Accounts, seed corpus, and one question written down. Circulate.">
+  <h2>Your turn</h2>
+  <p class="sub">The rest of today is yours. Three things to leave with.</p>
+  <div class="grid c3 top">
+    <div class="card"><div class="n" style="color:var(--accent);font-size:clamp(8px,1cqw,13px);letter-spacing:.16em;text-transform:uppercase;font-weight:700">One</div><div class="k">Accounts working</div><div class="d">The Lens &middot; OpenAlex &middot; Claude. Free. Do it now, not tonight.</div></div>
+    <div class="card"><div class="n" style="color:var(--accent);font-size:clamp(8px,1cqw,13px);letter-spacing:.16em;text-transform:uppercase;font-weight:700">Two</div><div class="k">The seed corpus in hand</div><div class="d">Pre-built, so nothing you do this week depends on a download finishing.</div></div>
+    <div class="card hot"><div class="n" style="color:var(--accent);font-size:clamp(8px,1cqw,13px);letter-spacing:.16em;text-transform:uppercase;font-weight:700">Three</div><div class="k">Your research question, in one sentence</div><div class="d">Then read it to your neighbour. If they cannot repeat it back, it is not one sentence yet.</div></div>
+  </div>
+</section>
+
+<section class="slide" data-t="Before tomorrow" data-n="One instruction. One persistent link. Do not use a link that expires overnight.">
+  <h2>Before tomorrow</h2>
+  <div class="fill" style="border-left:5px solid var(--accent);padding-left:4%">
+    <div class="body-lg" style="font-size:clamp(16px,3.3cqw,48px)">Write your research question. One sentence.</div>
+    <div class="sub" style="margin:0;font-size:clamp(11px,1.6cqw,23px)">Bring it tomorrow&nbsp;&ndash;
+      <em style="color:var(--title);font-style:normal">Day 2 builds your taxonomy on top of it.</em>
+      Prefer not to use your own? Take the seed corpus and the question that comes with it.</div>
+    <div class="sub" style="margin:0;font-size:clamp(11px,1.6cqw,23px)">Everything from today, and everything coming:
+      <em style="color:var(--title);font-style:normal">one link, live all week.</em></div>
+  </div>
+</section>
+
+</template>
+
+<script>
+(function(){
+  var tpl=document.getElementById('deck');
+  var stage=document.getElementById('stage');
+  stage.appendChild(tpl.content.cloneNode(true));
+  var slides=[].slice.call(stage.querySelectorAll('.slide'));
+  var bar=document.getElementById('bar'), counter=document.getElementById('counter');
+  var notes=document.getElementById('notes'), ov=document.getElementById('ov'), ovg=document.getElementById('ovg');
+  var i=0, notesOn=false;
+
+  slides.forEach(function(s,n){
+    var b=document.createElement('button');
+    b.innerHTML='<i>'+String(n+1).padStart(2,'0')+'</i>'+(s.dataset.t||'');
+    b.addEventListener('click',function(){ go(n); closeOv(); });
+    ovg.appendChild(b);
+  });
+
+  function render(){
+    slides.forEach(function(s,n){ s.classList.toggle('on', n===i); });
+    counter.textContent=(i+1)+' / '+slides.length;
+    bar.style.width=((i+1)/slides.length*100)+'%';
+    notes.innerHTML='<b>'+(slides[i].dataset.t||'')+'</b> &middot; '+(slides[i].dataset.n||'No notes.');
+    if(location.hash!=='#'+(i+1)) history.replaceState(null,'','#'+(i+1));
+  }
+  function go(n){ i=Math.max(0,Math.min(slides.length-1,n)); render(); }
+  function next(){ go(i+1); } function prev(){ go(i-1); }
+  function closeOv(){ ov.classList.remove('on'); }
+
+  document.getElementById('next').addEventListener('click',next);
+  document.getElementById('prev').addEventListener('click',prev);
+  document.addEventListener('keydown',function(e){
+    if(e.key==='ArrowRight'||e.key===' '||e.key==='PageDown'){e.preventDefault();next();}
+    else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();prev();}
+    else if(e.key==='Home'){go(0);} else if(e.key==='End'){go(slides.length-1);}
+    else if(e.key==='o'||e.key==='O'){ov.classList.toggle('on');}
+    else if(e.key==='Escape'){closeOv();}
+    else if(e.key==='n'||e.key==='N'){notesOn=!notesOn;notes.classList.toggle('on',notesOn);}
+  });
+  stage.addEventListener('click',function(e){
+    if(e.target.closest('#hud')) return;
+    (e.clientX > window.innerWidth*0.5 ? next : prev)();
+  });
+  ov.addEventListener('click',function(e){ if(e.target===ov) closeOv(); });
+  window.addEventListener('hashchange',function(){
+    var n=parseInt(location.hash.slice(1),10); if(n>=1&&n<=slides.length) go(n-1);
+  });
+
+  var start=parseInt(location.hash.slice(1),10);
+  go(start>=1&&start<=slides.length?start-1:0);
+})();
+</script>
+</body>
+</html>
