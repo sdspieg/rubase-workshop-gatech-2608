@@ -1,0 +1,62 @@
+{
+ "oa:nuclear_deterrence": {
+  "query": "filter=title_and_abstract.search:\"nuclear deterrence\",from_publication_date:2010-01-01,to_publication_date:2026-12-31",
+  "state": "complete",
+  "new_records": 2563,
+  "at": "2026-08-27T15:37:16Z"
+ },
+ "oa:extended_deterrence": {
+  "query": "filter=title_and_abstract.search:\"extended deterrence\",from_publication_date:2010-01-01,to_publication_date:2026-12-31",
+  "state": "complete",
+  "new_records": 476,
+  "at": "2026-08-27T15:37:23Z"
+ },
+ "oa:deterrence_theory": {
+  "query": "filter=title_and_abstract.search:\"deterrence theory\",from_publication_date:2010-01-01,to_publication_date:2026-12-31",
+  "state": "complete",
+  "new_records": 1574,
+  "at": "2026-08-27T15:37:48Z"
+ },
+ "oa:conventional_deterrence": {
+  "query": "filter=title_and_abstract.search:\"conventional deterrence\",from_publication_date:2010-01-01,to_publication_date:2026-12-31",
+  "state": "complete",
+  "new_records": 169,
+  "at": "2026-08-27T15:37:51Z"
+ },
+ "oa:cross_domain_deterrence": {
+  "query": "filter=title_and_abstract.search:\"cross-domain deterrence\",from_publication_date:2010-01-01,to_publication_date:2026-12-31",
+  "state": "complete",
+  "new_records": 31,
+  "at": "2026-08-27T15:37:53Z"
+ },
+ "oa:denial_punishment": {
+  "query": "filter=title_and_abstract.search:\"deterrence by denial\" OR \"deterrence by punishment\",from_publication_date:2010-01-01,to_publication_date:2026-12-31",
+  "state": "complete",
+  "new_records": 287,
+  "at": "2026-08-27T15:37:58Z"
+ },
+ "oa:strategic_stability": {
+  "query": "filter=title_and_abstract.search:\"strategic stability\",from_publication_date:2010-01-01,to_publication_date:2026-12-31",
+  "state": "complete",
+  "new_records": 1355,
+  "at": "2026-08-27T15:38:16Z"
+ },
+ "oa:escalation_control": {
+  "query": "filter=title_and_abstract.search:\"escalation management\" OR \"escalation control\",from_publication_date:2010-01-01,to_publication_date:2026-12-31",
+  "state": "complete",
+  "new_records": 314,
+  "at": "2026-08-27T15:38:21Z"
+ },
+ "oa:nuclear_signalling": {
+  "query": "filter=title_and_abstract.search:\"nuclear signaling\" OR \"nuclear signalling\",from_publication_date:2010-01-01,to_publication_date:2026-12-31",
+  "state": "complete",
+  "new_records": 1262,
+  "at": "2026-08-27T15:38:45Z"
+ },
+ "oa:red_lines": {
+  "query": "filter=title_and_abstract.search:\"red line\" OR \"red lines\",from_publication_date:2010-01-01,to_publication_date:2026-12-31",
+  "state": "complete",
+  "new_records": 7937,
+  "at": "2026-08-27T15:40:45Z"
+ }
+}
