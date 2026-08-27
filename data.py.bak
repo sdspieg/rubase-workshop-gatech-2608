@@ -1,0 +1,192 @@
+# -*- coding: utf-8 -*-
+"""Content for the GATech edition. Every fact here comes from FIVE_DAY_RUN_SHEETS.md
+or WORKSHOP_2H30_REDESIGN.md - nothing invented."""
+
+DECK = "deck.html"
+
+DAYS = [
+ dict(id="day1", n=1, name="Foundations", dow="Monday 31 August", short="Mon 31 Aug",
+   stage="Diagnose", slides=(5,40), nslides=35, presenting=95, secs=163,
+   lead="Adam opens. The day argues that the way we currently find and trust what we read does "
+        "not hold - and that every neighbouring discipline already crossed over.",
+   blocks=[
+    ("11:00","10 min","plenary","Welcome and how the week works",
+     "Adam Stulberg opens. Three ground rules, and the one that matters: every day is self-contained.",
+     ["Welcome and introductions","The week in one slide - one pipeline, five stages",
+      "Ground rules, including: we will not finish everything, by design"]),
+    ("11:10","20 min","plenary","What is broken",
+     "The pain points in the room, then a change of gear into medicine: the four humors, the 'omics, "
+     "AlphaFold, and paradigm shifts across ten disciplines.",
+     ["Sound familiar? - a show of hands on six questions researchers actually ask",
+      "Yesterday: the four humors. Medicine's operating system for 2,000 years, coherent and wrong",
+      "The 'omics, then the AlphaFold moment: 200 million structures against 100,000 in decades",
+      "Paradigm shifts across ten disciplines - sociology's sampling versus n = all is ours"]),
+    ("11:30","25 min","plenary","How we actually search",
+     "From grand claims to what we literally do at a keyboard, and what that costs us.",
+     ["Moz, 1.2 million queries: only <strong>3.02%</strong> used quotation marks; two-word queries are 40%",
+      "Precision and recall - the two words that decide what your field is allowed to contain",
+      "What a useful search would even look like"]),
+    ("11:55","10 min","break","Break - food in the room",
+     "The slot straddles lunch. Food is in the room; this is not an optional courtesy.", []),
+    ("12:05","20 min","plenary","Does what we find hold?",
+     "The second answer. Not how we find things, but whether what we find survives.",
+     ["The peer-review crisis","DARPA SCORE - the field's own funded verdict on its credibility",
+      "The social and behavioural sciences reliability crisis. Do not editorialise; the numbers work"]),
+    ("12:25","15 min","plenary","Broad versus narrow",
+     "The aperture slide. Everything the rest of the week hangs off it.",
+     ["McNamara's first law: never answer the question you were asked until you have asked a broader one",
+      "Metascience is here - other fields built a discipline for studying their own reliability",
+      "Why at least try broader?"]),
+    ("12:40","25 min","plenary","The approach",
+     "Three eras of strategic analysis, publication-centric to knowledge-centric, and what the "
+     "platform has actually produced.",
+     ["Towards strategic analysis 3.0","The publication is a delivery format, not a knowledge store",
+      "The Sunburst app, live","What this has produced"]),
+    ("13:05","25 min","hands-on","Hands-on: your question in one sentence",
+     "Accounts, the seed corpus, and the single sentence you will carry all week.",
+     ["Get accounts working","Open the seed corpus","Write your research question in one sentence"]),
+    ("13:25","5 min","debrief","Debrief and tonight",
+     "One concrete overnight task on your own topic.", []),
+   ],
+   note=("<strong>Cut candidates if running late:</strong> the 'omics slide, the second reliability-crisis "
+         "slide, and publication-centric. Cut in that order; do not cut the aperture block.")),
+
+ dict(id="day2", n=2, name="Corpora", dow="Tuesday 1 September", short="Tue 1 Sep",
+   stage="Discover", slides=(41,67), nslides=26, presenting=80, secs=185,
+   lead="The heaviest hands-on day. Finding what you have been missing, and proving that you found "
+        "it, on a topic of your own.",
+   blocks=[
+    ("11:00","10 min","cold start","Cold start: we are here",
+     "Where we are on the five-day map, and yesterday's questions.",
+     ["The week map, again","Questions left over from Monday"]),
+    ("11:10","20 min","plenary","What you are missing",
+     "Ask them to guess the size of their own field first. They will be wrong.",
+     ["The scholarly record on your topic","Misleading tips of icebergs - the non-systematic "
+      "literature review in one picture","Two ways to explore the full record"]),
+    ("11:30","25 min","plenary","The search craft",
+     "The part nobody teaches: strategy, building a query, Boolean, NOT terms, baskets, iteration, "
+     "and documenting what you ran.",
+     ["Building a query that you can defend in a methods section",
+      "Boolean, and why a NOT term must be domain-foreign","Baskets and iteration",
+      "Documenting the query verbatim, with the date you ran it"]),
+    ("11:55","10 min","break","Break", "", []),
+    ("12:05","20 min","plenary","Bibliometrics in practice",
+     "The Lens, Zotero, the epistemic MRI, small Ns, and what is missing from the record.",
+     ["The Lens and Zotero, hands on screen","The epistemic MRI of a field",
+      "Small Ns, and what the record does not contain"]),
+    ("12:25","15 min","plenary","RAG and the tool landscape",
+     "What retrieval-augmented generation is for, and where it misleads.", []),
+    ("12:40","40 min","hands-on","Hands-on: harvest your own corpus",
+     "The longest practicum of the week. The seed corpus is on the Materials page, so a newcomer "
+     "who has nothing of their own can still do it.",
+     ["Run your query against the record","Deduplicate and export",
+      "Report your N, your sources and your languages"]),
+    ("13:20","10 min","debrief","Debrief and tonight", "", []),
+   ],
+   note=("<strong>Not covered, and available on request:</strong> ParlaMint, cognitive warfare, "
+         "scraping with Maxun, the database workflow and the schema. Good material that does not fit "
+         "150 minutes. Ask and it is yours.")),
+
+
+ dict(id="day3", n=3, name="Taxonomies", dow="Wednesday 2 September", short="Wed 2 Sep",
+   stage="Instrument", slides=(68,91), nslides=23, presenting=85, secs=222,
+   lead="Building an instrument, not a filing system.",
+   blocks=[
+    ("11:00","10 min","cold start","Cold start",
+     "LLM uptake across academic disciplines - and political science dead last.",
+     ["LLM uptake by discipline","The exponential rise","Political science, last. On purpose"]),
+    ("11:10","20 min","plenary","What ontologies and taxonomies are",
+     "And why they matter more than the word suggests.", []),
+    ("11:30","25 min","plenary","The generation prompt",
+     "Framing, and engaging an LLM a level higher than you are used to.",
+     ["The generation prompt, read out in full","Framing the domain before you ask",
+      "Engaging the model a level higher"]),
+    ("11:55","10 min","break","Break", "", []),
+    ("12:05","25 min","plenary","Deterrence as the worked case",
+     "The classics, hyponyms, four layers, and animal deterrence.",
+     ["The classics, and what they assume","Hyponyms and the four layers",
+      "Animal deterrence - where the concept stops being about us"]),
+    ("12:30","10 min","plenary","Two worked taxonomies",
+     "Caucasus and Regeneration, both built this way.", []),
+    ("12:40","35 min","hands-on","Hands-on: draft your own, then swap",
+     "Draft a taxonomy on your own topic, then peer-swap for the independence test.",
+     ["Draft three levels on your own topic","Swap with a neighbour",
+      "The independence test: can they apply your scheme without asking you what you meant?"]),
+    ("13:15","15 min","debrief","What your instrument cannot see",
+     "The blind spot, in one sentence, before you go and use it.", []),
+   ],
+   note=("<strong>Scheduling note.</strong> Dalton Lin's class ends 10:45 and Sarah Bidgood's starts "
+         "15:30, so Wednesday must stay low-prep.")),
+
+ dict(id="day4", n=4, name="Classification", dow="Thursday 3 September", short="Thu 3 Sep",
+   stage="Extract", slides=(92,112), nslides=20, presenting=65, secs=195,
+   lead="Applying the taxonomy at scale&nbsp;&ndash; and being honest about how well it worked. The day "
+        "works through a real evaluation on our own annotation record: a confusion matrix, the "
+        "raw-agreement-versus-kappa contrast, and an honest account of the number we still do not have.",
+   blocks=[
+    ("11:00","10 min","cold start","Cold start: your corpus and your taxonomy",
+     "Where we left them on Tuesday and Wednesday.", []),
+    ("11:10","25 min","plenary","The assignment prompt",
+     "From a scheme to a schema, a result, and grouping.",
+     ["The assignment prompt","A result you can read","Grouping the labels"]),
+    ("11:35","20 min","plenary","From labels to a deliverable",
+     "Analysis, write-up, report, and a SWOT built from the labels.", []),
+    ("11:55","10 min","break","Break", "", []),
+    ("12:05","30 min","plenary","Measuring whether it worked, on real data",
+     "Three checks in increasing order of discomfort, then a worked evaluation on our own annotation record "
+     "and an honest account of the number we still do not have.",
+     ["Does the quoted span exist? Make the model quote, then check mechanically",
+      "Do two models agree? One model is an opinion",
+      "Do two humans agree? This is the number your committee will ask for",
+      "<strong>Reading a kappa:</strong> under 0.40 poor, 0.40-0.60 moderate, 0.60-0.80 substantial, "
+      "over 0.80 check your independence",
+      "<strong>A real number from our own pipeline: an auto-draft kappa of 0.384</strong> on the red-line layer, "
+      "0.563 on the neighbouring one. The coders were not disagreeing with each other, they were agreeing with the model",
+      "<strong>A real confusion matrix</strong> - 34 / 2 / 9 / 207 across 252 passages, raw agreement 93%",
+      "<strong>The same data, two answers:</strong> 93% raw agreement against a kappa of 0.24, because 216 of the "
+      "252 are an easy no that chance alone would get right",
+      "<strong>Per layer, not overall:</strong> the model scores -0.02 against a human on red lines and +0.72 on "
+      "nuclear signalling. One headline accuracy would have hidden both",
+      "<strong>And the number we still do not have:</strong> all of the above is expert re-annotation, not two "
+      "independent coders. The blind pass has not come back",
+      "The two traps: the router trap and the anchoring trap"]),
+    ("12:35","45 min","hands-on","Hands-on: classify a slice, then measure it",
+     "The longest block of the day. Classify, then compute your own number.",
+     ["Classify a slice of your corpus","Compute agreement on a sample",
+      "Write the six-line methods block: question, query, corpus, scheme, reliability, blind spot"]),
+    ("13:20","10 min","debrief","Debrief and tonight", "", []),
+   ],
+   note=("<strong>Every figure in the evaluation block is measured from our own annotation record</strong> "
+         "&ndash; the confusion matrix, the kappa, the per-layer model comparison. None of it is "
+         "illustrative. The six-line methods template is a handout under Materials.")),
+
+ dict(id="day5", n=5, name="Your projects and the kit", dow="Friday 4 September", short="Fri 4 Sep",
+   stage="Deliver", slides=(113,126), nslides=13, presenting=65, secs=300,
+   lead="What to take, what to build next, and what is not transferable. Adam departs Friday, so this "
+        "session runs solo.",
+   blocks=[
+    ("11:00","10 min","cold start","Cold start: the week in one slide", "", []),
+    ("11:10","20 min","plenary","Where this is going",
+     "The incipient revolution in strategic analysis, knowledge representation, things not strings.",
+     ["The incipient revolution in strategic analysis","How to represent knowledge",
+      "An experiment in truthiness"]),
+    ("11:30","15 min","plenary","The IR ontology, as direction of travel",
+     "Framed honestly as where the work is heading, not as something you can pick up on Monday.", []),
+    ("11:45","10 min","break","Break", "", []),
+    ("11:55","15 min","plenary","What you can actually take",
+     "The parts of the RuBase and StratBase kit that transfer to your own project, and the parts "
+     "that do not.", []),
+    ("12:10","55 min","clinics","Clinics",
+     "Ten minutes per person or pair, on their own project. This is the point of the day.",
+     ["Your question, restated","Your corpus, sized honestly","Your instrument, and its blind spot",
+      "<strong>When it breaks:</strong> 40,000 hits, 11 hits, everything labelled the same, "
+      "coders disagreeing constantly"]),
+    ("13:05","20 min","debrief","A 30-day plan, and close",
+     "One page each, written in the room.", []),
+   ],
+   note=("<strong>Honest risk.</strong> If the day runs long, the ontology block is the cut - "
+         "<em>not</em> the clinics.")),
+]
+
+PIPE = [("Day 1","Diagnose"),("Day 2","Discover"),("Day 3","Instrument"),
+        ("Day 4","Extract"),("Day 5","Deliver")]

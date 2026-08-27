@@ -429,3 +429,13 @@
         a.sidebar-item, a.sidebar-item:visited { color: var(--wh); text-decoration: none; }
         a.sidebar-item:hover { color: var(--wh); }
         .card-clock { color: var(--lb); font-weight: 700; }
+
+        /* ---- student-facing additions ---- */
+        .pipe-step .step-does { font-size: .72rem; color: var(--lb); margin-top: 5px;
+                                max-width: 15ch; line-height: 1.35; }
+        .pipe-step { min-width: 132px; }
+        .card-does { color: var(--gold); font-size: .84rem; font-weight: 600;
+                     margin-bottom: 8px; line-height: 1.45; }
+        .session-card[style*="default"]:hover { transform: none; box-shadow: none;
+                                                border-color: rgba(255,255,255,.08); }
+        .gloss { color: var(--lb); font-style: italic; font-weight: 400; opacity: .92; }

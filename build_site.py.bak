@@ -1,0 +1,511 @@
+# -*- coding: utf-8 -*-
+"""Emit the GATech edition of the RuBase/StratBase methods workshop site,
+in the same architecture as sdspieg.github.io/rubase-workshop-5day/."""
+import re, sys
+sys.path.insert(0, ".")
+from data import DAYS, PIPE, DECK
+
+# derived, never typed: the deck size comes from the deck itself
+DECK_N = open('../deck5/slides.frag', encoding='utf-8').read().count('<section class="slide')
+
+TAGCLS = {"plenary":"plenary","break":"break","hands-on":"handson","clinics":"clinics",
+          "cold start":"","debrief":""}
+CARDCLS = {"break":" is-break","hands-on":" is-handson","clinics":" is-handson"}
+
+def card(clock, dur, kind, title, desc, items):
+    cls = CARDCLS.get(kind, ""); tc = TAGCLS.get(kind, "")
+    o = [f'<div class="content-card{cls}">',
+         f'<span class="track-tag {tc}">{kind}</span>',
+         f'<div class="card-clock">{clock}</div>',
+         f'<h3>{title}</h3>',
+         f'<div class="card-duration">{dur}</div>']
+    if desc: o.append(f'<p>{desc}</p>')
+    if items: o.append('<ul>' + ''.join(f'<li>{i}</li>' for i in items) + '</ul>')
+    o.append('</div>')
+    return ''.join(o)
+
+def hands_on(d):
+    """Minutes of practicum in the day. This is the number a participant cares
+    about; slide counts and seconds-per-slide are production metrics and belong
+    nowhere near a page they read."""
+    tot = 0
+    for clock, dur, kind, *_ in d["blocks"]:
+        if kind in ("hands-on", "clinics"):
+            tot += int(dur.split()[0])
+    return tot
+
+
+def day_block(d):
+    a,b = d['slides']
+    o = [f'<div class="block-content" id="block-{d["id"]}">',
+      '<button class="back-home" onclick="showHome()">&larr; Back to overview</button>',
+      '<div class="block-header">',
+      f'<h2>Day {d["n"]} &middot; {d["name"]}</h2>',
+      f'<div class="block-time-range">{d["dow"]} &middot; 11:00&ndash;13:30 &middot; '
+      f'pipeline stage: <strong>{d["stage"]}</strong></div>',
+      f'<p>{d["lead"]}</p>',
+      f'<a class="deck-link" href="{DECK}#{a}">Open the slides for this day &#8599;</a>','</div>',
+      '<div class="balance">'
+      f'<div class="b"><div class="v">150</div><div class="k">minutes, 11:00 to 13:30</div></div>'
+      f'<div class="b"><div class="v">{hands_on(d)}</div><div class="k">minutes hands-on, on your own '
+      f'topic</div></div>'
+      f'<div class="b"><div class="v">1</div><div class="k">thing to do before tomorrow</div></div></div>',
+      '<h3 class="section-heading">The 150 minutes, block by block</h3>',
+      '<div class="content-cards">']
+    for blk in d['blocks']: o.append(card(*blk))
+    o.append('</div>')
+    if d.get('note'): o.append(f'<div class="callout">{d["note"]}</div>')
+    o.append('</div>')
+    return ''.join(o)
+
+def home():
+    o = ['<div class="block-content active" id="homeScreen">','<div class="welcome-screen">',
+      '<h1 class="welcome-title">Out of the Dark Ages?</h1>',
+      '<p class="welcome-subtitle">Supercharging your research workflow with LLMs. Five '
+      'afternoons in which one research pipeline is taken apart&nbsp;&ndash; from the question, '
+      'through the corpus and the instrument, to a result you can defend&nbsp;&ndash; and put '
+      'back together with tools that did not exist when most of our methods were written.</p>',
+      '<p class="welcome-meta">Sam Nunn School of International Affairs &middot; '
+      '31 August &ndash; 4 September 2026 &middot; 11:00&ndash;13:30 daily &middot; '
+      'Nunn Conference Room &middot; 12.5 contact hours</p>','<div class="pipeline">']
+    for k,(lab,name) in enumerate(PIPE):
+        if k: o.append('<div class="pipe-arrow">&rarr;</div>')
+        o.append(f'<div class="pipe-step" onclick="showBlock(\'day{k+1}\')">'
+                 f'<div class="step-label">{lab}</div><div class="step-name">{name}</div></div>')
+    o.append('</div><div class="session-grid">')
+    ICON = {1:"&#128269;",2:"&#127754;",3:"&#129518;",4:"&#127991;",5:"&#128736;"}
+    for d in DAYS:
+        o.append(f'<div class="session-card" onclick="showBlock(\'{d["id"]}\')">'
+                 f'<div class="card-icon">{ICON[d["n"]]}</div>'
+                 f'<div class="card-time">Day {d["n"]} &middot; {d["short"]} &middot; 2.5 h</div>'
+                 f'<div class="card-title">{d["name"]}</div>'
+                 f'<div class="card-desc">{d["lead"]}</div><div class="card-items">')
+        for blk in d['blocks']:
+            if blk[2] in ("break","debrief","cold start"): continue
+            o.append(f'<div class="card-item"><span class="card-item-bullet"></span> {blk[3]}</div>')
+        o.append('</div></div>')
+    o.append('</div></div></div>')
+    return ''.join(o)
+
+def programme():
+    rows = ''.join(
+        f'<tr><td class="day">Day {d["n"]}<br><em>{d["short"]}</em></td>'
+        f'<td>{d["name"]}</td><td>{d["stage"]}</td>'
+        f'<td>{hands_on(d)} min</td>'
+        f'<td>{d["lead"]}</td></tr>' for d in DAYS)
+    return ('<div class="block-content" id="block-programme">'
+      '<button class="back-home" onclick="showHome()">&larr; Back to overview</button>'
+      '<div class="block-header"><h2>Programme</h2>'
+      '<div class="block-time-range">5 &times; 2.5 h &middot; 12.5 contact hours</div>'
+      '<p>Five self-contained sessions on one pipeline. Every day is 150 minutes and every day ends '
+      'with one concrete task on your own topic, so arriving on Wednesday costs you nothing.</p></div>'
+      '<div class="table-wrap"><table class="prog"><thead><tr>'
+      '<th>Day</th><th>Theme</th><th>Stage</th><th>Hands-on</th>'
+      '<th>What it argues</th></tr></thead><tbody>'
+      + rows + '</tbody></table></div>'
+      '<h3 class="section-heading">The shape of every day</h3>'
+      '<div class="table-wrap"><table class="prog"><thead><tr><th>Minutes</th><th>Block</th>'
+      '<th>Why it is there</th></tr></thead><tbody>'
+      '<tr><td class="day">0&ndash;10</td><td><em>Cold start</em></td>'
+      '<td>Where we are, what today needs, artifacts handed out. This is what makes the day '
+      'attendable standalone.</td></tr>'
+      '<tr><td class="day">10&ndash;45</td><td><em>Concept</em></td>'
+      '<td>One idea, taught properly. Hard stop at 35 minutes.</td></tr>'
+      '<tr><td class="day">45&ndash;55</td><td><em>Break, food in the room</em></td>'
+      '<td>The slot straddles lunch.</td></tr>'
+      '<tr><td class="day">55&ndash;130</td><td><em>Hands-on</em></td>'
+      '<td>75 minutes. The point of the workshop.</td></tr>'
+      '<tr><td class="day">130&ndash;150</td><td><em>Debrief and tonight</em></td>'
+      '<td>Converts the 21.5 idle hours before the next session into work.</td></tr>'
+      '</tbody></table></div>'
+      '<div class="callout"><strong>75 minutes hands-on per day is 6.25 h across the week</strong>'
+      '&nbsp;&ndash; a defensible practicum even at 39% of the original programme time.</div>'
+      '</div>')
+
+def design():
+    return ('<div class="block-content" id="block-design">'
+      '<button class="back-home" onclick="showHome()">&larr; Back to overview</button>'
+      '<div class="block-header"><h2>Design decisions</h2>'
+      '<div class="block-time-range">Why this edition is not the 5-day programme compressed</div>'
+      '<p>The 5-day programme is 32 contact hours. This is 12.5. You keep 39% of the time, and an '
+      'honest redesign starts by naming what dies&nbsp;&ndash; compression at that ratio produces a '
+      'tour, and a tour is the one thing the original explicitly refuses to be.</p></div>'
+      '<h3 class="section-heading">Three things that structurally cannot be ported</h3>'
+      '<div class="content-cards">'
+      '<div class="content-card"><h3>The Track A / Track B split</h3>'
+      '<div class="card-duration">Needs a split room and two-hour blocks</div>'
+      '<p>In a single 150-minute session there is no room to run two rooms. Everyone is in one room '
+      'all week, so the mixed-audience problem the tracks existed to solve returns and needs another '
+      'answer.</p></div>'
+      '<div class="content-card"><h3>The week-long team project</h3>'
+      '<div class="card-duration">The original gives it about 8 hours of in-room time</div>'
+      '<p>Two hours a day across four days, and it is the spine of the original. There are no spare '
+      'hours here at all.</p></div>'
+      '<div class="content-card"><h3>Day 5 group presentations</h3>'
+      '<div class="card-duration">Depends on the team project</div>'
+      '<p>And Day 5 is wanted for <em>their</em> projects and the kit&nbsp;&ndash; a better use of the '
+      'last session for this audience anyway.</p></div>'
+      '</div>'
+      '<div class="callout warn"><strong>A constraint the original never faced.</strong> Adam '
+      'Stulberg, 31 July: students will be <em>"coming and going throughout the week"</em>, and as of '
+      '26 August it was still unconfirmed whether they register or just show up. <strong>A cumulative '
+      'team deliverable cannot survive a drop-in audience.</strong> Anything requiring Day 2 to have '
+      'happened strands whoever arrives on Day 3.</div>'
+      '<h3 class="section-heading">The replacement spine</h3>'
+      '<div class="content-cards">'
+      '<div class="content-card"><h3>One running worked example, carried by the instructor</h3>'
+      '<div class="card-duration">In the room</div>'
+      '<p>The same question is taken one stage further each day, live. It is the through-line, and it '
+      'survives anyone missing a day because the instructor carries it, not the students.</p></div>'
+      '<div class="content-card"><h3>One personal artifact per student, built between sessions</h3>'
+      '<div class="card-duration">Between sessions</div>'
+      '<p>Students have <strong>21.5 hours between one session and the next</strong>&nbsp;&ndash; far '
+      'more than the 2.5 they spend with you. That, not the contact time, is the real resource. Each '
+      'day ends with one concrete overnight task on their own topic.</p></div>'
+      '<div class="content-card"><h3>A pre-built fallback artifact, every day</h3>'
+      '<div class="card-duration">Every day is self-contained</div>'
+      '<p>Each day opens with a 10-minute cold start and ships a fallback corpus, taxonomy or result '
+      'so a newcomer can still do the hands-on. Arriving on Wednesday costs you nothing.</p></div>'
+      '</div>'
+      '<div class="callout"><strong>The closest delivered analogue is Boston, not the full week.</strong> '
+      'The Boston edition of 4 February 2026 ran <strong>3 &times; 3 h = 9 contact hours</strong>; this '
+      'edition has <strong>12.5</strong>, roughly <strong>39% more</strong>. So the 5-day programme is '
+      'the ceiling and Boston is the floor, and this sits above the floor rather than below the '
+      'ceiling.</div>'
+      '</div>')
+
+def materials():
+    return ('<div class="block-content" id="block-materials">'
+      '<button class="back-home" onclick="showHome()">&larr; Back to overview</button>'
+      '<div class="block-header"><h2>Materials</h2>'
+      '<div class="block-time-range">Slides, records and live tools</div>'
+      '<p>Everything needed to run the week, and everything you can take away from it.</p></div>'
+      '<h3 class="section-heading">Slides</h3><ul class="res-list">'
+      f'<li><a href="{DECK}">The full deck &#8599;</a><span class="meta">All five days. '
+      '<strong>The right arrow builds a slide up step by step</strong>, then advances to the next; '
+      'the left arrow steps back. Up and down jump between days, <strong>B</strong> turns the '
+      'build-ups off, <strong>O</strong> opens the overview grid, <strong>F</strong> goes full '
+      'screen.</span></li>'
+      + ''.join(f'<li><a href="{DECK}#{d["slides"][0]}">Day {d["n"]} &middot; {d["name"]} &#8599;</a>'
+                f'<span class="meta">{d["lead"]}</span></li>' for d in DAYS)
+      + '</ul>'
+      '<h3 class="section-heading">Handout: the six-line methods block</h3>'
+      '<p style="color:var(--lb);font-size:.9rem;line-height:1.6;max-width:70ch">Copy this into your paper and fill '
+      'it in. If your methods section carries these six lines it will survive review; if it carries fewer, the '
+      'question you get asked will be about whichever one is missing.</p>'
+      '<div class="table-wrap"><table class="prog"><thead><tr><th>Line</th><th>What goes in it</th>'
+      '<th>The failure it prevents</th></tr></thead><tbody>'
+      '<tr><td class="day">1<br><em>Question</em></td><td>The analytical question, stated so that someone else '
+      'could ask it again in the same words.</td><td>A result that cannot be re-derived because nobody knows what '
+      'was being asked.</td></tr>'
+      '<tr><td class="day">2<br><em>Query</em></td><td>The query <strong>verbatim</strong>, the database, the '
+      'interface version, and the date you ran it.</td><td>An unreproducible corpus. Databases change under you; '
+      'the date is what makes the N defensible.</td></tr>'
+      '<tr><td class="day">3<br><em>Corpus</em></td><td>N documents, N chunks, the source mix, the languages, and '
+      'exactly how duplicates were handled.</td><td>A duplicate rate silently inflating every downstream count.</td></tr>'
+      '<tr><td class="day">4<br><em>Scheme</em></td><td>Dimensions, levels, definitions, and <strong>one worked '
+      'coding decision</strong> including a borderline case you rejected.</td><td>A reader who cannot tell what '
+      'your categories exclude, and therefore cannot tell what your finding means.</td></tr>'
+      '<tr><td class="day">5<br><em>Reliability</em></td><td>Kappa <strong>and</strong> raw agreement, the base '
+      'rate, how many coders, and whether they were blind to each other and to the model.</td><td>Reporting 93% '
+      'agreement on a corpus that is 86% one class. State both numbers or neither.</td></tr>'
+      '<tr><td class="day">6<br><em>Blind spot</em></td><td>What your instrument cannot see, in one sentence, '
+      'in your own words.</td><td>A reviewer finding it first. Naming it yourself converts a weakness into a '
+      'demonstration of control.</td></tr>'
+      '</tbody></table></div>'
+      '<div class="callout"><strong>Line 5 is the one people get wrong.</strong> On our own red-line data the '
+      'same 252 passages give <strong>93% raw agreement</strong> and a <strong>kappa of 0.24</strong>. Both are '
+      'correctly computed. Quoting only the first is the most common reliability error in this literature, and it '
+      'is not usually dishonest &ndash; it is just stopping one line too early.</div>'
+            '<h3 class="section-heading">Live tools shown in the room</h3><ul class="res-list">'
+      '<li><a href="https://rubase.org/" target="_blank" rel="noopener">RuBase dashboard &#8599;</a>'
+      '<span class="meta">The Sunburst app and the deliverables overview. Shown live on Day 1 and '
+      'used again on Days 2 and 4.</span></li>'
+      '<li><a href="https://www.lens.org/" target="_blank" rel="noopener">The Lens &#8599;</a>'
+      '<span class="meta">The bibliometric front end used in the Day 2 practicum.</span></li>'
+      '<li><a href="https://www.zotero.org/" target="_blank" rel="noopener">Zotero &#8599;</a>'
+      '<span class="meta">Reference management, and the export path into a corpus.</span></li>'
+      '</ul>'
+      '<h3 class="section-heading">Programme records</h3><ul class="res-list">'
+      ''
+      '<li><a href="https://drive.google.com/file/d/1a-BRA2-Z8d5KEL7_LCvx7H6ROe2CNHwf/view?usp=drivesdk" '
+      'target="_blank" rel="noopener">The 2.5-hour redesign &#8599;</a><span class="meta">The '
+      '32 h to 12.5 h arithmetic, what cannot be ported, and the replacement spine.</span></li>'
+      '<li><a href="https://drive.google.com/file/d/1yrV4z_OobDL5-2Djhnn-0mg8Hvft41oF/view?usp=drivesdk" '
+      'target="_blank" rel="noopener">Day 1: the RuBase / StratBase introduction &#8599;</a>'
+      '<span class="meta">What was used as the introduction in previous workshops, and what is '
+      'recommended this time.</span></li>'
+      '<li><a href="https://drive.google.com/file/d/1X_3Z4_6fiP2uFB_ABtzsdQNm0yFoqx_c/view?usp=drivesdk" '
+      'target="_blank" rel="noopener">App architecture and the house pattern &#8599;</a>'
+      '<span class="meta">What the house workshop pattern actually is, measured, and the contract for '
+      'building the next edition.</span></li>'
+      '<li><a href="https://drive.google.com/file/d/1-dZdL7UHDax238g971fM0Z6Kb1GfMVrI/view?usp=drivesdk" '
+      'target="_blank" rel="noopener">Visit schedule &#8599;</a><span class="meta">The full GATech '
+      'visit: schedule, flights, hotel and the open actions with the host.</span></li>'
+      '</ul>'
+      '<h3 class="section-heading">The seed corpus</h3>'
+      '<p style="color:var(--lb);font-size:.9rem;line-height:1.6;max-width:74ch">Every hands-on block assumes '
+      'a corpus. This one is built, so nobody is stranded by walking in on Wednesday. It is a <strong>recall-first '
+      'harvest on deterrence, strategic stability and red lines</strong>&nbsp;&ndash; ten quoted bands on OpenAlex, '
+      'title-and-abstract surface, 2010 to 2026, run on 27 August 2026. Bring your own topic if you have one; use '
+      'this if you do not.</p>'
+      '<div class="balance">'
+      '<div class="b"><div class="v">15,968</div><div class="k">unique works in the raw recall-first harvest</div></div>'
+      '<div class="b"><div class="v">4,534</div><div class="k">in the clean set: on-domain, with an abstract</div></div>'
+      '<div class="b"><div class="v">1,202</div><div class="k">median abstract length, characters</div></div>'
+      '<div class="b"><div class="v">10</div><div class="k">query bands, each logged verbatim with its date</div></div>'
+      '</div>'
+      '<ul class="res-list">'
+      '<li><a href="corpus/seed_corpus_quickstart.csv">Quickstart, 442 records (CSV, 0.8 MB) &#8599;</a>'
+      '<span class="meta">Stratified across all ten bands. Opens in Excel or a notebook in seconds. '
+      '<strong>Start here in the room.</strong></span></li>'
+      '<li><a href="corpus/seed_corpus.csv.gz">The clean corpus, 4,534 records (CSV, gzipped, 3.2 MB) &#8599;</a>'
+      '<span class="meta">On-domain primary subfield and a non-empty abstract. Columns: id, year, title, authors, '
+      'venue, cited_by, subfield, band, doi, keywords, topics, abstract.</span></li>'
+      '<li><a href="corpus/seed_corpus.jsonl.gz">The same records as JSONL (gzipped, 3.3 MB) &#8599;</a>'
+      '<span class="meta">One JSON object per line, for anyone scripting it.</span></li>'
+      '<li><a href="corpus/query_ledger.json">The query ledger &#8599;</a><span class="meta">The exact submitted '
+      'query string and record count for every band. This is what makes line 2 of the methods block '
+      'reproducible.</span></li>'
+      '<li><a href="corpus/README.md">Corpus README &#8599;</a><span class="meta">The six-line methods block '
+      'filled in for this corpus, the per-band precision table, and the honest account of what the filter '
+      'still gets wrong.</span></li>'
+      '</ul>'
+      '<div class="callout"><strong>It is deliberately noisy, and that is the point.</strong> No discipline '
+      'filter was applied at query time. Measured share of each band whose primary OpenAlex subfield is actually '
+      'political science: <strong>&quot;nuclear deterrence&quot; 73.6%</strong>, but <strong>&quot;red lines&quot; '
+      '6.9%</strong> and <strong>&quot;nuclear signalling&quot; 2.0%</strong>&nbsp;&ndash; because the nucleus in '
+      'question is a <em>cell</em> nucleus, and 26.9% of that band is molecular biology. Where the noise speaks a '
+      'foreign vocabulary a NOT term cleans it for free; where it shares yours, only a semantic pass will. That '
+      'distinction is the Day 2 block, and here it is on data the room can open.</div>'
+      '</div>')
+
+def facilitator():
+    cuts = ''.join(
+      f'<div class="content-card"><h3>Day {d["n"]} &middot; {d["name"]}</h3>'
+      f'<div class="card-duration">{hands_on(d)} min hands-on &middot; stage: {d["stage"]}</div>'
+      f'<p>{d["note"] if d.get("note") else "Nothing standing to drop. Protect the hands-on block."}</p></div>'
+      for d in DAYS)
+    return ('<div class="block-content" id="block-facilitator">'
+      '<button class="back-home" onclick="showHome()">&larr; Back to overview</button>'
+      '<div class="block-header"><h2>Facilitator kit</h2>'
+      '<div class="block-time-range">What to do in the room, and what to drop first</div>'
+      '<p>What to drop is decided in advance on purpose. Deciding it while a room waits produces the '
+      'wrong cut, and the practicum is always the thing that survives.</p></div>'
+      '<h3 class="section-heading">Standing rules</h3><ul class="task-list">'
+      '<li><strong>Hard stop the concept block at 35 minutes.</strong> The hands-on is the point of '
+      'the workshop; the concept block is what gets compressed, never the practicum.</li>'
+      '<li><strong>Open every day with the same week map.</strong> It is the only thing that makes a '
+      'Wednesday arrival coherent.</li>'
+      '<li><strong>Hand out the fallback artifact before the hands-on, not during it.</strong> A '
+      'newcomer discovering mid-block that they have nothing to work on loses the block.</li>'
+      '<li><strong>Food is in the room at the 10-minute break.</strong> The slot straddles lunch and '
+      'this was asked about twice.</li>'
+      '<li><strong>Ask for the one-sentence question out loud on Day 1.</strong> It is the artifact '
+      'the whole week hangs off, and it is the one thing that cannot be handed out.</li>'
+      '</ul>'
+      '<h3 class="section-heading">What to drop first, per day</h3>'
+      '<div class="content-cards">' + cuts + '</div>'
+      '<h3 class="section-heading">When it breaks</h3><ul class="task-list">'
+      '<li><strong>40,000 hits.</strong> The query is a topic, not a question. Add the AND terms that '
+      'the on-domain half of the record actually uses.</li>'
+      '<li><strong>11 hits.</strong> The query is a sentence. Drop the modifiers and widen before you '
+      'conclude the literature does not exist.</li>'
+      '<li><strong>Everything labelled the same.</strong> The taxonomy has one usable level. Split the '
+      'dominant class before you classify anything more.</li>'
+      '<li><strong>Coders disagreeing constantly.</strong> Usually the definitions, not the coders. '
+      'Read the two most-disagreed items out loud and fix the wording.</li>'
+      '<li><strong>Kappa suspiciously high.</strong> Check independence. If the coders saw the '
+      'model answer, you measured compliance, not reliability.</li>'
+      '</ul>'
+      '<div class="callout"><strong>The number worth quoting.</strong> Our own auto-draft kappa was '
+      '<strong>0.384</strong>. It was low because the coders were not disagreeing with each other, '
+      'they were agreeing with the model. It is a measured number from our own pipeline rather than a '
+      'borrowed illustration, which is exactly what earns the blind-coding argument.</div>'
+      '</div>')
+
+def editions():
+    return ('<div class="block-content" id="block-editions">'
+      '<button class="back-home" onclick="showHome()">&larr; Back to overview</button>'
+      '<div class="block-header"><h2>All editions</h2>'
+      '<div class="block-time-range">The same programme at four lengths</div>'
+      '<p>Each edition is a real delivery, not a hypothetical. The contact hours are what actually '
+      'differ; the pipeline does not.</p></div><ul class="res-list">'
+      '<li><a href="index.html">Georgia Tech &middot; 5 &times; 2.5 h &#8599;</a><span class="meta">'
+      '<strong>This edition.</strong> 31 August &ndash; 4 September 2026, Sam Nunn School of '
+      'International Affairs. 12.5 contact hours, drop-in audience, one worked example carried by the '
+      'instructor.</span></li>'
+      '<li><a href="https://sdspieg.github.io/rubase-workshop-5day/" target="_blank" rel="noopener">'
+      'The 5-day full programme &#8599;</a><span class="meta">32 contact hours, with parallel tracks '
+      'and a team project that runs all week.</span></li>'
+      '<li><a href="https://sdspieg.github.io/rubase-workshop/" target="_blank" rel="noopener">'
+      'The 3-day edition &#8599;</a><span class="meta">Discover, Frame, Analyse.</span></li>'
+      '<li><span class="meta"><strong>Boston &middot; 3 evenings, 4 February 2026.</strong> '
+      '3 &times; 3 h = 9 contact hours. The closest delivered analogue to this edition, and the one '
+      'that already solves the drop-in problem at roughly this length.</span></li>'
+      '</ul></div>')
+
+def sidebar():
+    o=['<div class="sidebar-section"><div class="sidebar-section-title">The week</div>']
+    for d in DAYS:
+        o.append(f'<div class="sidebar-item" data-block="{d["id"]}" onclick="showBlock(\'{d["id"]}\')">'
+                 f'<span class="sidebar-item-title">{d["n"]} &middot; {d["name"]}</span>'
+                 f'<span class="sidebar-badge">{d["stage"]}</span></div>')
+    o.append('</div><div class="sidebar-section"><div class="sidebar-section-title">Daily rhythm</div>'
+      '<div class="sidebar-item" data-block="programme" onclick="showBlock(\'programme\')">'
+      '<span class="sidebar-item-title">Programme</span><span class="sidebar-badge badge-time">12.5 h</span></div>'
+      '<div class="sidebar-item" data-block="design" onclick="showBlock(\'design\')">'
+      '<span class="sidebar-item-title">Design decisions</span><span class="sidebar-badge badge-time">why</span></div>'
+      '</div><div class="sidebar-section"><div class="sidebar-section-title">Materials</div>'
+      f'<a class="sidebar-item" href="{DECK}"><span class="sidebar-item-title">The deck</span>'
+      f'<span class="sidebar-badge">{DECK_N}</span></a>'
+      '<div class="sidebar-item" data-block="materials" onclick="showBlock(\'materials\')">'
+      '<span class="sidebar-item-title">All materials</span><span class="sidebar-badge">Kit</span></div>'
+      '<div class="sidebar-item" data-block="facilitator" onclick="showBlock(\'facilitator\')">'
+      '<span class="sidebar-item-title">Facilitator kit</span><span class="sidebar-badge">Run</span></div>'
+      '<a class="sidebar-item" href="https://rubase.org/" target="_blank" rel="noopener">'
+      '<span class="sidebar-item-title">RuBase dashboard</span>'
+      '<span class="sidebar-badge badge-external">&#8599;</span></a>'
+      '</div><div class="sidebar-section"><div class="sidebar-section-title">Reference</div>'
+      '<div class="sidebar-item" data-block="editions" onclick="showBlock(\'editions\')">'
+      '<span class="sidebar-item-title">All editions</span><span class="sidebar-badge">4</span></div>'
+      '<a class="sidebar-item" href="day1.html"><span class="sidebar-item-title">Day 1, long form</span>'
+      '<span class="sidebar-badge badge-external">&#8599;</span></a>'
+      '</div>')
+    return ''.join(o)
+
+def timeline():
+    o=[]
+    for k,d in enumerate(DAYS):
+        if k: o.append('<div class="timeline-connector"></div>')
+        o.append(f'<div class="timeline-block" data-block="{d["id"]}" onclick="showBlock(\'{d["id"]}\')">'
+                 f'<div class="timeline-time">Day {d["n"]} &middot; {d["short"]}</div>'
+                 f'<div class="timeline-label">{d["name"]}</div>'
+                 f'<div class="timeline-duration">11:00&ndash;13:30 &middot; {d["stage"]}</div></div>')
+    return ''.join(o)
+
+HEAD = '''<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>RuBase Methods Workshop &middot; Georgia Tech</title>
+<meta name="description" content="RuBase / StratBase Methods Workshop, Georgia Tech, 31 August to 4 September 2026. Five sessions of 2.5 hours on one research pipeline.">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="header">
+  <div class="header-row1">
+    <div class="h-left">
+      <a class="h-logo invert" href="https://hcss.nl" target="_blank" rel="noopener" title="HCSS"><img src="assets/logos/hcss_logo.svg" alt="HCSS"></a>
+      <a class="h-logo" href="https://gatech.edu" target="_blank" rel="noopener" title="Georgia Tech"><img src="assets/logos/gt.svg" alt="Georgia Tech"></a>
+    </div>
+    <div class="header-title">RuBase / StratBase Methods Workshop &ndash; <span>Georgia Tech, 31 August &ndash; 4 September 2026</span></div>
+    <div class="h-right">
+      <a class="h-logo invert" href="https://www.carnegie.org" target="_blank" rel="noopener" title="Carnegie Corporation of New York"><img src="assets/logos/ccny_logo.svg" alt="Carnegie Corporation of New York"></a>
+      <a class="h-logo" href="https://rubase.org/" target="_blank" rel="noopener" title="RuBase dashboard"><img src="assets/logos/rubase_logo.svg" alt="RuBase"></a>
+    </div>
+  </div>
+  <div class="header-row2">
+    <nav class="header-nav">
+      <button onclick="showHome()">Home</button>
+      <button onclick="showBlock('programme')">Programme</button>
+      <button onclick="showBlock('design')">Design decisions</button>
+      <a href="__DECK__">Slides</a>
+      <button onclick="showBlock('materials')">Materials</button>
+      <button onclick="showBlock('facilitator')">Facilitator Kit</button>
+      <button onclick="showBlock('editions')">All editions</button>
+      <select onchange="goEdition(this.value)" aria-label="Workshop edition">
+        <option value="index.html" selected>Edition: GaTech 5 &times; 2.5 h</option>
+        <option value="https://sdspieg.github.io/rubase-workshop-5day/">Edition: 5-day full</option>
+        <option value="https://sdspieg.github.io/rubase-workshop/">Edition: 3-day</option>
+      </select>
+    </nav>
+  </div>
+</header>
+<div class="timeline-bar" id="timelineBar">__TIMELINE__</div>
+<div class="main-container">
+  <button class="sidebar-toggle" onclick="toggleSidebar()" aria-label="Menu">&#9776;</button>
+  <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
+  <aside class="sidebar" id="sidebar">__SIDEBAR__</aside>
+  <main class="content-area">
+'''
+
+TAIL = r'''
+    <div class="footer-note">
+      RuBase / StratBase Methods Workshop &middot; Georgia Tech edition &middot;
+      Stephan De Spiegeleire, The Hague Centre for Strategic Studies &middot;
+      Sam Nunn School of International Affairs, 31 August &ndash; 4 September 2026.
+    </div>
+  </main>
+</div>
+<script>
+function setActive(id){
+  document.querySelectorAll('.sidebar-item[data-block]').forEach(function(e){
+    e.classList.toggle('active', e.dataset.block===id);});
+  document.querySelectorAll('.timeline-block[data-block]').forEach(function(e){
+    e.classList.toggle('active', e.dataset.block===id);});
+}
+function showBlock(id){
+  document.querySelectorAll('.block-content').forEach(function(b){b.classList.remove('active');});
+  var el=document.getElementById('block-'+id);
+  if(el){el.classList.add('active');}
+  setActive(id);
+  document.querySelector('.content-area').scrollTop=0;
+  history.replaceState(null,'','#'+id);
+  if(window.innerWidth<=768){closeSidebar();}
+}
+function showHome(){
+  document.querySelectorAll('.block-content').forEach(function(b){b.classList.remove('active');});
+  document.getElementById('homeScreen').classList.add('active');
+  setActive(null);
+  document.querySelector('.content-area').scrollTop=0;
+  history.replaceState(null,'','#home');
+  if(window.innerWidth<=768){closeSidebar();}
+}
+function goEdition(v){ if(v && v!=='index.html'){location.href=v;} }
+function toggleSidebar(){
+  document.getElementById('sidebar').classList.toggle('open');
+  document.getElementById('sidebarOverlay').classList.toggle('active');
+}
+function closeSidebar(){
+  document.getElementById('sidebar').classList.remove('open');
+  document.getElementById('sidebarOverlay').classList.remove('active');
+}
+document.addEventListener('keydown',function(e){ if(e.key==='Escape'){closeSidebar();} });
+(function(){
+  var h=(location.hash||'').replace('#','');
+  // Old deep links pointed a bare slide number at this URL, back when it served
+  // the standalone deck (e.g. .../#1). Those links are in circulation, so honour
+  // them by handing the number to the deck rather than silently dropping to Home.
+  if(/^\d+$/.test(h)){ location.replace('deck.html#'+h); return; }
+  if(h && h!=='home' && document.getElementById('block-'+h)){showBlock(h);} else {showHome();}
+})();
+</script>
+</body>
+</html>
+'''
+
+def main():
+    body = [home()] + [day_block(d) for d in DAYS] + \
+           [programme(), design(), materials(), facilitator(), editions()]
+    html = (HEAD.replace("__TIMELINE__", timeline())
+                .replace("__SIDEBAR__", sidebar())
+                .replace("__DECK__", DECK)
+            + "\n".join(body) + TAIL)
+    # House typography rule H3: a spaced hyphen in prose becomes NBSP + en-dash.
+    # Applied to text only - never inside a tag, an attribute or an entity.
+    parts = re.split(r'(<[^>]*>)', html)
+    for i in range(0, len(parts), 2):
+        parts[i] = parts[i].replace(" - ", "&nbsp;&ndash; ")
+    html = "".join(parts)
+    open("index.html","w",encoding="utf-8").write(html)
+    print("wrote index.html", len(html), "bytes")
+    for k,pat in [("views",'class="block-content'),("content-cards",'class="content-card'),
+                  ("list items","<li>"),("track tags",'class="track-tag'),
+                  ("durations","card-duration"),("sidebar items",'class="sidebar-item')]:
+        print(f"  {k}: {html.count(pat)}")
+    print("  non-ascii:", sum(1 for c in html if ord(c)>127))
+    print("  em-dashes:", html.count(chr(8212)))
+
+main()
