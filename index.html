@@ -98,6 +98,10 @@ function closeSidebar(){
 document.addEventListener('keydown',function(e){ if(e.key==='Escape'){closeSidebar();} });
 (function(){
   var h=(location.hash||'').replace('#','');
+  // Old deep links pointed a bare slide number at this URL, back when it served
+  // the standalone deck (e.g. .../#1). Those links are in circulation, so honour
+  // them by handing the number to the deck rather than silently dropping to Home.
+  if(/^\d+$/.test(h)){ location.replace('deck.html#'+h); return; }
   if(h && h!=='home' && document.getElementById('block-'+h)){showBlock(h);} else {showHome();}
 })();
 </script>
