@@ -113,3 +113,4 @@ measured card budget before it will emit.
 - Tana: node `czszAKKlgy9Q` (2026-08-29, HCSS) – `#output` `#Claude` `#lesson-learned`
 - HANDOFF: the web session's own entry, appended under 2026-08-29 and extended with what was applied
 - Repo: `rubase-workshop-gatech-2608`, pushed – audit at `f97f158`, new slide at `a6cf0db`
+- Tana (s17): node `CwmMWFbs3bwX` (2026-08-29, HCSS)
