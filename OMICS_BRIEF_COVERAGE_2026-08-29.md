@@ -66,8 +66,50 @@ either, for a different reason than the web session gave: the available `drive_s
 **anyone-with-link → reader**, and participants need **Editor**. The Drive OAuth also returned
 `invalid_grant`. Manual: Share → General access → Anyone with the link → Editor.
 
+## Update — one gap closed, s17 added
+
+A new slide, **s17 "What transfers, and what does not"**, now sits immediately before
+*"So why not us?"* (`a6cf0db`). Two columns, eight small diagrams, **23 visible words**.
+
+**Why it was needed, precisely.** The gap was not that the material sat in `data-n`. It was that
+the arc has an open rhetorical flank: six slides say *other fields did it* (humors, 'omics,
+geomics, AlphaFold, vaccine, two paradigm-shift slides), and then s18 asks *"So why not us?"* with
+no answer on screen when someone in an IR department supplies the obvious one – **because states
+are not cells**. The slide closes that at the point the deck is most exposed, so the question lands
+as earned rather than rhetorical.
+
+**What it moves out of the brief and onto a slide:**
+
+| Brief | Now on s17 |
+|---|---|
+| §1 | reclassification by mechanism – *the load-bearing move*, previously in no slide |
+| §1 | the N-objection answer: the state and the war ARE the phenotype |
+| §2 | no HGNC/GO equivalent, so nothing pools |
+| §2 | no adverse-event registry |
+| §1 | no central dogma (also on s12, as dashed arrows) |
+
+**One row is not from the brief.** *"The specimen reads the paper"* – a tumour does not change its
+behaviour because you published its profile, an adversary does – is this terminal's addition, not
+the web session's. It is arguably the deepest of the four differences, because unlike the others it
+never goes away however much data is collected. Flagged because it is the one claim on the slide
+that has not been through anyone else's hands.
+
+**Still not on any slide:** §6's verified three-corpus numbers, §3 category C and MERLN's death,
+§4's corpora (UNGDC, CMFA PressCon, FBIS), §5's counterfactual layer and second-order beliefs, and
+§7's closing beat about the 113th redundant corpus.
+
+**Cost, stated honestly:** this adds a slide to Day 1, already 53% diagnosis, whose cut list names
+the 'omics slide as first cut. It earns its place by replacing live improvisation at the weakest
+moment – but if Monday runs long it is a better cut than the hands-on block.
+
+**A process defect worth keeping.** The first render passed the automated fit check and was still
+wrong in three places: the right column's last line clipped mid-word, and two left rows overran
+their cards, because the text was sized by eye. Only reading the PNG caught it. *A container that
+fits does not mean the text inside it fits.* The generator now asserts every string against the
+measured card budget before it will emit.
+
 ## Record
 
 - Tana: node `czszAKKlgy9Q` (2026-08-29, HCSS) – `#output` `#Claude` `#lesson-learned`
 - HANDOFF: the web session's own entry, appended under 2026-08-29 and extended with what was applied
-- Repo: `rubase-workshop-gatech-2608`, pushed
+- Repo: `rubase-workshop-gatech-2608`, pushed – audit at `f97f158`, new slide at `a6cf0db`
