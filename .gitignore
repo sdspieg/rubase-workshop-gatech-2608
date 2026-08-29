@@ -1,2 +1,3 @@
 review.js
 *.bak-preghost
+.claude/state/
