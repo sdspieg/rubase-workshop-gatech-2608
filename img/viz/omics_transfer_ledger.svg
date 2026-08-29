@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 964 352" role="img"
+     aria-label="Two columns. What transfers from the omics: reclassify by mechanism, change the unit and N explodes, measure each layer whole then integrate, shared names or nothing pools. Where the analogy breaks: no central dogma, no experiment, the specimen reads the paper, no registry of failures.">
+<style>.hd{font:700 12.5px system-ui,sans-serif;letter-spacing:.09em}.lb{font:600 14.5px system-ui,sans-serif;fill:#e8edf3}.mc{font:400 11px system-ui,sans-serif;fill:#9fb3c8}.ft{font:italic 600 12.5px system-ui,sans-serif;fill:#dbad50}</style>
+<rect width="964" height="352" fill="#09182f"/>
+<text x="40" y="26" class="hd" fill="#dbad50">WHAT TRANSFERS</text>
+<text x="522" y="26" class="hd" fill="#7d93ad">WHERE IT BREAKS</text>
+<line x1="486" y1="10" x2="486" y2="298" stroke="#1c3457"/>
+<rect x="40" y="44" width="412" height="52" rx="7" fill="#142846" stroke="#27446e"/>
+<circle cx="69" cy="70" r="15" fill="none" stroke="#7d93ad" stroke-dasharray="3 3"/>
+<path d="M55 64 L83 64 M55 75 L83 75" stroke="#dbad50" stroke-width="2.2"/>
+<text x="98" y="65" class="lb">Reclassify by mechanism</text>
+<text x="98" y="83" class="mc">not by where it surfaced. 'Civil war' names an organ.</text>
+<rect x="40" y="107" width="412" height="52" rx="7" fill="#142846" stroke="#27446e"/>
+<circle cx="59" cy="133" r="6.5" fill="#7d93ad"/>
+<path d="M68 133 L74 133" stroke="#dbad50" stroke-width="1.8"/>
+<circle cx="76.0" cy="126.0" r="1.7" fill="#dbad50"/>
+<circle cx="76.0" cy="130.34" r="1.7" fill="#dbad50"/>
+<circle cx="76.0" cy="134.68" r="1.7" fill="#dbad50"/>
+<circle cx="80.2" cy="126.0" r="1.7" fill="#dbad50"/>
+<circle cx="80.2" cy="130.34" r="1.7" fill="#dbad50"/>
+<circle cx="80.2" cy="134.68" r="1.7" fill="#dbad50"/>
+<circle cx="84.4" cy="126.0" r="1.7" fill="#dbad50"/>
+<circle cx="84.4" cy="130.34" r="1.7" fill="#dbad50"/>
+<circle cx="84.4" cy="134.68" r="1.7" fill="#dbad50"/>
+<text x="98" y="128" class="lb">Change the unit, and N explodes</text>
+<text x="98" y="146" class="mc">the state and the war ARE the phenotype.</text>
+<rect x="40" y="170" width="412" height="52" rx="7" fill="#142846" stroke="#27446e"/>
+<rect x="55" y="184" width="28" height="6.5" rx="2" fill="#dbad50"/>
+<rect x="55" y="194" width="28" height="6.5" rx="2" fill="#dbad50"/>
+<rect x="55" y="204" width="28" height="6.5" rx="2" fill="#dbad50"/>
+<text x="98" y="191" class="lb">Measure a layer whole, then integrate</text>
+<text x="98" y="209" class="mc">the whole layer, not the convenient part of it.</text>
+<rect x="40" y="233" width="412" height="52" rx="7" fill="#142846" stroke="#27446e"/>
+<rect x="54" y="249" width="13" height="20" rx="3" fill="none" stroke="#dbad50" stroke-width="1.8"/>
+<circle cx="77" cy="259" r="9" fill="none" stroke="#dbad50" stroke-width="1.8"/>
+<path d="M60 259 L77 259" stroke="#dbad50" stroke-width="1.4" stroke-dasharray="2 2"/>
+<text x="98" y="254" class="lb">Shared names, or nothing pools</text>
+<text x="98" y="272" class="mc">HGNC and GO exist so findings add up. We have none.</text>
+<rect x="522" y="44" width="412" height="52" rx="7" fill="#142846" stroke="#27446e"/>
+<path d="M538 70 L564 70" stroke="#7d93ad" stroke-width="2.2" stroke-dasharray="4 3"/>
+<path d="M542 65 L537 70 L542 75" fill="none" stroke="#7d93ad" stroke-width="2"/>
+<path d="M560 65 L565 70 L560 75" fill="none" stroke="#7d93ad" stroke-width="2"/>
+<text x="580" y="65" class="lb">No central dogma</text>
+<text x="580" y="83" class="mc">biology knows which way causation runs. We estimate.</text>
+<rect x="522" y="107" width="412" height="52" rx="7" fill="#142846" stroke="#27446e"/>
+<path d="M538 126 L564 126 M538 140 L564 140" stroke="#7d93ad" stroke-width="2"/>
+<path d="M540 144 L562 122" stroke="#7d93ad" stroke-width="2.4"/>
+<text x="580" y="128" class="lb">No experiment</text>
+<text x="580" y="146" class="mc">knock out a gene, yes. Randomise a threat, no.</text>
+<rect x="522" y="170" width="412" height="52" rx="7" fill="#142846" stroke="#27446e"/>
+<path d="M536 196 Q551 184 566 196 Q551 208 536 196 Z" fill="none" stroke="#7d93ad" stroke-width="1.9"/>
+<circle cx="551" cy="196" r="4.4" fill="#7d93ad"/>
+<text x="580" y="191" class="lb">The specimen reads the paper</text>
+<text x="580" y="209" class="mc">a tumour does not adapt to being published. They do.</text>
+<rect x="522" y="233" width="412" height="52" rx="7" fill="#142846" stroke="#27446e"/>
+<rect x="537" y="247" width="28" height="24" rx="3" fill="none" stroke="#7d93ad" stroke-width="1.9" stroke-dasharray="4 3"/>
+<text x="580" y="254" class="lb">No registry of failures</text>
+<text x="580" y="272" class="mc">adverse events must be reported. Failed forecasts, never.</text>
+<rect x="40" y="310" width="884" height="30" rx="6" fill="#12243f" stroke="#27446e"/>
+<text x="482" y="330" class="ft" text-anchor="middle">Take the left column. Say the right column out loud, before someone else does.</text>
+</svg>
