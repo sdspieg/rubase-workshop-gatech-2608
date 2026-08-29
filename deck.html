@@ -257,7 +257,7 @@ body.present #notes{position:fixed;left:0;right:0;bottom:0;z-index:60}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 a.sidebar-item,a.sidebar-item:visited{color:var(--wh);text-decoration:none}
 .slide .small-note a{color:var(--gold)}
-</style></head>
+</style><style id="gtr-fs-hint">body.present::after{content:"F or Esc to exit full screen";position:fixed;right:14px;bottom:12px;font:500 12px system-ui,sans-serif;color:#7d93ad;opacity:.0;transition:opacity .3s;pointer-events:none;z-index:9999}body.present:hover::after{opacity:.75}</style></head>
 <body>
 <div id="app">
 <header class="header">
@@ -278,7 +278,7 @@ a.sidebar-item,a.sidebar-item:visited{color:var(--wh);text-decoration:none}
       <button id="navHome" onclick="showHome()">Deck home</button>
       <button id="navDeck" onclick="showDeck()">Slides</button>
       <button onclick="toggleOv()">Overview</button>
-      <button onclick="present()">Present &#x2922;</button>
+      <button onclick="present()" title="Full screen. Press F to toggle, Esc to exit.">Present &#x2922;</button>
       <a href="index.html#materials">Materials</a>
       <a href="https://rubase.org/" target="_blank" rel="noopener">RuBase dashboard</a>
     </nav>
@@ -296,9 +296,9 @@ a.sidebar-item,a.sidebar-item:visited{color:var(--wh);text-decoration:none}
       <span id="counter"></span>
       <span id="slidetitle"></span><span id="buildpip"></span>
       <span class="spacer"></span>
-      <span id="keyhelp">&larr; &rarr; build/slide &#183; &uarr; &darr; day &#183; B builds off &#183; O overview &#183; N notes &#183; F present &middot; <b>F</b> full screen on/off</span>
+      <span id="keyhelp">&larr; &rarr; build/slide &#183; &uarr; &darr; day &#183; B builds off &#183; O overview &#183; N notes &#183; F present</span>
       <button onclick="toggleNotes()">Notes</button>
-      <button onclick="present()">Present &#x2922;</button>
+      <button onclick="present()" title="Full screen. Press F to toggle, Esc to exit.">Present &#x2922;</button>
     </div>
     <div id="notes"></div>
   </main>
