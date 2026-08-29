@@ -60,3 +60,7 @@ the last remaining visual candidate.
 
 **Read the slide's comments before touching the slide, and keep every build-up.** A visual goes in
 alongside the reveal, never instead of it. Enforced by gates #158 and #159 rather than intention.
+
+---
+
+Tana: node `F7wuxGh_0jKD` (2026-08-29, HCSS). HANDOFF entry under 2026-08-29.
