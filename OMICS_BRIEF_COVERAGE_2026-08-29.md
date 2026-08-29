@@ -65,3 +65,9 @@ The "What are you working on?" Google Doc still has no link-sharing. This termin
 either, for a different reason than the web session gave: the available `drive_share_file` grants
 **anyone-with-link → reader**, and participants need **Editor**. The Drive OAuth also returned
 `invalid_grant`. Manual: Share → General access → Anyone with the link → Editor.
+
+## Record
+
+- Tana: node `czszAKKlgy9Q` (2026-08-29, HCSS) – `#output` `#Claude` `#lesson-learned`
+- HANDOFF: the web session's own entry, appended under 2026-08-29 and extended with what was applied
+- Repo: `rubase-workshop-gatech-2608`, pushed
