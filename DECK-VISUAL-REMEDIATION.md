@@ -83,3 +83,9 @@ The review comment toolbar was floating over the slides at z-index 2147483000,
 which is why fullscreen felt wrong. It now hides under `body.present` and
 `:fullscreen`. `F` toggles both ways, `Escape` exits, and a `fullscreenchange`
 listener re-syncs if fullscreen is left via the browser.
+
+## Record
+
+- Tana: node `oPcCeoWaM0tU` (2026-08-29, HCSS) – `#output` `#Claude` `#lesson-learned`
+- HANDOFF: entry under 2026-08-29 in `HANDOFF.md`
+- Repo: `rubase-workshop-gatech-2608`, pushed
