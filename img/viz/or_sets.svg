@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 430" role="img"
+     aria-label="AND and NOT shrink a result set; OR is the only operator that grows it">
+<style>
+ .t{font:700 18px "Titillium Web",sans-serif;fill:#e8edf3}
+ .c{font:400 15px "Titillium Web",sans-serif;fill:#82a0bc}
+ .op{font:800 26px "Titillium Web",sans-serif;fill:#dbad50}
+ .big{font:800 20px "Titillium Web",sans-serif;fill:#00FFFF}
+</style>
+<g transform="translate(60,40)">
+  <text class="op" x="0" y="0">AND</text><text class="c" x="70" y="0">narrows</text>
+  <circle cx="90" cy="70" r="58" fill="#4a6f9c" opacity=".55"/>
+  <circle cx="150" cy="70" r="58" fill="#4a6f9c" opacity=".55"/>
+  <path d="M120 22 a58 58 0 0 1 0 96 a58 58 0 0 1 0 -96" fill="#dbad50" opacity=".9"/>
+  <text class="c" x="0" y="168">only what carries both</text>
+</g>
+<g transform="translate(370,40)">
+  <text class="op" x="0" y="0">NOT</text><text class="c" x="70" y="0">excludes</text>
+  <circle cx="90" cy="70" r="58" fill="#dbad50" opacity=".9"/>
+  <circle cx="150" cy="70" r="58" fill="#0A192F"/>
+  <circle cx="150" cy="70" r="58" fill="none" stroke="#4a6f9c" stroke-dasharray="4 4"/>
+  <text class="c" x="0" y="168">and takes signal with it</text>
+</g>
+<g transform="translate(670,40)">
+  <text class="op" x="0" y="0">OR</text><text class="c" x="55" y="0">widens</text>
+  <circle cx="90" cy="70" r="58" fill="#dbad50" opacity=".9"/>
+  <circle cx="150" cy="70" r="58" fill="#dbad50" opacity=".9"/>
+  <text class="c" x="0" y="168">anything carrying either</text>
+</g>
+<line x1="0" y1="252" x2="900" y2="252" stroke="#1E3A63"/>
+<g transform="translate(0,292)">
+  <text class="big" x="0" y="0">AND and NOT can only shrink your results. OR is the only one that grows them.</text>
+  <text class="t" x="0" y="34">If you are missing literature, you are missing an OR term — not an AND.</text>
+  <text class="c" x="0" y="66">And in real academic searching, OR appears in 1.3% of queries. NOT in 0.2%.</text>
+  <text class="c" x="0" y="94">Bracket it: (coercion OR compellence) AND russia  ≠  coercion OR (compellence AND russia)</text>
+</g>
+</svg>
