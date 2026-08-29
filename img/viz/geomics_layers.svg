@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 342" role="img"
+     aria-label="Biology measures four layers linked by a known causal structure; geomics measures four layers of a conflict whose links are estimated, not assumed.">
+<style>.h{font:700 12px system-ui,sans-serif;fill:#dbad50;letter-spacing:.09em}.l{font:600 14px system-ui,sans-serif;fill:#e8edf3}.m{font:400 11px system-ui,sans-serif;fill:#9fb3c8}.n{font:400 12px system-ui,sans-serif;fill:#9fb3c8}.g{font:italic 600 12.5px system-ui,sans-serif;fill:#dbad50}</style>
+<defs><marker id="s" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#dbad50"/></marker><marker id="d" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#6f8bab"/></marker></defs>
+<rect width="960" height="342" fill="#09182f"/>
+<text x="38" y="30" class="h">GENOMICS : THE GENOME</text>
+<rect x="38" y="42" width="203" height="58" rx="7" fill="#142846" stroke="#27446e"/>
+<text x="53" y="66" class="l">Genome</text>
+<text x="53" y="84" class="m">the code, sequenced</text>
+<line x1="245" y1="71" x2="265" y2="71" stroke="#dbad50" stroke-width="2.4" marker-end="url(#s)"/>
+<rect x="270" y="42" width="203" height="58" rx="7" fill="#142846" stroke="#27446e"/>
+<text x="285" y="66" class="l">Transcriptome</text>
+<text x="285" y="84" class="m">what is expressed</text>
+<line x1="477" y1="71" x2="497" y2="71" stroke="#dbad50" stroke-width="2.4" marker-end="url(#s)"/>
+<rect x="502" y="42" width="203" height="58" rx="7" fill="#142846" stroke="#27446e"/>
+<text x="517" y="66" class="l">Proteome</text>
+<text x="517" y="84" class="m">what is built</text>
+<line x1="709" y1="71" x2="729" y2="71" stroke="#dbad50" stroke-width="2.4" marker-end="url(#s)"/>
+<rect x="734" y="42" width="203" height="58" rx="7" fill="#142846" stroke="#27446e"/>
+<text x="749" y="66" class="l">Phenotype</text>
+<text x="749" y="84" class="m">what presents</text>
+<text x="38" y="122" class="n">Central dogma  – the links between layers are <tspan fill="#dbad50" font-weight="600">known</tspan>.</text>
+<text x="38" y="178" class="h">GEOMICS : THE CONFLICT</text>
+<rect x="38" y="190" width="203" height="58" rx="7" fill="#142846" stroke="#27446e"/>
+<text x="53" y="214" class="l">Discourse</text>
+<text x="53" y="232" class="m">how they portray</text>
+<line x1="245" y1="219" x2="265" y2="219" stroke="#6f8bab" stroke-width="2.4" stroke-dasharray="4 4" marker-end="url(#d)"/>
+<rect x="270" y="190" width="203" height="58" rx="7" fill="#142846" stroke="#27446e"/>
+<text x="285" y="214" class="l">Doctrine</text>
+<text x="285" y="232" class="m">what they declare</text>
+<line x1="477" y1="219" x2="497" y2="219" stroke="#6f8bab" stroke-width="2.4" stroke-dasharray="4 4" marker-end="url(#d)"/>
+<rect x="502" y="190" width="203" height="58" rx="7" fill="#142846" stroke="#27446e"/>
+<text x="517" y="214" class="l">Decisions</text>
+<text x="517" y="232" class="m">what they commit</text>
+<line x1="709" y1="219" x2="729" y2="219" stroke="#6f8bab" stroke-width="2.4" stroke-dasharray="4 4" marker-end="url(#d)"/>
+<rect x="734" y="190" width="203" height="58" rx="7" fill="#142846" stroke="#27446e"/>
+<text x="749" y="214" class="l">Behaviour</text>
+<text x="749" y="232" class="m">what the conflict does</text>
+<text x="38" y="270" class="n">No central dogma, no meiosis  – the links are <tspan fill="#e8edf3" font-weight="600">estimated</tspan>, not assumed.</text>
+<rect x="38" y="300" width="884" height="30" rx="6" fill="#12243f" stroke="#27446e"/>
+<text x="480" y="320" class="g" text-anchor="middle">Measure every layer, then integrate  – the conflict as the disease, its parties as the patients.</text>
+</svg>
