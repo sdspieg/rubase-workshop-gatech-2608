@@ -56,8 +56,7 @@
 function setActive(id){
   document.querySelectorAll('.sidebar-item[data-block]').forEach(function(e){
     e.classList.toggle('active', e.dataset.block===id);});
-  document.querySelectorAll('.timeline-block[data-block]').forEach(function(e){
-    e.classList.toggle('active', e.dataset.block===id);});
+  /* the horizontal day strip was removed as a duplicate of the left rail */
 }
 function showBlock(id){
   document.querySelectorAll('.block-content').forEach(function(b){b.classList.remove('active');});
