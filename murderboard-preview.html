@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<title>Murderboard &mdash; slide preview</title>
+<style>
+  :root{--bg:#09182f;--db:#1a3761;--gold:#dbad50;--lb:#82a0bc;--wh:#e8edf3}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--wh);
+       font:16px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif;padding:2rem 2.5rem 4rem}
+  .wrap{max-width:1180px;margin:0 auto}
+  .tag{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--lb);margin-bottom:.5rem}
+  h1{color:var(--gold);font-size:2.4rem;margin:.1rem 0 .35rem;font-weight:700;letter-spacing:-.01em}
+  .sub{color:var(--lb);font-size:1.08rem;margin:0 0 1.6rem;max-width:60rem}
+  .viz{background:#09182f;border:1px solid #27446e;border-radius:8px;padding:.4rem;margin-bottom:1.6rem}
+  .viz svg{display:block;width:100%;height:auto}
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.9rem;margin-bottom:1.4rem}
+  .card{background:#142846;border:1px solid #27446e;border-left:3px solid var(--gold);
+        border-radius:6px;padding:.85rem 1rem}
+  .card .k{color:var(--gold);font-weight:600;font-size:.95rem;margin-bottom:.35rem}
+  .card .d{color:#cfe0ee;font-size:.88rem;line-height:1.5}
+  .note{background:#12243f;border:1px solid #27446e;border-radius:6px;padding:.9rem 1.1rem;
+        font-style:italic;color:var(--gold);font-weight:600;text-align:center}
+  .why{margin-top:2rem;padding-top:1.2rem;border-top:1px solid #1c3457;color:var(--lb);font-size:.9rem}
+  .why b{color:var(--wh)}
+  code{background:#0d2035;padding:.1rem .35rem;border-radius:3px;font-size:.85em;color:#cfe0ee}
+</style></head><body><div class="wrap">
+
+<div class="tag">Day 3 &middot; stress-testing what the model gave you</div>
+<h1>The murderboard</h1>
+<p class="sub">Two models argue over a frozen artefact until both sign off on the identical bytes
+&ndash; or until the disagreement is recorded as the finding.</p>
+
+<div class="viz"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 364" role="img"
+     aria-label="The murderboard cycle: two reviewers write blind, argue point by point, the author rules, the reviewers reflect and may hold, the loop repeats until a machine checker confirms both reviewers issued GO on the identical bytes. Dual GO and recorded dissent are both valid endings.">
+<style>.hd{font:700 11px system-ui,sans-serif;letter-spacing:.09em}.ph{font:700 13px system-ui,sans-serif;fill:#e8edf3}.mc{font:400 10.6px system-ui,sans-serif;fill:#9fb3c8}.mi{font:italic 400 10.6px system-ui,sans-serif;fill:#8fa6bd}.tag{font:600 9.6px system-ui,sans-serif;letter-spacing:.05em}.ft{font:italic 600 12.5px system-ui,sans-serif;fill:#dbad50}</style>
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#7d93ad"/></marker><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#dbad50"/></marker></defs>
+<rect width="980" height="364" fill="#09182f"/>
+<rect x="20" y="112" width="104" height="94" rx="7" fill="#142846" stroke="#dbad50" stroke-width="1.5"/>
+<text x="72" y="140" class="ph" text-anchor="middle">the artefact</text>
+<text x="72" y="160" class="mc" text-anchor="middle">frozen, by hash</text>
+<text x="72" y="176" class="mc" text-anchor="middle">immutable</text>
+<text x="72" y="196" class="tag" text-anchor="middle" fill="#dbad50">v1 &#8594; v2 &#8594; v3</text>
+<rect x="152" y="92" width="182" height="120" rx="7" fill="#142846" stroke="#27446e"/>
+<text x="166" y="116" class="ph">1 &#183; blind</text>
+<text x="166" y="138" class="mc">Neither reviewer reads the</text>
+<text x="166" y="152" class="mc">other first.</text>
+<text x="166" y="174" class="mi">Two independent verdicts.</text>
+<rect x="348" y="92" width="182" height="120" rx="7" fill="#142846" stroke="#27446e"/>
+<text x="362" y="116" class="ph">2 &#183; author rules</text>
+<text x="362" y="138" class="mc">The author adjudicates every</text>
+<text x="362" y="152" class="mc">item.</text>
+<text x="362" y="174" class="mi">Two reviewers can converge</text>
+<text x="362" y="188" class="mi">on a mistake.</text>
+<rect x="544" y="92" width="182" height="120" rx="7" fill="#142846" stroke="#27446e"/>
+<text x="558" y="116" class="ph">3 &#183; reflect</text>
+<text x="558" y="138" class="mc">accept, modify, refuse or</text>
+<text x="558" y="152" class="mc">hold.</text>
+<text x="558" y="174" class="mi">A held position must be re-</text>
+<text x="558" y="188" class="mi">argued.</text>
+<rect x="740" y="92" width="182" height="120" rx="7" fill="#142846" stroke="#27446e"/>
+<text x="754" y="116" class="ph">4 &#183; the checker</text>
+<text x="754" y="138" class="mc">Both GO, on the SAME bytes.</text>
+<text x="754" y="160" class="mi">Conditional GO is downgraded</text>
+<text x="754" y="174" class="mi">to NO_GO.</text>
+<line x1="128" y1="152" x2="146" y2="152" stroke="#7d93ad" stroke-width="2" marker-end="url(#ar)"/>
+<line x1="336" y1="152" x2="354" y2="152" stroke="#7d93ad" stroke-width="2" marker-end="url(#ar)"/>
+<line x1="532" y1="152" x2="550" y2="152" stroke="#7d93ad" stroke-width="2" marker-end="url(#ar)"/>
+<line x1="728" y1="152" x2="746" y2="152" stroke="#7d93ad" stroke-width="2" marker-end="url(#ar)"/>
+<path d="M634,212 C634,250 440,250 440,212" fill="none" stroke="#dbad50" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#ag)"/>
+<text x="537" y="266" class="tag" text-anchor="middle" fill="#dbad50">LOOPS UNTIL IT NARROWS</text>
+<text x="248" y="30" class="hd" fill="#7d93ad" text-anchor="middle">TWO INDEPENDENT MODELS</text>
+<rect x="160" y="40" width="84" height="34" rx="6" fill="#0d2035" stroke="#27446e"/>
+<text x="202" y="62" class="tag" text-anchor="middle" fill="#e8edf3">reviewer A</text>
+<line x1="202" y1="76" x2="202" y2="90" stroke="#27446e" stroke-width="1.4"/>
+<rect x="256" y="40" width="84" height="34" rx="6" fill="#0d2035" stroke="#27446e"/>
+<text x="298" y="62" class="tag" text-anchor="middle" fill="#e8edf3">reviewer B</text>
+<line x1="298" y1="76" x2="298" y2="90" stroke="#27446e" stroke-width="1.4"/>
+<text x="838" y="30" class="hd" fill="#7d93ad" text-anchor="middle">BOTH ARE VALID ENDINGS</text>
+<rect x="750" y="40" width="84" height="34" rx="6" fill="#0d2035" stroke="#5fae86"/>
+<text x="792" y="62" class="tag" text-anchor="middle" fill="#5fae86">DUAL GO</text>
+<line x1="792" y1="76" x2="792" y2="90" stroke="#27446e" stroke-width="1.4"/>
+<rect x="846" y="40" width="84" height="34" rx="6" fill="#0d2035" stroke="#c9614f"/>
+<text x="888" y="62" class="tag" text-anchor="middle" fill="#c9614f">DISSENT</text>
+<line x1="888" y1="76" x2="888" y2="90" stroke="#27446e" stroke-width="1.4"/>
+<rect x="20" y="304" width="940" height="34" rx="6" fill="#12243f" stroke="#27446e"/>
+<text x="490" y="326" class="ft" text-anchor="middle">A board that must end in agreement will produce agreement &#8212; and it will mean nothing.</text>
+</svg></div>
+
+<div class="grid">
+  <div class="card"><div class="k">Reviewers never edit</div>
+    <div class="d">A reviewer produces <b>findings</b>, never a fix &ndash; not even a demonstrably
+    correct number. The author edits. A reviewer who revises the artefact has destroyed the
+    independence that made the review worth having.</div></div>
+  <div class="card"><div class="k">A GO is obtained, never inferred</div>
+    <div class="d">Applying the other reviewer&rsquo;s wording does not make their GO. Being obviously
+    right does not make it. <b>Every version needs an explicit verdict from each reviewer</b>, even
+    when the ruling looks foregone.</div></div>
+  <div class="card"><div class="k">Refusal is a first-class outcome</div>
+    <div class="d">A held position must be <b>re-argued against the new input</b> and must name what
+    would change it. A refusal no evidence could overturn is a preference, not a finding.</div></div>
+</div>
+
+<div class="note">A board that must end in agreement will produce agreement &ndash; and it will mean nothing.</div>
+
+<div class="why">
+  <p><b>Why it belongs in this workshop.</b> On Day&nbsp;3 a model will hand you a taxonomy that looks
+  authoritative. The independence test catches one failure; the murderboard catches the rest &ndash;
+  unsupported inference, missing denominators, circular nulls, unfalsifiable summary claims,
+  self-validating evidence. On the case this method was written from, <b>the board rewrote the
+  paper&rsquo;s thesis sentence</b>. That is the point: it is not a quality gate at the end, it changes
+  what the artefact is, early.</p>
+  <p><b>The machine-checked close.</b> Generations are immutable and named by hash, so a verdict always
+  describes bytes that still exist. <code>CONDITIONAL_GO</code> is not a state &ndash; a GO carrying an
+  unmet condition is downgraded to <code>NO_GO</code>, because two different kinds of condition once
+  wore the same label and were counted as agreement.</p>
+  <p><b>The honest limit.</b> The drafter cannot be one of the two reviewers &ndash; a GO from whoever
+  wrote it is a self-assessment, and no checker can tell the difference. Either bring in a third, or
+  say plainly that dual GO is not available. <b>Naming the arrangement is the requirement; the weaker
+  arrangement is acceptable, the unnamed one is not.</b></p>
+</div>
+
+</div></body></html>
