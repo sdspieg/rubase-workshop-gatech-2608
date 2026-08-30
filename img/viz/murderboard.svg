@@ -30,9 +30,9 @@
 <g data-frag="4">
 <line x1="336" y1="152" x2="354" y2="152" stroke="#7d93ad" stroke-width="2" marker-end="url(#ar)"/>
 <rect x="348" y="92" width="182" height="120" rx="7" fill="#142846" stroke="#27446e"/>
-<text x="362" y="116" class="ph">2 &#183; author rules</text>
-<text x="362" y="138" class="mc">The author adjudicates every</text>
-<text x="362" y="152" class="mc">item.</text>
+<text x="362" y="116" class="ph">2 &#183; YOU rule</text>
+<text x="362" y="138" class="mc">The human who wrote it</text>
+<text x="362" y="152" class="mc">adjudicates every item.</text>
 <text x="362" y="174" class="mi">Two reviewers can converge</text>
 <text x="362" y="188" class="mi">on a mistake.</text>
 </g>

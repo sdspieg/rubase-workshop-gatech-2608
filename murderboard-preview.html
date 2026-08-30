@@ -40,17 +40,18 @@
 <p class="sub">Two models argue over a frozen artefact until both sign off on the identical bytes
 &ndash; or until the disagreement is recorded as the finding.</p>
 
-<div class="bar">
-  <button onclick="step(1)">Next &rarr;</button>
-  <button onclick="step(-1)">&larr; Back</button>
-  <button onclick="play()">&#9654; Play</button>
-  <button onclick="setAll(true)">Show all</button>
-  <button onclick="setAll(false)">Reset</button>
-  <span class="step" id="stepLabel">0 / 9</span>
+<p class="sub" style="border-left:3px solid #dbad50;padding-left:.9rem;margin-bottom:1rem"><strong>Who is who.</strong> The <strong>reviewers</strong> are two frontier models, run as separate sessions so neither can see the other. The <strong>author is you</strong> &ndash; the human who wrote the thing under review. You are not a third reviewer: you <em>adjudicate</em>. You rule on every contested point, you can reopen anything, and <strong>you are the only one who edits the artefact.</strong></p>
+<div class="bar" data-for="d1">
+  <button onclick="step('d1',1)">Next &rarr;</button>
+  <button onclick="step('d1',-1)">&larr; Back</button>
+  <button onclick="play('d1')">&#9654; Play</button>
+  <button onclick="setAll('d1',true)">Show all</button>
+  <button onclick="setAll('d1',false)">Reset</button>
+  <span class="step" id="step-d1">0 / 0</span>
   <span class="hint">&nbsp;&middot;&nbsp; arrow keys work too</span>
 </div>
 
-<div class="viz"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 364" role="img"
+<div class="viz" id="d1"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 364" role="img"
      aria-label="The murderboard cycle, revealed in nine steps: a frozen artefact, two independent models, blind first rounds, the author ruling, the reviewers reflecting, the loop between them, the machine checker, and the two valid endings - dual GO or recorded dissent.">
 <style>.hd{font:700 11px system-ui,sans-serif;letter-spacing:.09em}.ph{font:700 13px system-ui,sans-serif;fill:#e8edf3}.mc{font:400 10.6px system-ui,sans-serif;fill:#9fb3c8}.mi{font:italic 400 10.6px system-ui,sans-serif;fill:#8fa6bd}.tag{font:600 9.6px system-ui,sans-serif;letter-spacing:.05em}.ft{font:italic 600 12.5px system-ui,sans-serif;fill:#dbad50}</style>
 <defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#7d93ad"/></marker><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#dbad50"/></marker></defs>
@@ -82,9 +83,9 @@
 <g data-frag="4">
 <line x1="336" y1="152" x2="354" y2="152" stroke="#7d93ad" stroke-width="2" marker-end="url(#ar)"/>
 <rect x="348" y="92" width="182" height="120" rx="7" fill="#142846" stroke="#27446e"/>
-<text x="362" y="116" class="ph">2 &#183; author rules</text>
-<text x="362" y="138" class="mc">The author adjudicates every</text>
-<text x="362" y="152" class="mc">item.</text>
+<text x="362" y="116" class="ph">2 &#183; YOU rule</text>
+<text x="362" y="138" class="mc">The human who wrote it</text>
+<text x="362" y="152" class="mc">adjudicates every item.</text>
 <text x="362" y="174" class="mi">Two reviewers can converge</text>
 <text x="362" y="188" class="mi">on a mistake.</text>
 </g>
@@ -124,7 +125,9 @@
 </g>
 </svg></div>
 
-<h1 style="margin-top:2.2rem">The taxonomy prompt, murderboarded</h1><p class="sub">One prompt, two models generating blind, and an argument between them &ndash; because the value of a multi-dimensional taxonomy is that it maps your priors before you commit to one.</p><div class="viz"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 372" role="img"
+<h1 style="margin-top:2.4rem">The taxonomy prompt, murderboarded</h1><p class="sub">One prompt, two models generating blind, and an argument between them &ndash; because the value of a multi-dimensional taxonomy is that it maps your priors before you commit to one.</p>
+<div class="bar" data-for="d2"><button onclick="step('d2',1)">Next &rarr;</button><button onclick="step('d2',-1)">&larr; Back</button><button onclick="play('d2')">&#9654; Play</button><button onclick="setAll('d2',true)">Show all</button><button onclick="setAll('d2',false)">Reset</button><span class="step" id="step-d2">0 / 0</span></div>
+<div class="viz" id="d2"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 372" role="img"
      aria-label="The MDTDF pipeline: one prompt with the domain left blank goes to two frontier models which generate taxonomies blind and independently; the two differ; a murderboard makes them argue until they converge; the output is a multi-dimensional taxonomy whose dimensions are orthogonal vantage points rather than a decomposition.">
 <style>.hd{font:700 10.5px system-ui,sans-serif;letter-spacing:.1em}.ph{font:700 12.5px system-ui,sans-serif;fill:#e8edf3}.mc{font:400 10.3px system-ui,sans-serif;fill:#9fb3c8}.dim{font:500 10.4px system-ui,sans-serif;fill:#cfe0ee}.tag{font:600 9.4px system-ui,sans-serif;letter-spacing:.05em}.ft{font:italic 600 12.5px system-ui,sans-serif;fill:#dbad50}.mono{font:500 10px ui-monospace,monospace;fill:#dbad50}</style>
 <defs><marker id="a1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#7d93ad"/></marker><marker id="a2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#dbad50"/></marker></defs>
@@ -246,28 +249,55 @@
 
 </div>
 <script>
-  var frags = [].slice.call(document.querySelectorAll('[data-frag]'))
-                .sort(function(a,b){return +a.dataset.frag - +b.dataset.frag;});
-  var at = 0, timer = null;
-  function paint(){
-    frags.forEach(function(f,i){ f.classList.toggle('shown', i < at); });
-    document.getElementById('stepLabel').textContent = at + ' / ' + frags.length;
+  /* Each diagram is independent: its own fragment list, its own counter, its own timer.
+     Sharing one counter across two SVGs interleaved them and left the second half-revealed. */
+  var D = {};
+  ['d1','d2'].forEach(function(id){
+    var root = document.getElementById(id);
+    if (!root) return;
+    D[id] = {
+      root: root,
+      frags: [].slice.call(root.querySelectorAll('[data-frag]'))
+                .sort(function(a,b){ return +a.dataset.frag - +b.dataset.frag; }),
+      at: 0, timer: null
+    };
+  });
+  function paint(id){
+    var d = D[id]; if (!d) return;
+    d.frags.forEach(function(f,i){ f.classList.toggle('shown', i < d.at); });
+    var el = document.getElementById('step-' + id);
+    if (el) el.textContent = d.at + ' / ' + d.frags.length;
   }
-  function step(d){ clearInterval(timer); at = Math.max(0, Math.min(frags.length, at + d)); paint(); }
-  function setAll(on){ clearInterval(timer); at = on ? frags.length : 0; paint(); }
-  function play(){
-    clearInterval(timer); at = 0; paint();
-    timer = setInterval(function(){
-      if (at >= frags.length) { clearInterval(timer); return; }
-      at++; paint();
-    }, 900);
+  function step(id, n){ var d=D[id]; if(!d) return; clearInterval(d.timer);
+    d.at = Math.max(0, Math.min(d.frags.length, d.at + n)); paint(id); }
+  function setAll(id, on){ var d=D[id]; if(!d) return; clearInterval(d.timer);
+    d.at = on ? d.frags.length : 0; paint(id); }
+  function play(id){
+    var d=D[id]; if(!d) return;
+    clearInterval(d.timer); d.at = 0; paint(id);
+    d.timer = setInterval(function(){
+      if (d.at >= d.frags.length) { clearInterval(d.timer); return; }
+      d.at++; paint(id);
+    }, 850);
+  }
+  /* arrow keys drive whichever diagram is nearest the middle of the viewport */
+  function nearest(){
+    var best=null, bd=1e9, mid=window.innerHeight/2;
+    Object.keys(D).forEach(function(id){
+      var r = D[id].root.getBoundingClientRect();
+      var dist = Math.abs((r.top + r.bottom)/2 - mid);
+      if (dist < bd) { bd = dist; best = id; }
+    });
+    return best;
   }
   document.addEventListener('keydown', function(e){
-    if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); step(1); }
-    if (e.key === 'ArrowLeft') { e.preventDefault(); step(-1); }
-    if (e.key === 'b' || e.key === 'B') setAll(true);
+    var id = nearest(); if (!id) return;
+    if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); step(id, 1); }
+    if (e.key === 'ArrowLeft') { e.preventDefault(); step(id, -1); }
+    if (e.key === 'b' || e.key === 'B') setAll(id, true);
   });
-  paint();
-  setTimeout(play, 400);
+  Object.keys(D).forEach(paint);
+  setTimeout(function(){ play('d1'); }, 400);
+  setTimeout(function(){ play('d2'); }, 400);
 </script>
 </body></html>
