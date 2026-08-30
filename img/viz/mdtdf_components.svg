@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 392" role="img"
+     aria-label="The MDTDF prompt decomposed: four development phases, the four-level output structure from HLTP down to taxon, the five validation criteria with the independence test, the TSV output contract, and the murderboard wrapper that runs the whole prompt twice blind.">
+<style>.hd{font:700 10.5px system-ui,sans-serif;letter-spacing:.1em}.ph{font:700 12px system-ui,sans-serif;fill:#e8edf3}.lv{font:700 12.5px system-ui,sans-serif}.mc{font:400 10px system-ui,sans-serif;fill:#9fb3c8}.st{font:400 9.6px system-ui,sans-serif;fill:#8fa6bd}.tag{font:600 9.2px system-ui,sans-serif;letter-spacing:.05em}.mono{font:500 9.4px ui-monospace,monospace;fill:#cfe0ee}.ft{font:italic 600 12px system-ui,sans-serif;fill:#dbad50}</style>
+<defs><marker id="m1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5.5" markerHeight="5.5" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#7d93ad"/></marker><marker id="m2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5.5" markerHeight="5.5" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#dbad50"/></marker></defs>
+<rect width="980" height="392" fill="#09182f"/>
+<g data-frag="1"><text x="20" y="24" class="hd" fill="#dbad50">THE METHOD &#183; FOUR PHASES, EACH WITH FIVE STEPS</text></g>
+<g data-frag="1">
+<rect x="20" y="32" width="226" height="58" rx="6" fill="#142846" stroke="#27446e"/>
+<text x="32" y="50" class="ph">1 &#183; identify</text>
+<text x="32" y="65" class="st">domain definition &#183; brainstorm &#183;</text>
+<text x="32" y="77" class="st">literature &#183; experts &#183; first principles</text>
+</g>
+<g data-frag="2">
+<rect x="258" y="32" width="226" height="58" rx="6" fill="#142846" stroke="#27446e"/>
+<text x="270" y="50" class="ph">2 &#183; refine</text>
+<text x="270" y="65" class="st">independence testing &#183; classify examples</text>
+<text x="270" y="77" class="st">&#183; gaps &#183; merge overlaps</text>
+<line x1="230" y1="61" x2="252" y2="61" stroke="#7d93ad" stroke-width="1.8" marker-end="url(#m1)"/>
+</g>
+<g data-frag="3">
+<rect x="496" y="32" width="226" height="58" rx="6" fill="#142846" stroke="#27446e"/>
+<text x="508" y="50" class="ph">3 &#183; second level</text>
+<text x="508" y="65" class="st">divisions &#183; mutual exclusivity &#183;</text>
+<text x="508" y="77" class="st">completeness &#183; boundary tests</text>
+<line x1="468" y1="61" x2="490" y2="61" stroke="#7d93ad" stroke-width="1.8" marker-end="url(#m1)"/>
+</g>
+<g data-frag="4">
+<rect x="734" y="32" width="226" height="58" rx="6" fill="#142846" stroke="#27446e"/>
+<text x="746" y="50" class="ph">4 &#183; validate</text>
+<text x="746" y="65" class="st">real cases &#183; edge cases &#183; expert review</text>
+<text x="746" y="77" class="st">&#183; use it &#183; iterate</text>
+<line x1="706" y1="61" x2="728" y2="61" stroke="#7d93ad" stroke-width="1.8" marker-end="url(#m1)"/>
+</g>
+<g data-frag="5">
+<text x="20" y="118" class="hd" fill="#5fae86">WHAT IT MUST PRODUCE &#183; FOUR LEVELS</text>
+<rect x="20" y="132" width="300" height="22" rx="4" fill="#142846" stroke="#5fae86"/>
+<text x="30" y="147" class="lv" fill="#5fae86">HLTP</text>
+<text x="124" y="147" class="mc">an independent LENS on the domain</text>
+<rect x="36" y="158" width="284" height="22" rx="4" fill="#142846" stroke="#6fa8d6"/>
+<text x="46" y="173" class="lv" fill="#6fa8d6">2nd Level TE</text>
+<text x="140" y="173" class="mc">major division inside that lens</text>
+<rect x="52" y="184" width="268" height="22" rx="4" fill="#142846" stroke="#6fa8d6"/>
+<text x="62" y="199" class="lv" fill="#6fa8d6">3rd Level TE</text>
+<text x="156" y="199" class="mc">specific operational area</text>
+<rect x="68" y="210" width="252" height="22" rx="4" fill="#142846" stroke="#d69a6f"/>
+<text x="78" y="225" class="lv" fill="#d69a6f">Taxon</text>
+<text x="172" y="225" class="mc">a concrete instance &#183; 8-15 per 3rd level</text>
+</g>
+<g data-frag="6">
+<text x="352" y="118" class="hd" fill="#7d93ad">EVERY HLTP MUST PASS FIVE</text>
+<rect x="352" y="130" width="150" height="18" rx="4" fill="#0d2035" stroke="#27446e"/>
+<text x="362" y="143" class="mc">independence</text>
+<rect x="352" y="152" width="150" height="18" rx="4" fill="#0d2035" stroke="#27446e"/>
+<text x="362" y="165" class="mc">universality</text>
+<rect x="352" y="174" width="150" height="18" rx="4" fill="#0d2035" stroke="#27446e"/>
+<text x="362" y="187" class="mc">fundamentality</text>
+<rect x="352" y="196" width="150" height="18" rx="4" fill="#0d2035" stroke="#27446e"/>
+<text x="362" y="209" class="mc">distinctiveness</text>
+<rect x="352" y="218" width="150" height="18" rx="4" fill="#0d2035" stroke="#27446e"/>
+<text x="362" y="231" class="mc">utility</text>
+</g>
+<g data-frag="7">
+<rect x="520" y="126" width="440" height="94" rx="7" fill="#142846" stroke="#dbad50" stroke-width="1.5"/>
+<text x="534" y="146" class="ph" fill="#dbad50">The one test that matters</text>
+<text x="534" y="164" class="mc">Position on one dimension changes &#8212; the others stay put.</text>
+<text x="534" y="177" class="mc">If two of your dimensions always move together, you have</text>
+<text x="534" y="190" class="mc">ONE dimension wearing two hats. Merge them.</text>
+<text x="534" y="203" class="mc">A model will hand you a beautiful taxonomy whose dimensions</text>
+<text x="534" y="216" class="mc">are not independent, and it will not warn you.</text>
+</g>
+<g data-frag="8">
+<text x="20" y="248" class="hd" fill="#7d93ad">THE OUTPUT CONTRACT</text>
+<rect x="20" y="256" width="482" height="60" rx="6" fill="#0d2035" stroke="#27446e"/>
+<text x="32" y="274" class="mono">HLTP &#8594; 2nd Level TE &#8594; 3rd Level TE &#8594; Taxon</text>
+<text x="32" y="290" class="mono">Functional Domain | Law Enforcement | Apprehension | Warrant execution</text>
+<text x="32" y="308" class="st">TSV, four columns, no quotes, no extra metadata, grouped by level &#183; one row = one full path</text>
+</g>
+<g data-frag="9">
+<text x="520" y="248" class="hd" fill="#d69a6f">ONE ACTIVITY, SEVEN LENSES</text>
+<rect x="520" y="256" width="440" height="60" rx="6" fill="#142846" stroke="#d69a6f"/>
+<text x="534" y="274" class="mc">A community policing patrol is simultaneously:</text>
+<text x="534" y="290" class="st">pre-incident &#183; local &#183; soft power &#183; community engagement</text>
+<text x="534" y="304" class="st">throughput &#183; tacit knowledge &#183; tactical</text>
+</g>
+<g data-frag="10">
+<rect x="20" y="330" width="940" height="46" rx="6" fill="#12243f" stroke="#dbad50"/>
+<text x="34" y="349" class="ft">Then run the whole prompt TWICE, blind &#8212; two models, neither seeing the other &#8212; and murderboard the results.</text>
+<text x="34" y="367" class="mc">Where the two taxonomies disagree is where your domain is genuinely contestable. That disagreement is a finding, not a defect.</text>
+</g>
+</svg>
