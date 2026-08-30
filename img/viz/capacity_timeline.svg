@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 340" role="img"
+     aria-label="A timeline: the Soviet-studies infrastructure is built in the 1960s to 1980s, dismantled after 1991, and never rebuilt - while the misses accumulate in 2007, 2008, 2014 and 2022.">
+<style>.hd{font:700 12px system-ui,sans-serif;letter-spacing:.09em}.yr{font:700 15px system-ui,sans-serif;fill:#e8edf3}.lb{font:600 13px system-ui,sans-serif;fill:#e8edf3}.mc{font:400 11px system-ui,sans-serif;fill:#9fb3c8}.ft{font:italic 600 12.5px system-ui,sans-serif;fill:#dbad50}</style>
+<rect width="980" height="340" fill="#09182f"/>
+<text x="40" y="30" class="hd" fill="#dbad50">ANALYTICAL CAPACITY</text>
+<path d="M60,96 L300,88 L360,92 L430,150 L520,196 L700,208 L920,204" fill="none" stroke="#dbad50" stroke-width="3"/>
+<path d="M60,96 L300,88 L360,92 L430,150 L520,196 L700,208 L920,204 L920,232 L60,232 Z" fill="#dbad50" opacity="0.10"/>
+<line x1="60" y1="232" x2="920" y2="232" stroke="#27446e" stroke-width="1.2"/>
+<line x1="60" y1="228" x2="60" y2="238" stroke="#27446e" stroke-width="1.2"/>
+<text x="60" y="254" class="mc" text-anchor="middle">1960s</text>
+<line x1="300" y1="228" x2="300" y2="238" stroke="#27446e" stroke-width="1.2"/>
+<text x="300" y="254" class="mc" text-anchor="middle">1991</text>
+<line x1="470" y1="228" x2="470" y2="238" stroke="#27446e" stroke-width="1.2"/>
+<text x="470" y="254" class="mc" text-anchor="middle">2007</text>
+<line x1="560" y1="228" x2="560" y2="238" stroke="#27446e" stroke-width="1.2"/>
+<text x="560" y="254" class="mc" text-anchor="middle">2014</text>
+<line x1="700" y1="228" x2="700" y2="238" stroke="#27446e" stroke-width="1.2"/>
+<text x="700" y="254" class="mc" text-anchor="middle">2022</text>
+<line x1="900" y1="228" x2="900" y2="238" stroke="#27446e" stroke-width="1.2"/>
+<text x="900" y="254" class="mc" text-anchor="middle">now</text>
+<rect x="60" y="46" width="240" height="40" rx="6" fill="#142846" stroke="#dbad50"/>
+<text x="76" y="64" class="lb">Infrastructure, built</text>
+<text x="76" y="79" class="mc">~200 specialists. A real library. Human technology.</text>
+<text x="330" y="120" class="yr" fill="#7d93ad">1991</text>
+<text x="330" y="137" class="mc">the competitor leaves &#8212; and so does the field</text>
+<text x="470" y="188" class="hd" fill="#c9614f">THE MISSES</text>
+<circle cx="470" cy="208" r="6" fill="#c9614f"/>
+<circle cx="516" cy="208" r="6" fill="#c9614f"/>
+<circle cx="562" cy="208" r="6" fill="#c9614f"/>
+<circle cx="700" cy="208" r="6" fill="#c9614f"/>
+<rect x="612" y="60" width="308" height="52" rx="6" fill="#142846" stroke="#27446e"/>
+<text x="628" y="80" class="lb">Urgency returns. Capacity does not.</text>
+<text x="628" y="97" class="mc">More information than ever. Less system than ever.</text>
+<rect x="40" y="282" width="900" height="34" rx="6" fill="#12243f" stroke="#27446e"/>
+<text x="490" y="304" class="ft" text-anchor="middle">We built it once, with nothing but people. Then we stopped &#8212; and the questions got harder.</text>
+</svg>

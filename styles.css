@@ -448,3 +448,13 @@
         .session-card[style*="default"]:hover { transform: none; box-shadow: none;
                                                 border-color: rgba(255,255,255,.08); }
         .gloss { color: var(--lb); font-style: italic; font-weight: 400; opacity: .92; }
+
+/* --- week spine: Day 1 is the diagnosis, the rest is the treatment (2026-08-30) --- */
+.week-spine{max-width:64rem;margin:0 auto 1.4rem;padding:.85rem 1.1rem;
+  border-left:3px solid var(--gold,#dbad50);background:rgba(219,173,80,.07);
+  border-radius:0 6px 6px 0;font-size:.95rem;line-height:1.55}
+.week-spine strong{color:var(--gold,#dbad50)}
+.week-spine em{font-style:normal;font-weight:600}
+.step-treats{margin-top:.35rem;font-size:.72rem;letter-spacing:.06em;
+  text-transform:uppercase;color:var(--lb,#82a0bc);opacity:.85}
+.step-treats.diagnosis{color:var(--gold,#dbad50);opacity:1;font-weight:600}
