@@ -26,6 +26,7 @@ def _is_flat_export(frag):
 
 def main(paths):
     text = DECK.read_text(encoding='utf-8')
+    refused = []
     for p in paths:
         frag = pathlib.Path(p).read_text(encoding='utf-8').strip()
         sid = re.search(r'data-sid="([^"]+)"', frag)
@@ -41,9 +42,10 @@ def main(paths):
         # them reached the deck and were reported done before anyone measured it.
         # Refuse them here, where they would otherwise become a green report.
         if _is_flat_export(frag) and '--allow-dump' not in sys.argv:
-            sys.exit(f'{p}: REFUSED - {sid} is still a flat export with clip-path '
-                     f'windows, not a rebuild. Compose it from img/src2025/ assets, '
-                     f'or pass --allow-dump with a reason if this is deliberate.')
+            refused.append(f'{sid}: still a flat export with clip-path windows, not a '
+                           f'rebuild. Compose it from img/src2025/ assets, or pass '
+                           f'--allow-dump with a reason.')
+            continue
         oldn = re.search(r'data-n="([^"]*)"', old)
         newn = re.search(r'data-n="([^"]*)"', frag)
         if oldn and (not newn or newn.group(1) != oldn.group(1)):
@@ -57,6 +59,10 @@ def main(paths):
         text = text[:hits[0].start()] + frag + text[hits[0].end():]
         print(f'spliced {sid}  ({len(old)} -> {len(frag)} bytes)')
     DECK.write_text(text, encoding='utf-8')
+    for r in refused:
+        print('REFUSED ' + r)
+    if refused:
+        sys.exit(f'{len(refused)} fragment(s) refused; the rest were spliced')
 
 if __name__ == '__main__':
     args = sys.argv[1:]

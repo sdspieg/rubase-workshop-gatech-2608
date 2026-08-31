@@ -1,35 +1,39 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 460" role="img"
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 390" role="img"
      aria-label="PubMed query behaviour: operator use and session depth">
 <style>
  .lbl{font:600 17px "Titillium Web",sans-serif;fill:#e8edf3}
- .num{font:800 34px "Titillium Web",sans-serif;fill:#dbad50}
+ .val{font:800 18px "Titillium Web",sans-serif;fill:#dbad50}
+ .num{font:800 32px "Titillium Web",sans-serif;fill:#dbad50}
  .cap{font:400 14px "Titillium Web",sans-serif;fill:#82a0bc}
  .hd{font:700 15px "Titillium Web",sans-serif;fill:#00FFFF;letter-spacing:.08em}
- .track{fill:#1E3A63}.bar{fill:#dbad50}.barq{fill:#4a6f9c}
+ .track{fill:#1E3A63}.bar{fill:#dbad50}
 </style>
-<text class="hd" x="0" y="16">HOW OFTEN AN OPERATOR IS USED AT ALL</text>
-<g transform="translate(0,40)">
-  <rect class="track" x="0" y="0" width="560" height="30" rx="3"/>
-  <rect class="bar" x="0" y="0" width="63" height="30" rx="3"/>
-  <text class="lbl" x="575" y="21">AND · 11.2%</text>
-  <rect class="track" x="0" y="42" width="560" height="30" rx="3"/>
-  <rect class="bar" x="0" y="42" width="7" height="30" rx="3"/>
-  <text class="lbl" x="575" y="63">OR · 1.3%</text>
-  <rect class="track" x="0" y="84" width="560" height="30" rx="3"/>
-  <rect class="bar" x="0" y="84" width="2" height="30" rx="3"/>
-  <text class="lbl" x="575" y="105">NOT · 0.2%</text>
-</g>
-<line x1="0" y1="178" x2="900" y2="178" stroke="#1E3A63" stroke-width="1"/>
-<g transform="translate(0,212)">
-  <text class="hd" x="0" y="0">AND HOW DEEP THE SEARCH GOES</text>
-  <text class="num" x="0" y="52">3</text><text class="cap" x="0" y="74">median terms per query</text>
-  <text class="num" x="230" y="52">62.75%</text><text class="cap" x="230" y="74">sessions that were one query</text>
-  <text class="num" x="560" y="52">2.7M</text><text class="cap" x="560" y="74">queries, one day, 624,514 users</text>
-</g>
-<text class="cap" x="0" y="360">Herskovic, Tanaka, Hersh &amp; Bernstam, JAMIA 2007 — PubMed transaction log</text>
-<g transform="translate(0,392)">
-  <rect x="0" y="0" width="900" height="58" rx="3" fill="#142846" stroke="#dbad50" stroke-width="1"/>
-  <text class="lbl" x="18" y="26">Of 137 published systematic reviews — the most careful searching we do —</text>
-  <text class="lbl" x="18" y="48"><tspan fill="#dbad50" font-weight="800">92.7%</tspan> contained search-strategy errors; <tspan fill="#dbad50" font-weight="800">78.1%</tspan> changed what came back.</text>
+<text class="hd" x="0" y="14">HOW OFTEN AN OPERATOR IS USED AT ALL</text>
+
+<text class="lbl" x="0" y="40">AND</text><text class="val" x="880" y="40" text-anchor="end">11.2%</text>
+<rect class="track" x="0" y="46" width="880" height="28" rx="4"/>
+<rect class="bar" x="0" y="46" width="99" height="28" rx="4"/>
+
+<text class="lbl" x="0" y="92">OR</text><text class="val" x="880" y="92" text-anchor="end">1.3%</text>
+<rect class="track" x="0" y="98" width="880" height="28" rx="4"/>
+<rect class="bar" x="0" y="98" width="11" height="28" rx="4"/>
+
+<text class="lbl" x="0" y="144">NOT</text><text class="val" x="880" y="144" text-anchor="end">0.2%</text>
+<rect class="track" x="0" y="150" width="880" height="28" rx="4"/>
+<rect class="bar" x="0" y="150" width="2" height="28" rx="4"/>
+
+<line x1="0" y1="196" x2="900" y2="196" stroke="#1E3A63" stroke-width="1"/>
+
+<text class="hd" x="0" y="220">AND HOW DEEP THE SEARCH GOES</text>
+<text class="num" x="0" y="270">3</text><text class="cap" x="0" y="290">median terms per query</text>
+<text class="num" x="330" y="270">62.75%</text><text class="cap" x="330" y="290">sessions that were one query</text>
+<text class="num" x="650" y="270">2.7M</text><text class="cap" x="650" y="290">queries, one day, 624,514 users</text>
+
+<text class="cap" x="0" y="316">Herskovic, Tanaka, Hersh &amp; Bernstam, JAMIA 2007&#160;&#8211; PubMed transaction log</text>
+
+<g transform="translate(0,332)">
+  <rect x="0" y="0" width="900" height="52" rx="4" fill="#142846" stroke="#dbad50" stroke-width="1"/>
+  <text class="lbl" x="18" y="20">Of 137 published systematic reviews&#160;&#8211; the most careful searching we do&#160;&#8211;</text>
+  <text class="lbl" x="18" y="42"><tspan fill="#dbad50" font-weight="800">92.7%</tspan> contained search-strategy errors; <tspan fill="#dbad50" font-weight="800">78.1%</tspan> changed what came back.</text>
 </g>
 </svg>
