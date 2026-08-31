@@ -1,0 +1,534 @@
+{
+ "768e0c": {
+  "ordinal_now": 1,
+  "title": "Title"
+ },
+ "592826": {
+  "ordinal_now": 2,
+  "title": "Flashback in time"
+ },
+ "0cae47": {
+  "ordinal_now": 3,
+  "title": "Russia is back. We are not."
+ },
+ "2cc98d": {
+  "ordinal_now": 4,
+  "title": "We built it once. Then we stopped."
+ },
+ "463051": {
+  "ordinal_now": 5,
+  "title": "The week"
+ },
+ "5539ea": {
+  "ordinal_now": 6,
+  "title": "Day 1 &amp;middot; Monday 31 August - Foundations"
+ },
+ "8d2bbe": {
+  "ordinal_now": 7,
+  "title": "How this week works"
+ },
+ "8724ac": {
+  "ordinal_now": 8,
+  "title": "Sound familiar?"
+ },
+ "73194a": {
+  "ordinal_now": 9,
+  "title": "You are not alone"
+ },
+ "85dc56": {
+  "ordinal_now": 10,
+  "title": "A salutary side-story"
+ },
+ "e2c812": {
+  "ordinal_now": 11,
+  "title": "For 2,000 years: the four humors"
+ },
+ "04c7c6": {
+  "ordinal_now": 12,
+  "title": "The 'omics"
+ },
+ "2363ed": {
+  "ordinal_now": 13,
+  "title": "genomics : the genome :: geomics : the conflict"
+ },
+ "314842": {
+  "ordinal_now": 14,
+  "title": "The AlphaFold moment"
+ },
+ "c90e35": {
+  "ordinal_now": 15,
+  "title": "Where is our vaccine?"
+ },
+ "93045a": {
+  "ordinal_now": 16,
+  "title": "Paradigm shifts across disciplines (1/2)"
+ },
+ "eb5ee1": {
+  "ordinal_now": 17,
+  "title": "Paradigm shifts across disciplines (2/2)"
+ },
+ "c2714a": {
+  "ordinal_now": 18,
+  "title": "What transfers, and what does not"
+ },
+ "ddd23c": {
+  "ordinal_now": 19,
+  "title": "So why not us?"
+ },
+ "a6b3d1": {
+  "ordinal_now": 20,
+  "title": "How do we currently do it?"
+ },
+ "1d4b51": {
+  "ordinal_now": 21,
+  "title": "How search is typically done today"
+ },
+ "43e9ad": {
+  "ordinal_now": 22,
+  "title": "The sophistication of our queries"
+ },
+ "b1a142": {
+  "ordinal_now": 23,
+  "title": "Problems with search today"
+ },
+ "10f148": {
+  "ordinal_now": 24,
+  "title": "Precision and recall"
+ },
+ "6705c1": {
+  "ordinal_now": 25,
+  "title": "What would a useful search even look like?"
+ },
+ "1b2e10": {
+  "ordinal_now": 26,
+  "title": "The peer-review crisis"
+ },
+ "586211": {
+  "ordinal_now": 27,
+  "title": "DARPA SCORE"
+ },
+ "68c1c3": {
+  "ordinal_now": 28,
+  "title": "The social and behavioral sciences reliability crisis"
+ },
+ "f3d765": {
+  "ordinal_now": 29,
+  "title": "The reliability crisis, continued"
+ },
+ "e18c1e": {
+  "ordinal_now": 30,
+  "title": "Broad versus narrow"
+ },
+ "256149": {
+  "ordinal_now": 31,
+  "title": "McNamara&#x27;s first law of defense analysis"
+ },
+ "27f512": {
+  "ordinal_now": 32,
+  "title": "Metascience is here"
+ },
+ "20300b": {
+  "ordinal_now": 33,
+  "title": "Why at least try broader?"
+ },
+ "5de4dc": {
+  "ordinal_now": 34,
+  "title": "Towards strategic analysis 3.0"
+ },
+ "70b561": {
+  "ordinal_now": 35,
+  "title": "Pub-centric to knowledge-centric"
+ },
+ "16e211": {
+  "ordinal_now": 36,
+  "title": "The 'real' IR vs 'our' IR"
+ },
+ "d4f10d": {
+  "ordinal_now": 37,
+  "title": "RuBase: what's in a name"
+ },
+ "194882": {
+  "ordinal_now": 38,
+  "title": "Spiral development"
+ },
+ "156d60": {
+  "ordinal_now": 39,
+  "title": "Wissensanhaeufung 3.0"
+ },
+ "419829": {
+  "ordinal_now": 40,
+  "title": "The Sunburst app"
+ },
+ "d385e0": {
+  "ordinal_now": 41,
+  "title": "What this has produced"
+ },
+ "9db060": {
+  "ordinal_now": 42,
+  "title": "Before tomorrow"
+ },
+ "13dc1e": {
+  "ordinal_now": 43,
+  "title": "Day 2 &amp;middot; Tuesday 1 September - Corpora"
+ },
+ "1f47ad": {
+  "ordinal_now": 44,
+  "title": "The scholarly record on your topic"
+ },
+ "9240d6": {
+  "ordinal_now": 45,
+  "title": "Misleading tips of icebergs"
+ },
+ "3874b1": {
+  "ordinal_now": 46,
+  "title": "Two ways to explore the full record"
+ },
+ "84f368": {
+  "ordinal_now": 47,
+  "title": "Where to get data?"
+ },
+ "cc4f36": {
+  "ordinal_now": 48,
+  "title": "And then into Zotero"
+ },
+ "0734c8": {
+  "ordinal_now": 49,
+  "title": "An epistemic MRI"
+ },
+ "17306f": {
+  "ordinal_now": 50,
+  "title": "Enter your query"
+ },
+ "ec9183": {
+  "ordinal_now": 51,
+  "title": "Note the small Ns"
+ },
+ "9ce288": {
+  "ordinal_now": 52,
+  "title": "Slicing and dicing - and what is missing"
+ },
+ "443c39": {
+  "ordinal_now": 53,
+  "title": "Shaping a search strategy"
+ },
+ "cb4fd8": {
+  "ordinal_now": 54,
+  "title": "How we actually built a query"
+ },
+ "02774d": {
+  "ordinal_now": 55,
+  "title": "Boolean operators"
+ },
+ "a5577b": {
+  "ordinal_now": 56,
+  "title": "NOT - and why it is dangerous"
+ },
+ "8f021e": {
+  "ordinal_now": 57,
+  "title": "OR - the operator that does the recall work"
+ },
+ "fde1a5": {
+  "ordinal_now": 58,
+  "title": "Proximity - AND with a distance limit"
+ },
+ "752067": {
+  "ordinal_now": 59,
+  "title": "Compiling baskets"
+ },
+ "0787b3": {
+  "ordinal_now": 60,
+  "title": "Search is iterative"
+ },
+ "99118c": {
+  "ordinal_now": 61,
+  "title": "Documenting your search"
+ },
+ "d3cd22": {
+  "ordinal_now": 62,
+  "title": "The scholarly record on armed forces"
+ },
+ "7ed693": {
+  "ordinal_now": 63,
+  "title": "What is bibliometrics"
+ },
+ "2e10a6": {
+  "ordinal_now": 64,
+  "title": "The Lens - broad"
+ },
+ "a6284b": {
+  "ordinal_now": 65,
+  "title": "Bibliometrix"
+ },
+ "5ba8b5": {
+  "ordinal_now": 66,
+  "title": "The thematic map"
+ },
+ "9bd5f8": {
+  "ordinal_now": 67,
+  "title": "Two ways of looking at the heap of knowledge"
+ },
+ "7cf1ca": {
+  "ordinal_now": 68,
+  "title": "LLMs: pros and cons"
+ },
+ "b08733": {
+  "ordinal_now": 69,
+  "title": "Bibliographical RAG - the workflow"
+ },
+ "b45213": {
+  "ordinal_now": 70,
+  "title": "Key tools"
+ },
+ "8cee4f": {
+  "ordinal_now": 71,
+  "title": "Day 2 close"
+ },
+ "4fbfc6": {
+  "ordinal_now": 72,
+  "title": "Day 3 &amp;middot; Wednesday 2 September - Taxonomies"
+ },
+ "9d1904": {
+  "ordinal_now": 73,
+  "title": "LLM uptake across academic disciplines"
+ },
+ "8412d7": {
+  "ordinal_now": 74,
+  "title": "The exponential rise"
+ },
+ "7e21dc": {
+  "ordinal_now": 75,
+  "title": "True political science: dead last"
+ },
+ "4b7fb0": {
+  "ordinal_now": 76,
+  "title": "What are ontologies and taxonomies?"
+ },
+ "bd63a6": {
+  "ordinal_now": 77,
+  "title": "Why they matter for cumulative knowledge"
+ },
+ "763eb4": {
+  "ordinal_now": 78,
+  "title": "Patchy scientific uptake"
+ },
+ "9b099a": {
+  "ordinal_now": 79,
+  "title": "Multidimensional taxonomies: an analogy"
+ },
+ "f92979": {
+  "ordinal_now": 80,
+  "title": "The taxonomy generation prompt (1)"
+ },
+ "3a0713": {
+  "ordinal_now": 81,
+  "title": "The MDTDF prompt, componentized"
+ },
+ "a4024a": {
+  "ordinal_now": 82,
+  "title": "The taxonomy prompt, murderboarded"
+ },
+ "48a61f": {
+  "ordinal_now": 83,
+  "title": "The murderboard"
+ },
+ "4282c6": {
+  "ordinal_now": 84,
+  "title": "The taxonomy generation prompt (2)"
+ },
+ "2fed92": {
+  "ordinal_now": 85,
+  "title": "Framing research questions with taxonomies"
+ },
+ "f5a18c": {
+  "ordinal_now": 86,
+  "title": "Engaging LLMs a level higher"
+ },
+ "802f84": {
+  "ordinal_now": 87,
+  "title": "Comparative analysis across models"
+ },
+ "1289f4": {
+  "ordinal_now": 88,
+  "title": "A worked taxonomy: Russian policy in the Caucasus"
+ },
+ "18c049": {
+  "ordinal_now": 89,
+  "title": "A worked taxonomy: Regeneration"
+ },
+ "7b0918": {
+  "ordinal_now": 90,
+  "title": "Deterrence: the classics"
+ },
+ "6b1670": {
+  "ordinal_now": 91,
+  "title": "Deterrence&#x27;s hyponyms"
+ },
+ "2c1b6a": {
+  "ordinal_now": 92,
+  "title": "Mapping the knowledge landscape"
+ },
+ "128bed": {
+  "ordinal_now": 93,
+  "title": "Four layers of deterrence scholarship"
+ },
+ "3ac529": {
+  "ordinal_now": 94,
+  "title": "Animal deterrent strategies"
+ },
+ "3c09f5": {
+  "ordinal_now": 95,
+  "title": "The declining utility of instrumentalising fear"
+ },
+ "368225": {
+  "ordinal_now": 96,
+  "title": "The independence test"
+ },
+ "4e7a9c": {
+  "ordinal_now": 97,
+  "title": "What your instrument cannot see"
+ },
+ "e696ae": {
+  "ordinal_now": 98,
+  "title": "Day 3 close"
+ },
+ "478141": {
+  "ordinal_now": 99,
+  "title": "Day 4 &amp;middot; Thursday 3 September - Classification"
+ },
+ "5e82cc": {
+  "ordinal_now": 100,
+  "title": "The corpus"
+ },
+ "1f5656": {
+  "ordinal_now": 101,
+  "title": "The taxonomy"
+ },
+ "2f0173": {
+  "ordinal_now": 102,
+  "title": "Prompting an LLM to assign chunks to taxonomic elements"
+ },
+ "4fb92e": {
+  "ordinal_now": 103,
+  "title": "The result - one example"
+ },
+ "09ab13": {
+  "ordinal_now": 104,
+  "title": "Grouping all chunks per taxonomic element"
+ },
+ "994544": {
+  "ordinal_now": 105,
+  "title": "Prompting an LLM to analyze all chunks for one element"
+ },
+ "6ea0d8": {
+  "ordinal_now": 106,
+  "title": "The write-up"
+ },
+ "bc8f7b": {
+  "ordinal_now": 107,
+  "title": "The report"
+ },
+ "09b478": {
+  "ordinal_now": 108,
+  "title": "A SWOT analysis of Russian regeneration aptitude"
+ },
+ "e631a8": {
+  "ordinal_now": 109,
+  "title": "Measure whether it worked"
+ },
+ "1cdb9e": {
+  "ordinal_now": 110,
+  "title": "An illustration from our own current work"
+ },
+ "6dbf94": {
+  "ordinal_now": 111,
+  "title": "Two traps"
+ },
+ "a3043f": {
+  "ordinal_now": 112,
+  "title": "Reading a kappa"
+ },
+ "f72d12": {
+  "ordinal_now": 113,
+  "title": "A real number"
+ },
+ "873af2": {
+  "ordinal_now": 114,
+  "title": "A real confusion matrix"
+ },
+ "a07c91": {
+  "ordinal_now": 115,
+  "title": "The same data, two answers"
+ },
+ "7784cd": {
+  "ordinal_now": 116,
+  "title": "Where the model stands"
+ },
+ "2855c0": {
+  "ordinal_now": 117,
+  "title": "The number we still do not have"
+ },
+ "6b9a6d": {
+  "ordinal_now": 118,
+  "title": "What to report"
+ },
+ "3db6c3": {
+  "ordinal_now": 119,
+  "title": "Day 4 close"
+ },
+ "dac3ec": {
+  "ordinal_now": 120,
+  "title": "Day 5 &amp;middot; Friday 4 September - Your projects, and the kit"
+ },
+ "83cde9": {
+  "ordinal_now": 121,
+  "title": "The incipient revolution in strategic analysis"
+ },
+ "5b5da9": {
+  "ordinal_now": 122,
+  "title": "How to represent knowledge"
+ },
+ "ea9ec3": {
+  "ordinal_now": 123,
+  "title": "An experiment in truthiness"
+ },
+ "2c1d68": {
+  "ordinal_now": 124,
+  "title": "Things, not strings"
+ },
+ "ebc2bc": {
+  "ordinal_now": 125,
+  "title": "We have already done work on an IR ontology"
+ },
+ "540dea": {
+  "ordinal_now": 126,
+  "title": "AHHSH"
+ },
+ "8119e7": {
+  "ordinal_now": 127,
+  "title": "Roadmap"
+ },
+ "d6b07f": {
+  "ordinal_now": 128,
+  "title": "What you can take"
+ },
+ "504a58": {
+  "ordinal_now": 129,
+  "title": "Clinics"
+ },
+ "542732": {
+  "ordinal_now": 130,
+  "title": "30-day plan"
+ },
+ "9c5206": {
+  "ordinal_now": 131,
+  "title": "The week in one slide"
+ },
+ "6e0d6f": {
+  "ordinal_now": 132,
+  "title": "When it breaks"
+ },
+ "bbfa77": {
+  "ordinal_now": 133,
+  "title": "Close"
+ }
+}
