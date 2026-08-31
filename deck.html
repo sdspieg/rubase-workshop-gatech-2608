@@ -292,7 +292,7 @@ table.shift col:first-child{width:12%}
    photographed, so it leaves its own note band along the bottom - which means the box
    never has to sit on top of anything. */
 .lungb .ob-pic svg{position:absolute;inset:0;width:100%;height:100%;display:block}
-.lungb svg .lg{opacity:0;transition:opacity .34s ease}
+.lungb svg .lg{opacity:0;transition:none}
 .lungb:has(.ob-step.l1.shown) svg .lg1{opacity:1}
 .lungb:has(.ob-step.l2.shown) svg .lg2{opacity:1}
 .lungb:has(.ob-step.l3.shown) svg .lg3{opacity:1}
@@ -303,7 +303,7 @@ body.measuring .lungb svg .lg,body.nobuild .lungb svg .lg{opacity:1;transition:n
 /* precision/recall uses the same grammar; its picture also leaves its own note band */
 .prb .ob-pic svg{position:absolute;inset:0;width:100%;height:100%;display:block}
 .prb .ob-pic img.prt{position:absolute;display:block;border-radius:3px}
-.prb svg .lg,.prb img.prt{opacity:0;transition:opacity .34s ease}
+.prb svg .lg,.prb img.prt{opacity:0;transition:none}
 .prb:has(.ob-step.p1.shown) svg .p1{opacity:1}
 .prb:has(.ob-step.p2.shown) svg .p2{opacity:1}
 .prb:has(.ob-step.p3.shown) svg .p3{opacity:1}
@@ -318,13 +318,13 @@ body.nobuild .prb svg .lg,body.nobuild .prb img.prt{opacity:1;transition:none}
 /* an3b - Towards strategic analysis 3.0 (clip-path progressive reveal of img/d1_analysis3.jpg) */
 .an3b .ob-pic{aspect-ratio:1280/720}
 .an3b .ob-plate{opacity:.16;filter:grayscale(.45)}
-.an3b .ob-reveal{opacity:0;transition:opacity .4s ease}
+.an3b .ob-reveal{opacity:0;transition:none}
 .an3b .ob-step.shown .ob-reveal{opacity:1}
 body.measuring .an3b .ob-reveal,body.nobuild .an3b .ob-reveal{opacity:1}
 /* pcb - Pub-centric to knowledge-centric (clip-path progressive reveal of img/d1_pubcentric.jpg) */
 .pcb .ob-pic{aspect-ratio:1280/720}
 .pcb .ob-plate{opacity:.16;filter:grayscale(.45)}
-.pcb .ob-reveal{opacity:0;transition:opacity .4s ease}
+.pcb .ob-reveal{opacity:0;transition:none}
 .pcb .ob-step.shown .ob-reveal{opacity:1}
 body.measuring .pcb .ob-reveal,body.nobuild .pcb .ob-reveal{opacity:1}
 /* ---- DIKW LADDER: the ORIGINAL slide picture, revealed rung by rung (SDS 2026-08-31) ----
@@ -337,7 +337,7 @@ body.measuring .pcb .ob-reveal,body.nobuild .pcb .ob-reveal{opacity:1}
   max-height:50cqh;border-radius:4px;overflow:hidden;background:#0a1830}
 .dikwbuild .ob-pic img{position:absolute;inset:0;width:100%;height:100%;display:block;object-fit:contain}
 .dikwbuild .ob-plate{opacity:.16;filter:grayscale(.4)}
-.dikwbuild .ob-reveal{opacity:0;transition:opacity .35s ease}
+.dikwbuild .ob-reveal{opacity:0;transition:none}
 .dikwbuild .ob-step.shown .ob-reveal{opacity:1}
 body.measuring .dikwbuild .ob-reveal,body.nobuild .dikwbuild .ob-reveal{opacity:1}
 /* AlphaFold moment (314842) - progressive reveal of the ORIGINAL Nature 2024 fig 1 (2116x1639),
@@ -345,7 +345,7 @@ body.measuring .dikwbuild .ob-reveal,body.nobuild .dikwbuild .ob-reveal{opacity:
    then four content beats over a scrim. Measured with PIL, not guessed - see report. */
 .afb .ob-pic{aspect-ratio:2116/1639;height:54cqh;width:auto;max-width:100%;max-height:58cqh;margin:0 auto}
 .afb .ob-plate{opacity:.16;filter:grayscale(.5)}
-.afb .ob-reveal{opacity:0;transition:opacity .3s}
+.afb .ob-reveal{opacity:0;transition:none}
 .afb .ob-step.shown .ob-reveal{opacity:1}
 body.measuring .afb .ob-reveal,body.nobuild .afb .ob-reveal{opacity:1}
 .afb .ob-note.hot{border-color:var(--gold,#dbad50);background:rgba(219,173,80,.14)}
@@ -359,10 +359,10 @@ body.measuring .afb .ob-reveal,body.nobuild .afb .ob-reveal{opacity:1}
 .rubasebuild .rb-map{width:46%;max-width:150px;border-radius:4px;opacity:0;
   transition:opacity .5s ease;filter:drop-shadow(0 6px 14px rgba(0,0,0,.4));display:block;margin:0 auto .4em}
 .rubasebuild .rb-svg{width:100%;height:auto;display:block}
-.rubasebuild .rb-svg text{opacity:0;transition:opacity .5s ease}
+.rubasebuild .rb-svg text{opacity:0;transition:none}
 .rubasebuild:has(.rbtrig.m1.shown) .rb-map{opacity:1}
 .rubasebuild:has(.rbtrig.m1.shown) .rb-svg text.rb-word{opacity:1}
-.rubasebuild svg .lg{opacity:0;transition:opacity .4s ease}
+.rubasebuild svg .lg{opacity:0;transition:none}
 .rubasebuild:has(.card.l1.shown) svg .lg1{opacity:1}
 .rubasebuild:has(.card.l2.shown) svg .lg2{opacity:1}
 .rubasebuild:has(.card.l3.shown) svg .lg3{opacity:1}
@@ -373,12 +373,12 @@ body.measuring .rubasebuild .rb-svg text,body.nobuild .rubasebuild .rb-svg text{
 body.measuring .rubasebuild svg .lg,body.nobuild .rubasebuild svg .lg{opacity:1}
 .fbb .ob-pic{aspect-ratio:1280/720}
 .fbb .ob-plate{opacity:.16;filter:grayscale(.45)}
-.fbb .ob-reveal{opacity:0;transition:opacity .4s ease}
+.fbb .ob-reveal{opacity:0;transition:none}
 .fbb .ob-step.shown .ob-reveal{opacity:1}
 body.measuring .fbb .ob-reveal,body.nobuild .fbb .ob-reveal{opacity:1}
 .rbb .ob-pic{aspect-ratio:1280/720}
 .rbb .ob-plate{opacity:.16;filter:grayscale(.45)}
-.rbb .ob-reveal{opacity:0;transition:opacity .4s ease}
+.rbb .ob-reveal{opacity:0;transition:none}
 .rbb .ob-step.shown .ob-reveal{opacity:1}
 body.measuring .rbb .ob-reveal,body.nobuild .rbb .ob-reveal{opacity:1}
 /* ---- capsre: "We built it once" (2cc98d) - the timeline sat inside the slide's
@@ -437,7 +437,7 @@ body.measuring .rbb .ob-reveal,body.nobuild .rbb .ob-reveal{opacity:1}
    than obscuring any of the 8 cards. The close (t9) dims the finished ledger
    with the existing .ob-scrim rather than covering one part of it. */
 .xferb .ob-pic{aspect-ratio:964/352}
-.xferb svg .lg{opacity:0;transition:opacity .34s ease}
+.xferb svg .lg{opacity:0;transition:none}
 .xferb:has(.ob-step.t1.shown) svg .lg1{opacity:1}
 .xferb:has(.ob-step.t2.shown) svg .lg1,
 .xferb:has(.ob-step.t2.shown) svg .lg2{opacity:1}
@@ -469,83 +469,83 @@ body.measuring .xferb svg .lg,body.nobuild .xferb svg .lg{opacity:1;transition:n
 .xferb .ob-note .k{margin-bottom:.15em}
 .spb .ob-pic{aspect-ratio:1280/720}
 .spb .ob-plate{opacity:.16;filter:grayscale(.45)}
-.spb .ob-reveal{opacity:0;transition:opacity .4s ease}
+.spb .ob-reveal{opacity:0;transition:none}
 .spb .ob-step.shown .ob-reveal{opacity:1}
 body.measuring .spb .ob-reveal,body.nobuild .spb .ob-reveal{opacity:1}
 .wisb .ob-pic{aspect-ratio:1280/720}
 .wisb .ob-plate{opacity:.16;filter:grayscale(.45)}
-.wisb .ob-reveal{opacity:0;transition:opacity .4s ease}
+.wisb .ob-reveal{opacity:0;transition:none}
 .wisb .ob-step.shown .ob-reveal{opacity:1}
 body.measuring .wisb .ob-reveal,body.nobuild .wisb .ob-reveal{opacity:1}
 .sunb .ob-pic{aspect-ratio:1280/720}
 .sunb .ob-plate{opacity:.16;filter:grayscale(.45)}
-.sunb .ob-reveal{opacity:0;transition:opacity .4s ease}
+.sunb .ob-reveal{opacity:0;transition:none}
 .sunb .ob-step.shown .ob-reveal{opacity:1}
 body.measuring .sunb .ob-reveal,body.nobuild .sunb .ob-reveal{opacity:1}
 .scoreb .ob-pic{aspect-ratio:1280/720}
 .scoreb .ob-plate{opacity:.16;filter:grayscale(.5)}
-.scoreb .ob-reveal{opacity:0;transition:opacity .3s}
+.scoreb .ob-reveal{opacity:0;transition:none}
 .scoreb .ob-step.shown .ob-reveal{opacity:1}
 body.measuring .scoreb .ob-reveal,body.nobuild .scoreb .ob-reveal{opacity:1}
 .sbs1b .ob-pic{aspect-ratio:1280/720}
 .sbs1b .ob-plate{opacity:.16;filter:grayscale(.5)}
-.sbs1b .ob-reveal{opacity:0;transition:opacity .3s}
+.sbs1b .ob-reveal{opacity:0;transition:none}
 .sbs1b .ob-step.shown .ob-reveal{opacity:1}
 body.measuring .sbs1b .ob-reveal,body.nobuild .sbs1b .ob-reveal{opacity:1}
 .sbs2b .ob-pic{aspect-ratio:1280/720}
 .sbs2b .ob-plate{opacity:.16;filter:grayscale(.5)}
-.sbs2b .ob-reveal{opacity:0;transition:opacity .3s}
+.sbs2b .ob-reveal{opacity:0;transition:none}
 .sbs2b .ob-step.shown .ob-reveal{opacity:1}
 body.measuring .sbs2b .ob-reveal,body.nobuild .sbs2b .ob-reveal{opacity:1}
 .mcnb .ob-pic{aspect-ratio:1280/720}
 .mcnb .ob-plate{opacity:.16;filter:grayscale(.5)}
-.mcnb .ob-reveal{opacity:0;transition:opacity .3s}
+.mcnb .ob-reveal{opacity:0;transition:none}
 .mcnb .ob-step.shown .ob-reveal{opacity:1}
 body.measuring .mcnb .ob-reveal,body.nobuild .mcnb .ob-reveal{opacity:1}
 .metab .ob-pic{aspect-ratio:1280/720}
 .metab .ob-plate{opacity:.16;filter:grayscale(.5)}
-.metab .ob-reveal{opacity:0;transition:opacity .3s}
+.metab .ob-reveal{opacity:0;transition:none}
 .metab .ob-step.shown .ob-reveal{opacity:1}
 body.measuring .metab .ob-reveal,body.nobuild .metab .ob-reveal{opacity:1}
 .lensb .ob-pic{aspect-ratio:1280/720}
 .lensb .ob-plate{opacity:.16;filter:grayscale(.5)}
-.lensb .ob-reveal{opacity:0;transition:opacity .3s ease}
+.lensb .ob-reveal{opacity:0;transition:none}
 .lensb .ob-step.shown .ob-reveal{opacity:1}
 body.measuring .lensb .ob-reveal,body.nobuild .lensb .ob-reveal{opacity:1;transition:none}
 .bibliomx .ob-pic{aspect-ratio:1280/720}
 .bibliomx .ob-plate{opacity:.16;filter:grayscale(.5)}
-.bibliomx .ob-reveal{opacity:0;transition:opacity .3s ease}
+.bibliomx .ob-reveal{opacity:0;transition:none}
 .bibliomx .ob-step.shown .ob-reveal{opacity:1}
 body.measuring .bibliomx .ob-reveal,body.nobuild .bibliomx .ob-reveal{opacity:1;transition:none}
 .themap .ob-pic{aspect-ratio:1280/720}
 .themap .ob-plate{opacity:.16;filter:grayscale(.5)}
-.themap .ob-reveal{opacity:0;transition:opacity .3s ease}
+.themap .ob-reveal{opacity:0;transition:none}
 .themap .ob-step.shown .ob-reveal{opacity:1}
 body.measuring .themap .ob-reveal,body.nobuild .themap .ob-reveal{opacity:1;transition:none}
 .twowaysb .ob-pic{aspect-ratio:1280/720}
 .twowaysb .ob-plate{opacity:.16;filter:grayscale(.5)}
-.twowaysb .ob-reveal{opacity:0;transition:opacity .3s ease}
+.twowaysb .ob-reveal{opacity:0;transition:none}
 .twowaysb .ob-step.shown .ob-reveal{opacity:1}
 body.measuring .twowaysb .ob-reveal,body.nobuild .twowaysb .ob-reveal{opacity:1;transition:none}
 .chinaslice .ob-pic{aspect-ratio:1280/720}
 .chinaslice .ob-plate{opacity:.16;filter:grayscale(.45)}
-.chinaslice .ob-reveal{opacity:0;transition:opacity .4s ease}
+.chinaslice .ob-reveal{opacity:0;transition:none}
 .chinaslice .ob-step.shown .ob-reveal{opacity:1}
 body.measuring .chinaslice .ob-reveal,body.nobuild .chinaslice .ob-reveal{opacity:1}
 .queryb .ob-pic{aspect-ratio:1280/720}
 .queryb .ob-plate{opacity:.16;filter:grayscale(.45)}
-.queryb .ob-reveal{opacity:0;transition:opacity .4s ease}
+.queryb .ob-reveal{opacity:0;transition:none}
 .queryb .ob-step.shown .ob-reveal{opacity:1}
 body.measuring .queryb .ob-reveal,body.nobuild .queryb .ob-reveal{opacity:1}
 .docb .ob-pic{aspect-ratio:1280/720}
 .docb .ob-plate{opacity:.16;filter:grayscale(.45)}
-.docb .ob-reveal{opacity:0;transition:opacity .4s ease}
+.docb .ob-reveal{opacity:0;transition:none}
 .docb .ob-step.shown .ob-reveal{opacity:1}
 body.measuring .docb .ob-reveal,body.nobuild .docb .ob-reveal{opacity:1}
 .armedb .ob-pic{aspect-ratio:1280/720}
 .bibliob .ob-pic{aspect-ratio:1280/720}
 .bibliob .ob-plate{opacity:.16;filter:grayscale(.45)}
-.bibliob .ob-reveal{opacity:0;transition:opacity .4s ease}
+.bibliob .ob-reveal{opacity:0;transition:none}
 .bibliob .ob-step.shown .ob-reveal{opacity:1}
 body.measuring .bibliob .ob-reveal,body.nobuild .bibliob .ob-reveal{opacity:1}
 /* ---- tipsb: "Misleading tips of icebergs" (9240d6) - the original slide is a
@@ -559,7 +559,7 @@ body.measuring .bibliob .ob-reveal,body.nobuild .bibliob .ob-reveal{opacity:1}
    pattern allows for a dense final content step. */
 .tipsb .ob-pic{aspect-ratio:1280/720}
 .tipsb .ob-plate{opacity:.16;filter:grayscale(.45)}
-.tipsb .ob-reveal{opacity:0;transition:opacity .4s ease}
+.tipsb .ob-reveal{opacity:0;transition:none}
 .tipsb .ob-step.shown .ob-reveal{opacity:1}
 body.measuring .tipsb .ob-reveal,body.nobuild .tipsb .ob-reveal{opacity:1}
 /* ---- zotb: "And then into Zotero" (cc4f36) - a real Zotero screenshot, so the
@@ -571,7 +571,7 @@ body.measuring .tipsb .ob-reveal,body.nobuild .tipsb .ob-reveal{opacity:1}
    exception for a dense final content step. */
 .zotb .ob-pic{aspect-ratio:1280/720}
 .zotb .ob-plate{opacity:.16;filter:grayscale(.45)}
-.zotb .ob-reveal{opacity:0;transition:opacity .4s ease}
+.zotb .ob-reveal{opacity:0;transition:none}
 .zotb .ob-step.shown .ob-reveal{opacity:1}
 body.measuring .zotb .ob-reveal,body.nobuild .zotb .ob-reveal{opacity:1}
 /* ---- mrib: "An epistemic MRI" (0734c8) - the source picture is a single dense
@@ -592,7 +592,7 @@ body.measuring .zotb .ob-reveal,body.nobuild .zotb .ob-reveal{opacity:1}
    declared exception for a dense final content step. */
 .queryb .ob-pic{aspect-ratio:1280/720}
 .queryb .ob-plate{opacity:.16;filter:grayscale(.45)}
-.queryb .ob-reveal{opacity:0;transition:opacity .4s ease}
+.queryb .ob-reveal{opacity:0;transition:none}
 .queryb .ob-step.shown .ob-reveal{opacity:1}
 body.measuring .queryb .ob-reveal,body.nobuild .queryb .ob-reveal{opacity:1}
 /* ---- instb: "Note the small Ns" (ec9183) - a real "Top Institutions Logo
@@ -604,9 +604,19 @@ body.measuring .queryb .ob-reveal,body.nobuild .queryb .ob-reveal{opacity:1}
    sits there without ever landing on art already shown. */
 .instb .ob-pic{aspect-ratio:1280/720}
 .instb .ob-plate{opacity:.16;filter:grayscale(.45)}
-.instb .ob-reveal{opacity:0;transition:opacity .4s ease}
+.instb .ob-reveal{opacity:0;transition:none}
 .instb .ob-step.shown .ob-reveal{opacity:1}
 body.measuring .instb .ob-reveal,body.nobuild .instb .ob-reveal{opacity:1}
+
+/* THE FLASH (SDS 2026-08-31 16:07, "flashes again before starting the animation"):
+   a hidden state that TRANSITIONS will animate back to hidden after autofit's
+   body.measuring pass lights everything, so the slide visibly paints fully built and
+   then fades away. Hidden states are now instantaneous; the fade lives on the shown
+   state, where it belongs. Same rule the deck already applied to [data-frag]. */
+.obuild .ob-step.shown .ob-reveal,
+.lungb .ob-step.shown ~ * svg .lg,
+.slide svg .lg[style],
+.obuild.slide .ob-step.shown img.ob-reveal{transition:opacity .3s ease}
 /* ---- FROM DARKNESS TO LIGHT: the geomics six-layer figure, built stage by stage ----
    NOT redrawn and NOT a flat PNG. img/d2l/*.png are the ORIGINAL transparent build
    layers that generated the figure on geomics.org, recovered from
