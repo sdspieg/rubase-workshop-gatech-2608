@@ -1,5 +1,45 @@
 # Getting the GaTech workshop to Monday — scoped from the 76 review comments
 
+> ## ⏰ UPDATE 2026-08-31 10:05 EDT — the build-up cluster, and how it is done now
+>
+> **The pattern is settled and tooled.** SDS's rule, stated three times before it landed: *parse the
+> individual components out of the ORIGINAL picture and build THOSE, each paired with its own
+> explanation box, one box on screen at a time, placed where the revealed art is not.* My two earlier
+> attempts had redrawn the diagram as labelled rectangles — which builds correctly and throws away the
+> picture he teaches from. Procedure, prohibitions and the measurement harness:
+> [`SLIDE_BUILD_PATTERN.md`](SLIDE_BUILD_PATTERN.md).
+>
+> **Four slides done, all pushed and live:**
+>
+> | `data-sid` | Slide | How the components were obtained | Steps |
+> |---|---|---|---|
+> | `04c7c6` | The 'omics | cut from `img/orig/gt2025_omics-13.png` by `tools/decompose_figure.py` | 9 |
+> | `lung01` | **Same organ, different disease** (NEW) | drawn — precision oncology vs war | 7 |
+> | `d2l001` | **From epistemic darkness to light** (NEW) | the geomics figure's own 18 build layers | 7 |
+> | `10f148` | Precision and recall | drawn, plus cover tiles cropped from the 2025 render | 8 |
+>
+> `10f148` closes both of its review comments: built up like the original PPT, and **the Russian
+> examples restored** — Integrum 31,000 publications against CNA 700→144, monographs often >200,
+> Jonsson 449, all reproduced from SDS's own 2025 slide.
+>
+> **Verification is mechanical, not visual-only:** `python3 tools/verify_build.py --sid <sid>` steps the
+> slide at 1280/1366/1600 and reports overflow, failed images, and box-over-revealed-art collisions.
+> `lung01`, `d2l001`, `10f148` PASS; `04c7c6` passes with three *declared* collisions at step 8.
+>
+> ### Still on the build-up list
+> AlphaFold (`314842` — its image is an **832×93 sliver**, a real defect), strategic analysis 3.0,
+> pub-centric → knowledge-centric, real-vs-our IR, RuBase name, and the two paradigm-shift tables.
+>
+> ### Deferred on purpose
+> The GPT-5.6 Sol **Geomics session addendum** (ontological lock-in · theory-protective escalation ·
+> phenotype-vs-mechanism). Substance agreed; its brief targets the Geomics Drive corpus, needs the
+> Washington and Rush medical claims sourced first, and is half a day. Washington and Rush stay off
+> today's deck.
+>
+> ### Record
+> HANDOFF 2026-08-31 · Tana `FSrdiXCG91CL` (`#output` `#Claude` `#RuBase` `#method`)
+
+
 > ## ⏰ STATUS AT 2026-08-31 03:40 EDT — DAY 1 IS TODAY, 11:00
 >
 > Measured against the live deck, the live site and the live comment store this morning.
