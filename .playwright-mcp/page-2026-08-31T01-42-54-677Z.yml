@@ -1,0 +1,227 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - banner [ref=e3]:
+      - generic [ref=e4]:
+        - generic [ref=e5]:
+          - link "HCSS" [ref=e6] [cursor=pointer]:
+            - /url: https://hcss.nl
+            - img "HCSS" [ref=e7]
+          - link "Georgia Tech" [ref=e8] [cursor=pointer]:
+            - /url: https://gatech.edu
+            - img "Georgia Tech" [ref=e9]
+        - generic [ref=e10]: Out of the Dark Ages? – slides for the Georgia Tech edition
+        - generic [ref=e11]:
+          - link "Carnegie Corporation of New York" [ref=e12] [cursor=pointer]:
+            - /url: https://www.carnegie.org
+            - img "Carnegie Corporation of New York" [ref=e13]
+          - link "RuBase" [ref=e14] [cursor=pointer]:
+            - /url: https://rubase.org/
+            - img "RuBase" [ref=e15]
+      - navigation [ref=e17]:
+        - link "← Program" [ref=e18] [cursor=pointer]:
+          - /url: index.html
+        - button "Deck home" [ref=e19] [cursor=pointer]
+        - button "Slides" [ref=e20] [cursor=pointer]
+        - button "Overview" [ref=e21] [cursor=pointer]
+        - button "Present ⤢" [ref=e22] [cursor=pointer]
+        - link "Materials" [ref=e23] [cursor=pointer]:
+          - /url: index.html#materials
+        - link "RuBase dashboard" [ref=e24] [cursor=pointer]:
+          - /url: https://rubase.org/
+    - generic [ref=e25]:
+      - button "Day 1 · Mon 31 Aug Foundations 11:00 – 13:30" [ref=e26] [cursor=pointer]:
+        - generic [ref=e27]: Day 1 · Mon 31 Aug
+        - generic [ref=e28]: Foundations
+        - generic [ref=e29]: 11:00 – 13:30
+      - button "Day 2 · Tue 1 Sep Corpora 11:00 – 13:30" [ref=e31] [cursor=pointer]:
+        - generic [ref=e32]: Day 2 · Tue 1 Sep
+        - generic [ref=e33]: Corpora
+        - generic [ref=e34]: 11:00 – 13:30
+      - button "Day 3 · Wed 2 Sep Taxonomies 11:00 – 13:30" [ref=e36] [cursor=pointer]:
+        - generic [ref=e37]: Day 3 · Wed 2 Sep
+        - generic [ref=e38]: Taxonomies
+        - generic [ref=e39]: 11:00 – 13:30
+      - button "Day 4 · Thu 3 Sep Classification 11:00 – 13:30" [ref=e41] [cursor=pointer]:
+        - generic [ref=e42]: Day 4 · Thu 3 Sep
+        - generic [ref=e43]: Classification
+        - generic [ref=e44]: 11:00 – 13:30
+      - button "Day 5 · Fri 4 Sep Your projects 11:00 – 13:30" [ref=e46] [cursor=pointer]:
+        - generic [ref=e47]: Day 5 · Fri 4 Sep
+        - generic [ref=e48]: Your projects
+        - generic [ref=e49]: 11:00 – 13:30
+    - generic [ref=e50]:
+      - complementary [ref=e51]:
+        - generic [ref=e52]:
+          - generic [ref=e53]: Day 1 · Foundations
+          - button "Day 1 · Monday 31 August - Foundations 6" [ref=e54] [cursor=pointer]:
+            - generic [ref=e55]: Day 1 · Monday 31 August - Foundations
+            - generic [ref=e56]: "6"
+          - button "How this week works 7" [ref=e57] [cursor=pointer]:
+            - generic [ref=e58]: How this week works
+            - generic [ref=e59]: "7"
+          - button "Sound familiar? 8" [ref=e60] [cursor=pointer]:
+            - generic [ref=e61]: Sound familiar?
+            - generic [ref=e62]: "8"
+          - button "You are not alone 9" [ref=e63] [cursor=pointer]:
+            - generic [ref=e64]: You are not alone
+            - generic [ref=e65]: "9"
+          - button "A salutary side-story 10" [ref=e66] [cursor=pointer]:
+            - generic [ref=e67]: A salutary side-story
+            - generic [ref=e68]: "10"
+          - 'button "Yesterday: the four humors 11" [ref=e69] [cursor=pointer]':
+            - generic [ref=e70]: "Yesterday: the four humors"
+            - generic [ref=e71]: "11"
+          - button "The 'omics 12" [ref=e72] [cursor=pointer]:
+            - generic [ref=e73]: The 'omics
+            - generic [ref=e74]: "12"
+          - 'button "genomics : the genome :: geomics : the conflict 13" [ref=e75] [cursor=pointer]':
+            - generic [ref=e76]: "genomics : the genome :: geomics : the conflict"
+            - generic [ref=e77]: "13"
+          - button "The AlphaFold moment 14" [ref=e78] [cursor=pointer]:
+            - generic [ref=e79]: The AlphaFold moment
+            - generic [ref=e80]: "14"
+          - button "Where is our vaccine? 15" [ref=e81] [cursor=pointer]:
+            - generic [ref=e82]: Where is our vaccine?
+            - generic [ref=e83]: "15"
+          - button "Paradigm shifts across disciplines (1/2) 16" [ref=e84] [cursor=pointer]:
+            - generic [ref=e85]: Paradigm shifts across disciplines (1/2)
+            - generic [ref=e86]: "16"
+          - button "Paradigm shifts across disciplines (2/2) 17" [ref=e87] [cursor=pointer]:
+            - generic [ref=e88]: Paradigm shifts across disciplines (2/2)
+            - generic [ref=e89]: "17"
+          - button "What transfers, and what does not 18" [ref=e90] [cursor=pointer]:
+            - generic [ref=e91]: What transfers, and what does not
+            - generic [ref=e92]: "18"
+          - button "So why not us? 19" [ref=e93] [cursor=pointer]:
+            - generic [ref=e94]: So why not us?
+            - generic [ref=e95]: "19"
+          - button "How do we currently do it? 20" [ref=e96] [cursor=pointer]:
+            - generic [ref=e97]: How do we currently do it?
+            - generic [ref=e98]: "20"
+          - button "How search is typically done today 21" [ref=e99] [cursor=pointer]:
+            - generic [ref=e100]: How search is typically done today
+            - generic [ref=e101]: "21"
+          - button "The sophistication of our queries 22" [ref=e102] [cursor=pointer]:
+            - generic [ref=e103]: The sophistication of our queries
+            - generic [ref=e104]: "22"
+          - button "Problems with search today 23" [ref=e105] [cursor=pointer]:
+            - generic [ref=e106]: Problems with search today
+            - generic [ref=e107]: "23"
+          - button "Precision and recall 24" [ref=e108] [cursor=pointer]:
+            - generic [ref=e109]: Precision and recall
+            - generic [ref=e110]: "24"
+          - button "What would a useful search even look like? 25" [ref=e111] [cursor=pointer]:
+            - generic [ref=e112]: What would a useful search even look like?
+            - generic [ref=e113]: "25"
+          - button "The peer-review crisis 26" [ref=e114] [cursor=pointer]:
+            - generic [ref=e115]: The peer-review crisis
+            - generic [ref=e116]: "26"
+          - button "DARPA SCORE 27" [ref=e117] [cursor=pointer]:
+            - generic [ref=e118]: DARPA SCORE
+            - generic [ref=e119]: "27"
+          - button "The social and behavioural sciences reliability crisis 28" [ref=e120] [cursor=pointer]:
+            - generic [ref=e121]: The social and behavioural sciences reliability crisis
+            - generic [ref=e122]: "28"
+          - button "The reliability crisis, continued 29" [ref=e123] [cursor=pointer]:
+            - generic [ref=e124]: The reliability crisis, continued
+            - generic [ref=e125]: "29"
+          - button "Broad versus narrow 30" [ref=e126] [cursor=pointer]:
+            - generic [ref=e127]: Broad versus narrow
+            - generic [ref=e128]: "30"
+          - button "McNamara's first law of defence analysis 31" [ref=e129] [cursor=pointer]:
+            - generic [ref=e130]: McNamara's first law of defence analysis
+            - generic [ref=e131]: "31"
+          - button "Metascience is here 32" [ref=e132] [cursor=pointer]:
+            - generic [ref=e133]: Metascience is here
+            - generic [ref=e134]: "32"
+          - button "Why at least try broader? 33" [ref=e135] [cursor=pointer]:
+            - generic [ref=e136]: Why at least try broader?
+            - generic [ref=e137]: "33"
+          - button "Towards strategic analysis 3.0 34" [ref=e138] [cursor=pointer]:
+            - generic [ref=e139]: Towards strategic analysis 3.0
+            - generic [ref=e140]: "34"
+          - button "Pub-centric to knowledge-centric 35" [ref=e141] [cursor=pointer]:
+            - generic [ref=e142]: Pub-centric to knowledge-centric
+            - generic [ref=e143]: "35"
+          - button "The 'real' IR vs 'our' IR 36" [ref=e144] [cursor=pointer]:
+            - generic [ref=e145]: The 'real' IR vs 'our' IR
+            - generic [ref=e146]: "36"
+          - 'button "RuBase: what''s in a name 37" [ref=e147] [cursor=pointer]':
+            - generic [ref=e148]: "RuBase: what's in a name"
+            - generic [ref=e149]: "37"
+          - button "Spiral development 38" [ref=e150] [cursor=pointer]:
+            - generic [ref=e151]: Spiral development
+            - generic [ref=e152]: "38"
+          - button "Wissensanhaeufung 3.0 39" [ref=e153] [cursor=pointer]:
+            - generic [ref=e154]: Wissensanhaeufung 3.0
+            - generic [ref=e155]: "39"
+          - button "The Sunburst app 40" [ref=e156] [cursor=pointer]:
+            - generic [ref=e157]: The Sunburst app
+            - generic [ref=e158]: "40"
+          - button "What this has produced 41" [ref=e159] [cursor=pointer]:
+            - generic [ref=e160]: What this has produced
+            - generic [ref=e161]: "41"
+          - button "Before tomorrow 42" [ref=e162] [cursor=pointer]:
+            - generic [ref=e163]: Before tomorrow
+            - generic [ref=e164]: "42"
+        - generic [ref=e165]:
+          - generic [ref=e166]: Jump to a day
+          - button "Day 1 · Foundations Mon 31 Aug" [ref=e167] [cursor=pointer]:
+            - generic [ref=e168]: Day 1 · Foundations
+            - generic [ref=e169]: Mon 31 Aug
+          - button "Day 2 · Corpora Tue 1 Sep" [ref=e170] [cursor=pointer]:
+            - generic [ref=e171]: Day 2 · Corpora
+            - generic [ref=e172]: Tue 1 Sep
+          - button "Day 3 · Taxonomies Wed 2 Sep" [ref=e173] [cursor=pointer]:
+            - generic [ref=e174]: Day 3 · Taxonomies
+            - generic [ref=e175]: Wed 2 Sep
+          - button "Day 4 · Classification Thu 3 Sep" [ref=e176] [cursor=pointer]:
+            - generic [ref=e177]: Day 4 · Classification
+            - generic [ref=e178]: Thu 3 Sep
+          - button "Day 5 · Your projects Fri 4 Sep" [ref=e179] [cursor=pointer]:
+            - generic [ref=e180]: Day 5 · Your projects
+            - generic [ref=e181]: Fri 4 Sep
+      - main [ref=e182]:
+        - generic [ref=e183]:
+          - text: “” “” “” “” “” “”
+          - generic [ref=e184]:
+            - heading "The ‘omics’" [level=2] [ref=e185]
+            - paragraph [ref=e186]: One living system, measured layer by layer – and then put back together.
+            - generic [ref=e187]:
+              - img "From chromosomes and DNA through proteins to cells and communities" [ref=e189]
+              - generic [ref=e190]:
+                - generic [ref=e191]:
+                  - generic [ref=e192]: What the ‘omics’ actually are
+                  - generic: A field that systematically measures an entire deep layer of a living system, then integrates the layers.
+                  - generic [ref=e193]: Genomics · the parts list
+                  - generic:
+                    - text: Chromosomes, genes, DNA. What the organism
+                    - emphasis [ref=e194]: could
+                    - text: build.
+                - generic [ref=e195]:
+                  - generic [ref=e196]: Proteomics · what the parts become
+                  - generic:
+                    - text: Proteins and the molecular machines they assemble into. What is
+                    - emphasis [ref=e197]: actually
+                    - text: being built.
+                - generic [ref=e198]:
+                  - generic [ref=e199]: Cells and communities · the system running
+                  - generic: 30–40 trillion cells, and the communities they form. Behavior, not parts.
+                - generic [ref=e200]:
+                  - generic [ref=e201]: "And then: integration"
+                  - generic [ref=e202]: Each layer measured whole, then the layers read together. That integration is what makes it an ‘omics rather than a collection of facts.
+          - text: • • • • • • • • • • • • • • • • • • • • • • • • • • • • •
+        - generic [ref=e203]:
+          - button "Previous slide" [ref=e204] [cursor=pointer]: ←
+          - button "Next slide" [ref=e205] [cursor=pointer]: →
+          - generic [ref=e206]: 12 / 133
+          - generic [ref=e207]: The 'omics
+          - generic [ref=e208]: ● 5/5
+          - generic [ref=e209]: ← → build/slide · ↑ ↓ day · B builds off · O overview · N notes · F present
+          - button "Notes" [ref=e210] [cursor=pointer]
+          - button "Present ⤢" [ref=e211] [cursor=pointer]
+  - generic [ref=e212]:
+    - button "💬 Comment" [ref=e213] [cursor=pointer]
+    - button "91" [ref=e214] [cursor=pointer]
+    - button "🗂 Boxes" [ref=e215] [cursor=pointer]
+    - button "⬇ Export" [ref=e216] [cursor=pointer]
