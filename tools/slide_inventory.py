@@ -51,7 +51,12 @@ def visual_score(s):
     back into prose scores lower - which is the regression SDS wants gated.
     """
     body = strip_notes(s)
-    imgs = len(re.findall(r'<img\b', body))
+    # DISTINCT sources, not <img> tags. Counting tags rewarded exactly the thing
+    # being eliminated: a flat export used as the plate plus three clip-path
+    # reveals of that SAME file counted as four visuals (40) and beat a genuine
+    # rebuild from three real component images (30), so the gate fired on real
+    # progress the first time it ran.
+    imgs = len({m.group(1) for m in re.finditer(r'<img\b[^>]*src="([^"]+)"', body)})
     svgs = len(re.findall(r'<svg\b', body))
     # drawn marks inside inline SVG carry most of the visual weight when present
     marks = len(re.findall(r'<(?:rect|circle|path|line|polygon|polyline|ellipse|g)\b', body))
