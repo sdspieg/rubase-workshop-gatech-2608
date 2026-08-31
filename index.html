@@ -15,8 +15,7 @@
       <a class="h-logo" href="https://gatech.edu" target="_blank" rel="noopener" title="Georgia Tech"><img src="assets/logos/gt.svg" alt="Georgia Tech"></a>
     </div>
     <div class="header-title">RuBase / StratBase Methods Workshop &ndash; <span>Georgia Tech<br>31 August &ndash; 4 September 2026</span></div>
-    <div class="h-right">
-      <a class="h-logo invert" href="https://www.carnegie.org" target="_blank" rel="noopener" title="Carnegie Corporation of New York"><img src="assets/logos/ccny_logo.svg" alt="Carnegie Corporation of New York"></a>
+    <div class="h-right"><button class="h-qr" id="qrToggle" type="button" aria-expanded="false" title="Workshop site – click to enlarge for scanning"><img src="img/qr_workshop.png" alt="QR code linking to the workshop site"></button><a class="h-logo invert" href="https://www.carnegie.org" target="_blank" rel="noopener" title="Carnegie Corporation of New York"><img src="assets/logos/ccny_logo.svg" alt="Carnegie Corporation of New York"></a>
       <a class="h-logo" href="https://rubase.org/" target="_blank" rel="noopener" title="RuBase dashboard"><img src="assets/logos/rubase_logo.svg" alt="RuBase"></a>
     </div>
   </div>
@@ -105,6 +104,19 @@ document.addEventListener('keydown',function(e){ if(e.key==='Escape'){closeSideb
   // them by handing the number to the deck rather than silently dropping to Home.
   if(/^\d+$/.test(h)){ location.replace('deck.html#'+h); return; }
   if(h && h!=='home' && document.getElementById('block-'+h)){showBlock(h);} else {showHome();}
+})();
+</script>
+<div id="qrOverlay" hidden><div class="qr-inner"><img src="img/qr_workshop.png" alt="QR code linking to the workshop site"><div class="qr-url">sdspieg.github.io/rubase-workshop-gatech-2608</div><div class="qr-hint">click anywhere to close</div></div></div>
+<script>
+(function(){
+  var btn=document.getElementById('qrToggle'), ov=document.getElementById('qrOverlay');
+  if(!btn||!ov) return;
+  function open(){ ov.hidden=false; btn.setAttribute('aria-expanded','true'); }
+  function close(){ ov.hidden=true; btn.setAttribute('aria-expanded','false'); }
+  btn.addEventListener('click',function(e){ e.preventDefault(); e.stopPropagation();
+    ov.hidden ? open() : close(); });
+  ov.addEventListener('click',close);
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape'&&!ov.hidden) close(); });
 })();
 </script>
 </body>

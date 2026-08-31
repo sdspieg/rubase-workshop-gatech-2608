@@ -444,8 +444,10 @@
         .card-clock { color: var(--lb); font-weight: 700; }
 
         /* ---- student-facing additions ---- */
-        .pipe-step .step-does { font-size: .72rem; color: var(--lb); margin-top: 5px;
-                                max-width: 15ch; line-height: 1.35; }
+        .pipe-step .step-does { font-size: .72rem; color: var(--lb); margin: 5px auto 0; max-width: 15ch; line-height: 1.35; }
+  /* max-width without auto side margins left this 99px box flush LEFT inside a 143px card,
+     22px off the card's axis. text-align:center centred the text INSIDE the box, so the name
+     and the TREATS line looked aligned while the description sat visibly left of both. */
         .pipe-step { flex: 1 1 8rem; max-width: none; }
         .card-does { color: var(--gold); font-size: .84rem; font-weight: 600;
                      margin-bottom: 8px; line-height: 1.45; }
@@ -462,3 +464,24 @@
 .step-treats{margin-top:.35rem;font-size:.72rem;letter-spacing:.06em;
   text-transform:uppercase;color:var(--lb,#82a0bc);opacity:.85}
 .step-treats.diagnosis{color:var(--gold,#dbad50);opacity:1;font-weight:600}
+
+
+/* ---- Banner QR -------------------------------------------------------------
+   Measured, not assumed: a 54-character URL makes a 33-module code, and at
+   banner sizes (40-56px) NEITHER OpenCV nor a phone reliably decodes it. So the
+   small one is a BUTTON, and the click-to-fullscreen version is what actually
+   gets scanned. Kept as large as the banner allows to give it the best chance. */
+.h-qr { background:#fff; border:1px solid rgba(219,173,80,.55); border-radius:5px;
+  padding:2px; line-height:0; cursor:pointer; flex:0 0 auto; }
+.h-qr img { width:52px; height:52px; display:block; image-rendering:pixelated; }
+.h-qr:hover { border-color:var(--gold,#dbad50); box-shadow:0 0 0 2px rgba(219,173,80,.25); }
+#qrOverlay { position:fixed; inset:0; z-index:9999; background:rgba(4,12,26,.94);
+  display:flex; align-items:center; justify-content:center; cursor:zoom-out; }
+#qrOverlay[hidden] { display:none; }
+.qr-inner { text-align:center; }
+/* min() keeps it square and inside the viewport on any screen; pixelated stops the
+   browser blurring module edges, which is what kills a scan. */
+#qrOverlay img { width:min(70vh,70vw); height:min(70vh,70vw); background:#fff;
+  padding:14px; border-radius:10px; image-rendering:pixelated; }
+.qr-url { margin-top:14px; color:var(--gold,#dbad50); font-size:1.05rem; letter-spacing:.02em; }
+.qr-hint { margin-top:5px; color:var(--lb,#82a0bc); font-size:.82rem; opacity:.8; }
