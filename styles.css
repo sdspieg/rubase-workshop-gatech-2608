@@ -236,6 +236,7 @@
             text-align: left;
         }
         .session-card {
+            position: relative;
             background: var(--db);
             border: 1px solid rgba(255,255,255,.08);
             border-left: 4px solid var(--gold);
@@ -485,3 +486,36 @@
   padding:14px; border-radius:10px; image-rendering:pixelated; }
 .qr-url { margin-top:14px; color:var(--gold,#dbad50); font-size:1.05rem; letter-spacing:.02em; }
 .qr-hint { margin-top:5px; color:var(--lb,#82a0bc); font-size:.82rem; opacity:.8; }
+
+
+/* ── Streetlight-effect hidden page (comment 1, 2026-08-31) ── */
+.lp-card-link {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-family: inherit;
+    font-size: .68rem;
+    font-weight: 700;
+    letter-spacing: .2px;
+    color: var(--gold);
+    background: rgba(219,173,80,.12);
+    border: 1px solid rgba(219,173,80,.4);
+    border-radius: 12px;
+    padding: 4px 10px;
+    cursor: pointer;
+    transition: background .14s, color .14s;
+    text-align: left;
+    line-height: 1.3;
+}
+.lp-card-link:hover { background: var(--gold); color: var(--db); }
+.lp-scene-wrap {
+    margin: 22px 0 6px;
+    border: 1px solid var(--line);
+    border-radius: var(--r);
+    background: var(--db);
+    padding: 10px;
+}
+.lp-scene { width: 100%; height: auto; display: block; }
