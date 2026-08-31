@@ -1,5 +1,37 @@
 # Getting the GaTech workshop to Monday — scoped from the 76 review comments
 
+> ## ⏰ STATUS AT 2026-08-31 03:40 EDT — DAY 1 IS TODAY, 11:00
+>
+> Measured against the live deck, the live site and the live comment store this morning.
+>
+> **The deck runs.** 133 slides, 349 build steps. Day 1 = s1–s42; Day 2 opens at s43. All five day
+> blocks plus materials, glossary and programme are present. The rebuilt slides were stepped
+> through on screen, not assumed.
+>
+> **Comment state: 36 addressed (28 of them verifier-backed), 44 open, 11 blocked on SDS.**
+> Split by urgency, only **~24 open items touch today** — 11 on the Day 1 deck, 13 on home/#day1.
+> The other 19 are Days 2–5 and have the week to land.
+>
+> ### The five worth fixing before 11:00, in order
+> 1. **s8 — the "200 million" figure.** Hero-sized AND unsourced: Microsoft Academic shut down in
+>    2021. A wrong number, displayed large, in a talk about rigor. Largest exposure in the deck.
+> 2. **s18 — "Where are the two answers??!"** A slide that visibly promises what it does not deliver.
+> 3. **s6 —** duplicates the previous slide's point.
+> 4. **s9 —** needs its punchline.
+> 5. **The QR code —** untested against the live URL; if it is on screen and dead, the room sees it.
+>
+> Everything else on Day 1 is an improvement, not a blocker, and several need SDS's input.
+>
+> ### 🟥 Still blocked on SDS and due TODAY
+> **The Google Doc needs Share → Anyone with the link → EDITOR.** My tooling can only grant Reader.
+> If participants cannot write in it, that is felt in the room this morning.
+>
+> ### Reversibility
+> Both repos are pushed (`rubase-workshop-gatech-2608` 0f7fe47, `gt-workshop-review` 6c705fa), each
+> decision a separate commit. The dead `GITHUB_PAT` no longer blocks pushes — `gh` holds its own
+> working OAuth token — but it is still worth rotating for anything that reads the variable directly.
+
+
 Measured 2026-08-29 against the live DOM and the comment store, not from memory.
 
 ## The finding that reshapes the plan

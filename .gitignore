@@ -1,3 +1,4 @@
 review.js
 *.bak-preghost
 .claude/state/
+.playwright-mcp/
