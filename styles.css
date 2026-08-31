@@ -216,11 +216,15 @@
             border-radius: var(--r);
             max-width: 1200px;
         }
-        .pipe-step { text-align: center; padding: 8px 14px; min-width: 118px; cursor: pointer; border-radius: 6px; transition: background .14s; }
+        .pipe-step { text-align: center; padding: 8px 14px; cursor: pointer; border-radius: 6px; transition: background .14s;
+  /* Equal-width flex items. Content sizing made these 132/132/228/137/221px, so the row read
+     as ragged and the fifth card wrapped onto a line of its own. flex:1 1 0 gives every card
+     the same share of the row; max-width stops five cards stretching absurdly wide. */
+  flex: 1 1 0; min-width: 0; max-width: 15rem; }
         .pipe-step:hover { background: rgba(219,173,80,.1); }
         .pipe-step .step-label { font-size: .7rem; color: var(--lb); text-transform: uppercase; letter-spacing: 1px; }
         .pipe-step .step-name { font-size: .98rem; font-weight: 700; margin-top: 4px; color: var(--gold); }
-        .pipe-arrow { color: var(--gold); font-size: 1.3rem; align-self: center; }
+        .pipe-arrow { color: var(--gold); font-size: 1.3rem; align-self: center; flex: 0 0 auto; }
         @media (max-width: 900px) { .pipe-arrow { display: none; } }
 
         .session-grid {
@@ -442,7 +446,7 @@
         /* ---- student-facing additions ---- */
         .pipe-step .step-does { font-size: .72rem; color: var(--lb); margin-top: 5px;
                                 max-width: 15ch; line-height: 1.35; }
-        .pipe-step { min-width: 132px; }
+        .pipe-step { flex: 1 1 8rem; max-width: none; }
         .card-does { color: var(--gold); font-size: .84rem; font-weight: 600;
                      margin-bottom: 8px; line-height: 1.45; }
         .session-card[style*="default"]:hover { transform: none; box-shadow: none;
