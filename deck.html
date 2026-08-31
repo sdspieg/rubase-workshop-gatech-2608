@@ -227,7 +227,7 @@ table.shift col:first-child{width:12%}
 .omics .omx-expl,.omics .omx-expl.hot{
   border:1px solid rgba(219,173,80,.5);border-radius:6px;padding:.55em .7em;
   background:rgba(20,40,70,.55);opacity:0;max-height:0;overflow:hidden;
-  transition:opacity .25s ease,max-height .35s ease,margin .35s ease}
+  transition:none}
 .omics .omx-expl.shown{opacity:1;max-height:16em;margin-top:.5em}
 /* the moment a LATER explanation is shown, this one goes away entirely */
 .omics .omx-expl.shown:has(~ .omx-expl.shown){opacity:0;max-height:0;margin-top:0}
@@ -357,7 +357,7 @@ body.measuring .afb .ob-reveal,body.nobuild .afb .ob-reveal{opacity:1}
 .rubasebuild .rb-row{display:flex;align-items:center;gap:6%}
 .rubasebuild .rb-pic{position:relative;flex:0 0 40%}
 .rubasebuild .rb-map{width:46%;max-width:150px;border-radius:4px;opacity:0;
-  transition:opacity .5s ease;filter:drop-shadow(0 6px 14px rgba(0,0,0,.4));display:block;margin:0 auto .4em}
+  transition:none;filter:drop-shadow(0 6px 14px rgba(0,0,0,.4));display:block;margin:0 auto .4em}
 .rubasebuild .rb-svg{width:100%;height:auto;display:block}
 .rubasebuild .rb-svg text{opacity:0;transition:none}
 .rubasebuild:has(.rbtrig.m1.shown) .rb-map{opacity:1}
