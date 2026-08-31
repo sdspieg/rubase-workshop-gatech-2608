@@ -8,6 +8,9 @@ deck already carries (the speaker notes are not the agents' to rewrite).
 """
 import re, sys, pathlib, html
 
+# The deck this writes into. Resolved from THIS FILE's real location, which means a copy of the
+# repo that symlinks tools/ still writes the ORIGINAL deck - an agent hit exactly that today and
+# had to reverse-apply the diff. Pass --deck <path> to target a private copy.
 DECK = pathlib.Path(__file__).resolve().parent.parent / 'deck.html'
 
 def sections(text):
@@ -41,4 +44,9 @@ def main(paths):
     DECK.write_text(text, encoding='utf-8')
 
 if __name__ == '__main__':
-    main(sys.argv[1:])
+    args = sys.argv[1:]
+    if '--deck' in args:
+        i = args.index('--deck')
+        DECK = pathlib.Path(args[i + 1]).resolve()
+        del args[i:i + 2]
+    main(args)
