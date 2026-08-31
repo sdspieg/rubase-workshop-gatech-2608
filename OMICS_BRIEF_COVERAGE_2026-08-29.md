@@ -89,7 +89,7 @@ as earned rather than rhetorical.
 | §1 | no central dogma (also on s12, as dashed arrows) |
 
 **One row is not from the brief.** *"The specimen reads the paper"* – a tumour does not change its
-behaviour because you published its profile, an adversary does – is this terminal's addition, not
+behavior because you published its profile, an adversary does – is this terminal's addition, not
 the web session's. It is arguably the deepest of the four differences, because unlike the others it
 never goes away however much data is collected. Flagged because it is the one claim on the slide
 that has not been through anyone else's hands.

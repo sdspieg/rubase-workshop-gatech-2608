@@ -37,10 +37,10 @@
 
 <div class="tag">Day 3 &middot; stress-testing what the model gave you</div>
 <h1>The murderboard</h1>
-<p class="sub">Two models argue over a frozen artefact until both sign off on the identical bytes
+<p class="sub">Two models argue over a frozen artifact until both sign off on the identical bytes
 &ndash; or until the disagreement is recorded as the finding.</p>
 
-<p class="sub" style="border-left:3px solid #dbad50;padding-left:.9rem;margin-bottom:1rem"><strong>Who is who.</strong> The <strong>reviewers</strong> are two frontier models, run as separate sessions so neither can see the other. The <strong>author is you</strong> &ndash; the human who wrote the thing under review. You are not a third reviewer: you <em>adjudicate</em>. You rule on every contested point, you can reopen anything, and <strong>you are the only one who edits the artefact.</strong></p>
+<p class="sub" style="border-left:3px solid #dbad50;padding-left:.9rem;margin-bottom:1rem"><strong>Who is who.</strong> The <strong>reviewers</strong> are two frontier models, run as separate sessions so neither can see the other. The <strong>author is you</strong> &ndash; the human who wrote the thing under review. You are not a third reviewer: you <em>adjudicate</em>. You rule on every contested point, you can reopen anything, and <strong>you are the only one who edits the artifact.</strong></p>
 <div class="bar" data-for="d1">
   <button onclick="step('d1',1)">Next &rarr;</button>
   <button onclick="step('d1',-1)">&larr; Back</button>
@@ -52,13 +52,13 @@
 </div>
 
 <div class="viz" id="d1"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 364" role="img"
-     aria-label="The murderboard cycle, revealed in nine steps: a frozen artefact, two independent models, blind first rounds, the author ruling, the reviewers reflecting, the loop between them, the machine checker, and the two valid endings - dual GO or recorded dissent.">
+     aria-label="The murderboard cycle, revealed in nine steps: a frozen artifact, two independent models, blind first rounds, the author ruling, the reviewers reflecting, the loop between them, the machine checker, and the two valid endings - dual GO or recorded dissent.">
 <style>.hd{font:700 11px system-ui,sans-serif;letter-spacing:.09em}.ph{font:700 13px system-ui,sans-serif;fill:#e8edf3}.mc{font:400 10.6px system-ui,sans-serif;fill:#9fb3c8}.mi{font:italic 400 10.6px system-ui,sans-serif;fill:#8fa6bd}.tag{font:600 9.6px system-ui,sans-serif;letter-spacing:.05em}.ft{font:italic 600 12.5px system-ui,sans-serif;fill:#dbad50}</style>
 <defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#7d93ad"/></marker><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#dbad50"/></marker></defs>
 <rect width="980" height="364" fill="#09182f"/>
 <g data-frag="1">
 <rect x="20" y="112" width="104" height="94" rx="7" fill="#142846" stroke="#dbad50" stroke-width="1.5"/>
-<text x="72" y="140" class="ph" text-anchor="middle">the artefact</text>
+<text x="72" y="140" class="ph" text-anchor="middle">the artifact</text>
 <text x="72" y="160" class="mc" text-anchor="middle">frozen, by hash</text>
 <text x="72" y="176" class="mc" text-anchor="middle">immutable</text>
 <text x="72" y="196" class="tag" text-anchor="middle" fill="#dbad50">v1 &#8594; v2 &#8594; v3</text>
@@ -309,7 +309,7 @@
 <div class="grid">
   <div class="card"><div class="k">Reviewers never edit</div>
     <div class="d">A reviewer produces <b>findings</b>, never a fix &ndash; not even a demonstrably
-    correct number. The author edits. A reviewer who revises the artefact has destroyed the
+    correct number. The author edits. A reviewer who revises the artifact has destroyed the
     independence that made the review worth having.</div></div>
   <div class="card"><div class="k">A GO is obtained, never inferred</div>
     <div class="d">Applying the other reviewer&rsquo;s wording does not make their GO. Being obviously
@@ -328,7 +328,7 @@
   unsupported inference, missing denominators, circular nulls, unfalsifiable summary claims,
   self-validating evidence. On the case this method was written from, <b>the board rewrote the
   paper&rsquo;s thesis sentence</b>. That is the point: it is not a quality gate at the end, it changes
-  what the artefact is, early.</p>
+  what the artifact is, early.</p>
   <p><b>The machine-checked close.</b> Generations are immutable and named by hash, so a verdict always
   describes bytes that still exist. <code>CONDITIONAL_GO</code> is not a state &ndash; a GO carrying an
   unmet condition is downgraded to <code>NO_GO</code>, because two different kinds of condition once

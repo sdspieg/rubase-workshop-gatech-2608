@@ -10,7 +10,7 @@ Day 2 opens s42, Day 3 s71, Day 4 s95, Day 5 s116–s129.
 
 | Surface | Comments | Needed by |
 |---|---|---|
-| Day 1 deck + `#day1` + `#home` + `#programme` | **51** | **Monday 31 Aug** |
+| Day 1 deck + `#day1` + `#home` + `#program` | **51** | **Monday 31 Aug** |
 | `#day2` … `#day5` pages | 25 | Tue–Fri, as the week runs |
 
 Days 2–5 slides carry no comments at all, so they are not Monday work.
@@ -46,8 +46,8 @@ Sources to be shown, not asserted.
 2. **The human-vs-AI slides** (#65) — "we have been using these in recent presentations". Name the
    deck and they can be pulled from the genealogy.
 3. **The policy-myopia paper** (#27) for the animal-deterrence / criminology / public-health angle.
-4. **Four judgement calls**, not chores: is deterrence the best worked case (#26); is 35 min right
-   for two worked taxonomies (#28) and for the neighbour swap (#30); and #41 — refocusing
+4. **Four judgment calls**, not chores: is deterrence the best worked case (#26); is 35 min right
+   for two worked taxonomies (#28) and for the neighbor swap (#30); and #41 — refocusing
    Foundations on IR's pathologies and *"where's the vaccine for war and conflict?"*, which is a
    real reshape of Monday's argument, not an edit.
 
