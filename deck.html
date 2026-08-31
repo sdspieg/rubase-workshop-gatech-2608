@@ -791,7 +791,7 @@ function _overflows(s){
   }
   /* A <pre> clips its own content without moving any rect, so rect containment
      cannot see it. Its line-height is 1.5, well clear of the glyph-overflow
-     artefact that makes scrollHeight useless on tight-leading headings, so
+     artifact that makes scrollHeight useless on tight-leading headings, so
      scrollHeight is the right test here and only here. */
   var pres=s.querySelectorAll('pre.prompt');
   for(var q=0;q<pres.length;q++){
