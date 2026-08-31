@@ -28,6 +28,22 @@ body{font-family:var(--font);background:var(--bg);color:var(--wh);overflow:hidde
  border-top:1px solid rgba(255,255,255,.06);flex-wrap:wrap}
 .h-left,.h-right{display:flex;align-items:center;gap:1rem}
 .h-right{justify-content:flex-end}
+/* The QR lived only on the site, never in the deck he actually presents from (SDS, 2026-08-31:
+   'because I don't see the QR code!!!!'). Same markup, same CSS, same behaviour as index.html. */
+.h-qr{background:#fff;border:1px solid rgba(219,173,80,.55);border-radius:5px;padding:2px;
+ line-height:0;cursor:pointer;flex:0 0 auto}
+.h-qr img{width:52px;height:52px;display:block;image-rendering:pixelated}
+.h-qr:hover{border-color:var(--gold);box-shadow:0 0 0 2px rgba(219,173,80,.25)}
+#qrOverlay{position:fixed;inset:0;z-index:9999;background:rgba(4,12,26,.94);
+ display:flex;align-items:center;justify-content:center;cursor:zoom-out}
+#qrOverlay[hidden]{display:none}
+#qrOverlay img{width:min(70vh,70vw);height:min(70vh,70vw);background:#fff;padding:14px;
+ border-radius:10px;image-rendering:pixelated}
+.qr-inner{text-align:center}
+.qr-url{margin-top:14px;color:var(--gold);font-size:1.05rem;letter-spacing:.02em}
+.qr-hint{margin-top:5px;color:var(--lb);font-size:.82rem;opacity:.8}
+/* the right-hand group is hidden under 980px; the QR is the one thing in it that must survive,
+   because a QR nobody can see is the same as no QR at all */
 .h-logo{height:34px;width:auto;flex-shrink:0;display:inline-flex;align-items:center;border-radius:4px;
  transition:opacity .15s,transform .15s;opacity:.9}
 .h-logo:hover,.h-logo:focus-visible{opacity:1;transform:translateY(-1px)}
@@ -46,7 +62,10 @@ body{font-family:var(--font);background:var(--bg);color:var(--wh);overflow:hidde
 .header-nav select option{background:var(--db);color:var(--wh)}
 @media (max-width:1200px){.h-logo,.h-logo img{height:28px}.header-title{font-size:.94rem}
  .header-nav a,.header-nav button,.header-nav select{font-size:.75rem;padding:.3rem .6rem}}
-@media (max-width:980px){.header-row1{grid-template-columns:auto 1fr}.h-right{display:none}
+@media (max-width:980px){.header-row1{grid-template-columns:auto 1fr auto}
+ /* the right group used to vanish whole under 980px, which took the QR with it.
+    Drop the logos, keep the QR - a QR nobody can see is the same as no QR. */
+ .h-right{display:flex}.h-right .h-logo{display:none}
  .header-title{white-space:normal}}
 
 /* ---------- day timeline ---------- */
@@ -471,6 +490,7 @@ a.sidebar-item,a.sidebar-item:visited{color:var(--wh);text-decoration:none}
     </div>
     <div class="header-title">Out of the Dark Ages?&nbsp;&ndash; <span>slides for the Georgia Tech edition</span></div>
     <div class="h-right">
+      <button class="h-qr" id="qrToggle" type="button" aria-expanded="false" title="Workshop site &ndash; click to enlarge for scanning"><img src="img/qr_workshop.png" alt="QR code linking to the workshop site"></button>
       <a class="h-logo invert" href="https://www.carnegie.org" target="_blank" rel="noopener" title="Carnegie Corporation of New York"><img src="assets/logos/ccny_logo.svg" alt="Carnegie Corporation of New York"></a>
       <a class="h-logo" href="https://rubase.org/" target="_blank" rel="noopener" title="RuBase dashboard"><img src="assets/logos/rubase_logo.svg" alt="RuBase"></a>
     </div>
@@ -1212,6 +1232,19 @@ buildHome();
 var hash=(location.hash||'').replace('#','');
 if(hash&&hash!=='home'&&!isNaN(parseInt(hash,10))){showDeck(parseInt(hash,10)-1);}
 else{showHome();}
+</script>
+<div id="qrOverlay" hidden><div class="qr-inner"><img src="img/qr_workshop.png" alt="QR code linking to the workshop site"><div class="qr-url">sdspieg.github.io/rubase-workshop-gatech-2608</div><div class="qr-hint">click anywhere to close</div></div></div>
+<script>
+(function(){
+  var btn=document.getElementById('qrToggle'), ov=document.getElementById('qrOverlay');
+  if(!btn||!ov) return;
+  function open(){ ov.hidden=false; btn.setAttribute('aria-expanded','true'); }
+  function close(){ ov.hidden=true; btn.setAttribute('aria-expanded','false'); }
+  btn.addEventListener('click',function(e){ e.preventDefault(); e.stopPropagation();
+    ov.hidden ? open() : close(); });
+  ov.addEventListener('click',close);
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape'&&!ov.hidden) close(); });
+})();
 </script>
 </body>
 </html>
