@@ -17,6 +17,13 @@ def sections(text):
     for m in re.finditer(r'<section class="slide.*?</section>', text, re.S):
         yield m
 
+def _is_flat_export(frag):
+    """One raster used as the plate AND as every reveal = a dimmed png dump."""
+    plate = re.search(r'class="ob-plate" src="(img/[^"]+)"', frag)
+    reveals = re.findall(r'class="ob-reveal" src="(img/[^"]+)"', frag)
+    return bool(plate and reveals and all(r == plate.group(1) for r in reveals))
+
+
 def main(paths):
     text = DECK.read_text(encoding='utf-8')
     for p in paths:
@@ -29,6 +36,14 @@ def main(paths):
         if len(hits) != 1:
             sys.exit(f'{p}: {len(hits)} sections match data-sid={sid}')
         old = hits[0].group(0)
+        # THE GATE (SDS, 2026-08-31): a "rebuilt" slide that is still the flat
+        # PowerPoint export with clip-path windows cut in it is NOT rebuilt. 26 of
+        # them reached the deck and were reported done before anyone measured it.
+        # Refuse them here, where they would otherwise become a green report.
+        if _is_flat_export(frag) and '--allow-dump' not in sys.argv:
+            sys.exit(f'{p}: REFUSED - {sid} is still a flat export with clip-path '
+                     f'windows, not a rebuild. Compose it from img/src2025/ assets, '
+                     f'or pass --allow-dump with a reason if this is deliberate.')
         oldn = re.search(r'data-n="([^"]*)"', old)
         newn = re.search(r'data-n="([^"]*)"', frag)
         if oldn and (not newn or newn.group(1) != oldn.group(1)):
