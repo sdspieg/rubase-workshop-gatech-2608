@@ -214,6 +214,17 @@ table.shift col:first-child{width:12%}
 .omics:has(.omx-expl[data-layer="2"].shown):not(:has(.omx-expl[data-layer="3"].shown)) svg .lay2{opacity:1}
 .omics:has(.omx-expl[data-layer="3"].shown):not(:has(.omx-expl[data-layer="4"].shown)) svg .lay3{opacity:1}
 .omics:has(.omx-expl[data-layer="4"].shown) svg .lay4{opacity:1}
+/* ---- comment #49 "ATROCIOUS font" on the day divider, and #54 the oversized hero number ----
+   .daytitle was capped at min(--sc,1) so it rendered at 4.5cqw on a slide whose autofit had
+   already run to 3.2 - a day divider smaller than the body text of the slide before it. And
+   .body-lg took --sc uncapped, which is how "200 million" got to ~6.2cqw. Both are now scaled
+   deliberately rather than by whatever the fitter happened to land on. */
+.slide.divider .daycard{justify-content:center;gap:.15em}
+.slide.divider .kicker{font-size:1.85cqw;letter-spacing:.24em}
+.slide.divider .daytitle{font-size:9.6cqw;line-height:1.0;margin:.06em 0 .1em}
+.slide.divider .daysub{font-size:3.0cqw;line-height:1.24;max-width:26ch}
+.slide.divider .daymins{font-size:1.7cqw;letter-spacing:.16em;margin-top:.5em}
+.body-lg{font-size:calc(2.75cqw * min(var(--sc), 1.7))}
 /* ---- OMICS: the ORIGINAL picture, built component by component (SDS 2026-08-31) ----
    His instruction: do NOT redraw the diagram as boxes and build THOSE. Parse the real
    components out of the original PowerPoint render and reveal those, each one paired
