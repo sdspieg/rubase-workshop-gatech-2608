@@ -53,6 +53,11 @@ async def run(deck, sid, widths, shots, manifest, allow):
                   const note=cur&&cur.querySelector('.ob-note');
                   const scrim=!!(cur&&cur.querySelector('.ob-scrim'));
                   const esc=[...s.querySelectorAll('.ob-note,.ob-pic,img,svg')].filter(e=>{
+                    // A clip-path'd <image> reports its UNCLIPPED source rect, which is far
+                    // larger than what is on screen and routinely hangs off the slide while the
+                    // visible crop sits comfortably inside. Counting it as an escape is a false
+                    // alarm - and a gate that cries wolf gets ignored. Judge it by its clip.
+                    if (e.getAttribute && e.getAttribute('clip-path')) return false;
                     const r=e.getBoundingClientRect();
                     return r.right>sr.right+1||r.bottom>sr.bottom+1||r.left<sr.left-1||r.top<sr.top-1;}).length;
                   const imgs=[...s.querySelectorAll('img')];
