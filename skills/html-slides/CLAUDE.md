@@ -130,7 +130,7 @@ Reuse the window he already has:
   port is itself forbidden here (gate #97) - the canonical launchers own it.
 - Bringing an existing window to the front is fine and encouraged; opening another is not.
 
-## 8 · Editing concurrently
+## 9 · Editing concurrently
 
 Many agents cannot edit `deck.html` at once. Each writes `frag_<sid>.html` (+ `.css`) to a scratchpad;
 `tools/splice_frag.py` splices them in by `data-sid`, preserves the deck's own `data-n` speaker notes,
