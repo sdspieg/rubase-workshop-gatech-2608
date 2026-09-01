@@ -26,3 +26,5 @@ enforcing check is a lesson that will be unlearned; the "enforced by" column is 
 | 2026-09-01 | Every build step carries a FULL-SIZE svg overlay, so hit-testing returned the svg root at all 560 probe points and no part of an SVG slide could be selected. | review.js resolves geometrically; rule VISUAL_SPEC section 6 |
 | 2026-09-01 | check_regressions invented 53 SVG collisions by matching "<svg>" inside a CSS COMMENT and swallowing the stylesheet. | scoped per section |
 | 2026-09-01 | The compose box was placed with a hardcoded 200px height guess, so Done hung off screen and he had to shrink the window. | measured-height repositioning + sticky action row |
+| 2026-09-01 | 636 of 798 elements on 99 slides were unreachable by the pointer: full-size .ob-step layers plus inset:0 component images. Fixed per slide three times before measuring. | deck CSS + universal resolver + `reach_audit.py` |
+| 2026-09-01 | The comment toggle looked the same in both states and its type was too small to read. | red OFF / green ON, 15px bold, state written in words |

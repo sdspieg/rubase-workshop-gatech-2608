@@ -178,6 +178,26 @@ PASS while measuring nothing when it has no `--manifest`. The picture is the acc
 
 ## 11 · The review overlay is part of the visual contract
 
+🟥 **Nothing on a slide is clickable by default, and that is the single biggest defect this deck
+has had.** Measured across all 134 slides: **636 of 798** pictures, cards and boxes could not be
+reached by the pointer, on **99 slides**. Two stacking habits cause it, both deliberate design:
+every `.ob-step` is a full-size transparent layer, and `.obuild .ob-pic img` pins EVERY component
+image to `inset:0` at 100%x100%, so each component covers the ones before it. Browser hit-testing
+returns the topmost layer and never the thing under the cursor.
+
+**Both halves of the fix are mandatory in any deck built this way:**
+```css
+.obuild .ob-step{pointer-events:none}      /* the layer passes the pointer through */
+.obuild .ob-step > *{pointer-events:auto}  /* its CONTENTS take it */
+.obuild .ob-scrim{pointer-events:none}
+```
+and the reviewer resolves the target **geometrically** - smallest element under the pointer, not
+topmost - walking each stack entry's descendants, because a full-size layer hides its own contents
+from hit-testing. Measure it with `tools/reach_audit.py`, which runs through the reviewer's own
+resolver via `window.__gtrPick`, so "it is clickable now" is a number rather than a feeling.
+
+
+
 A slide nobody can select is a slide nobody can comment on, so `review.js` ships **inside this
 skill** and its behaviour is specified here, not left to chance.
 
