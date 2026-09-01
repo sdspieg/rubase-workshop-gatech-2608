@@ -2631,6 +2631,12 @@ body.measuring .queryb .qb-el,body.nobuild .queryb .qb-el{opacity:1}
   background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.1);border-radius:5px;
   padding:.45em .2em}
 .queryb .qb-q{color:var(--wh);border-radius:3px;transition:color .3s,background .3s}
+/* The two quoted phrases were computing to position:absolute;display:block and BOTH
+   landing at the same point, so the query line rendered as "( OR ) AND (...)" with
+   "smart cities" and "smart city" printed on top of each other in mid-line. Put them
+   back in the flow of their own line. (SDS, Day 2, taught today.) */
+.queryb .qb-q1 .qb-q{position:static;display:inline;left:auto;top:auto;width:auto;
+ padding:0 .18em;background:rgba(219,173,80,.20)}
 .queryb .qb-o,.queryb .qb-a,.queryb .qb-p{color:#7f9ec4;transition:color .3s}
 .queryb:has(.ob-step.qs2.shown) .qb-q{color:#ffe6a8;background:rgba(219,173,80,.2);
   box-shadow:0 0 0 .16em rgba(219,173,80,.2)}
