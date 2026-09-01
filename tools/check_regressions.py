@@ -86,9 +86,20 @@ def check_svg_class_scoping(html, out):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--deck', default=str(pathlib.Path(__file__).resolve().parent.parent / 'deck.html'))
+    # 🟥 The flash gate was BLIND where the work actually happens. It read CSS only from
+    # inline <style> blocks, but agents write their CSS to frag_<sid>.css files, which are
+    # never checked until after they are spliced into the deck - i.e. after the defect has
+    # already landed. Three fragments arrived carrying the fade, one of them REVERTING an
+    # applied fix, and the gate passed the deck while they sat there. Point it at the
+    # fragments too: --css accepts files or globs.
+    ap.add_argument('--css', nargs='*', default=[], help='extra .css files/globs to check')
     a = ap.parse_args()
-    html = pathlib.Path(a.deck).read_text(encoding='utf-8')
+    html = pathlib.Path(a.deck).read_text(encoding='utf-8') if pathlib.Path(a.deck).exists() else ''
     css = '\n'.join(m.group(1) for m in re.finditer(r'<style>(.*?)</style>', html, re.S))
+    import glob as _g
+    for pat in a.css:
+        for f in sorted(_g.glob(pat)):
+            css += '\n/* ==== ' + f + ' ==== */\n' + pathlib.Path(f).read_text(encoding='utf-8')
 
     out, ok = [], True
     for fn, arg in ((check_hidden_state_fades, css), (check_font_floor, css),
