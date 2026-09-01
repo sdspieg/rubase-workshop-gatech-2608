@@ -82,6 +82,24 @@ label. Markup:
 Only the current box shows, by CSS alone:
 `.ob-step:has(~ .ob-step.shown) .ob-note{opacity:0;visibility:hidden}`
 
+## 4b · Whose voice is the slide in, and did you read its notes?
+
+🟥 **The slides are for the STUDENTS, not the instructor.** SDS, 2026-09-01: *"This is for
+instructors. Reframe ALL of these instances throughout the deck!"* and, on the next one, *"Also
+here: wrong framing. These slides are for the students - NOT for the instructor!!!"*
+
+A line like *"Ask the room to guess…"* or *"This is where the room realizes…"* is **stage
+direction**. It belongs in `data-n`, where the speaker reads it. What is ON the slide is what the
+student reads. **Move it, never delete it** — appending to `data-n` keeps the delivery cue.
+
+🟥 **Read the slide's own `data-n` BEFORE changing what it argues.** *"This is misframed. Make
+sure you always read the notes of the original slides!"* Every rebuild that quietly changed a
+slide's point did so because nobody read them first.
+
+A related consequence for build order: if a slide asks the room a question, **the answer must not
+be on screen when the question is** — he asked for the priming figure to arrive on a later step,
+not to sit at the bottom of the slide giving the game away.
+
 ## 5 · Four traps, each of which has shipped a defect
 
 - 🟥 **Hidden states carry `transition:none`.** `autofit()` lights everything via `body.measuring` to

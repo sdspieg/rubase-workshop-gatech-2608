@@ -28,3 +28,6 @@ enforcing check is a lesson that will be unlearned; the "enforced by" column is 
 | 2026-09-01 | The compose box was placed with a hardcoded 200px height guess, so Done hung off screen and he had to shrink the window. | measured-height repositioning + sticky action row |
 | 2026-09-01 | 636 of 798 elements on 99 slides were unreachable by the pointer: full-size .ob-step layers plus inset:0 component images. Fixed per slide three times before measuring. | deck CSS + universal resolver + `reach_audit.py` |
 | 2026-09-01 | The comment toggle looked the same in both states and its type was too small to read. | red OFF / green ON, 15px bold, state written in words |
+| 2026-09-01 | Slides written in instructor voice ("Ask the room to guess...") - stage direction printed where the student reads. | rule SKILL.md 4b - move it into data-n |
+| 2026-09-01 | A slide was re-argued without reading its own data-n and lost the point it existed to make. | rule SKILL.md 4b - read the notes first |
+| 2026-09-01 | A slide asked the room a question with the answer already printed at the bottom. | rule SKILL.md 4b - the answer arrives on a later step |
