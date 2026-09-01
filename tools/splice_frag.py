@@ -48,7 +48,16 @@ def main(paths):
             continue
         oldn = re.search(r'data-n="([^"]*)"', old)
         newn = re.search(r'data-n="([^"]*)"', frag)
-        if oldn and (not newn or newn.group(1) != oldn.group(1)):
+        # The notes are the deck's, not the fragment's - EXCEPT when the fragment
+        # APPENDS to them. Moving instructor stage direction off the slide and into
+        # data-n is required work ("these slides are for the students"), and a blanket
+        # restore silently threw that away. An append keeps the whole old value as a
+        # prefix; anything else is a rewrite and is refused.
+        appended = bool(oldn and newn and newn.group(1).startswith(oldn.group(1))
+                        and len(newn.group(1)) > len(oldn.group(1)))
+        if appended:
+            print(f'  {sid}: data-n APPENDED (+{len(newn.group(1)) - len(oldn.group(1))} chars) - kept')
+        elif oldn and (not newn or newn.group(1) != oldn.group(1)):
             # keep the deck's notes; agents were told to copy them verbatim
             if newn:
                 frag = frag.replace(newn.group(0), oldn.group(0), 1)
