@@ -54,6 +54,15 @@ before and after, and quote both numbers.**
 
 ## 4 · The build grammar
 
+**The complete specification of every visual element is [`VISUAL_SPEC.md`](VISUAL_SPEC.md) in this
+folder** - the slide shell, `.ob-pic`/`.ob-step`/`.ob-note`/`.ob-scrim`/`.ob-plate` and their
+contracts, the three component routes, the clip-path crop technique and why a cropped image's own
+rect lies, inline-SVG rules (class prefixes, the type floor against viewBox, numeric entities),
+the stacked full-size overlays and what they do to selectability, the motion rule, the two
+specificity traps, and the gates. Read it before authoring or repairing any slide.
+
+In short:
+
 One click = **one component of the picture + the box explaining it**; the previous box disappears. The
 box goes where the *already-revealed* art is not. Boxes carry 2–3 sentences of real prose, never a
 label. Markup:

@@ -65,12 +65,23 @@ def check_svg_class_scoping(html, out):
     names is a gate people learn to ignore.
     """
     defs = {}
-    for m in re.finditer(r'<svg\b[^>]*>(.*?)</svg>', html, re.S):
-        st = re.search(r'<style>(.*?)</style>', m.group(1), re.S)
-        if not st:
-            continue
-        for rm in re.finditer(r'\.([A-Za-z][\w-]*)\s*\{([^}]*)\}', st.group(1)):
-            defs.setdefault(rm.group(1), set()).add(re.sub(r'\s+', '', rm.group(2)))
+    # Only SVGs INSIDE a slide count. Scanning the whole document made the check
+    # match the literal text "<svg>" sitting in a CSS COMMENT in a fragment's
+    # stylesheet, then swallow the rest of the stylesheet as that "SVG's" content -
+    # which reported 50 phantom collisions on deck-level classes like .ob-pic and
+    # turned preflight red for no reason. A gate that invents failures gets ignored
+    # just as fast as one that misses them.
+    # PER SECTION, never a concatenation: an unbalanced "<svg" mentioned in one
+    # slide's prose or speaker notes lets the regex run on into the NEXT slide and
+    # pair with its </svg>, inventing collisions out of two unrelated figures. Same
+    # family of bug as scanning the whole document; both invented ~50 failures.
+    for sec in re.finditer(r'<section class="slide.*?</section>', html, re.S):
+        for m in re.finditer(r'<svg\b[^>]*>(.*?)</svg>', sec.group(0), re.S):
+            st = re.search(r'<style>(.*?)</style>', m.group(1), re.S)
+            if not st:
+                continue
+            for rm in re.finditer(r'\.([A-Za-z][\w-]*)\s*\{([^}]*)\}', st.group(1)):
+                defs.setdefault(rm.group(1), set()).add(re.sub(r'\s+', '', rm.group(2)))
     collisions = sorted(k for k, v in defs.items() if len(v) > 1)
     unprefixed = sorted(k for k in defs if '-' not in k and k not in collisions)
     for c in collisions:
@@ -86,9 +97,20 @@ def check_svg_class_scoping(html, out):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--deck', default=str(pathlib.Path(__file__).resolve().parent.parent / 'deck.html'))
+    # 🟥 The flash gate was BLIND where the work actually happens. It read CSS only from
+    # inline <style> blocks, but agents write their CSS to frag_<sid>.css files, which are
+    # never checked until after they are spliced into the deck - i.e. after the defect has
+    # already landed. Three fragments arrived carrying the fade, one of them REVERTING an
+    # applied fix, and the gate passed the deck while they sat there. Point it at the
+    # fragments too: --css accepts files or globs.
+    ap.add_argument('--css', nargs='*', default=[], help='extra .css files/globs to check')
     a = ap.parse_args()
-    html = pathlib.Path(a.deck).read_text(encoding='utf-8')
+    html = pathlib.Path(a.deck).read_text(encoding='utf-8') if pathlib.Path(a.deck).exists() else ''
     css = '\n'.join(m.group(1) for m in re.finditer(r'<style>(.*?)</style>', html, re.S))
+    import glob as _g
+    for pat in a.css:
+        for f in sorted(_g.glob(pat)):
+            css += '\n/* ==== ' + f + ' ==== */\n' + pathlib.Path(f).read_text(encoding='utf-8')
 
     out, ok = [], True
     for fn, arg in ((check_hidden_state_fades, css), (check_font_floor, css),

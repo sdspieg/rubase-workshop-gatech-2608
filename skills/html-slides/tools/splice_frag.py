@@ -66,6 +66,11 @@ def main(paths):
 
 if __name__ == '__main__':
     args = sys.argv[1:]
+    # --allow-dump is read off sys.argv by the gate above; it must NOT survive into the
+    # file list or it is opened as a path and the run dies BEFORE deck.html is written -
+    # so the flag could never actually be used.
+    while '--allow-dump' in args:
+        args.remove('--allow-dump')
     if '--deck' in args:
         i = args.index('--deck')
         DECK = pathlib.Path(args[i + 1]).resolve()

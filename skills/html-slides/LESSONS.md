@@ -17,3 +17,12 @@ enforcing check is a lesson that will be unlearned; the "enforced by" column is 
 | 2026-08-31 | `verify_build.py` reports 0 escapes for a box clipped by the picture's own `overflow:hidden`. Shipped 3×. | rule §5 — read the render; no check yet |
 | 2026-08-31 | `.obuild .ob-pic img` outranks a two-class selector; positioned components get stretched and photos distort. | rule §5 — no check yet |
 | 2026-09-01 | Opened six new browser windows in one session instead of reusing the one already on his desktop. | rule CLAUDE.md section 8 - no check yet |
+| 2026-09-01 | Four Day-2 slides printed an explanation box over 91-100% of labels, logos and diagrams the room had already been shown. | `box_collisions.py` (no manifest needed) |
+| 2026-09-01 | `verify_build.py` prints PASS while measuring NOTHING when it has no --manifest; every slide in a 34-agent campaign passed that way. | `box_collisions.py` + read the render |
+| 2026-09-01 | 26 slides rendered text below the floor; the static checks read cqw and SVG px only, so rem/em walked past. | `render_audit.py` measures the RENDERED size |
+| 2026-09-01 | The query line rendered as "( OR ) AND (...)" - both quoted phrases computed to position:absolute and landed at the same point. | rule VISUAL_SPEC section 8 |
+| 2026-09-01 | An SVG chart used HTML named entities and silently rendered as a broken image. | rule VISUAL_SPEC section 5 - numeric refs only |
+| 2026-09-01 | Comment mode reset to OFF on every page load, so hovering did nothing and there was no symptom to see. | review.js remembers it, defaults ON |
+| 2026-09-01 | Every build step carries a FULL-SIZE svg overlay, so hit-testing returned the svg root at all 560 probe points and no part of an SVG slide could be selected. | review.js resolves geometrically; rule VISUAL_SPEC section 6 |
+| 2026-09-01 | check_regressions invented 53 SVG collisions by matching "<svg>" inside a CSS COMMENT and swallowing the stylesheet. | scoped per section |
+| 2026-09-01 | The compose box was placed with a hardcoded 200px height guess, so Done hung off screen and he had to shrink the window. | measured-height repositioning + sticky action row |
