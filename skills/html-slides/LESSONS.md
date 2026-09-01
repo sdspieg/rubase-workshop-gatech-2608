@@ -16,3 +16,4 @@ enforcing check is a lesson that will be unlearned; the "enforced by" column is 
 | 2026-08-31 | `splice_frag.py` called `sys.exit` on the first refused fragment, silently dropping every good fragment behind it. | skips and reports at the end |
 | 2026-08-31 | `verify_build.py` reports 0 escapes for a box clipped by the picture's own `overflow:hidden`. Shipped 3×. | rule §5 — read the render; no check yet |
 | 2026-08-31 | `.obuild .ob-pic img` outranks a two-class selector; positioned components get stretched and photos distort. | rule §5 — no check yet |
+| 2026-09-01 | Opened six new browser windows in one session instead of reusing the one already on his desktop. | rule CLAUDE.md section 8 - no check yet |
