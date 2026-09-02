@@ -100,6 +100,22 @@ A related consequence for build order: if a slide asks the room a question, **th
 be on screen when the question is** — he asked for the priming figure to arrive on a later step,
 not to sit at the bottom of the slide giving the game away.
 
+## 4c · Every example must say what it is an example OF
+
+🟥 SDS, three times in one pass on 2026-09-02: *"But so what is the topic here? Hard to understand
+the 3d without knowing what it's about!"* &middot; *"ALWAYS mention the actual topic whenever you give
+examples, so students understand"* &middot; *"mention that this is from Red Lines! Double-check ALL slides
+to make sure it is clear what topic the slides/examples are about."*
+
+**A worked example with no named subject is a diagram of nothing.** Every figure, screenshot, table
+and worked case names its topic ON THE SLIDE - not only in `data-n`, where the student cannot see it.
+Find the real subject in the slide's own notes, in its neighbours, or in the source document; if it
+genuinely has none, say so rather than inventing one.
+
+The same instinct covers a related defect: a slide that deliberately withholds an answer must SAY it
+is withholding. Six empty bars read as a bug, not as an invitation, until the slide asks the question
+out loud.
+
 ## 5 · Four traps, each of which has shipped a defect
 
 - 🟥 **Hidden states carry `transition:none`.** `autofit()` lights everything via `body.measuring` to

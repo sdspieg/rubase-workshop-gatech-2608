@@ -31,3 +31,6 @@ enforcing check is a lesson that will be unlearned; the "enforced by" column is 
 | 2026-09-01 | Slides written in instructor voice ("Ask the room to guess...") - stage direction printed where the student reads. | rule SKILL.md 4b - move it into data-n |
 | 2026-09-01 | A slide was re-argued without reading its own data-n and lost the point it existed to make. | rule SKILL.md 4b - read the notes first |
 | 2026-09-01 | A slide asked the room a question with the answer already printed at the bottom. | rule SKILL.md 4b - the answer arrives on a later step |
+| 2026-09-02 | Worked examples across the deck never named their topic - a 3-D taxonomy figure, two blind generations, a Red Lines case. | rule SKILL.md 4c - no check yet |
+| 2026-09-02 | A deliberately empty chart ("guess first") read as a bug: "Why are these empty?" | rule SKILL.md 4c - say that you are withholding |
+| 2026-09-02 | Two Day-3 comments would have gone to the WRONG slide by number - a slide had been inserted since. Matched by elText instead. | rule SKILL.md 7 |
