@@ -466,6 +466,30 @@
   text-transform:uppercase;color:var(--lb,#82a0bc);opacity:.85}
 .step-treats.diagnosis{color:var(--gold,#dbad50);opacity:1;font-weight:600}
 
+/* Materials is an artifact library, not a second slide index. */
+.materials-tabs{position:sticky;top:0;z-index:12;display:flex;gap:.55rem;flex-wrap:wrap;
+  margin:0 0 1.35rem;padding:.7rem;background:rgba(9,24,47,.96);border:1px solid var(--line);
+  border-radius:var(--r);backdrop-filter:blur(8px)}
+.materials-tab{appearance:none;border:1px solid var(--line);border-radius:999px;padding:.55rem .9rem;
+  background:var(--db);color:var(--lb);font:700 .82rem/1.1 inherit;cursor:pointer}
+.materials-tab:hover,.materials-tab:focus-visible{color:var(--wh);border-color:var(--gold)}
+.materials-tab.active{background:var(--gold);border-color:var(--gold);color:var(--bg)}
+.materials-panel{display:none}.materials-panel.active{display:block}
+.materials-intro{max-width:76ch;color:var(--lb);font-size:.92rem;line-height:1.6}
+.prompt-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;margin:1rem 0 1.4rem}
+.prompt-card{display:flex;min-width:0;gap:.9rem;padding:1rem;background:var(--db);border:1px solid var(--line);
+  border-radius:var(--r);box-shadow:0 10px 28px rgba(0,0,0,.14)}
+.prompt-card-copy{min-width:0;flex:1}.prompt-step{color:var(--gold);font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.prompt-card h4{margin:.35rem 0 .45rem;color:var(--wh);font-size:1.02rem;line-height:1.25}
+.prompt-card p{margin:0;color:var(--lb);font-size:.8rem;line-height:1.48}
+.resource-actions{display:flex;gap:.7rem;flex-wrap:wrap;margin-top:.8rem}
+.resource-actions a{color:var(--gold);font-size:.77rem;font-weight:700;text-decoration:none}.resource-actions a:hover{text-decoration:underline}
+.resource-qr{align-self:flex-start;flex:0 0 92px;padding:6px;background:#fff;border:1px solid var(--gold);border-radius:6px;text-decoration:none;line-height:1}
+.resource-qr img{display:block;width:100%;height:auto;image-rendering:pixelated}
+.resource-qr span{display:block;margin-top:5px;color:#09182f;font-size:.62rem;font-weight:800;text-align:center;letter-spacing:.06em;text-transform:uppercase}
+@media(max-width:1180px){.prompt-grid{grid-template-columns:1fr}.prompt-card{align-items:center}.resource-qr{flex-basis:104px}}
+@media(max-width:620px){.materials-tabs{position:static}.materials-tab{flex:1 1 44%}.prompt-card{align-items:flex-start}.resource-qr{flex-basis:82px}}
+
 
 /* ---- Banner QR -------------------------------------------------------------
    Measured, not assumed: a 54-character URL makes a 33-module code, and at

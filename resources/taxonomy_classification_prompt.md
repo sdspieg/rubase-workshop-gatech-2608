@@ -1,4 +1,4 @@
-# Prompt 2 — Classifying a corpus against your taxonomy
+# Prompt 2 – Classifying a corpus against your taxonomy
 
 This is the **actual** classification system prompt we run in production, with the
 domain-specific parts replaced by placeholders. The version this is derived from
@@ -15,14 +15,14 @@ both are counter-intuitive:
    not Phase 2.*
 2. **The category list is pasted in verbatim and must be copied exactly.** No IDs,
    no abbreviations, no "closest match". If the model paraphrases a label, your join
-   silently drops the record — and a silent drop looks exactly like an absence of
+   silently drops the record – and a silent drop looks exactly like an absence of
    evidence.
 
 **Cost note.** Batch ~20 documents per call and cache the system prompt. Batching is
 a bigger lever on cost than picking a cheaper model, and a cheaper model on this task
 costs you accuracy you will not notice until the aggregate is wrong.
 
-**Before you trust any run:** hand-check 20 — ten it kept and ten it rejected — and
+**Before you trust any run:** hand-check 20 – ten it kept and ten it rejected – and
 report the accuracy. The rejects are where the damage hides, because a filter that
 encodes your assumption will confirm your assumption.
 
@@ -81,7 +81,7 @@ text's primary themes. Do not over-tag.
 *   `{{HLTP}} | {{2nd Level TE}} | {{3rd Level TE}}`
 *   `… paste every category from your taxonomy TSV here, one per line, pipe-separated …`
 
-> Generate this list mechanically from the TSV that Prompt 1 produced — do not retype
+> Generate this list mechanically from the TSV that Prompt 1 produced – do not retype
 > it. Any drift between the list in the prompt and the list in your data becomes an
 > unjoinable record.
 

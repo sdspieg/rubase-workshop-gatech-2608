@@ -1,4 +1,4 @@
-# Prompt 1 — Generating a multi-dimensional taxonomy
+# Prompt 1 – Generating a multi-dimensional taxonomy
 
 This is the **actual** prompt we use (the Multi-Dimensional Taxonomy Development
 Framework, MDTDF), with the domain left blank for you to fill in. Nothing here is
@@ -6,14 +6,14 @@ written for the workshop: this is the working document, and it is what produced 
 taxonomies behind the RuBase dashboards you have logins for.
 
 **How to use it.** Paste everything below the line into a frontier model
-(Claude Opus, GPT-5.x, Gemini Pro — see the model-selection guide). Replace
+(Claude Opus, GPT-5.x, Gemini Pro – see the model-selection guide). Replace
 `{{DOMAIN}}` with your own domain in one sentence. If you have a corpus, paste
 20–50 titles and abstracts after the prompt and say *"ground the dimensions in this
 corpus, and tell me which dimensions the corpus does NOT support."*
 
 **What good output looks like.** 5–7 dimensions that survive the independence test,
 not 15 that overlap. If two of your HLTPs always move together, you have one
-dimension wearing two hats — merge them.
+dimension wearing two hats – merge them.
 
 **The check that matters.** Before you accept a taxonomy, run the independence test
 in the "Testing for Independence" section by hand on three real cases. A model will
