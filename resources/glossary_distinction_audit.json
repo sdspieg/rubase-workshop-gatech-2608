@@ -1,0 +1,1228 @@
+{
+  "additions": [
+    {
+      "term": "Chunk",
+      "aliases": [
+        "text chunk",
+        "semantic chunk"
+      ],
+      "definition": "A chunk is a piece of a document prepared for model or human analysis. It is usually larger than a selected text span and smaller than the whole document.",
+      "evidence": [
+        "“Assigns every chunk of your corpus to elements of your taxonomy.”",
+        "“classification of semantic text chunks”",
+        "“batch ~20 documents per call”"
+      ],
+      "why_missing_matters": "The glossary defines Chunking and Chunk ID, but not Chunk. Participants cannot understand why a chunk can be cited, classified, batched, or split from a document."
+    },
+    {
+      "term": "Passage",
+      "aliases": [
+        "source passage"
+      ],
+      "definition": "A passage is a meaningful section of text read as a unit, such as a paragraph or several sentences. It may be used as a chunk, but a passage is a reading unit, not necessarily a fixed processing unit.",
+      "evidence": [
+        "“retrieves relevant source passages”",
+        "“the exact passage in a source”",
+        "“text chunks already assigned to that element”"
+      ],
+      "why_missing_matters": "The materials use passage, chunk, and span close together. Without this distinction, participants may cite whole chunks when only a smaller passage supports a claim."
+    },
+    {
+      "term": "Text span",
+      "aliases": [
+        "span",
+        "selected text span"
+      ],
+      "definition": "A text span is an exact selected run of words inside a larger text. It can be a sentence fragment, sentence, or paragraph, but it is not the same as a whole document or record.",
+      "evidence": [
+        "“evidence_span”: “a verbatim quote from the text that justifies the labels”",
+        "“Boundary span”",
+        "“Threatened-consequence span”"
+      ],
+      "why_missing_matters": "Evidence span currently has text span as an alias, but a text span is broader. Participants need to know that an evidence span is one use of a text span, not every text span."
+    },
+    {
+      "term": "Summary",
+      "aliases": [
+        "summarization",
+        "short summary"
+      ],
+      "definition": "A summary is a shortened restatement of the main points of a text or evidence set. It is not the same as an abstract, which is a specific front-matter section of a document.",
+      "evidence": [
+        "“summary, themes, evolution over time, and author/source differences”",
+        "“Summarize the main themes in this research paper”",
+        "“Executive summary”"
+      ],
+      "why_missing_matters": "The glossary aliases Abstract and summary, but the prompts ask for summaries of chunks and reports. That can confuse a generated summary with a document’s original abstract."
+    },
+    {
+      "term": "Claim",
+      "aliases": [
+        "substantive claim",
+        "assertion"
+      ],
+      "definition": "A claim is a statement that says something is true, likely, important, or supported. In this workflow, substantive claims must be linked to cited chunk IDs or clearly marked as unsupported.",
+      "evidence": [
+        "“Every substantive claim must point to one or more chunk IDs.”",
+        "“If the supplied chunks do not support a claim, the model must say so.”",
+        "“what a source says and your inference”"
+      ],
+      "why_missing_matters": "The evidence rules revolve around claims, but the glossary lacks Claim. Participants need to know what must be cited and what does not count as evidence-grounded."
+    },
+    {
+      "term": "Finding",
+      "aliases": [
+        "research finding",
+        "supported finding"
+      ],
+      "definition": "A finding is a conclusion that the available evidence supports under the stated method and scope. It is not just a fluent paragraph, a model output, or an unsupported impression.",
+      "evidence": [
+        "“A fluent paragraph without traceable evidence is not a finding.”",
+        "“silence is a finding”",
+        "“Null finding”"
+      ],
+      "why_missing_matters": "The guides distinguish findings from summaries and unsupported prose. Without a definition, participants may treat any model-written conclusion as a finding."
+    },
+    {
+      "term": "Evidence",
+      "aliases": [
+        "supporting evidence"
+      ],
+      "definition": "Evidence is source material or data used to support, weaken, or test a claim. It differs from a citation, which points to evidence, and from a claim, which evidence is used to support.",
+      "evidence": [
+        "“Use only the supplied chunks as evidence.”",
+        "“available evidence”",
+        "“evidence-grounded report”"
+      ],
+      "why_missing_matters": "The glossary has evidence processes and evidence spans, but not Evidence itself. This weakens distinctions among evidence, source, citation, and claim."
+    },
+    {
+      "term": "Source",
+      "aliases": [
+        "information source"
+      ],
+      "definition": "A source is the document, person, database, publication, or channel from which information comes. It is not the same as a citation, which points to a source, or a source type, which groups similar sources.",
+      "evidence": [
+        "“source, author, and date metadata”",
+        "“source groups that are silent or underrepresented”",
+        "“Source and source type”"
+      ],
+      "why_missing_matters": "The existing combined entry does not give Source its own contrast. Participants need this to interpret source metadata, source differences, and provenance."
+    },
+    {
+      "term": "Source type",
+      "aliases": [
+        "kind of source"
+      ],
+      "definition": "A source type is a group name for similar sources, such as academic article, official statement, news report, or social media post. It is not one specific source.",
+      "evidence": [
+        "“Compare what different authors, source types, or institutions emphasize.”",
+        "“source groups that are silent or underrepresented”",
+        "“source type by topic”"
+      ],
+      "why_missing_matters": "Author and source-difference tasks require comparing source groups. Without this term, participants may confuse one source with a whole class of sources."
+    },
+    {
+      "term": "Sample",
+      "aliases": [
+        "research sample",
+        "sampled items"
+      ],
+      "definition": "A sample is the subset of a larger corpus, dataset, or population that is actually checked or analyzed. It is not the same as the full corpus unless every item is included.",
+      "evidence": [
+        "“hand-check 20 – ten it kept and ten it rejected”",
+        "“check samples for accuracy”",
+        "“Random and stratified samples”"
+      ],
+      "why_missing_matters": "The glossary defines random and stratified sampling but not Sample. Participants need the base concept to understand hand checks and evaluation counts."
+    },
+    {
+      "term": "Relevance",
+      "aliases": [
+        "relevant",
+        "not relevant"
+      ],
+      "definition": "Relevance is whether an item fits the task’s actor, topic, and analytical requirements. It is not the same as importance, truth, or successful classification.",
+      "evidence": [
+        "“Gatekeeping (Relevance): Determine if the text is relevant.”",
+        "“relevance”: “relevant” | “not_relevant”",
+        "“kept and rejected”"
+      ],
+      "why_missing_matters": "The classification prompt centers on relevance, but the glossary only has relevance screening. Participants need the decision concept behind the screening step."
+    },
+    {
+      "term": "Gatekeeping",
+      "aliases": [
+        "strict gate",
+        "relevance gate"
+      ],
+      "definition": "Gatekeeping is the first decision that allows only in-scope, relevant material to move to classification. It is not classification itself, because rejected items receive no taxonomy labels.",
+      "evidence": [
+        "“Gatekeeping comes before classification”",
+        "“The gate is what keeps an off-topic document out.”",
+        "“Most of your quality comes from Phase 1, not Phase 2.”"
+      ],
+      "why_missing_matters": "The materials say most quality comes from gatekeeping. Without a standalone definition, participants may treat it as ordinary filtering or as taxonomy labeling."
+    },
+    {
+      "term": "Domain",
+      "aliases": [
+        "domain for this taxonomy",
+        "subject domain"
+      ],
+      "definition": "A domain is the bounded subject area the taxonomy is about. It says what the taxonomy covers and where it stops.",
+      "evidence": [
+        "“DOMAIN FOR THIS TAXONOMY”",
+        "“Domain Definition: Clearly define the boundaries”",
+        "“Domain for this run: {{DOMAIN}}”"
+      ],
+      "why_missing_matters": "Domain-framing exists, but Domain does not. Participants must define the domain before they can build dimensions, choose instances, or judge scope."
+    },
+    {
+      "term": "Instance",
+      "aliases": [
+        "thing being classified",
+        "domain instance"
+      ],
+      "definition": "An instance is the kind of thing the taxonomy classifies, such as an issue, event, argument, policy, or activity. In the prompt, it is explicitly not a document, paragraph, or source.",
+      "evidence": [
+        "“INSTANCE (the thing being classified)”",
+        "“NOT a document, not a paragraph, not a source.”",
+        "“all instances within the domain”"
+      ],
+      "why_missing_matters": "This is a central distinction in the taxonomy prompt. Without it, participants may build a taxonomy of documents instead of a taxonomy of the phenomena described in documents."
+    },
+    {
+      "term": "Primary application",
+      "aliases": [
+        "application corpus",
+        "intended application"
+      ],
+      "definition": "The primary application is the corpus, period, or practical setting where the taxonomy will actually be used. It is narrower than the domain and helps test whether the taxonomy is useful.",
+      "evidence": [
+        "“PRIMARY APPLICATION <the corpus or period you will actually run it over.>”",
+        "“Practical Application Test”",
+        "“supporting both analysis and operational planning”"
+      ],
+      "why_missing_matters": "Participants can create elegant taxonomies that do not fit their actual corpus. This term connects taxonomy design to the material it will be run over."
+    },
+    {
+      "term": "Universality",
+      "aliases": [
+        "universal applicability"
+      ],
+      "definition": "Universality means every instance in the domain can be placed somewhere along a dimension. It is not the same as coverage across all topics, because it applies to one dimension’s usability for every case.",
+      "evidence": [
+        "“Universal Applicability: Each dimension should be applicable to all instances”",
+        "“Can all domain instances be classified along this dimension?”",
+        "“Comprehensive Coverage”"
+      ],
+      "why_missing_matters": "The prompt uses universality as a validation criterion, but the glossary lacks it. Participants may confuse it with completeness or coverage."
+    },
+    {
+      "term": "Fundamentality",
+      "aliases": [
+        "fundamental aspect"
+      ],
+      "definition": "Fundamentality means a dimension captures an essential feature of the phenomenon, not a surface detail or convenient source label. It helps prevent taxonomies from mirroring the filing system of the sources.",
+      "evidence": [
+        "“Represents a truly fundamental aspect of the domain”",
+        "“Does this dimension capture an essential rather than superficial aspect?”",
+        "“A taxonomy that mirrors your sources' own filing system fails this brief”"
+      ],
+      "why_missing_matters": "This word is a key test in the MDTDF prompt. Without it, participants may accept superficial dimensions that are easy to name but analytically weak."
+    },
+    {
+      "term": "Classification",
+      "aliases": [
+        "classifying",
+        "classify"
+      ],
+      "definition": "Classification is the act of placing an item into one or more defined categories or taxonomy elements. It is not annotation in general, because annotation can also include notes, spans, or comments.",
+      "evidence": [
+        "“Taxonomy Classification”",
+        "“If relevant, map the text to one or more specific taxonomy elements.”",
+        "“classify diverse examples along each dimension”"
+      ],
+      "why_missing_matters": "Classification currently appears only as an alias under Taxonomic annotation. The broader concept is needed to distinguish classification, annotation, category, and label."
+    },
+    {
+      "term": "Taxonomy path",
+      "aliases": [
+        "classification path",
+        "pipe-separated path"
+      ],
+      "definition": "A taxonomy path is the ordered route through taxonomy levels for one category, such as HLTP, second level, and third level. It is not a chunk ID or a free-text label.",
+      "evidence": [
+        "“Each row represents one complete classification path”",
+        "“{{HLTP}} | {{2nd Level TE}} | {{3rd Level TE}}”",
+        "“pipe-separated”"
+      ],
+      "why_missing_matters": "The classification prompt depends on exact pipe-separated paths. Participants need to understand why small wording drift can break joins."
+    },
+    {
+      "term": "Category list",
+      "aliases": [
+        "available categories",
+        "taxonomy label list"
+      ],
+      "definition": "A category list is the exact set of labels or paths that the model is allowed to choose from. It is not a suggestion list, because paraphrased or invented labels can break downstream joins.",
+      "evidence": [
+        "“Available Categories (Must be copied EXACTLY as written)”",
+        "“No IDs, no abbreviations, no ‘closest match’.”",
+        "“paste every category from your taxonomy TSV here”"
+      ],
+      "why_missing_matters": "The guide stresses exact copying, but the glossary lacks the object being copied. This is a common source of silent drops."
+    },
+    {
+      "term": "Data",
+      "aliases": [
+        "research data"
+      ],
+      "definition": "Data are recorded values, text, files, observations, or measurements used in analysis. Metadata describe data, and a dataset organizes data into a structure.",
+      "evidence": [
+        "“data-processing terms”",
+        "“data files”",
+        "“raw data”"
+      ],
+      "why_missing_matters": "The glossary defines dataset, metadata, data type, and data warehouse, but not Data. This leaves the metadata/data distinction underexplained."
+    },
+    {
+      "term": "Value",
+      "aliases": [
+        "field value",
+        "cell value"
+      ],
+      "definition": "A value is the actual content stored in a field for one record, such as a date, label, number, or text string. It is not the field name or the schema rule.",
+      "evidence": [
+        "“All column values should be separated by tab characters.”",
+        "“No quotation marks around values”",
+        "“allowed values”"
+      ],
+      "why_missing_matters": "Participants working with TSV, JSON, schema, and fields need to distinguish field names from the values inside them."
+    },
+    {
+      "term": "Allowed value",
+      "aliases": [
+        "permitted value",
+        "valid value"
+      ],
+      "definition": "An allowed value is one of the specific entries a schema or prompt permits for a field. For example, relevance may allow only relevant or not_relevant.",
+      "evidence": [
+        "“relevance”: “relevant” | “not_relevant”",
+        "“allowed values”",
+        "“Must be copied EXACTLY as written”"
+      ],
+      "why_missing_matters": "This explains why output contracts forbid near synonyms. Without it, participants may think wording variation is harmless."
+    },
+    {
+      "term": "JSON object",
+      "aliases": [
+        "object"
+      ],
+      "definition": "A JavaScript Object Notation object is a set of named fields and their values, written inside curly braces. It differs from a JSON array, which is an ordered list inside square brackets.",
+      "evidence": [
+        "“respond ONLY with a raw JSON object”",
+        "“Schema: { ‘relevance’: ... }”",
+        "“classification_values”: [‘element1’, ‘element2’]"
+      ],
+      "why_missing_matters": "The prompt demands a raw JSON object. Participants who know JSON only as a file type may not know what object means."
+    },
+    {
+      "term": "JSON array",
+      "aliases": [
+        "array",
+        "list"
+      ],
+      "definition": "A JavaScript Object Notation array is an ordered list of values written inside square brackets. In the classification output, classification_values is an array because it can hold multiple labels.",
+      "evidence": [
+        "“classification_values”: [“element1”, “element2”]",
+        "“one or more specific taxonomy elements”",
+        "“objects, lists, numbers, and strings”"
+      ],
+      "why_missing_matters": "The classification schema uses arrays. Participants need this to see why one field can contain multiple classification labels."
+    },
+    {
+      "term": "Raw JSON",
+      "aliases": [
+        "raw JSON object"
+      ],
+      "definition": "Raw JavaScript Object Notation is JSON returned by itself, without Markdown fences, explanation, or surrounding commentary. It is meant to be read directly by software.",
+      "evidence": [
+        "“respond ONLY with a raw JSON object”",
+        "“Do not include markdown formatting (like a fenced code block), commentary, or anything outside the JSON object.”",
+        "“output parser”"
+      ],
+      "why_missing_matters": "Many model users wrap JSON in prose or code fences. The prompt forbids that because parsers may fail."
+    },
+    {
+      "term": "Fenced code block",
+      "aliases": [
+        "Markdown code fence",
+        "code block"
+      ],
+      "definition": "A fenced code block is a Markdown section surrounded by triple backticks. It is useful for display, but it is not raw JSON because the backticks become extra text.",
+      "evidence": [
+        "“Do not include markdown formatting (like a fenced code block)”",
+        "“Write in Markdown with exactly these headings”",
+        "“raw JSON object”"
+      ],
+      "why_missing_matters": "Participants often copy code-block habits into structured outputs. This term explains why a visually correct answer can be machine-invalid."
+    },
+    {
+      "term": "Terminal",
+      "aliases": [
+        "terminal window",
+        "text-based window"
+      ],
+      "definition": "A terminal is the text window where you type commands and see their output. It is not the shell itself, which is the program interpreting the commands.",
+      "evidence": [
+        "“Open a terminal (a text-based window)”",
+        "“open a new terminal window”",
+        "“The command interpreter inside a terminal”"
+      ],
+      "why_missing_matters": "The glossary aliases terminal with command-line interface, but the setup guide distinguishes terminal, shell, PATH, and commands. This confusion blocks installation help."
+    },
+    {
+      "term": "Command",
+      "aliases": [
+        "terminal command"
+      ],
+      "definition": "A command is text you type in a terminal to run a program or ask it to do something. It differs from a command-line option, which changes how that command behaves.",
+      "evidence": [
+        "“Run one command”",
+        "“claude ‘Summarize...’”",
+        "“Command-line option”"
+      ],
+      "why_missing_matters": "The setup guide repeatedly says to run commands, but only command-line option is defined. Participants need the base term."
+    },
+    {
+      "term": "Tool",
+      "aliases": [
+        "software tool"
+      ],
+      "definition": "A tool is a piece of software used to perform a task, such as searching, coding, or running model requests. It is not the same as the model, which produces the language output inside or behind some tools.",
+      "evidence": [
+        "“Pick exactly one”",
+        "“Install your one tool”",
+        "“It says nothing about whether ... the tool can read your files”"
+      ],
+      "why_missing_matters": "The guide compares tools, assistants, models, providers, and accounts. Tool needs a standalone distinction from model and assistant."
+    },
+    {
+      "term": "Artificial intelligence model",
+      "aliases": [
+        "AI model",
+        "model"
+      ],
+      "definition": "An artificial intelligence model is the trained system that produces predictions or text from input. A tool or assistant may send requests to a model, but the tool is not itself the model.",
+      "evidence": [
+        "“model-selection guide”",
+        "“frontier model”",
+        "“model provider”"
+      ],
+      "why_missing_matters": "The glossary has Large language model but not the broader Model concept. Participants need this to separate Claude Code or Codex CLI from the model they call."
+    },
+    {
+      "term": "Terminal AI assistant",
+      "aliases": [
+        "CLI AI assistant",
+        "terminal assistant"
+      ],
+      "definition": "A terminal artificial intelligence assistant is an AI tool used from a terminal instead of a browser. It can often read local files and run workflow steps, but its prompts may still go to an outside provider.",
+      "evidence": [
+        "“Getting a CLI AI assistant working”",
+        "“Google's terminal assistant”",
+        "“These tools read files on your laptop, but the prompts and file content ... go to the model provider”"
+      ],
+      "why_missing_matters": "This is the setup guide’s central object. Without the term, participants may confuse browser chat, local execution, local processing, and coding agents."
+    },
+    {
+      "term": "ChatGPT",
+      "aliases": [
+        "ChatGPT account"
+      ],
+      "definition": "ChatGPT is a browser and account-based AI assistant service named in the setup guide. It is not the same as Codex CLI, which is a terminal tool that can use a ChatGPT sign-in route.",
+      "evidence": [
+        "“You already use ChatGPT at any tier”",
+        "“Choose Sign in with ChatGPT”",
+        "“same conversation you already have with ChatGPT, Claude or Gemini in a browser”"
+      ],
+      "why_missing_matters": "Participants choose tools by account access. They need to distinguish a service account from a terminal tool."
+    },
+    {
+      "term": "Codex CLI",
+      "aliases": [
+        "codex"
+      ],
+      "definition": "Codex CLI is a terminal AI assistant option in the setup guide. It is a tool you run with the codex command, not the same thing as the ChatGPT browser interface.",
+      "evidence": [
+        "“Option B — Codex CLI”",
+        "“run: codex”",
+        "“Works with any ChatGPT account”"
+      ],
+      "why_missing_matters": "Claude Code is defined, but the other main workshop tool option is not. This creates an uneven tool/model/assistant distinction."
+    },
+    {
+      "term": "Antigravity CLI",
+      "aliases": [
+        "agy"
+      ],
+      "definition": "Antigravity CLI is a terminal AI assistant option in the setup guide. It is run with the agy command and is distinct from Gemini CLI or a browser chat interface.",
+      "evidence": [
+        "“Option C — Antigravity CLI”",
+        "“The command is agy.”",
+        "“use agy there instead”"
+      ],
+      "why_missing_matters": "Participants are told to choose among three tools. Without this entry, one of the three choices is unexplained."
+    },
+    {
+      "term": "Gemini CLI",
+      "aliases": [
+        "gemini command"
+      ],
+      "definition": "Gemini CLI is a terminal tool mentioned as a route that the guide tells personal-account users not to choose. It is distinct from Gemini as a browser assistant and from Antigravity CLI.",
+      "evidence": [
+        "“Do not choose Gemini CLI for personal Google-account sign-in”",
+        "“the preinstalled gemini command”",
+        "“Gemini CLI does remain supported ... those are different routes”"
+      ],
+      "why_missing_matters": "The guide warns about a misleading install-versus-sign-in failure. A neutral definition helps participants understand the warning without treating all Gemini-branded tools as identical."
+    },
+    {
+      "term": "Inter-annotator agreement",
+      "aliases": [
+        "inter-coder agreement",
+        "annotator agreement"
+      ],
+      "definition": "Inter-annotator agreement is how often independent coders assign the same labels to the same items. It is not accuracy, because coders can agree with each other and still be wrong.",
+      "evidence": [
+        "“blind review”",
+        "“Cohen's kappa ... inter-annotator agreement”",
+        "“whether a coding scheme is clear enough”"
+      ],
+      "why_missing_matters": "Cohen’s kappa is defined, but the broader agreement concept is missing. Participants need it to distinguish agreement, reliability, and accuracy."
+    },
+    {
+      "term": "Reliability",
+      "aliases": [
+        "coding reliability",
+        "measurement reliability"
+      ],
+      "definition": "Reliability is the consistency of a method, coder, model, or measurement across repeated use. It is not the same as accuracy, because a system can be consistent and still consistently wrong.",
+      "evidence": [
+        "“question, query, corpus, scheme, reliability, and blind spot”",
+        "“checking whether a coding scheme is clear enough”",
+        "“human-reviewed reference”"
+      ],
+      "why_missing_matters": "The methods block requires reliability, but the glossary does not define it. This is a major omission for research-methods teaching."
+    },
+    {
+      "term": "False positive",
+      "aliases": [
+        "false alarm"
+      ],
+      "definition": "A false positive is an item marked relevant or assigned a label when it should not have been. High precision means fewer false positives.",
+      "evidence": [
+        "“false alarms”",
+        "“Precision is the share of items marked relevant by a model that truly are relevant.”",
+        "“ten it kept and ten it rejected”"
+      ],
+      "why_missing_matters": "Precision and confusion matrix mention false alarms, but the base error type is missing. Participants need it to interpret evaluation results."
+    },
+    {
+      "term": "False negative",
+      "aliases": [
+        "missed case",
+        "missed relevant item"
+      ],
+      "definition": "A false negative is an item that should have been marked relevant or labeled but was missed. High recall means fewer false negatives.",
+      "evidence": [
+        "“missed cases”",
+        "“High recall means fewer important items are missed”",
+        "“The rejects are where the damage hides”"
+      ],
+      "why_missing_matters": "Recall and gatekeeping depend on missed cases. Without this term, participants may not see why rejected items need checking."
+    },
+    {
+      "term": "Hand check",
+      "aliases": [
+        "manual check",
+        "human spot check"
+      ],
+      "definition": "A hand check is a small manual review of model or pipeline outputs by a person. It is useful for finding obvious errors, but it is not a full reliability or accuracy study by itself.",
+      "evidence": [
+        "“hand-check 20 – ten it kept and ten it rejected”",
+        "“Run three checks yourself”",
+        "“Open five cited chunk IDs at random”"
+      ],
+      "why_missing_matters": "The guides repeatedly require manual checks. A definition helps distinguish quick checking from formal evaluation."
+    },
+    {
+      "term": "Coverage gap",
+      "aliases": [
+        "gap in coverage",
+        "missing coverage"
+      ],
+      "definition": "A coverage gap is a known area where the available corpus, metadata, dates, sources, or perspectives are missing or thin. It is not proof that the real-world phenomenon is absent.",
+      "evidence": [
+        "“You may report a coverage gap, but not infer that an actor, event, or view did not exist”",
+        "“major missing perspectives or metadata”",
+        "“Evidence and coverage audit”"
+      ],
+      "why_missing_matters": "Coverage, absence of evidence, and silence are central to the write-up prompt. This term clarifies how to report missing material safely."
+    },
+    {
+      "term": "Time unit",
+      "aliases": [
+        "unit of time",
+        "temporal unit"
+      ],
+      "definition": "A time unit is the period used to compare change, such as month, quarter, or year. It is a reporting choice and is not the same as the date attached to a single chunk.",
+      "evidence": [
+        "“Time unit for change: {{MONTH / QUARTER / YEAR / OTHER}}”",
+        "“Explain how the discussion changes across {{TIME_UNIT}}”",
+        "“date metadata”"
+      ],
+      "why_missing_matters": "The report prompt asks for evolution over a chosen time unit. Participants need to separate a document date from the period used for analysis."
+    }
+  ],
+  "revisions": [
+    {
+      "term": "Abstract",
+      "definition": "An abstract is a short section supplied with a document, article, or report that previews its contents. It is not the same as any summary you or a model writes later, and it is not the full text.",
+      "contrast_group": [
+        "Summary",
+        "Full text",
+        "Document"
+      ],
+      "reason": "The current alias treats abstract and summary as equivalent, but Day 4 says abstracts may be enough while the report prompt asks the model to write a summary."
+    },
+    {
+      "term": "Corpus",
+      "definition": "A corpus is the body of documents or texts selected for a research task. It differs from a dataset, which may include structured records or labels, and from a sample, which is only a subset of a larger body.",
+      "contrast_group": [
+        "Dataset",
+        "Sample",
+        "Document"
+      ],
+      "reason": "The workshop repeatedly says “the corpus you built” and then classifies chunks from it. Participants need corpus, dataset, and sample separated."
+    },
+    {
+      "term": "Dataset",
+      "definition": "A dataset is an organized collection of records, fields, values, or files used for analysis. It is not necessarily a text corpus, and it is not just a sample unless it contains only sampled items.",
+      "contrast_group": [
+        "Corpus",
+        "Sample",
+        "Record",
+        "Field"
+      ],
+      "reason": "The current definition is too broad to teach the corpus/dataset/sample distinction requested for the workshop."
+    },
+    {
+      "term": "Document",
+      "definition": "A document is one unit of source material, such as an article, post, report, transcript, or paper. It differs from a record, which is a dataset entry about something, and from a chunk, which is a smaller piece cut from a document.",
+      "contrast_group": [
+        "Record",
+        "Chunk",
+        "Full text"
+      ],
+      "reason": "Participants asked about chunk versus text span, and the larger document/record/chunk distinction is central to the prompts."
+    },
+    {
+      "term": "Record",
+      "definition": "A record is one complete entry in a dataset, often shown as a row in a table. It may describe a document, chunk, source, or annotation, so it is not automatically the same thing as a document.",
+      "contrast_group": [
+        "Document",
+        "Chunk",
+        "Field",
+        "Dataset"
+      ],
+      "reason": "The current definition says a record can be one document, chunk, or annotation result, but does not explain why record is a data structure term."
+    },
+    {
+      "term": "Evidence span",
+      "definition": "An evidence span is the exact words in a source that support a label, claim, or decision. It is a kind of text span, but it is not the whole chunk unless the whole chunk is needed as evidence.",
+      "contrast_group": [
+        "Text span",
+        "Chunk",
+        "Passage",
+        "Claim"
+      ],
+      "reason": "The current alias “text span” hides the distinction participants struggled with. Evidence span should be defined as a role a span plays."
+    },
+    {
+      "term": "Chunk ID",
+      "definition": "A chunk ID is a stable identifier for one chunk or passage in a corpus. It points to the processing unit being cited or labeled, not necessarily to the smaller evidence span inside that chunk.",
+      "contrast_group": [
+        "Chunk",
+        "Evidence span",
+        "Citation",
+        "Record"
+      ],
+      "reason": "The report prompt requires chunk citations for claims. Participants need to know a chunk ID locates a chunk, not automatically the exact supporting words."
+    },
+    {
+      "term": "Chunking",
+      "definition": "Chunking is the process of splitting a long document into smaller chunks for model or human analysis. It creates chunks, but it is not the same as selecting an evidence span for a specific claim.",
+      "contrast_group": [
+        "Chunk",
+        "Document",
+        "Evidence span"
+      ],
+      "reason": "The glossary has the process but not the product. The revision should prevent chunking from being confused with citation or span selection."
+    },
+    {
+      "term": "Citation",
+      "definition": "A citation is a pointer to the source, chunk, or passage that supports a claim, quotation, or data point. It is not the evidence itself and is not the same as the claim being supported.",
+      "contrast_group": [
+        "Evidence",
+        "Source",
+        "Claim",
+        "Chunk ID"
+      ],
+      "reason": "The report prompt demands chunk citations. Participants need the distinction between citation as pointer and evidence as content."
+    },
+    {
+      "term": "Provenance and source attribution",
+      "definition": "Provenance is the traceable history of where an item, label, or claim came from. Source attribution names the source, while citation points readers to it, so provenance is broader than a single citation.",
+      "contrast_group": [
+        "Source",
+        "Citation",
+        "Evidence",
+        "Claim"
+      ],
+      "reason": "The current definition bundles provenance, attribution, primary source, secondary source, and traceability. It needs clearer contrasts with source and citation."
+    },
+    {
+      "term": "Source and source type",
+      "definition": "A source is the specific place information comes from, such as one article, report, channel, or database. A source type is the kind of source, such as academic article, official statement, news, social media, or interview.",
+      "contrast_group": [
+        "Source",
+        "Source type",
+        "Citation",
+        "Metadata"
+      ],
+      "reason": "This existing combined entry should explicitly teach the source/source-type distinction used in the report prompt."
+    },
+    {
+      "term": "Absence of evidence",
+      "definition": "Absence of evidence means the available sources do not show something. It is not proof of absence, and it can also be caused by a silent drop, a coverage gap, missing metadata, or a narrow corpus.",
+      "contrast_group": [
+        "Coverage gap",
+        "Silent drop",
+        "Null finding",
+        "Evidence"
+      ],
+      "reason": "Day 4 explicitly warns that a silent drop can look like absence of evidence. The definition should name that likely confusion."
+    },
+    {
+      "term": "Corroboration",
+      "definition": "Corroboration means an independent source supports the same claim. It is not just repetition, reposting, or several chunks copied from the same original source.",
+      "contrast_group": [
+        "Evidence",
+        "Source",
+        "Claim",
+        "Near-duplicate"
+      ],
+      "reason": "The report prompt says repeated copies do not count as independent support. The current definition is good but should be sharper for chunked corpora."
+    },
+    {
+      "term": "Ground truth",
+      "definition": "Ground truth is a trusted reference answer or label used to evaluate model or coder outputs. It is not automatically true in an absolute sense, and it can be wrong if the human-reviewed reference is poor.",
+      "contrast_group": [
+        "Reference label",
+        "Accuracy",
+        "Adjudication",
+        "Evaluation ex post"
+      ],
+      "reason": "Participants may overtrust “ground truth.” The definition should contrast reference labels with real-world truth and evaluation."
+    },
+    {
+      "term": "Accuracy",
+      "definition": "Accuracy is the share of all evaluated cases that a model or coder got right against a reference. It differs from precision and recall because it combines all correct and incorrect decisions into one overall number.",
+      "contrast_group": [
+        "Precision",
+        "Recall",
+        "F1 score",
+        "Reliability"
+      ],
+      "reason": "The current definition mentions hidden failures, but the workshop needs explicit distinction from precision, recall, agreement, and reliability."
+    },
+    {
+      "term": "Precision",
+      "definition": "Precision is the share of items marked relevant or labeled by a model that truly should have been marked that way. It measures false alarms, not missed relevant items, which are measured by recall.",
+      "contrast_group": [
+        "Recall",
+        "False positive",
+        "False negative",
+        "Accuracy"
+      ],
+      "reason": "The current definition is good but should explicitly contrast false positives and recall."
+    },
+    {
+      "term": "Recall",
+      "definition": "Recall is the share of all truly relevant items that the model or search process found. It measures missed cases, not how many returned items were irrelevant, which is measured by precision.",
+      "contrast_group": [
+        "Precision",
+        "False negative",
+        "False positive",
+        "Coverage"
+      ],
+      "reason": "The prompt emphasizes strict gatekeeping and checking rejects. Recall needs to highlight missed relevant items."
+    },
+    {
+      "term": "F1 score",
+      "definition": "The F1 score combines precision and recall into one summary number. It is not accuracy, and it can hide whether the main problem is false alarms or missed cases.",
+      "contrast_group": [
+        "Precision",
+        "Recall",
+        "Accuracy",
+        "Confusion matrix"
+      ],
+      "reason": "Participants need to know that a combined score does not replace inspecting precision and recall separately."
+    },
+    {
+      "term": "Cohen's kappa",
+      "definition": "Cohen’s kappa is a chance-corrected agreement statistic for two annotators. It measures agreement beyond chance, not accuracy against truth, and it is only one way to assess reliability.",
+      "contrast_group": [
+        "Raw agreement",
+        "Inter-annotator agreement",
+        "Reliability",
+        "Accuracy"
+      ],
+      "reason": "The existing alias equates it with inter-annotator agreement. Kappa is a statistic for agreement, not the whole concept."
+    },
+    {
+      "term": "Raw agreement",
+      "definition": "Raw agreement is the percentage of cases where two coders gave the same answer. It does not adjust for chance agreement, so it can look high when one category is very common.",
+      "contrast_group": [
+        "Cohen's kappa",
+        "Inter-annotator agreement",
+        "Base rate"
+      ],
+      "reason": "The current definition is accurate but should teach why raw agreement differs from kappa and why base rates matter."
+    },
+    {
+      "term": "Confidence score",
+      "definition": "A confidence score is a number showing how certain a model reports being about an output. It is not the same as accuracy, because a model can be confident and wrong or uncertain and correct.",
+      "contrast_group": [
+        "Accuracy",
+        "Reliability",
+        "LLM-as-a-judge"
+      ],
+      "reason": "The classification prompt recommends confidence. Participants need to avoid treating confidence as evaluation."
+    },
+    {
+      "term": "JSON",
+      "definition": "JavaScript Object Notation is a structured text format for objects, arrays, numbers, strings, and true/false values. It is not a table format like CSV or TSV, and it is not JSON Lines unless there is one JSON object per line.",
+      "contrast_group": [
+        "JSONL",
+        "CSV",
+        "TSV",
+        "JSON object"
+      ],
+      "reason": "The output prompts require raw JSON, while other prompts require TSV. Participants need file-format contrasts."
+    },
+    {
+      "term": "JSONL",
+      "definition": "JSON Lines stores one JavaScript Object Notation object on each line. It differs from ordinary JSON because the file is read line by line, and it differs from CSV or TSV because each line is still a JSON object.",
+      "contrast_group": [
+        "JSON",
+        "CSV",
+        "TSV",
+        "Record"
+      ],
+      "reason": "The current definition is good but should explicitly contrast JSONL with JSON and tabular formats."
+    },
+    {
+      "term": "CSV",
+      "definition": "Comma-separated values is a table text format where each row is a record and commas usually separate fields. It is not JSON, and it differs from TSV mainly in the separator character.",
+      "contrast_group": [
+        "TSV",
+        "JSON",
+        "JSONL",
+        "Record",
+        "Field"
+      ],
+      "reason": "Participants see TSV output requirements and may know CSV. The distinction should be explicit."
+    },
+    {
+      "term": "TSV",
+      "definition": "Tab-separated values is a table text format where each row is a record and tab characters separate fields. It is not JSON, and it is safer than CSV for comma-heavy text but still requires consistent columns.",
+      "contrast_group": [
+        "CSV",
+        "JSON",
+        "JSONL",
+        "Field"
+      ],
+      "reason": "The taxonomy-generation prompt requires exact TSV. Participants need to know TSV is tabular, not JSON or Markdown."
+    },
+    {
+      "term": "Schema",
+      "definition": "A schema defines the expected structure of data, including field names, data types, and allowed values. It is not the data itself, and it is stricter than a prose description when software must validate output.",
+      "contrast_group": [
+        "Data",
+        "Field",
+        "Data type",
+        "Allowed value",
+        "Value"
+      ],
+      "reason": "The classification prompt shows a schema. The current definition should contrast schema with actual data and fields."
+    },
+    {
+      "term": "Field",
+      "definition": "A field is one named slot in a record, such as source, date, relevance, or classification_values. In a table it often appears as a column, but the field name is not the same as the value stored in it.",
+      "contrast_group": [
+        "Record",
+        "Value",
+        "Column",
+        "Schema"
+      ],
+      "reason": "Participants fill templates with fields and values. The existing definition does not distinguish field name from field value."
+    },
+    {
+      "term": "Metadata",
+      "definition": "Metadata is information that describes a document, chunk, record, or file, such as source, author, date, language, or identifier. It is not the main text itself, but it helps interpret and filter the main data.",
+      "contrast_group": [
+        "Data",
+        "Field",
+        "Record",
+        "Full text"
+      ],
+      "reason": "The report prompt says chunks may have source, author, and date metadata. The definition should clarify metadata versus text/data."
+    },
+    {
+      "term": "Data type",
+      "definition": "A data type states what kind of value a field may hold, such as text, number, date, list, or true/false. It is not the field name or the specific value in one record.",
+      "contrast_group": [
+        "Field",
+        "Value",
+        "Schema",
+        "Allowed value"
+      ],
+      "reason": "Useful for understanding JSON schemas and Pydantic checks. The contrast with field and value should be explicit."
+    },
+    {
+      "term": "Large language model",
+      "definition": "A large language model is an artificial intelligence model trained to process and generate text. It is the model behind many assistants and tools, not the same as the browser app, terminal tool, or provider account used to access it.",
+      "contrast_group": [
+        "Artificial intelligence model",
+        "AI assistant",
+        "Tool",
+        "Model provider"
+      ],
+      "reason": "The setup guide distinguishes ChatGPT, Claude Code, Codex CLI, providers, and models. The current definition does not."
+    },
+    {
+      "term": "AI assistant",
+      "definition": "An artificial intelligence assistant is software that helps users work with text, files, code, search, or analysis through conversation or commands. It may use a large language model, but the assistant is the user-facing tool, not necessarily the model itself.",
+      "contrast_group": [
+        "Large language model",
+        "Tool",
+        "Coding agent",
+        "Query client"
+      ],
+      "reason": "Participants are setting up CLI AI assistants. They need to distinguish assistant, model, coding agent, and query client."
+    },
+    {
+      "term": "Coding agent",
+      "definition": "A coding agent is an AI assistant that can work across files and folders, run commands, and help with multi-step coding or analysis workflows. It is not just a query client for asking isolated questions to models.",
+      "contrast_group": [
+        "Query client",
+        "Terminal AI assistant",
+        "Tool",
+        "Large language model"
+      ],
+      "reason": "The appendix contrasts llm as a query client with coding agents. The definition should make that contrast explicit."
+    },
+    {
+      "term": "Query client",
+      "definition": "A query client is a tool for sending prompts or questions to models and comparing responses. It is not a coding agent if it does not act across project files, folders, and terminal commands.",
+      "contrast_group": [
+        "Coding agent",
+        "Tool",
+        "Prompt",
+        "Model call"
+      ],
+      "reason": "The existing definition mentions the contrast, but this term is central to why llm is not one of the Day 2 setup choices."
+    },
+    {
+      "term": "Application programming interface",
+      "definition": "An application programming interface is a structured way for software to request data or actions from another system. It is not a user interface like a browser or terminal, although tools may use APIs behind the scenes.",
+      "contrast_group": [
+        "Graphical interface",
+        "Command-line interface",
+        "Tool",
+        "Model provider"
+      ],
+      "reason": "Participants see API keys, API billing, and CLI tools. They need to separate an API from the interface they use directly."
+    },
+    {
+      "term": "Prompt",
+      "definition": "A prompt is the instruction, question, context, and output requirements given to a language model. It is not the same as a search query, although some prompts may contain search-like requests.",
+      "contrast_group": [
+        "Query",
+        "System prompt",
+        "Output contract",
+        "Model call"
+      ],
+      "reason": "The glossary currently says prompt is an instruction or question. The workshop needs a stronger prompt/query distinction."
+    },
+    {
+      "term": "Query",
+      "definition": "A query is a request sent to a search system, database, or model to retrieve or return information. In search, it usually means terms, operators, and filters; it is not the full instruction package called a prompt.",
+      "contrast_group": [
+        "Prompt",
+        "Boolean search",
+        "Semantic search",
+        "Query ledger"
+      ],
+      "reason": "The current definition includes model requests, which can blur query and prompt. The distinction matters in methods blocks."
+    },
+    {
+      "term": "System prompt",
+      "definition": "A system prompt is a high-priority instruction that sets a model’s role, rules, style, or output format for an interaction. It differs from a user prompt because it governs how later user requests should be answered.",
+      "contrast_group": [
+        "Prompt",
+        "User input template",
+        "Output contract"
+      ],
+      "reason": "The report and classification prompts have system prompt sections. The definition should contrast system-level instruction with ordinary user input."
+    },
+    {
+      "term": "Taxonomy",
+      "definition": "A taxonomy is a structured system of categories used to classify material. It is not the act of classification, the labels assigned during annotation, or an ontology with richer relationship rules.",
+      "contrast_group": [
+        "Classification",
+        "Annotation",
+        "Label",
+        "Ontology",
+        "Category"
+      ],
+      "reason": "The current definition is accurate but does not teach distinctions among taxonomy, classification, annotation, and ontology."
+    },
+    {
+      "term": "Category",
+      "definition": "A category is a named group used to organize similar things under a scheme. It differs from a label, which is the category name assigned to a particular item during annotation.",
+      "contrast_group": [
+        "Label",
+        "Class",
+        "Taxon and taxonomy element",
+        "Classification"
+      ],
+      "reason": "The glossary aliases category and class, but participants also see labels and taxonomy elements. The category/label distinction is essential."
+    },
+    {
+      "term": "Label",
+      "definition": "A label is the category name or taxonomy path assigned to a specific text, chunk, record, or passage. It is not the category system itself, and changing the wording can break joins that expect exact labels.",
+      "contrast_group": [
+        "Category",
+        "Annotation",
+        "Classification",
+        "Taxonomy path"
+      ],
+      "reason": "The classification prompt’s “copy exactly” rule makes label exactness central. The current definition does not mention contrast with category system or joins."
+    },
+    {
+      "term": "Annotation",
+      "definition": "Annotation is the act of adding labels, spans, notes, or other structured judgments to text. Classification is one kind of annotation, but annotation can also record evidence spans, comments, confidence, or uncertainty.",
+      "contrast_group": [
+        "Classification",
+        "Label",
+        "Evidence span",
+        "Taxonomic annotation"
+      ],
+      "reason": "The current definition focuses on labels or notes but should explicitly distinguish annotation from classification."
+    },
+    {
+      "term": "Taxonomic annotation",
+      "definition": "Taxonomic annotation is annotation that assigns one or more labels from a defined taxonomy to a text, chunk, or passage. It is a kind of classification, but it should not be confused with relevance gatekeeping or free-form note taking.",
+      "contrast_group": [
+        "Annotation",
+        "Classification",
+        "Relevance screening",
+        "Label"
+      ],
+      "reason": "The classification prompt has two phases. This definition should separate taxonomy labeling from the relevance gate."
+    },
+    {
+      "term": "Taxon and taxonomy element",
+      "definition": "A taxon is one named unit or category inside a taxonomy. A taxonomy element is a broader workshop term for any defined part of the taxonomy, including dimensions, levels, and taxa, so not every taxonomy element is a taxon.",
+      "contrast_group": [
+        "Taxonomy",
+        "Category",
+        "Dimension",
+        "Level 2 and Level 3"
+      ],
+      "reason": "The current entry mentions both terms but does not make the hierarchy of meanings explicit. Participants see Taxon as a fourth column and TE as a level element."
+    },
+    {
+      "term": "Dimension",
+      "definition": "A dimension is a major independent axis for classifying every instance in a domain, such as time, geography, actor, or activity type. It is not a level in a hierarchy, because levels sit within a dimension rather than beside other dimensions.",
+      "contrast_group": [
+        "Hierarchy",
+        "Level 2 and Level 3",
+        "Multidimensional taxonomy",
+        "Orthogonal axes"
+      ],
+      "reason": "The MDTDF prompt uses dimensions and levels together. The definition should explicitly distinguish them."
+    },
+    {
+      "term": "Hierarchy",
+      "definition": "A hierarchy organizes categories from broader to narrower levels. It is not the same as a multidimensional taxonomy, where the same instance can be placed along several independent dimensions at once.",
+      "contrast_group": [
+        "Dimension",
+        "Level 2 and Level 3",
+        "Multidimensional taxonomy",
+        "Taxonomy"
+      ],
+      "reason": "The prompt contrasts traditional hierarchical taxonomies with multidimensional taxonomies. The current definition lacks that contrast."
+    },
+    {
+      "term": "Level 2 and Level 3",
+      "definition": "Level 2 and Level 3 are nested category levels below a top-level taxonomy dimension. They are levels within one hierarchy, not separate independent dimensions.",
+      "contrast_group": [
+        "Dimension",
+        "Hierarchy",
+        "Taxon and taxonomy element",
+        "Taxonomy path"
+      ],
+      "reason": "Participants may confuse levels with dimensions because both appear as columns in the TSV output."
+    },
+    {
+      "term": "Multidimensional taxonomy",
+      "definition": "A multidimensional taxonomy classifies the same instance along several independent dimensions at once. It is not a single hierarchy where each item follows only one branch from broad to narrow.",
+      "contrast_group": [
+        "Taxonomy",
+        "Dimension",
+        "Hierarchy",
+        "Orthogonal axes"
+      ],
+      "reason": "The current definition is concise but should explicitly contrast the multidimensional approach with a traditional tree."
+    },
+    {
+      "term": "Completeness and mutual exclusivity",
+      "definition": "Completeness means the categories cover the needed possibilities; mutual exclusivity means one item should not fit two categories in the same category set. Completeness is about missing options, while mutual exclusivity is about overlap.",
+      "contrast_group": [
+        "Coverage",
+        "Category",
+        "Open subcategory",
+        "Boundary testing"
+      ],
+      "reason": "The current definition includes both ideas but should more explicitly distinguish them from each other and from coverage."
+    },
+    {
+      "term": "Coverage",
+      "definition": "Coverage is how much of the relevant material, topic space, or target population is included. It differs from completeness of a category scheme, because coverage concerns what data or space you have, not only whether categories exist.",
+      "contrast_group": [
+        "Completeness and mutual exclusivity",
+        "Corpus",
+        "Sample",
+        "Coverage gap"
+      ],
+      "reason": "Coverage is used for data, abstracts, topic space, and evidence. The distinction from completeness is needed."
+    },
+    {
+      "term": "Full text",
+      "definition": "Full text is the complete contents of a document. It is not the same as a title, abstract, metadata record, chunk, or selected evidence span.",
+      "contrast_group": [
+        "Abstract",
+        "Metadata",
+        "Chunk",
+        "Evidence span",
+        "Document"
+      ],
+      "reason": "Day 4 says abstracts are enough and full texts are not required. Participants need the boundary between full text, abstract, and chunk."
+    },
+    {
+      "term": "Unit of analysis",
+      "definition": "The unit of analysis is the kind of thing being studied, counted, or classified, such as a document, chunk, person, event, issue, or argument. It is not automatically the same as the source document or the record in a table.",
+      "contrast_group": [
+        "Instance",
+        "Document",
+        "Record",
+        "Chunk"
+      ],
+      "reason": "The taxonomy prompt insists the instance is not a document, paragraph, or source. This term should support that distinction."
+    },
+    {
+      "term": "Relevance screening",
+      "definition": "Relevance screening is the first-pass process that decides whether material is in scope for deeper analysis. It is not taxonomy classification, because not-relevant items should exit before labels are assigned.",
+      "contrast_group": [
+        "Relevance",
+        "Gatekeeping",
+        "Taxonomic annotation",
+        "Filter"
+      ],
+      "reason": "The current definition mentions gatekeeping but should align with the strict two-phase classification prompt."
+    },
+    {
+      "term": "Filter",
+      "definition": "A filter keeps only records that meet selected conditions, such as date, source type, or label. It is not the same as relevance screening unless the filtering condition is a relevance decision, and destructive filtering can remove auditability.",
+      "contrast_group": [
+        "Relevance screening",
+        "Non-destructive filtering",
+        "Gatekeeping",
+        "Record"
+      ],
+      "reason": "The classification guide distinguishes strict gatekeeping from ordinary filtering. Participants may conflate them."
+    },
+    {
+      "term": "Output contract",
+      "definition": "An output contract is a precise requirement for what a model or pipeline must return, such as exact fields, allowed values, or file format. It is not merely a style preference, because downstream software may fail if it is violated.",
+      "contrast_group": [
+        "Schema",
+        "Raw JSON",
+        "TSV",
+        "Field"
+      ],
+      "reason": "Both prompts impose exact output formats. This revision connects output contracts to schemas and machine readability."
+    },
+    {
+      "term": "Parser",
+      "definition": "A parser reads structured text and turns it into fields a program can use. It is not a human reader, and it may fail even when the output looks understandable if the required JSON, TSV, or schema is broken.",
+      "contrast_group": [
+        "Raw JSON",
+        "JSON",
+        "TSV",
+        "Schema"
+      ],
+      "reason": "The structured-output prompts need participants to understand why extra Markdown or changed fields matter."
+    },
+    {
+      "term": "Join",
+      "definition": "A join combines records from two tables using a shared field, such as a document ID or exact taxonomy label. It is not fuzzy matching, so changed labels, abbreviations, or paraphrases can create missing or duplicated results.",
+      "contrast_group": [
+        "Field",
+        "Label",
+        "Silent drop",
+        "Record"
+      ],
+      "reason": "The Day 4 guide says paraphrased labels silently drop records. The join definition should make exact matching explicit."
+    },
+    {
+      "term": "Silent drop",
+      "definition": "A silent drop is a processing failure where a record disappears from later results without an obvious error message. It can look like absence of evidence, but it may be caused by mismatched labels, keys, or joins.",
+      "contrast_group": [
+        "Absence of evidence",
+        "Join",
+        "Label",
+        "Record"
+      ],
+      "reason": "The existing definition is good but should explicitly contrast with absence of evidence, as the guide warns."
+    }
+  ],
+  "coverage_notes": [
+    "Several existing entries use aliases that collapse distinctions the workshop is trying to teach. The most serious are Abstract with summary, Evidence span with text span, Category with class, and Cohen’s kappa with inter-annotator agreement.",
+    "The glossary is strong on processes and identifiers but weaker on base objects. Chunking and Chunk ID exist without Chunk; random and stratified samples exist without Sample; Domain-framing exists without Domain; model call, model build, and model provider exist without Model.",
+    "The taxonomy section should be reorganized conceptually around a distinction ladder: domain, instance, dimension, level, category or taxon, taxonomy path, label, classification, annotation. The terms exist partly, but learners must currently infer the relationships.",
+    "The evidence section should teach a parallel ladder: source, source type, evidence, passage or span, citation, claim, finding, inference, corroboration. Existing entries cover pieces but do not consistently show what is content, what is a pointer, and what is an analyst statement.",
+    "The file-format section needs an explicit contrast table or cluster for TSV, CSV, JSON, JSONL, raw JSON object, schema, field, value, and parser. These terms drive the prompts’ machine-readable output rules.",
+    "The evaluation section should cluster accuracy, precision, recall, F1 score, raw agreement, Cohen’s kappa, inter-annotator agreement, reliability, confidence, false positive, and false negative. Right now participants can learn individual terms without learning which metric answers which question.",
+    "The setup-guide terms should distinguish terminal, shell, command, command-line option, PATH, tool, assistant, model, provider, account, local execution, and local processing. This distinction is practical, not cosmetic, because many installation failures come from mixing these layers.",
+    "Some product-specific setup entries are inherently time-sensitive. Keep them brief, distinguish tool from account or model, and avoid embedding prices, dates, or support claims in glossary definitions unless the workshop materials are versioned with the same date.",
+    "Several combined display terms are pedagogically awkward, especially Source and source type, Taxon and taxonomy element, DIME, PMESII, and DIME-FIL, and Treemap and sunburst chart. Combined entries can remain, but the glossary should add or revise definitions so each likely-confused member is separately understandable.",
+    "The glossary should avoid treating aliases as synonyms when the workshop uses them contrastively. An alias list is not enough if learners need to know why two words are different in a prompt, schema, or audit step."
+  ]
+}

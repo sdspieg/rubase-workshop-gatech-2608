@@ -77,13 +77,20 @@
   }
 
   function searchable(entry){
+    var labels = [entry.term].concat(entry.aliases || []);
+    var simplePlurals = labels.map(function(label){
+      return /[A-Za-z]$/.test(label) && !/[sxy]$/i.test(label) ? label + 's' : '';
+    });
     return normalize([
       entry.term,
       (entry.aliases || []).join(' '),
+      simplePlurals.join(' '),
       entry.definition,
       (entry.aira_source_terms || []).join(' '),
       (entry.workshop_required_terms || []).join(' '),
-      (entry.sweep_terms || []).join(' ')
+      (entry.sweep_terms || []).join(' '),
+      (entry.distinction_audit_terms || []).join(' '),
+      (entry.contrasts_with || []).join(' ')
     ].join(' '));
   }
 

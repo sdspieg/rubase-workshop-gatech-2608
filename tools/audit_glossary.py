@@ -4,10 +4,13 @@
 from __future__ import annotations
 
 import hashlib
+import importlib.util
 import json
 import re
 import sys
 from pathlib import Path
+
+sys.dont_write_bytecode = True
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -31,8 +34,8 @@ payload = json.loads(DATA.read_text(encoding="utf-8"))
 meta = payload["meta"]
 entries = payload["entries"]
 
-if len(entries) != meta["entry_count"] or len(entries) != 394:
-    fail(f"entry count is {len(entries)}, expected 394")
+if len(entries) != meta["entry_count"] or len(entries) != 437:
+    fail(f"entry count is {len(entries)}, expected 437")
 
 display_keys = [key(entry["term"]) for entry in entries]
 if len(display_keys) != len(set(display_keys)):
@@ -74,6 +77,18 @@ for original in (
     if key(original) not in lookup:
         fail(f"original workshop term is no longer findable: {original}")
 
+for distinction_term in (
+    "Chunk", "Passage", "Text span", "Evidence span", "Document", "Record",
+    "Corpus", "Dataset", "Sample", "Classification", "Taxonomic annotation",
+    "Inter-annotator agreement", "Cohen's kappa", "Terminal", "Command-line interface",
+):
+    if key(distinction_term) not in display_keys:
+        fail(f"distinct participant concept lacks its own entry: {distinction_term}")
+
+distinction = meta.get("distinction_audit", {})
+if distinction.get("missing_base_concepts_added") != 43 or distinction.get("definitions_rewritten_for_contrast") != 57:
+    fail("distinction-audit ledger is missing or incomplete")
+
 index = INDEX.read_text(encoding="utf-8")
 script = SCRIPT.read_text(encoding="utf-8")
 for marker in ('<script src="glossary.js"></script>', "id = 'glossaryAlphabet'", "id = 'glossaryList'", "block.replaceChildren()"):
@@ -92,6 +107,29 @@ html_pages = sorted(ROOT.glob("*.html"))
 missing_tooltips = [page.name for page in html_pages if 'src="glossary-tooltips.js"' not in page.read_text(encoding="utf-8")]
 if missing_tooltips:
     fail("tooltip layer missing from: " + ", ".join(missing_tooltips))
+
+for required_file in ("prompt.html", "prompt-viewer.js", "prompt-link-router.js"):
+    if not (ROOT / required_file).exists():
+        fail(f"tooltip-enabled prompt viewer missing: {required_file}")
+prompt_html = (ROOT / "prompt.html").read_text(encoding="utf-8")
+if 'class="participant-prompt"' not in prompt_html or 'src="glossary-tooltips.js"' not in prompt_html:
+    fail("prompt viewer is not connected to the glossary tooltip layer")
+
+# Regenerate each QR deterministically in memory/on a temporary sibling and
+# compare bytes. This gates the exact public prompt-viewer URLs without trusting
+# a filename or a nearby anchor.
+qr_spec = importlib.util.spec_from_file_location("build_prompt_qr", ROOT / "tools" / "build_prompt_qr.py")
+qr_module = importlib.util.module_from_spec(qr_spec)
+assert qr_spec.loader is not None
+qr_spec.loader.exec_module(qr_module)
+for prompt_id, live_path in qr_module.TARGETS.items():
+    temporary = live_path.with_suffix(".audit.png")
+    try:
+        qr_module.render(prompt_id, temporary)
+        if temporary.read_bytes() != live_path.read_bytes():
+            fail(f"prompt QR does not encode the gated viewer URL: {live_path.name}")
+    finally:
+        temporary.unlink(missing_ok=True)
 
 if SOURCE.exists():
     digest = hashlib.sha256(SOURCE.read_bytes()).hexdigest()

@@ -12,14 +12,14 @@
     {
       sid: '2f0173',
       title: 'The taxonomic classification prompt',
-      url: 'resources/taxonomy_classification_prompt.md',
+      url: 'prompt.html?id=taxonomy-classification',
       qr: 'img/qr_taxonomy_classification_prompt.png',
       label: 'SCAN · CLASSIFY'
     },
     {
       sid: '994544',
       title: 'The report-writing prompt',
-      url: 'resources/report_writing_prompt.md',
+      url: 'prompt.html?id=report-writing',
       qr: 'img/qr_report_writing_prompt.png',
       label: 'SCAN · WRITE'
     }

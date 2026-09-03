@@ -2,7 +2,7 @@
   'use strict';
 
   var DATA_URL = 'resources/glossary.json';
-  var SKIP = 'script,style,noscript,textarea,input,select,option,button,a,code,pre,kbd,samp,svg,math,.gloss,.glossary-block,.glossary-tooltip,.glossary-term,[data-no-glossary]';
+  var SKIP = 'script,style,noscript,textarea,input,select,option,button,a,code,pre:not(.participant-prompt),kbd,samp,svg,math,.gloss,.glossary-block,.glossary-tooltip,.glossary-term,[data-no-glossary]';
   var linked = 0;
   var matcher;
   var byLabel = new Map();
@@ -133,6 +133,12 @@
         if(label.length < 2 || label.length > 90 || !/[A-Za-zÀ-ÖØ-öø-ÿ]/.test(label)) return;
         var normalized = key(label);
         if(!byLabel.has(normalized)) byLabel.set(normalized, entry);
+        // Also recognize the common regular plural in running prose. Irregular
+        // forms (corpora, taxonomies, categories) remain explicit aliases.
+        if(/[A-Za-z]$/.test(label) && !/[sxy]$/i.test(label)){
+          var plural = key(label + 's');
+          if(!byLabel.has(plural)) byLabel.set(plural, entry);
+        }
       });
     });
     var labels = Array.from(byLabel.keys()).sort(function(a,b){ return b.length - a.length; });

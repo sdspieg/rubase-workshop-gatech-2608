@@ -2,7 +2,7 @@
   "meta": {
     "title": "The words we use",
     "updated": "2026-09-04",
-    "entry_count": 394,
+    "entry_count": 437,
     "aira_source": {
       "title": "Begrippenlijst.docx",
       "url": "https://drive.google.com/file/d/1AX5G9DHflaiOWX8V-kRImAKB0BOzjbKd/view",
@@ -31,45 +31,48 @@
         "class_and_case_pages": 49675,
         "participant_prompts_and_guides": 61586
       }
+    },
+    "distinction_audit": {
+      "date": "2026-09-04",
+      "missing_base_concepts_added": 43,
+      "definitions_rewritten_for_contrast": 57,
+      "misleading_aliases_split": 6,
+      "method": "Full glossary plus every participant prompt and guide audited for missing base objects and confusable neighboring concepts."
     }
   },
   "entries": [
-    {
-      "term": "Research categories 6.1, 6.2, and 6.3",
-      "aliases": [
-        "Department of Defense research and development categories",
-        "DoD R&D categories"
-      ],
-      "definition": "Numbered United States Department of Defense research-and-development budget categories. They distinguish basic research, applied research, and advanced technology development before later prototype or operational stages.",
-      "aira_source_terms": [],
-      "workshop_required_terms": [],
-      "sweep_terms": [
-        "6.1, 6.2, 6.3 research categories"
-      ]
-    },
     {
       "term": "Absence of evidence",
       "aliases": [
         "missing evidence is not proof"
       ],
-      "definition": "A situation where available sources do not show something. It is not the same as proof that the thing did not happen or does not exist.",
+      "definition": "Absence of evidence means the available sources do not show something. It is not proof of absence, and it can also be caused by a silent drop, a coverage gap, missing metadata, or a narrow corpus.",
       "aira_source_terms": [],
       "workshop_required_terms": [],
       "sweep_terms": [
         "Absence of evidence"
+      ],
+      "contrasts_with": [
+        "Coverage gap",
+        "Silent drop",
+        "Null finding",
+        "Evidence"
       ]
     },
     {
       "term": "Abstract",
-      "aliases": [
-        "summary"
-      ],
-      "definition": "A short summary of a document, article, or report. It helps readers decide whether the full text is relevant before reading it closely.",
+      "aliases": [],
+      "definition": "An abstract is a short section supplied with a document, article, or report that previews its contents. It is not the same as any summary you or a model writes later, and it is not the full text.",
       "aira_source_terms": [],
       "workshop_required_terms": [
         "Abstract"
       ],
-      "sweep_terms": []
+      "sweep_terms": [],
+      "contrasts_with": [
+        "Summary",
+        "Full text",
+        "Document"
+      ]
     },
     {
       "term": "Abstract coverage",
@@ -117,11 +120,17 @@
         "headline accuracy",
         "overall accuracy"
       ],
-      "definition": "The share of all cases a model or coder got right. It can hide important failures when some categories are much easier or more common than others.",
+      "definition": "Accuracy is the share of all evaluated cases that a model or coder got right against a reference. It differs from precision and recall because it combines all correct and incorrect decisions into one overall number.",
       "aira_source_terms": [],
       "workshop_required_terms": [],
       "sweep_terms": [
         "Accuracy"
+      ],
+      "contrasts_with": [
+        "Precision",
+        "Recall",
+        "F1 score",
+        "Reliability"
       ]
     },
     {
@@ -182,12 +191,37 @@
       "aliases": [
         "artificial intelligence assistant"
       ],
-      "definition": "An artificial intelligence (AI) assistant is software that helps users write, search, summarize, code, or analyze information. It can speed up work, but a person remains responsible for checking important outputs.",
+      "definition": "An artificial intelligence assistant is software that helps users work with text, files, code, search, or analysis through conversation or commands. It may use a large language model, but the assistant is the user-facing tool, not necessarily the model itself.",
       "aira_source_terms": [],
       "workshop_required_terms": [
         "AI assistant"
       ],
-      "sweep_terms": []
+      "sweep_terms": [],
+      "contrasts_with": [
+        "Large language model",
+        "Tool",
+        "Coding agent",
+        "Query client"
+      ]
+    },
+    {
+      "term": "Allowed value",
+      "aliases": [
+        "permitted value",
+        "valid value"
+      ],
+      "definition": "An allowed value is one of the specific entries a schema or prompt permits for a field. For example, relevance may allow only relevant or not_relevant.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [],
+      "distinction_audit_terms": [
+        "Allowed value"
+      ],
+      "contrast_evidence": [
+        "“relevance”: “relevant” | “not_relevant”",
+        "“allowed values”",
+        "“Must be copied EXACTLY as written”"
+      ]
     },
     {
       "term": "Analysis of Competing Hypotheses",
@@ -245,12 +279,18 @@
         "Annotatie",
         "tagging"
       ],
-      "definition": "Annotation means adding labels or notes to pieces of text so they can be searched, compared, or counted later. Large language models can help annotate at scale, but people should check samples for accuracy.",
+      "definition": "Annotation is the act of adding labels, spans, notes, or other structured judgments to text. Classification is one kind of annotation, but annotation can also record evidence spans, comments, confidence, or uncertainty.",
       "aira_source_terms": [
         "Annotatie"
       ],
       "workshop_required_terms": [],
-      "sweep_terms": []
+      "sweep_terms": [],
+      "contrasts_with": [
+        "Classification",
+        "Label",
+        "Evidence span",
+        "Taxonomic annotation"
+      ]
     },
     {
       "term": "Annotation stock",
@@ -263,6 +303,24 @@
       "workshop_required_terms": [],
       "sweep_terms": [
         "Annotation stock"
+      ]
+    },
+    {
+      "term": "Antigravity CLI",
+      "aliases": [
+        "agy"
+      ],
+      "definition": "Antigravity CLI is a terminal AI assistant option in the setup guide. It is run with the agy command and is distinct from Gemini CLI or a browser chat interface.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [],
+      "distinction_audit_terms": [
+        "Antigravity CLI"
+      ],
+      "contrast_evidence": [
+        "“Option C — Antigravity CLI”",
+        "“The command is agy.”",
+        "“use agy there instead”"
       ]
     },
     {
@@ -308,12 +366,18 @@
       "aliases": [
         "API"
       ],
-      "definition": "An application programming interface (API) is a structured way for one software system to request data or actions from another. In a workshop, you may use an API to send text to a model or retrieve results.",
+      "definition": "An application programming interface is a structured way for software to request data or actions from another system. It is not a user interface like a browser or terminal, although tools may use APIs behind the scenes.",
       "aira_source_terms": [],
       "workshop_required_terms": [
         "API"
       ],
-      "sweep_terms": []
+      "sweep_terms": [],
+      "contrasts_with": [
+        "Graphical interface",
+        "Command-line interface",
+        "Tool",
+        "Model provider"
+      ]
     },
     {
       "term": "Arity",
@@ -338,6 +402,25 @@
       "workshop_required_terms": [],
       "sweep_terms": [
         "Artifact"
+      ]
+    },
+    {
+      "term": "Artificial intelligence model",
+      "aliases": [
+        "AI model",
+        "model"
+      ],
+      "definition": "An artificial intelligence model is the trained system that produces predictions or text from input. A tool or assistant may send requests to a model, but the tool is not itself the model.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [],
+      "distinction_audit_terms": [
+        "Artificial intelligence model"
+      ],
+      "contrast_evidence": [
+        "“model-selection guide”",
+        "“frontier model”",
+        "“model provider”"
       ]
     },
     {
@@ -624,12 +707,37 @@
       "aliases": [
         "class"
       ],
-      "definition": "A category is a named group used to organize similar things. In analysis, categories help turn messy text into information that can be compared or counted.",
+      "definition": "A category is a named group used to organize similar things under a scheme. It differs from a label, which is the category name assigned to a particular item during annotation.",
       "aira_source_terms": [],
       "workshop_required_terms": [
         "Category"
       ],
-      "sweep_terms": []
+      "sweep_terms": [],
+      "contrasts_with": [
+        "Label",
+        "Class",
+        "Taxon and taxonomy element",
+        "Classification"
+      ]
+    },
+    {
+      "term": "Category list",
+      "aliases": [
+        "available categories",
+        "taxonomy label list"
+      ],
+      "definition": "A category list is the exact set of labels or paths that the model is allowed to choose from. It is not a suggestion list, because paraphrased or invented labels can break downstream joins.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [],
+      "distinction_audit_terms": [
+        "Category list"
+      ],
+      "contrast_evidence": [
+        "“Available Categories (Must be copied EXACTLY as written)”",
+        "“No IDs, no abbreviations, no ‘closest match’.”",
+        "“paste every category from your taxonomy TSV here”"
+      ]
     },
     {
       "term": "Central dogma",
@@ -657,6 +765,43 @@
       "sweep_terms": []
     },
     {
+      "term": "ChatGPT",
+      "aliases": [
+        "ChatGPT account"
+      ],
+      "definition": "ChatGPT is a browser and account-based AI assistant service named in the setup guide. It is not the same as Codex CLI, which is a terminal tool that can use a ChatGPT sign-in route.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [],
+      "distinction_audit_terms": [
+        "ChatGPT"
+      ],
+      "contrast_evidence": [
+        "“You already use ChatGPT at any tier”",
+        "“Choose Sign in with ChatGPT”",
+        "“same conversation you already have with ChatGPT, Claude or Gemini in a browser”"
+      ]
+    },
+    {
+      "term": "Chunk",
+      "aliases": [
+        "text chunk",
+        "semantic chunk"
+      ],
+      "definition": "A chunk is a piece of a document prepared for model or human analysis. It is usually larger than a selected text span and smaller than the whole document.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [],
+      "distinction_audit_terms": [
+        "Chunk"
+      ],
+      "contrast_evidence": [
+        "“Assigns every chunk of your corpus to elements of your taxonomy.”",
+        "“classification of semantic text chunks”",
+        "“batch ~20 documents per call”"
+      ]
+    },
+    {
       "term": "Chunk ID",
       "aliases": [
         "chunk identifier",
@@ -665,12 +810,18 @@
         "stable ID",
         "text chunk ID"
       ],
-      "definition": "A fixed identifier for a text chunk or passage. It lets an analyst trace a label, quote, or claim back to the exact part of the corpus it came from.",
+      "definition": "A chunk ID is a stable identifier for one chunk or passage in a corpus. It points to the processing unit being cited or labeled, not necessarily to the smaller evidence span inside that chunk.",
       "aira_source_terms": [],
       "workshop_required_terms": [],
       "sweep_terms": [
         "Chunk ID",
         "Stable ID"
+      ],
+      "contrasts_with": [
+        "Chunk",
+        "Evidence span",
+        "Citation",
+        "Record"
       ]
     },
     {
@@ -678,24 +829,35 @@
       "aliases": [
         "text splitting"
       ],
-      "definition": "Chunking means breaking a long document into smaller pieces that a model or analyst can handle. Good chunking keeps meaningful text together instead of cutting through sentences or ideas.",
+      "definition": "Chunking is the process of splitting a long document into smaller chunks for model or human analysis. It creates chunks, but it is not the same as selecting an evidence span for a specific claim.",
       "aira_source_terms": [
         "Chunking"
       ],
       "workshop_required_terms": [],
-      "sweep_terms": []
+      "sweep_terms": [],
+      "contrasts_with": [
+        "Chunk",
+        "Document",
+        "Evidence span"
+      ]
     },
     {
       "term": "Citation",
       "aliases": [
         "reference"
       ],
-      "definition": "A citation is a pointer to the source that supports a claim, quotation, or data point. It helps readers verify where information came from.",
+      "definition": "A citation is a pointer to the source, chunk, or passage that supports a claim, quotation, or data point. It is not the evidence itself and is not the same as the claim being supported.",
       "aira_source_terms": [],
       "workshop_required_terms": [
         "Citation"
       ],
-      "sweep_terms": []
+      "sweep_terms": [],
+      "contrasts_with": [
+        "Evidence",
+        "Source",
+        "Claim",
+        "Chunk ID"
+      ]
     },
     {
       "term": "Citation context",
@@ -708,6 +870,44 @@
       "workshop_required_terms": [],
       "sweep_terms": [
         "Citation context"
+      ]
+    },
+    {
+      "term": "Claim",
+      "aliases": [
+        "substantive claim",
+        "assertion"
+      ],
+      "definition": "A claim is a statement that says something is true, likely, important, or supported. In this workflow, substantive claims must be linked to cited chunk IDs or clearly marked as unsupported.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [],
+      "distinction_audit_terms": [
+        "Claim"
+      ],
+      "contrast_evidence": [
+        "“Every substantive claim must point to one or more chunk IDs.”",
+        "“If the supplied chunks do not support a claim, the model must say so.”",
+        "“what a source says and your inference”"
+      ]
+    },
+    {
+      "term": "Classification",
+      "aliases": [
+        "classifying",
+        "classify"
+      ],
+      "definition": "Classification is the act of placing an item into one or more defined categories or taxonomy elements. It is not annotation in general, because annotation can also include notes, spans, or comments.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [],
+      "distinction_audit_terms": [
+        "Classification"
+      ],
+      "contrast_evidence": [
+        "“Taxonomy Classification”",
+        "“If relevant, map the text to one or more specific taxonomy elements.”",
+        "“classify diverse examples along each dimension”"
       ]
     },
     {
@@ -796,34 +996,79 @@
       ]
     },
     {
+      "term": "Codex CLI",
+      "aliases": [
+        "codex"
+      ],
+      "definition": "Codex CLI is a terminal AI assistant option in the setup guide. It is a tool you run with the codex command, not the same thing as the ChatGPT browser interface.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [],
+      "distinction_audit_terms": [
+        "Codex CLI"
+      ],
+      "contrast_evidence": [
+        "“Option B — Codex CLI”",
+        "“run: codex”",
+        "“Works with any ChatGPT account”"
+      ]
+    },
+    {
       "term": "Coding agent",
       "aliases": [
         "coding assistant"
       ],
-      "definition": "An artificial intelligence tool that can work with files and folders, run commands, and help perform multi-step coding or analysis tasks from the terminal.",
+      "definition": "A coding agent is an AI assistant that can work across files and folders, run commands, and help with multi-step coding or analysis workflows. It is not just a query client for asking isolated questions to models.",
       "aira_source_terms": [],
       "workshop_required_terms": [],
       "sweep_terms": [
         "Coding agent"
+      ],
+      "contrasts_with": [
+        "Query client",
+        "Terminal AI assistant",
+        "Tool",
+        "Large language model"
       ]
     },
     {
       "term": "Cohen's kappa",
-      "aliases": [
-        "inter-annotator agreement"
-      ],
-      "definition": "Cohen's kappa is a statistic that measures how much two annotators agree after accounting for agreement that could happen by chance. It is useful for checking whether a coding scheme is clear enough.",
+      "aliases": [],
+      "definition": "Cohen’s kappa is a chance-corrected agreement statistic for two annotators. It measures agreement beyond chance, not accuracy against truth, and it is only one way to assess reliability.",
       "aira_source_terms": [],
       "workshop_required_terms": [
         "Cohen's kappa"
       ],
-      "sweep_terms": []
+      "sweep_terms": [],
+      "contrasts_with": [
+        "Raw agreement",
+        "Inter-annotator agreement",
+        "Reliability",
+        "Accuracy"
+      ]
+    },
+    {
+      "term": "Command",
+      "aliases": [
+        "terminal command"
+      ],
+      "definition": "A command is text you type in a terminal to run a program or ask it to do something. It differs from a command-line option, which changes how that command behaves.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [],
+      "distinction_audit_terms": [
+        "Command"
+      ],
+      "contrast_evidence": [
+        "“Run one command”",
+        "“claude ‘Summarize...’”",
+        "“Command-line option”"
+      ]
     },
     {
       "term": "Command-line interface",
       "aliases": [
-        "CLI",
-        "terminal"
+        "CLI"
       ],
       "definition": "A command-line interface (CLI) lets you control software by typing commands instead of clicking buttons. It is often used for reproducible data processing and coding workflows.",
       "aira_source_terms": [],
@@ -865,7 +1110,7 @@
         "MECE",
         "Mutually Exclusive, Comprehensively Exhaustive"
       ],
-      "definition": "Completeness means a set of categories covers what it needs to cover; mutual exclusivity means an item should not fit two categories at once. Mutually Exclusive, Comprehensively Exhaustive (MECE) is an ideal, but real data often creates difficult edge cases.",
+      "definition": "Completeness means the categories cover the needed possibilities; mutual exclusivity means one item should not fit two categories in the same category set. Completeness is about missing options, while mutual exclusivity is about overlap.",
       "aira_source_terms": [
         "MECE (Mutually Exclusive, Comprehensively Exhaustive)"
       ],
@@ -873,19 +1118,30 @@
         "Completeness",
         "Mutual exclusivity"
       ],
-      "sweep_terms": []
+      "sweep_terms": [],
+      "contrasts_with": [
+        "Coverage",
+        "Category",
+        "Open subcategory",
+        "Boundary testing"
+      ]
     },
     {
       "term": "Confidence score",
       "aliases": [
         "certainty score"
       ],
-      "definition": "A confidence score is a number that expresses how certain a model says it is about an output. It helps prioritize review, but it is not a guarantee that the answer is correct.",
+      "definition": "A confidence score is a number showing how certain a model reports being about an output. It is not the same as accuracy, because a model can be confident and wrong or uncertain and correct.",
       "aira_source_terms": [
         "Confidence score"
       ],
       "workshop_required_terms": [],
-      "sweep_terms": []
+      "sweep_terms": [],
+      "contrasts_with": [
+        "Accuracy",
+        "Reliability",
+        "LLM-as-a-judge"
+      ]
     },
     {
       "term": "Configuration string",
@@ -996,12 +1252,17 @@
       "aliases": [
         "text collection"
       ],
-      "definition": "A corpus is a structured collection of documents used for research or analysis. Its usefulness depends not only on size, but also on quality, metadata, and fit for the question.",
+      "definition": "A corpus is the body of documents or texts selected for a research task. It differs from a dataset, which may include structured records or labels, and from a sample, which is only a subset of a larger body.",
       "aira_source_terms": [
         "Corpus"
       ],
       "workshop_required_terms": [],
-      "sweep_terms": []
+      "sweep_terms": [],
+      "contrasts_with": [
+        "Dataset",
+        "Sample",
+        "Document"
+      ]
     },
     {
       "term": "Correlation",
@@ -1021,12 +1282,18 @@
       "aliases": [
         "independent confirmation"
       ],
-      "definition": "Corroboration means checking whether another independent source supports the same claim. It strengthens confidence, but repeated copies of the same original claim do not count as independent support.",
+      "definition": "Corroboration means an independent source supports the same claim. It is not just repetition, reposting, or several chunks copied from the same original source.",
       "aira_source_terms": [],
       "workshop_required_terms": [
         "Corroboration"
       ],
-      "sweep_terms": []
+      "sweep_terms": [],
+      "contrasts_with": [
+        "Evidence",
+        "Source",
+        "Claim",
+        "Near-duplicate"
+      ]
     },
     {
       "term": "Covariate",
@@ -1045,12 +1312,37 @@
       "aliases": [
         "coverage rate"
       ],
-      "definition": "Coverage describes how much of the relevant material, topic space, or target population is included. Low coverage can lead to blind spots even when the included data is accurate.",
+      "definition": "Coverage is how much of the relevant material, topic space, or target population is included. It differs from completeness of a category scheme, because coverage concerns what data or space you have, not only whether categories exist.",
       "aira_source_terms": [],
       "workshop_required_terms": [
         "Coverage"
       ],
-      "sweep_terms": []
+      "sweep_terms": [],
+      "contrasts_with": [
+        "Completeness and mutual exclusivity",
+        "Corpus",
+        "Sample",
+        "Coverage gap"
+      ]
+    },
+    {
+      "term": "Coverage gap",
+      "aliases": [
+        "gap in coverage",
+        "missing coverage"
+      ],
+      "definition": "A coverage gap is a known area where the available corpus, metadata, dates, sources, or perspectives are missing or thin. It is not proof that the real-world phenomenon is absent.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [],
+      "distinction_audit_terms": [
+        "Coverage gap"
+      ],
+      "contrast_evidence": [
+        "“You may report a coverage gap, but not infer that an actor, event, or view did not exist”",
+        "“major missing perspectives or metadata”",
+        "“Evidence and coverage audit”"
+      ]
     },
     {
       "term": "Co-word analysis",
@@ -1093,12 +1385,19 @@
       "aliases": [
         "comma-separated values"
       ],
-      "definition": "Comma-separated values (CSV) is a simple table file format where each row is a record and commas separate fields. It is widely used, but commas inside text can cause formatting problems if not handled correctly.",
+      "definition": "Comma-separated values is a table text format where each row is a record and commas usually separate fields. It is not JSON, and it differs from TSV mainly in the separator character.",
       "aira_source_terms": [],
       "workshop_required_terms": [
         "CSV"
       ],
-      "sweep_terms": []
+      "sweep_terms": [],
+      "contrasts_with": [
+        "TSV",
+        "JSON",
+        "JSONL",
+        "Record",
+        "Field"
+      ]
     },
     {
       "term": "Dashboard",
@@ -1113,16 +1412,40 @@
       "sweep_terms": []
     },
     {
+      "term": "Data",
+      "aliases": [
+        "research data"
+      ],
+      "definition": "Data are recorded values, text, files, observations, or measurements used in analysis. Metadata describe data, and a dataset organizes data into a structure.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [],
+      "distinction_audit_terms": [
+        "Data"
+      ],
+      "contrast_evidence": [
+        "“data-processing terms”",
+        "“data files”",
+        "“raw data”"
+      ]
+    },
+    {
       "term": "Dataset",
       "aliases": [
         "data set",
         "empirical dataset"
       ],
-      "definition": "A structured collection of evidence or observations that can be analyzed, shared, and reused.",
+      "definition": "A dataset is an organized collection of records, fields, values, or files used for analysis. It is not necessarily a text corpus, and it is not just a sample unless it contains only sampled items.",
       "aira_source_terms": [],
       "workshop_required_terms": [],
       "sweep_terms": [
         "Dataset"
+      ],
+      "contrasts_with": [
+        "Corpus",
+        "Sample",
+        "Record",
+        "Field"
       ]
     },
     {
@@ -1130,12 +1453,18 @@
       "aliases": [
         "type"
       ],
-      "definition": "A data type describes what kind of value a field can hold, such as text, number, date, or true/false. Correct data types make filtering, sorting, and calculation more reliable.",
+      "definition": "A data type states what kind of value a field may hold, such as text, number, date, list, or true/false. It is not the field name or the specific value in one record.",
       "aira_source_terms": [],
       "workshop_required_terms": [
         "Data type"
       ],
-      "sweep_terms": []
+      "sweep_terms": [],
+      "contrasts_with": [
+        "Field",
+        "Value",
+        "Schema",
+        "Allowed value"
+      ]
     },
     {
       "term": "Data warehouse",
@@ -1296,14 +1625,20 @@
         "High-Level Taxonomic Principle",
         "HLTP"
       ],
-      "definition": "A dimension is a major axis for organizing information, such as time, geography, actor, or type of activity. A High-Level Taxonomic Principle (HLTP) is a top-level dimension in a taxonomy.",
+      "definition": "A dimension is a major independent axis for classifying every instance in a domain, such as time, geography, actor, or activity type. It is not a level in a hierarchy, because levels sit within a dimension rather than beside other dimensions.",
       "aira_source_terms": [
         "HLTP (High-Level Taxonomic Principle)"
       ],
       "workshop_required_terms": [
         "Dimension"
       ],
-      "sweep_terms": []
+      "sweep_terms": [],
+      "contrasts_with": [
+        "Hierarchy",
+        "Level 2 and Level 3",
+        "Multidimensional taxonomy",
+        "Orthogonal axes"
+      ]
     },
     {
       "term": "Dimensional independence",
@@ -1346,12 +1681,36 @@
     {
       "term": "Document",
       "aliases": [],
-      "definition": "A document is a unit of source material, such as an article, post, report, transcript, or paper. It may later be split into smaller chunks for analysis.",
+      "definition": "A document is one unit of source material, such as an article, post, report, transcript, or paper. It differs from a record, which is a dataset entry about something, and from a chunk, which is a smaller piece cut from a document.",
       "aira_source_terms": [],
       "workshop_required_terms": [
         "Document"
       ],
-      "sweep_terms": []
+      "sweep_terms": [],
+      "contrasts_with": [
+        "Record",
+        "Chunk",
+        "Full text"
+      ]
+    },
+    {
+      "term": "Domain",
+      "aliases": [
+        "domain for this taxonomy",
+        "subject domain"
+      ],
+      "definition": "A domain is the bounded subject area the taxonomy is about. It says what the taxonomy covers and where it stops.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [],
+      "distinction_audit_terms": [
+        "Domain"
+      ],
+      "contrast_evidence": [
+        "“DOMAIN FOR THIS TAXONOMY”",
+        "“Domain Definition: Clearly define the boundaries”",
+        "“Domain for this run: {{DOMAIN}}”"
+      ]
     },
     {
       "term": "Domain-framing",
@@ -1551,6 +1910,24 @@
       "sweep_terms": []
     },
     {
+      "term": "Evidence",
+      "aliases": [
+        "supporting evidence"
+      ],
+      "definition": "Evidence is source material or data used to support, weaken, or test a claim. It differs from a citation, which points to evidence, and from a claim, which evidence is used to support.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [],
+      "distinction_audit_terms": [
+        "Evidence"
+      ],
+      "contrast_evidence": [
+        "“Use only the supplied chunks as evidence.”",
+        "“available evidence”",
+        "“evidence-grounded report”"
+      ]
+    },
+    {
       "term": "Evidence and coverage audit",
       "aliases": [
         "coverage audit"
@@ -1580,17 +1957,21 @@
     },
     {
       "term": "Evidence span",
-      "aliases": [
-        "text span"
-      ],
-      "definition": "An evidence span is the exact passage in a source that supports a label, claim, or decision. It makes annotation easier to audit because reviewers can see what the judgment was based on.",
+      "aliases": [],
+      "definition": "An evidence span is the exact words in a source that support a label, claim, or decision. It is a kind of text span, but it is not the whole chunk unless the whole chunk is needed as evidence.",
       "aira_source_terms": [
         "Text span"
       ],
       "workshop_required_terms": [
         "Evidence span"
       ],
-      "sweep_terms": []
+      "sweep_terms": [],
+      "contrasts_with": [
+        "Text span",
+        "Chunk",
+        "Passage",
+        "Claim"
+      ]
     },
     {
       "term": "Evidence spine",
@@ -1648,12 +2029,18 @@
       "aliases": [
         "F-measure"
       ],
-      "definition": "The F1 score combines precision and recall into one number. It is useful when you care about both false alarms and missed relevant items.",
+      "definition": "The F1 score combines precision and recall into one summary number. It is not accuracy, and it can hide whether the main problem is false alarms or missed cases.",
       "aira_source_terms": [
         "F1 score"
       ],
       "workshop_required_terms": [],
-      "sweep_terms": []
+      "sweep_terms": [],
+      "contrasts_with": [
+        "Precision",
+        "Recall",
+        "Accuracy",
+        "Confusion matrix"
+      ]
     },
     {
       "term": "Fabricated peer review",
@@ -1678,6 +2065,43 @@
       "workshop_required_terms": [],
       "sweep_terms": [
         "Facet"
+      ]
+    },
+    {
+      "term": "False negative",
+      "aliases": [
+        "missed case",
+        "missed relevant item"
+      ],
+      "definition": "A false negative is an item that should have been marked relevant or labeled but was missed. High recall means fewer false negatives.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [],
+      "distinction_audit_terms": [
+        "False negative"
+      ],
+      "contrast_evidence": [
+        "“missed cases”",
+        "“High recall means fewer important items are missed”",
+        "“The rejects are where the damage hides”"
+      ]
+    },
+    {
+      "term": "False positive",
+      "aliases": [
+        "false alarm"
+      ],
+      "definition": "A false positive is an item marked relevant or assigned a label when it should not have been. High precision means fewer false positives.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [],
+      "distinction_audit_terms": [
+        "False positive"
+      ],
+      "contrast_evidence": [
+        "“false alarms”",
+        "“Precision is the share of items marked relevant by a model that truly are relevant.”",
+        "“ten it kept and ten it rejected”"
       ]
     },
     {
@@ -1734,6 +2158,25 @@
       ]
     },
     {
+      "term": "Fenced code block",
+      "aliases": [
+        "Markdown code fence",
+        "code block"
+      ],
+      "definition": "A fenced code block is a Markdown section surrounded by triple backticks. It is useful for display, but it is not raw JSON because the backticks become extra text.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [],
+      "distinction_audit_terms": [
+        "Fenced code block"
+      ],
+      "contrast_evidence": [
+        "“Do not include markdown formatting (like a fenced code block)”",
+        "“Write in Markdown with exactly these headings”",
+        "“raw JSON object”"
+      ]
+    },
+    {
       "term": "Few-shot and zero-shot prompting",
       "aliases": [
         "few-shot",
@@ -1751,24 +2194,55 @@
       "aliases": [
         "column"
       ],
-      "definition": "A field is one named piece of information in a record, such as date, source name, language, or label. In a table, fields often appear as columns.",
+      "definition": "A field is one named slot in a record, such as source, date, relevance, or classification_values. In a table it often appears as a column, but the field name is not the same as the value stored in it.",
       "aira_source_terms": [],
       "workshop_required_terms": [
         "Field"
       ],
-      "sweep_terms": []
+      "sweep_terms": [],
+      "contrasts_with": [
+        "Record",
+        "Value",
+        "Column",
+        "Schema"
+      ]
     },
     {
       "term": "Filter",
       "aliases": [
         "screen"
       ],
-      "definition": "A filter keeps only records that meet selected conditions, such as a date range, source type, or label. Filters help narrow a dataset to the part relevant to a question.",
+      "definition": "A filter keeps only records that meet selected conditions, such as date, source type, or label. It is not the same as relevance screening unless the filtering condition is a relevance decision, and destructive filtering can remove auditability.",
       "aira_source_terms": [],
       "workshop_required_terms": [
         "Filter"
       ],
-      "sweep_terms": []
+      "sweep_terms": [],
+      "contrasts_with": [
+        "Relevance screening",
+        "Non-destructive filtering",
+        "Gatekeeping",
+        "Record"
+      ]
+    },
+    {
+      "term": "Finding",
+      "aliases": [
+        "research finding",
+        "supported finding"
+      ],
+      "definition": "A finding is a conclusion that the available evidence supports under the stated method and scope. It is not just a fluent paragraph, a model output, or an unsupported impression.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [],
+      "distinction_audit_terms": [
+        "Finding"
+      ],
+      "contrast_evidence": [
+        "“A fluent paragraph without traceable evidence is not a finding.”",
+        "“silence is a finding”",
+        "“Null finding”"
+      ]
     },
     {
       "term": "Fine-tuning",
@@ -1898,11 +2372,18 @@
         "complete text",
         "full-text article"
       ],
-      "definition": "The complete contents of a document, not just its title, abstract, citation, or metadata.",
+      "definition": "Full text is the complete contents of a document. It is not the same as a title, abstract, metadata record, chunk, or selected evidence span.",
       "aira_source_terms": [],
       "workshop_required_terms": [],
       "sweep_terms": [
         "Full text"
+      ],
+      "contrasts_with": [
+        "Abstract",
+        "Metadata",
+        "Chunk",
+        "Evidence span",
+        "Document"
       ]
     },
     {
@@ -1916,6 +2397,61 @@
       "workshop_required_terms": [],
       "sweep_terms": [
         "Function call"
+      ]
+    },
+    {
+      "term": "Fundamentality",
+      "aliases": [
+        "fundamental aspect"
+      ],
+      "definition": "Fundamentality means a dimension captures an essential feature of the phenomenon, not a surface detail or convenient source label. It helps prevent taxonomies from mirroring the filing system of the sources.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [],
+      "distinction_audit_terms": [
+        "Fundamentality"
+      ],
+      "contrast_evidence": [
+        "“Represents a truly fundamental aspect of the domain”",
+        "“Does this dimension capture an essential rather than superficial aspect?”",
+        "“A taxonomy that mirrors your sources' own filing system fails this brief”"
+      ]
+    },
+    {
+      "term": "Gatekeeping",
+      "aliases": [
+        "strict gate",
+        "relevance gate"
+      ],
+      "definition": "Gatekeeping is the first decision that allows only in-scope, relevant material to move to classification. It is not classification itself, because rejected items receive no taxonomy labels.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [],
+      "distinction_audit_terms": [
+        "Gatekeeping"
+      ],
+      "contrast_evidence": [
+        "“Gatekeeping comes before classification”",
+        "“The gate is what keeps an off-topic document out.”",
+        "“Most of your quality comes from Phase 1, not Phase 2.”"
+      ]
+    },
+    {
+      "term": "Gemini CLI",
+      "aliases": [
+        "gemini command"
+      ],
+      "definition": "Gemini CLI is a terminal tool mentioned as a route that the guide tells personal-account users not to choose. It is distinct from Gemini as a browser assistant and from Antigravity CLI.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [],
+      "distinction_audit_terms": [
+        "Gemini CLI"
+      ],
+      "contrast_evidence": [
+        "“Do not choose Gemini CLI for personal Google-account sign-in”",
+        "“the preinstalled gemini command”",
+        "“Gemini CLI does remain supported ... those are different routes”"
       ]
     },
     {
@@ -2036,12 +2572,18 @@
         "gold standard",
         "reference labels"
       ],
-      "definition": "Ground truth is a trusted reference set, usually checked by people, used to evaluate model outputs. If the reference is poor, the evaluation will also be unreliable.",
+      "definition": "Ground truth is a trusted reference answer or label used to evaluate model or coder outputs. It is not automatically true in an absolute sense, and it can be wrong if the human-reviewed reference is poor.",
       "aira_source_terms": [
         "Ground truth"
       ],
       "workshop_required_terms": [],
-      "sweep_terms": []
+      "sweep_terms": [],
+      "contrasts_with": [
+        "Reference label",
+        "Accuracy",
+        "Adjudication",
+        "Evaluation ex post"
+      ]
     },
     {
       "term": "Gzipped",
@@ -2067,6 +2609,25 @@
       ],
       "workshop_required_terms": [],
       "sweep_terms": []
+    },
+    {
+      "term": "Hand check",
+      "aliases": [
+        "manual check",
+        "human spot check"
+      ],
+      "definition": "A hand check is a small manual review of model or pipeline outputs by a person. It is useful for finding obvious errors, but it is not a full reliability or accuracy study by itself.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [],
+      "distinction_audit_terms": [
+        "Hand check"
+      ],
+      "contrast_evidence": [
+        "“hand-check 20 – ten it kept and ten it rejected”",
+        "“Run three checks yourself”",
+        "“Open five cited chunk IDs at random”"
+      ]
     },
     {
       "term": "Harvest",
@@ -2112,12 +2673,18 @@
       "aliases": [
         "tree structure"
       ],
-      "definition": "A hierarchy organizes items from broad to narrow levels. In a taxonomy, a broad category may contain more specific subcategories beneath it.",
+      "definition": "A hierarchy organizes categories from broader to narrower levels. It is not the same as a multidimensional taxonomy, where the same instance can be placed along several independent dimensions at once.",
       "aira_source_terms": [],
       "workshop_required_terms": [
         "Hierarchy"
       ],
-      "sweep_terms": []
+      "sweep_terms": [],
+      "contrasts_with": [
+        "Dimension",
+        "Level 2 and Level 3",
+        "Multidimensional taxonomy",
+        "Taxonomy"
+      ]
     },
     {
       "term": "High-dimensional conceptual space",
@@ -2383,6 +2950,25 @@
       ]
     },
     {
+      "term": "Instance",
+      "aliases": [
+        "thing being classified",
+        "domain instance"
+      ],
+      "definition": "An instance is the kind of thing the taxonomy classifies, such as an issue, event, argument, policy, or activity. In the prompt, it is explicitly not a document, paragraph, or source.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [],
+      "distinction_audit_terms": [
+        "Instance"
+      ],
+      "contrast_evidence": [
+        "“INSTANCE (the thing being classified)”",
+        "“NOT a document, not a paragraph, not a source.”",
+        "“all instances within the domain”"
+      ]
+    },
+    {
       "term": "Institutionally restricted data",
       "aliases": [
         "restricted research data"
@@ -2458,40 +3044,114 @@
       "sweep_terms": []
     },
     {
+      "term": "Inter-annotator agreement",
+      "aliases": [
+        "inter-coder agreement",
+        "annotator agreement"
+      ],
+      "definition": "Inter-annotator agreement is how often independent coders assign the same labels to the same items. It is not accuracy, because coders can agree with each other and still be wrong.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [],
+      "distinction_audit_terms": [
+        "Inter-annotator agreement"
+      ],
+      "contrast_evidence": [
+        "“blind review”",
+        "“Cohen's kappa ... inter-annotator agreement”",
+        "“whether a coding scheme is clear enough”"
+      ]
+    },
+    {
       "term": "Join",
       "aliases": [
         "table join"
       ],
-      "definition": "A join combines records from two tables using a shared field, such as a document identifier. Joins are powerful, but mismatched identifiers can create missing or duplicated results.",
+      "definition": "A join combines records from two tables using a shared field, such as a document ID or exact taxonomy label. It is not fuzzy matching, so changed labels, abbreviations, or paraphrases can create missing or duplicated results.",
       "aira_source_terms": [],
       "workshop_required_terms": [
         "Join"
       ],
-      "sweep_terms": []
+      "sweep_terms": [],
+      "contrasts_with": [
+        "Field",
+        "Label",
+        "Silent drop",
+        "Record"
+      ]
     },
     {
       "term": "JSON",
       "aliases": [
         "JavaScript Object Notation"
       ],
-      "definition": "JavaScript Object Notation (JSON) is a structured text format for storing objects, lists, numbers, and strings. It is common in application programming interfaces and model outputs.",
+      "definition": "JavaScript Object Notation is a structured text format for objects, arrays, numbers, strings, and true/false values. It is not a table format like CSV or TSV, and it is not JSON Lines unless there is one JSON object per line.",
       "aira_source_terms": [],
       "workshop_required_terms": [
         "JSON"
       ],
-      "sweep_terms": []
+      "sweep_terms": [],
+      "contrasts_with": [
+        "JSONL",
+        "CSV",
+        "TSV",
+        "JSON object"
+      ]
+    },
+    {
+      "term": "JSON array",
+      "aliases": [
+        "array",
+        "list"
+      ],
+      "definition": "A JavaScript Object Notation array is an ordered list of values written inside square brackets. In the classification output, classification_values is an array because it can hold multiple labels.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [],
+      "distinction_audit_terms": [
+        "JSON array"
+      ],
+      "contrast_evidence": [
+        "“classification_values”: [“element1”, “element2”]",
+        "“one or more specific taxonomy elements”",
+        "“objects, lists, numbers, and strings”"
+      ]
     },
     {
       "term": "JSONL",
       "aliases": [
         "JSON Lines"
       ],
-      "definition": "JSON Lines (JSONL) stores one JavaScript Object Notation object per line. It is useful for large datasets because programs can read or write one record at a time.",
+      "definition": "JSON Lines stores one JavaScript Object Notation object on each line. It differs from ordinary JSON because the file is read line by line, and it differs from CSV or TSV because each line is still a JSON object.",
       "aira_source_terms": [],
       "workshop_required_terms": [
         "JSONL"
       ],
-      "sweep_terms": []
+      "sweep_terms": [],
+      "contrasts_with": [
+        "JSON",
+        "CSV",
+        "TSV",
+        "Record"
+      ]
+    },
+    {
+      "term": "JSON object",
+      "aliases": [
+        "object"
+      ],
+      "definition": "A JavaScript Object Notation object is a set of named fields and their values, written inside curly braces. It differs from a JSON array, which is an ordered list inside square brackets.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [],
+      "distinction_audit_terms": [
+        "JSON object"
+      ],
+      "contrast_evidence": [
+        "“respond ONLY with a raw JSON object”",
+        "“Schema: { ‘relevance’: ... }”",
+        "“classification_values”: [‘element1’, ‘element2’]"
+      ]
     },
     {
       "term": "Kent estimative language",
@@ -2549,12 +3209,18 @@
       "aliases": [
         "tag"
       ],
-      "definition": "A label is a category name assigned to a text, record, or passage during annotation. Labels make qualitative material easier to sort, compare, and count.",
+      "definition": "A label is the category name or taxonomy path assigned to a specific text, chunk, record, or passage. It is not the category system itself, and changing the wording can break joins that expect exact labels.",
       "aira_source_terms": [],
       "workshop_required_terms": [
         "Label"
       ],
-      "sweep_terms": []
+      "sweep_terms": [],
+      "contrasts_with": [
+        "Category",
+        "Annotation",
+        "Classification",
+        "Taxonomy path"
+      ]
     },
     {
       "term": "Labeled graph",
@@ -2573,12 +3239,18 @@
       "aliases": [
         "LLM"
       ],
-      "definition": "A large language model (LLM) is an artificial intelligence model trained to process and generate text. It can summarize, classify, draft, and answer questions, but its outputs need verification.",
+      "definition": "A large language model is an artificial intelligence model trained to process and generate text. It is the model behind many assistants and tools, not the same as the browser app, terminal tool, or provider account used to access it.",
       "aira_source_terms": [
         "LLM (Large Language Model)"
       ],
       "workshop_required_terms": [],
-      "sweep_terms": []
+      "sweep_terms": [],
+      "contrasts_with": [
+        "Artificial intelligence model",
+        "AI assistant",
+        "Tool",
+        "Model provider"
+      ]
     },
     {
       "term": "Level 2 and Level 3",
@@ -2590,13 +3262,19 @@
         "second-level taxonomy element",
         "third-level taxonomy element"
       ],
-      "definition": "Level 2 (L2) and Level 3 (L3) are lower levels in a hierarchy beneath a broader top-level category. They usually represent increasingly specific subcategories.",
+      "definition": "Level 2 and Level 3 are nested category levels below a top-level taxonomy dimension. They are levels within one hierarchy, not separate independent dimensions.",
       "aira_source_terms": [],
       "workshop_required_terms": [
         "Level 2 (L2)",
         "Level 3 (L3)"
       ],
-      "sweep_terms": []
+      "sweep_terms": [],
+      "contrasts_with": [
+        "Dimension",
+        "Hierarchy",
+        "Taxon and taxonomy element",
+        "Taxonomy path"
+      ]
     },
     {
       "term": "Licensed source",
@@ -2777,12 +3455,18 @@
       "aliases": [
         "data about data"
       ],
-      "definition": "Metadata is information about a document or record, such as date, author, language, source, or location. Good metadata makes searching, filtering, and interpretation much easier.",
+      "definition": "Metadata is information that describes a document, chunk, record, or file, such as source, author, date, language, or identifier. It is not the main text itself, but it helps interpret and filter the main data.",
       "aira_source_terms": [],
       "workshop_required_terms": [
         "Metadata"
       ],
-      "sweep_terms": []
+      "sweep_terms": [],
+      "contrasts_with": [
+        "Data",
+        "Field",
+        "Record",
+        "Full text"
+      ]
     },
     {
       "term": "Methods block",
@@ -2961,12 +3645,18 @@
       "aliases": [
         "multi-dimensional taxonomy"
       ],
-      "definition": "A classification scheme that describes the same item along several independent axes at once. Instead of one path down a tree, a case receives positions on multiple dimensions.",
+      "definition": "A multidimensional taxonomy classifies the same instance along several independent dimensions at once. It is not a single hierarchy where each item follows only one branch from broad to narrow.",
       "aira_source_terms": [],
       "workshop_required_terms": [],
       "sweep_terms": [
         "Multi-dimensional taxonomy",
         "Multidimensional taxonomy"
+      ],
+      "contrasts_with": [
+        "Taxonomy",
+        "Dimension",
+        "Hierarchy",
+        "Orthogonal axes"
       ]
     },
     {
@@ -3319,11 +4009,17 @@
       "aliases": [
         "required output format"
       ],
-      "definition": "A precise instruction for what a model or pipeline must return, such as columns, field names, or JavaScript Object Notation structure. It makes outputs easier to check, combine, and rerun.",
+      "definition": "An output contract is a precise requirement for what a model or pipeline must return, such as exact fields, allowed values, or file format. It is not merely a style preference, because downstream software may fail if it is violated.",
       "aira_source_terms": [],
       "workshop_required_terms": [],
       "sweep_terms": [
         "Output contract"
+      ],
+      "contrasts_with": [
+        "Schema",
+        "Raw JSON",
+        "TSV",
+        "Field"
       ]
     },
     {
@@ -3405,11 +4101,17 @@
         "JSON parser",
         "output parser"
       ],
-      "definition": "Software that reads structured text and turns it into data fields a program can use. If the output format changes or breaks, a parser may fail or misread the result.",
+      "definition": "A parser reads structured text and turns it into fields a program can use. It is not a human reader, and it may fail even when the output looks understandable if the required JSON, TSV, or schema is broken.",
       "aira_source_terms": [],
       "workshop_required_terms": [],
       "sweep_terms": [
         "Parser"
+      ],
+      "contrasts_with": [
+        "Raw JSON",
+        "JSON",
+        "TSV",
+        "Schema"
       ]
     },
     {
@@ -3423,6 +4125,24 @@
       ],
       "workshop_required_terms": [],
       "sweep_terms": []
+    },
+    {
+      "term": "Passage",
+      "aliases": [
+        "source passage"
+      ],
+      "definition": "A passage is a meaningful section of text read as a unit, such as a paragraph or several sentences. It may be used as a chunk, but a passage is a reading unit, not necessarily a fixed processing unit.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [],
+      "distinction_audit_terms": [
+        "Passage"
+      ],
+      "contrast_evidence": [
+        "“retrieves relevant source passages”",
+        "“the exact passage in a source”",
+        "“text chunks already assigned to that element”"
+      ]
     },
     {
       "term": "Patent citation",
@@ -3569,12 +4289,18 @@
       "aliases": [
         "positive predictive value"
       ],
-      "definition": "Precision is the share of items marked relevant by a model that truly are relevant. High precision means fewer false alarms and less irrelevant material for analysts to review.",
+      "definition": "Precision is the share of items marked relevant or labeled by a model that truly should have been marked that way. It measures false alarms, not missed relevant items, which are measured by recall.",
       "aira_source_terms": [
         "Precision"
       ],
       "workshop_required_terms": [],
-      "sweep_terms": []
+      "sweep_terms": [],
+      "contrasts_with": [
+        "Recall",
+        "False positive",
+        "False negative",
+        "Accuracy"
+      ]
     },
     {
       "term": "Precision oncology",
@@ -3613,6 +4339,25 @@
       "sweep_terms": []
     },
     {
+      "term": "Primary application",
+      "aliases": [
+        "application corpus",
+        "intended application"
+      ],
+      "definition": "The primary application is the corpus, period, or practical setting where the taxonomy will actually be used. It is narrower than the domain and helps test whether the taxonomy is useful.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [],
+      "distinction_audit_terms": [
+        "Primary application"
+      ],
+      "contrast_evidence": [
+        "“PRIMARY APPLICATION <the corpus or period you will actually run it over.>”",
+        "“Practical Application Test”",
+        "“supporting both analysis and operational planning”"
+      ]
+    },
+    {
       "term": "Priors",
       "aliases": [
         "prior assumptions",
@@ -3644,14 +4389,20 @@
         "instruction",
         "prompt engineering"
       ],
-      "definition": "A prompt is the instruction or question given to a language model. Prompt engineering means designing that instruction carefully, often with examples, rules, and output requirements.",
+      "definition": "A prompt is the instruction, question, context, and output requirements given to a language model. It is not the same as a search query, although some prompts may contain search-like requests.",
       "aira_source_terms": [
         "Prompt engineering"
       ],
       "workshop_required_terms": [
         "Prompt"
       ],
-      "sweep_terms": []
+      "sweep_terms": [],
+      "contrasts_with": [
+        "Query",
+        "System prompt",
+        "Output contract",
+        "Model call"
+      ]
     },
     {
       "term": "Prompt caching",
@@ -3687,7 +4438,7 @@
         "secondary source",
         "traceability"
       ],
-      "definition": "Provenance means tracking where a claim or item came from, including whether it is a primary source or a secondary source. Good attribution, citation, and traceability let readers verify the path from evidence to claim.",
+      "definition": "Provenance is the traceable history of where an item, label, or claim came from. Source attribution names the source, while citation points readers to it, so provenance is broader than a single citation.",
       "aira_source_terms": [
         "Provenance / bron-attributie"
       ],
@@ -3696,7 +4447,13 @@
         "Secondary source",
         "Traceability"
       ],
-      "sweep_terms": []
+      "sweep_terms": [],
+      "contrasts_with": [
+        "Source",
+        "Citation",
+        "Evidence",
+        "Claim"
+      ]
     },
     {
       "term": "Proximity search",
@@ -3769,12 +4526,18 @@
       "aliases": [
         "search request"
       ],
-      "definition": "A query is a request for information from a search system, database, or model. A good query states clearly what you want and may include filters or search logic.",
+      "definition": "A query is a request sent to a search system, database, or model to retrieve or return information. In search, it usually means terms, operators, and filters; it is not the full instruction package called a prompt.",
       "aira_source_terms": [],
       "workshop_required_terms": [
         "Query"
       ],
-      "sweep_terms": []
+      "sweep_terms": [],
+      "contrasts_with": [
+        "Prompt",
+        "Boolean search",
+        "Semantic search",
+        "Query ledger"
+      ]
     },
     {
       "term": "Query band",
@@ -3794,11 +4557,17 @@
       "aliases": [
         "model query client"
       ],
-      "definition": "A tool mainly used to send questions to artificial intelligence models and compare their replies, rather than to act across files and folders like a coding assistant.",
+      "definition": "A query client is a tool for sending prompts or questions to models and comparing responses. It is not a coding agent if it does not act across project files, folders, and terminal commands.",
       "aira_source_terms": [],
       "workshop_required_terms": [],
       "sweep_terms": [
         "Query client"
+      ],
+      "contrasts_with": [
+        "Coding agent",
+        "Tool",
+        "Prompt",
+        "Model call"
       ]
     },
     {
@@ -3850,11 +4619,34 @@
         "percentage agreement",
         "plain agreement"
       ],
-      "definition": "The simple percentage of cases where two coders gave the same answer, before correcting for agreement that could happen by chance.",
+      "definition": "Raw agreement is the percentage of cases where two coders gave the same answer. It does not adjust for chance agreement, so it can look high when one category is very common.",
       "aira_source_terms": [],
       "workshop_required_terms": [],
       "sweep_terms": [
         "Raw agreement"
+      ],
+      "contrasts_with": [
+        "Cohen's kappa",
+        "Inter-annotator agreement",
+        "Base rate"
+      ]
+    },
+    {
+      "term": "Raw JSON",
+      "aliases": [
+        "raw JSON object"
+      ],
+      "definition": "Raw JavaScript Object Notation is JSON returned by itself, without Markdown fences, explanation, or surrounding commentary. It is meant to be read directly by software.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [],
+      "distinction_audit_terms": [
+        "Raw JSON"
+      ],
+      "contrast_evidence": [
+        "“respond ONLY with a raw JSON object”",
+        "“Do not include markdown formatting (like a fenced code block), commentary, or anything outside the JSON object.”",
+        "“output parser”"
       ]
     },
     {
@@ -3914,12 +4706,18 @@
       "aliases": [
         "sensitivity"
       ],
-      "definition": "Recall is the share of all truly relevant items that a model successfully finds. High recall means fewer important items are missed, though it may allow more irrelevant items through.",
+      "definition": "Recall is the share of all truly relevant items that the model or search process found. It measures missed cases, not how many returned items were irrelevant, which is measured by precision.",
       "aira_source_terms": [
         "Recall"
       ],
       "workshop_required_terms": [],
-      "sweep_terms": []
+      "sweep_terms": [],
+      "contrasts_with": [
+        "Precision",
+        "False negative",
+        "False positive",
+        "Coverage"
+      ]
     },
     {
       "term": "Recall arm",
@@ -3939,12 +4737,18 @@
       "aliases": [
         "row"
       ],
-      "definition": "A record is one complete entry in a dataset, such as one document, chunk, or annotation result. In a table, a record usually appears as a row.",
+      "definition": "A record is one complete entry in a dataset, often shown as a row in a table. It may describe a document, chunk, source, or annotation, so it is not automatically the same thing as a document.",
       "aira_source_terms": [],
       "workshop_required_terms": [
         "Record"
       ],
-      "sweep_terms": []
+      "sweep_terms": [],
+      "contrasts_with": [
+        "Document",
+        "Chunk",
+        "Field",
+        "Dataset"
+      ]
     },
     {
       "term": "Red Team",
@@ -3997,13 +4801,31 @@
       ]
     },
     {
+      "term": "Relevance",
+      "aliases": [
+        "relevant",
+        "not relevant"
+      ],
+      "definition": "Relevance is whether an item fits the task’s actor, topic, and analytical requirements. It is not the same as importance, truth, or successful classification.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [],
+      "distinction_audit_terms": [
+        "Relevance"
+      ],
+      "contrast_evidence": [
+        "“Gatekeeping (Relevance): Determine if the text is relevant.”",
+        "“relevance”: “relevant” | “not_relevant”",
+        "“kept and rejected”"
+      ]
+    },
+    {
       "term": "Relevance screening",
       "aliases": [
         "Pass 1",
-        "relevantie-screening",
-        "gatekeeping"
+        "relevantie-screening"
       ],
-      "definition": "Relevance screening is a first-pass decision about whether a text is worth deeper analysis. It acts as gatekeeping: it should avoid missing important material while reducing obvious noise.",
+      "definition": "Relevance screening is the first-pass process that decides whether material is in scope for deeper analysis. It is not taxonomy classification, because not-relevant items should exit before labels are assigned.",
       "aira_source_terms": [
         "Pass 1 (relevantie-screening)",
         "Relevantie-screening"
@@ -4011,7 +4833,32 @@
       "workshop_required_terms": [
         "Gatekeeping"
       ],
-      "sweep_terms": []
+      "sweep_terms": [],
+      "contrasts_with": [
+        "Relevance",
+        "Gatekeeping",
+        "Taxonomic annotation",
+        "Filter"
+      ]
+    },
+    {
+      "term": "Reliability",
+      "aliases": [
+        "coding reliability",
+        "measurement reliability"
+      ],
+      "definition": "Reliability is the consistency of a method, coder, model, or measurement across repeated use. It is not the same as accuracy, because a system can be consistent and still consistently wrong.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [],
+      "distinction_audit_terms": [
+        "Reliability"
+      ],
+      "contrast_evidence": [
+        "“question, query, corpus, scheme, reliability, and blind spot”",
+        "“checking whether a coding scheme is clear enough”",
+        "“human-reviewed reference”"
+      ]
     },
     {
       "term": "Replication",
@@ -4049,6 +4896,19 @@
       ],
       "workshop_required_terms": [],
       "sweep_terms": []
+    },
+    {
+      "term": "Research categories 6.1, 6.2, and 6.3",
+      "aliases": [
+        "Department of Defense research and development categories",
+        "DoD R&D categories"
+      ],
+      "definition": "Numbered United States Department of Defense research-and-development budget categories. They distinguish basic research, applied research, and advanced technology development before later prototype or operational stages.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "6.1, 6.2, 6.3 research categories"
+      ]
     },
     {
       "term": "Research infrastructure",
@@ -4147,6 +5007,25 @@
       "sweep_terms": []
     },
     {
+      "term": "Sample",
+      "aliases": [
+        "research sample",
+        "sampled items"
+      ],
+      "definition": "A sample is the subset of a larger corpus, dataset, or population that is actually checked or analyzed. It is not the same as the full corpus unless every item is included.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [],
+      "distinction_audit_terms": [
+        "Sample"
+      ],
+      "contrast_evidence": [
+        "“hand-check 20 – ten it kept and ten it rejected”",
+        "“check samples for accuracy”",
+        "“Random and stratified samples”"
+      ]
+    },
+    {
       "term": "Satisficing",
       "aliases": [
         "good-enough stopping"
@@ -4175,12 +5054,19 @@
       "aliases": [
         "data structure"
       ],
-      "definition": "A schema defines the expected structure of data, including fields, data types, and allowed values. Schemas help systems and people interpret records consistently.",
+      "definition": "A schema defines the expected structure of data, including field names, data types, and allowed values. It is not the data itself, and it is stricter than a prose description when software must validate output.",
       "aira_source_terms": [],
       "workshop_required_terms": [
         "Schema"
       ],
-      "sweep_terms": []
+      "sweep_terms": [],
+      "contrasts_with": [
+        "Data",
+        "Field",
+        "Data type",
+        "Allowed value",
+        "Value"
+      ]
     },
     {
       "term": "Scope",
@@ -4323,11 +5209,17 @@
       "aliases": [
         "silently dropped record"
       ],
-      "definition": "A data-processing failure where a record disappears from later results without an obvious error message, often because two labels or keys do not match exactly.",
+      "definition": "A silent drop is a processing failure where a record disappears from later results without an obvious error message. It can look like absence of evidence, but it may be caused by mismatched labels, keys, or joins.",
       "aira_source_terms": [],
       "workshop_required_terms": [],
       "sweep_terms": [
         "Silent drop"
+      ],
+      "contrasts_with": [
+        "Absence of evidence",
+        "Join",
+        "Label",
+        "Record"
       ]
     },
     {
@@ -4381,17 +5273,59 @@
       ]
     },
     {
+      "term": "Source",
+      "aliases": [
+        "information source"
+      ],
+      "definition": "A source is the document, person, database, publication, or channel from which information comes. It is not the same as a citation, which points to a source, or a source type, which groups similar sources.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [],
+      "distinction_audit_terms": [
+        "Source"
+      ],
+      "contrast_evidence": [
+        "“source, author, and date metadata”",
+        "“source groups that are silent or underrepresented”",
+        "“Source and source type”"
+      ]
+    },
+    {
       "term": "Source and source type",
       "aliases": [
         "data source"
       ],
-      "definition": "A source is where information comes from; a source type is the kind of source, such as news, social media, official statement, academic article, or interview. Source type affects how evidence should be interpreted.",
+      "definition": "A source is the specific place information comes from, such as one article, report, channel, or database. A source type is the kind of source, such as academic article, official statement, news, social media, or interview.",
       "aira_source_terms": [],
       "workshop_required_terms": [
         "Source",
         "Source type"
       ],
-      "sweep_terms": []
+      "sweep_terms": [],
+      "contrasts_with": [
+        "Source",
+        "Source type",
+        "Citation",
+        "Metadata"
+      ]
+    },
+    {
+      "term": "Source type",
+      "aliases": [
+        "kind of source"
+      ],
+      "definition": "A source type is a group name for similar sources, such as academic article, official statement, news report, or social media post. It is not one specific source.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [],
+      "distinction_audit_terms": [
+        "Source type"
+      ],
+      "contrast_evidence": [
+        "“Compare what different authors, source types, or institutions emphasize.”",
+        "“source groups that are silent or underrepresented”",
+        "“source type by topic”"
+      ]
     },
     {
       "term": "Stop word",
@@ -4431,6 +5365,25 @@
       "sweep_terms": []
     },
     {
+      "term": "Summary",
+      "aliases": [
+        "summarization",
+        "short summary"
+      ],
+      "definition": "A summary is a shortened restatement of the main points of a text or evidence set. It is not the same as an abstract, which is a specific front-matter section of a document.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [],
+      "distinction_audit_terms": [
+        "Summary"
+      ],
+      "contrast_evidence": [
+        "“summary, themes, evolution over time, and author/source differences”",
+        "“Summarize the main themes in this research paper”",
+        "“Executive summary”"
+      ]
+    },
+    {
       "term": "SWOT",
       "aliases": [
         "strengths, weaknesses, opportunities, threats"
@@ -4458,12 +5411,17 @@
     {
       "term": "System prompt",
       "aliases": [],
-      "definition": "A system prompt is a high-priority instruction that sets a model's role, style, rules, or output format for a session. It differs from a normal user question because it guides the whole interaction.",
+      "definition": "A system prompt is a high-priority instruction that sets a model’s role, rules, style, or output format for an interaction. It differs from a user prompt because it governs how later user requests should be answered.",
       "aira_source_terms": [
         "System prompt"
       ],
       "workshop_required_terms": [],
-      "sweep_terms": []
+      "sweep_terms": [],
+      "contrasts_with": [
+        "Prompt",
+        "User input template",
+        "Output contract"
+      ]
     },
     {
       "term": "Tacit knowledge",
@@ -4483,22 +5441,27 @@
         "taxon",
         "taxonomy element"
       ],
-      "definition": "A taxon is one named unit inside a taxonomy, such as a category or subcategory. A taxonomy element is any defined part of that taxonomy, including dimensions, levels, or taxa.",
+      "definition": "A taxon is one named unit or category inside a taxonomy. A taxonomy element is a broader workshop term for any defined part of the taxonomy, including dimensions, levels, and taxa, so not every taxonomy element is a taxon.",
       "aira_source_terms": [],
       "workshop_required_terms": [
         "Taxon",
         "Taxonomy element"
       ],
-      "sweep_terms": []
+      "sweep_terms": [],
+      "contrasts_with": [
+        "Taxonomy",
+        "Category",
+        "Dimension",
+        "Level 2 and Level 3"
+      ]
     },
     {
       "term": "Taxonomic annotation",
       "aliases": [
         "Pass 2",
-        "taxonomic classification",
-        "classification"
+        "taxonomic classification"
       ],
-      "definition": "Taxonomic annotation assigns detailed taxonomy labels to text that has passed relevance screening. It is a form of classification focused on placing evidence into a defined category system.",
+      "definition": "Taxonomic annotation is annotation that assigns one or more labels from a defined taxonomy to a text, chunk, or passage. It is a kind of classification, but it should not be confused with relevance gatekeeping or free-form note taking.",
       "aira_source_terms": [
         "Pass 2 (taxonomische annotatie)"
       ],
@@ -4506,19 +5469,32 @@
         "Classification",
         "Taxonomic classification"
       ],
-      "sweep_terms": []
+      "sweep_terms": [],
+      "contrasts_with": [
+        "Annotation",
+        "Classification",
+        "Relevance screening",
+        "Label"
+      ]
     },
     {
       "term": "Taxonomy",
       "aliases": [
         "Taxonomie"
       ],
-      "definition": "A taxonomy is a structured system of categories used to classify material. It reflects design choices, so what it can reveal depends on what categories it includes.",
+      "definition": "A taxonomy is a structured system of categories used to classify material. It is not the act of classification, the labels assigned during annotation, or an ontology with richer relationship rules.",
       "aira_source_terms": [
         "Taxonomie"
       ],
       "workshop_required_terms": [],
-      "sweep_terms": []
+      "sweep_terms": [],
+      "contrasts_with": [
+        "Classification",
+        "Annotation",
+        "Label",
+        "Ontology",
+        "Category"
+      ]
     },
     {
       "term": "Taxonomy element abbreviation",
@@ -4532,6 +5508,25 @@
       "workshop_required_terms": [],
       "sweep_terms": [
         "Taxonomy element abbreviation"
+      ]
+    },
+    {
+      "term": "Taxonomy path",
+      "aliases": [
+        "classification path",
+        "pipe-separated path"
+      ],
+      "definition": "A taxonomy path is the ordered route through taxonomy levels for one category, such as HLTP, second level, and third level. It is not a chunk ID or a free-text label.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [],
+      "distinction_audit_terms": [
+        "Taxonomy path"
+      ],
+      "contrast_evidence": [
+        "“Each row represents one complete classification path”",
+        "“{{HLTP}} | {{2nd Level TE}} | {{3rd Level TE}}”",
+        "“pipe-separated”"
       ]
     },
     {
@@ -4581,6 +5576,44 @@
       ]
     },
     {
+      "term": "Terminal",
+      "aliases": [
+        "terminal window",
+        "text-based window"
+      ],
+      "definition": "A terminal is the text window where you type commands and see their output. It is not the shell itself, which is the program interpreting the commands.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [],
+      "distinction_audit_terms": [
+        "Terminal"
+      ],
+      "contrast_evidence": [
+        "“Open a terminal (a text-based window)”",
+        "“open a new terminal window”",
+        "“The command interpreter inside a terminal”"
+      ]
+    },
+    {
+      "term": "Terminal AI assistant",
+      "aliases": [
+        "CLI AI assistant",
+        "terminal assistant"
+      ],
+      "definition": "A terminal artificial intelligence assistant is an AI tool used from a terminal instead of a browser. It can often read local files and run workflow steps, but its prompts may still go to an outside provider.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [],
+      "distinction_audit_terms": [
+        "Terminal AI assistant"
+      ],
+      "contrast_evidence": [
+        "“Getting a CLI AI assistant working”",
+        "“Google's terminal assistant”",
+        "“These tools read files on your laptop, but the prompts and file content ... go to the model provider”"
+      ]
+    },
+    {
       "term": "Text mining",
       "aliases": [
         "automated text analysis",
@@ -4591,6 +5624,25 @@
       "workshop_required_terms": [],
       "sweep_terms": [
         "Text mining"
+      ]
+    },
+    {
+      "term": "Text span",
+      "aliases": [
+        "span",
+        "selected text span"
+      ],
+      "definition": "A text span is an exact selected run of words inside a larger text. It can be a sentence fragment, sentence, or paragraph, but it is not the same as a whole document or record.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [],
+      "distinction_audit_terms": [
+        "Text span"
+      ],
+      "contrast_evidence": [
+        "“evidence_span”: “a verbatim quote from the text that justifies the labels”",
+        "“Boundary span”",
+        "“Threatened-consequence span”"
       ]
     },
     {
@@ -4670,6 +5722,25 @@
       ]
     },
     {
+      "term": "Time unit",
+      "aliases": [
+        "unit of time",
+        "temporal unit"
+      ],
+      "definition": "A time unit is the period used to compare change, such as month, quarter, or year. It is a reporting choice and is not the same as the date attached to a single chunk.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [],
+      "distinction_audit_terms": [
+        "Time unit"
+      ],
+      "contrast_evidence": [
+        "“Time unit for change: {{MONTH / QUARTER / YEAR / OTHER}}”",
+        "“Explain how the discussion changes across {{TIME_UNIT}}”",
+        "“date metadata”"
+      ]
+    },
+    {
       "term": "Token",
       "aliases": [],
       "definition": "A token is a unit of text processed by a language model, often a word or part of a word. Token counts affect how much text can fit into a prompt and how processing is measured.",
@@ -4678,6 +5749,24 @@
       ],
       "workshop_required_terms": [],
       "sweep_terms": []
+    },
+    {
+      "term": "Tool",
+      "aliases": [
+        "software tool"
+      ],
+      "definition": "A tool is a piece of software used to perform a task, such as searching, coding, or running model requests. It is not the same as the model, which produces the language output inside or behind some tools.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [],
+      "distinction_audit_terms": [
+        "Tool"
+      ],
+      "contrast_evidence": [
+        "“Pick exactly one”",
+        "“Install your one tool”",
+        "“It says nothing about whether ... the tool can read your files”"
+      ]
     },
     {
       "term": "Tortured phrases",
@@ -4772,12 +5861,18 @@
       "aliases": [
         "tab-separated values"
       ],
-      "definition": "Tab-separated values (TSV) is a table file format where tabs separate fields. It is similar to comma-separated values, but often handles comma-heavy text more cleanly.",
+      "definition": "Tab-separated values is a table text format where each row is a record and tab characters separate fields. It is not JSON, and it is safer than CSV for comma-heavy text but still requires consistent columns.",
       "aira_source_terms": [],
       "workshop_required_terms": [
         "TSV"
       ],
-      "sweep_terms": []
+      "sweep_terms": [],
+      "contrasts_with": [
+        "CSV",
+        "JSON",
+        "JSONL",
+        "Field"
+      ]
     },
     {
       "term": "TV–TGV algorithm",
@@ -4820,12 +5915,18 @@
       "aliases": [
         "analytic unit"
       ],
-      "definition": "The unit of analysis is the thing being studied or counted, such as a document, paragraph, person, event, or organization. Choosing the wrong unit can distort results.",
+      "definition": "The unit of analysis is the kind of thing being studied, counted, or classified, such as a document, chunk, person, event, issue, or argument. It is not automatically the same as the source document or the record in a table.",
       "aira_source_terms": [],
       "workshop_required_terms": [
         "Unit of analysis"
       ],
-      "sweep_terms": []
+      "sweep_terms": [],
+      "contrasts_with": [
+        "Instance",
+        "Document",
+        "Record",
+        "Chunk"
+      ]
     },
     {
       "term": "Universal Dependencies",
@@ -4837,6 +5938,24 @@
       "workshop_required_terms": [],
       "sweep_terms": [
         "Universal Dependencies"
+      ]
+    },
+    {
+      "term": "Universality",
+      "aliases": [
+        "universal applicability"
+      ],
+      "definition": "Universality means every instance in the domain can be placed somewhere along a dimension. It is not the same as coverage across all topics, because it applies to one dimension’s usability for every case.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [],
+      "distinction_audit_terms": [
+        "Universality"
+      ],
+      "contrast_evidence": [
+        "“Universal Applicability: Each dimension should be applicable to all instances”",
+        "“Can all domain instances be classified along this dimension?”",
+        "“Comprehensive Coverage”"
       ]
     },
     {
@@ -4863,6 +5982,25 @@
       "workshop_required_terms": [],
       "sweep_terms": [
         "Untagged escape"
+      ]
+    },
+    {
+      "term": "Value",
+      "aliases": [
+        "field value",
+        "cell value"
+      ],
+      "definition": "A value is the actual content stored in a field for one record, such as a date, label, number, or text string. It is not the field name or the schema rule.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [],
+      "distinction_audit_terms": [
+        "Value"
+      ],
+      "contrast_evidence": [
+        "“All column values should be separated by tab characters.”",
+        "“No quotation marks around values”",
+        "“allowed values”"
       ]
     },
     {
