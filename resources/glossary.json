@@ -1,0 +1,4990 @@
+{
+  "meta": {
+    "title": "The words we use",
+    "updated": "2026-09-04",
+    "entry_count": 394,
+    "aira_source": {
+      "title": "Begrippenlijst.docx",
+      "url": "https://drive.google.com/file/d/1AX5G9DHflaiOWX8V-kRImAKB0BOzjbKd/view",
+      "sha256": "2008f3afdd68865a90551172178b2dc40df5665416d58bcbd3a190b6f53d0bb1",
+      "declared_count_in_companion_note": 92,
+      "measured_heading_count": 105
+    },
+    "workshop_required_term_count": 76,
+    "surface_sweep": {
+      "participant_characters_reviewed": 366625,
+      "candidate_terms": 251,
+      "included_candidate_terms": 249,
+      "excluded": [
+        {
+          "audit_term": "Tooltip",
+          "reason": "internal-or-presentational"
+        },
+        {
+          "audit_term": "Viewport",
+          "reason": "internal-or-presentational"
+        }
+      ],
+      "surfaces": {
+        "workshop_app": 31153,
+        "main_deck": 224211,
+        "class_and_case_pages": 49675,
+        "participant_prompts_and_guides": 61586
+      }
+    }
+  },
+  "entries": [
+    {
+      "term": "Research categories 6.1, 6.2, and 6.3",
+      "aliases": [
+        "Department of Defense research and development categories",
+        "DoD R&D categories"
+      ],
+      "definition": "Numbered United States Department of Defense research-and-development budget categories. They distinguish basic research, applied research, and advanced technology development before later prototype or operational stages.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "6.1, 6.2, 6.3 research categories"
+      ]
+    },
+    {
+      "term": "Absence of evidence",
+      "aliases": [
+        "missing evidence is not proof"
+      ],
+      "definition": "A situation where available sources do not show something. It is not the same as proof that the thing did not happen or does not exist.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Absence of evidence"
+      ]
+    },
+    {
+      "term": "Abstract",
+      "aliases": [
+        "summary"
+      ],
+      "definition": "A short summary of a document, article, or report. It helps readers decide whether the full text is relevant before reading it closely.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [
+        "Abstract"
+      ],
+      "sweep_terms": []
+    },
+    {
+      "term": "Abstract coverage",
+      "aliases": [
+        "abstract availability",
+        "abstract present rate",
+        "abstract completeness"
+      ],
+      "definition": "Abstract coverage is the number or percentage of records in a dataset that actually have an abstract. Always show both parts, such as “742 of 1,000 records (74.2%),” because a percentage without its count can hide how much evidence is missing.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [
+        "Abstract coverage"
+      ],
+      "sweep_terms": []
+    },
+    {
+      "term": "Acceptance gate",
+      "aliases": [
+        "quality gate",
+        "stage gate"
+      ],
+      "definition": "A checkpoint that decides whether a stage’s output is good enough to move forward. It should use stated criteria rather than a vague impression.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Acceptance gate"
+      ]
+    },
+    {
+      "term": "Acceptance test",
+      "aliases": [
+        "end-to-end acceptance test",
+        "setup test"
+      ],
+      "definition": "A practical check that a tool is installed and working from start to finish. Passing it means the setup is ready for the workshop task.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Acceptance test"
+      ]
+    },
+    {
+      "term": "Accuracy",
+      "aliases": [
+        "headline accuracy",
+        "overall accuracy"
+      ],
+      "definition": "The share of all cases a model or coder got right. It can hide important failures when some categories are much easier or more common than others.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Accuracy"
+      ]
+    },
+    {
+      "term": "Actor Check",
+      "aliases": [
+        "whose perspective check"
+      ],
+      "definition": "A relevance test asking whether the text represents the views, actions, calculations, or perspective of the actor the study is about.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Actor Check"
+      ]
+    },
+    {
+      "term": "Adjudication",
+      "aliases": [
+        "adjudicate",
+        "adjudicated pass",
+        "human-adjudicated label",
+        "human-reviewed label"
+      ],
+      "definition": "A human decision process that resolves disagreements between coders, models, or reviewers. The adjudicator chooses the reference answer or label and should record why.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Adjudication",
+        "Human-adjudicated label"
+      ]
+    },
+    {
+      "term": "Admiralty Scale",
+      "aliases": [
+        "source reliability scale"
+      ],
+      "definition": "The Admiralty Scale is a way to rate both the reliability of a source and the credibility of a specific report. It is common in military intelligence, but the ratings still require judgment and should not be treated as proof.",
+      "aira_source_terms": [
+        "Admiralty Scale"
+      ],
+      "workshop_required_terms": [],
+      "sweep_terms": []
+    },
+    {
+      "term": "Aggregate",
+      "aliases": [
+        "aggregate result",
+        "combined result"
+      ],
+      "definition": "A result calculated or summarized across many records, documents, or labels rather than judged one item at a time.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Aggregate"
+      ]
+    },
+    {
+      "term": "AI assistant",
+      "aliases": [
+        "artificial intelligence assistant"
+      ],
+      "definition": "An artificial intelligence (AI) assistant is software that helps users write, search, summarize, code, or analyze information. It can speed up work, but a person remains responsible for checking important outputs.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [
+        "AI assistant"
+      ],
+      "sweep_terms": []
+    },
+    {
+      "term": "Analysis of Competing Hypotheses",
+      "aliases": [
+        "ACH"
+      ],
+      "definition": "Analysis of Competing Hypotheses (ACH) is a structured method for comparing possible explanations against the available evidence. It emphasizes evidence that weakens a hypothesis, not just evidence that supports it.",
+      "aira_source_terms": [
+        "ACH (Analysis of Competing Hypotheses)"
+      ],
+      "workshop_required_terms": [],
+      "sweep_terms": []
+    },
+    {
+      "term": "Analytical Check",
+      "aliases": [
+        "Substance over Noise"
+      ],
+      "definition": "A relevance test asking whether the text contains reasoning, interpretation, or intent, rather than only a bare factual mention.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Analytical Check"
+      ]
+    },
+    {
+      "term": "Analytical layer",
+      "aliases": [
+        "analysis layer",
+        "analytical capacity"
+      ],
+      "definition": "The organized human and institutional capacity to interpret information. It includes trained experts, methods, seminars, libraries, and review habits that turn raw material into understanding.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Analytical layer"
+      ]
+    },
+    {
+      "term": "Anchoring trap",
+      "aliases": [
+        "anchor effect",
+        "anchoring bias"
+      ],
+      "definition": "A bias where an initial answer, label, or model output pulls later judgments toward it, even when reviewers believe they are being independent.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Anchoring trap"
+      ]
+    },
+    {
+      "term": "Annotation",
+      "aliases": [
+        "Annotatie",
+        "tagging"
+      ],
+      "definition": "Annotation means adding labels or notes to pieces of text so they can be searched, compared, or counted later. Large language models can help annotate at scale, but people should check samples for accuracy.",
+      "aira_source_terms": [
+        "Annotatie"
+      ],
+      "workshop_required_terms": [],
+      "sweep_terms": []
+    },
+    {
+      "term": "Annotation stock",
+      "aliases": [
+        "label stock",
+        "stored annotation set"
+      ],
+      "definition": "A stored collection of labels created over time, often by humans. It can be reused for examples, training, or evaluation.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Annotation stock"
+      ]
+    },
+    {
+      "term": "Aperture",
+      "aliases": [
+        "broad aperture",
+        "narrow aperture"
+      ],
+      "definition": "A workshop metaphor for how wide or narrow your search scope is. A broad aperture lets more possible material enter before you narrow it down.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Aperture"
+      ]
+    },
+    {
+      "term": "API-key authentication",
+      "aliases": [
+        "API key"
+      ],
+      "definition": "A sign-in method where software uses a secret text key to prove it may access an online service. API means application programming interface.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "API-key authentication"
+      ]
+    },
+    {
+      "term": "Aposematism",
+      "aliases": [
+        "honest warning signal",
+        "warning coloration"
+      ],
+      "definition": "A biological warning signal, often bright color, that advertises danger such as toxicity to predators. The workshop uses it as an analogy for signaling and deterrence.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Aposematism"
+      ]
+    },
+    {
+      "term": "Application programming interface",
+      "aliases": [
+        "API"
+      ],
+      "definition": "An application programming interface (API) is a structured way for one software system to request data or actions from another. In a workshop, you may use an API to send text to a model or retrieve results.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [
+        "API"
+      ],
+      "sweep_terms": []
+    },
+    {
+      "term": "Arity",
+      "aliases": [
+        "edge arity"
+      ],
+      "definition": "The number of members involved in a relationship or event. A treaty with three parties has arity 3; a summit with four participants has arity 4.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Arity"
+      ]
+    },
+    {
+      "term": "Artifact",
+      "aliases": [
+        "analysis artifact",
+        "review artifact"
+      ],
+      "definition": "A specific output being reviewed or used, such as a file, taxonomy, report, dataset, or interface state.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Artifact"
+      ]
+    },
+    {
+      "term": "At scale",
+      "aliases": [
+        "large-scale run",
+        "scaled application"
+      ],
+      "definition": "Applied to many items, usually with automated help, rather than tested on only a few examples by hand.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "At scale"
+      ]
+    },
+    {
+      "term": "Author disambiguation",
+      "aliases": [
+        "name disambiguation"
+      ],
+      "definition": "The process of deciding whether similar author names refer to the same person or different people. Poor disambiguation can merge separate authors or split one author into several identities.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Author disambiguation"
+      ]
+    },
+    {
+      "term": "Base rate",
+      "aliases": [
+        "baseline rate",
+        "category frequency",
+        "class prevalence"
+      ],
+      "definition": "How common a category is before considering any model or coder decision. High agreement can be misleading when most cases fall into one category.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Base rate"
+      ]
+    },
+    {
+      "term": "Batch processing",
+      "aliases": [],
+      "definition": "Batch processing means running many items through a system together instead of one at a time. It is efficient for large workloads, but results usually come back later rather than instantly.",
+      "aira_source_terms": [
+        "Batch processing"
+      ],
+      "workshop_required_terms": [],
+      "sweep_terms": []
+    },
+    {
+      "term": "Battalion Tactical Group",
+      "aliases": [
+        "BTG"
+      ],
+      "definition": "A Battalion Tactical Group (BTG) is a Russian military unit concept combining infantry, armor, artillery, air defense, and support at roughly battalion scale. In this workshop it is used only as a Russia-related military analysis term.",
+      "aira_source_terms": [
+        "BTG (Battalion Tactical Group)"
+      ],
+      "workshop_required_terms": [],
+      "sweep_terms": []
+    },
+    {
+      "term": "Benchmarking",
+      "aliases": [
+        "model comparison"
+      ],
+      "definition": "Benchmarking means testing multiple tools or models on the same task so their performance can be compared fairly. It works best when outputs are checked against a trusted human-reviewed reference.",
+      "aira_source_terms": [
+        "Benchmarking"
+      ],
+      "workshop_required_terms": [],
+      "sweep_terms": []
+    },
+    {
+      "term": "Bibliographical RAG",
+      "aliases": [
+        "bibliographic retrieval-augmented generation",
+        "literature RAG"
+      ],
+      "definition": "Retrieval-augmented generation applied to scholarly literature. The system first retrieves real publications, then asks a model to summarize or answer using those sources.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Bibliographical RAG"
+      ]
+    },
+    {
+      "term": "Bibliographic skill",
+      "aliases": [
+        "bibliographic harvesting skill",
+        "bibliographic command-line skill"
+      ],
+      "definition": "A workshop tool that searches scholarly databases, gathers publication records, merges them, removes duplicates, and helps document the search process.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Bibliographic skill"
+      ]
+    },
+    {
+      "term": "Bibliometric database",
+      "aliases": [
+        "bibliographic database",
+        "citation database",
+        "scholarly index"
+      ],
+      "definition": "A searchable database of publications and citation information, such as titles, authors, abstracts, journals, and references. It usually describes papers rather than containing every full paper.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Bibliometric database"
+      ]
+    },
+    {
+      "term": "Bibliometrics",
+      "aliases": [
+        "bibliometric analysis",
+        "study of the published record"
+      ],
+      "definition": "The quantitative study of publications using information such as titles, authors, dates, journals, references, and citations. It maps the shape of a literature rather than reading every full text.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Bibliometrics"
+      ]
+    },
+    {
+      "term": "BibTeX",
+      "aliases": [
+        "BibTeX citation format"
+      ],
+      "definition": "A text format used to store bibliography entries, especially for LaTeX documents. It records fields such as author, title, journal, year, and publisher in a structured way.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "BibTeX"
+      ]
+    },
+    {
+      "term": "BioNLP",
+      "aliases": [
+        "biological natural language processing",
+        "biomedical natural language processing"
+      ],
+      "definition": "The use of language-processing software to find and organize information in biomedical writing, such as research papers about genes, diseases, or drugs.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "BioNLP"
+      ]
+    },
+    {
+      "term": "BioPortal",
+      "aliases": [
+        "National Center for Biomedical Ontology BioPortal"
+      ],
+      "definition": "An online repository of biomedical ontologies and controlled vocabularies. Researchers use it to find, compare, and map standard terms across biomedical fields.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "BioPortal"
+      ]
+    },
+    {
+      "term": "Blind coding",
+      "aliases": [
+        "blind review",
+        "blinding",
+        "independent blind review",
+        "blind pass"
+      ],
+      "definition": "A review setup where coders or models make judgments without seeing each other’s answers first. It helps measure independent agreement rather than copying or influence.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Blind coding",
+        "Blind review",
+        "Blinding"
+      ]
+    },
+    {
+      "term": "BLUF",
+      "aliases": [
+        "Bottom Line Up Front"
+      ],
+      "definition": "Bottom Line Up Front (BLUF) is a writing style that states the main point at the beginning. It is useful when readers need the answer quickly before reading supporting detail.",
+      "aira_source_terms": [
+        "BLUF (Bottom Line Up Front)"
+      ],
+      "workshop_required_terms": [],
+      "sweep_terms": []
+    },
+    {
+      "term": "Boolean search",
+      "aliases": [
+        "keyword logic"
+      ],
+      "definition": "Boolean search uses words such as AND, OR, and NOT to combine search terms. It is precise, but it can miss relevant documents that use different wording.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [
+        "Boolean search"
+      ],
+      "sweep_terms": []
+    },
+    {
+      "term": "Boundary span",
+      "aliases": [
+        "boundary text span"
+      ],
+      "definition": "In the Red Lines coding scheme, the passage in a statement that names the line, limit, or condition being set.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Boundary span"
+      ]
+    },
+    {
+      "term": "Boundary testing",
+      "aliases": [
+        "category boundary testing"
+      ],
+      "definition": "Checking difficult or borderline examples to see whether category definitions are clear enough to decide where each example belongs.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Boundary testing"
+      ]
+    },
+    {
+      "term": "Box-and-whisker plot",
+      "aliases": [
+        "box plot",
+        "quartiles and whiskers"
+      ],
+      "definition": "A chart that summarizes a distribution. The box usually shows the middle half of values, the center mark shows the middle, and the whiskers show the wider range.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Box-and-whisker plot"
+      ]
+    },
+    {
+      "term": "Bulk-downloadable",
+      "aliases": [
+        "bulk download",
+        "downloadable corpus"
+      ],
+      "definition": "Available to download in large quantities rather than one record at a time. This matters when you want to analyze a whole database at scale.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Bulk-downloadable"
+      ]
+    },
+    {
+      "term": "Burst detection",
+      "aliases": [
+        "spike detection"
+      ],
+      "definition": "Burst detection finds sudden increases in how often a term or topic appears. These spikes can point to events, campaigns, or changes in attention, but they still need contextual interpretation.",
+      "aira_source_terms": [
+        "Burst detection"
+      ],
+      "workshop_required_terms": [],
+      "sweep_terms": []
+    },
+    {
+      "term": "Cartesian product",
+      "aliases": [
+        "all combinations of dimensions",
+        "cross-product"
+      ],
+      "definition": "The complete set of possible combinations made by taking one value from each dimension. For example, 3 × 3 × 3 produces 27 possible cells.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Cartesian product"
+      ]
+    },
+    {
+      "term": "Category",
+      "aliases": [
+        "class"
+      ],
+      "definition": "A category is a named group used to organize similar things. In analysis, categories help turn messy text into information that can be compared or counted.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [
+        "Category"
+      ],
+      "sweep_terms": []
+    },
+    {
+      "term": "Central dogma",
+      "aliases": [
+        "DNA to RNA to protein"
+      ],
+      "definition": "A simplified biological rule describing information flow from deoxyribonucleic acid to ribonucleic acid to protein. The deck contrasts this known chain with social systems, where causal links must be estimated.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Central dogma"
+      ]
+    },
+    {
+      "term": "Chain-of-thought prompting",
+      "aliases": [
+        "CoT",
+        "step-by-step prompting"
+      ],
+      "definition": "Chain-of-thought prompting asks a large language model to reason step by step before giving an answer. It can improve complex reasoning, but users should avoid assuming that every displayed step is correct.",
+      "aira_source_terms": [
+        "Chain-of-thought (CoT)"
+      ],
+      "workshop_required_terms": [],
+      "sweep_terms": []
+    },
+    {
+      "term": "Chunk ID",
+      "aliases": [
+        "chunk identifier",
+        "chunk_id",
+        "passage ID",
+        "stable ID",
+        "text chunk ID"
+      ],
+      "definition": "A fixed identifier for a text chunk or passage. It lets an analyst trace a label, quote, or claim back to the exact part of the corpus it came from.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Chunk ID",
+        "Stable ID"
+      ]
+    },
+    {
+      "term": "Chunking",
+      "aliases": [
+        "text splitting"
+      ],
+      "definition": "Chunking means breaking a long document into smaller pieces that a model or analyst can handle. Good chunking keeps meaningful text together instead of cutting through sentences or ideas.",
+      "aira_source_terms": [
+        "Chunking"
+      ],
+      "workshop_required_terms": [],
+      "sweep_terms": []
+    },
+    {
+      "term": "Citation",
+      "aliases": [
+        "reference"
+      ],
+      "definition": "A citation is a pointer to the source that supports a claim, quotation, or data point. It helps readers verify where information came from.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [
+        "Citation"
+      ],
+      "sweep_terms": []
+    },
+    {
+      "term": "Citation context",
+      "aliases": [
+        "citation-context analysis",
+        "context around a citation"
+      ],
+      "definition": "The surrounding text where one paper cites another. Reading citation context can show why a source was cited, not just that it was cited.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Citation context"
+      ]
+    },
+    {
+      "term": "Claude Code",
+      "aliases": [],
+      "definition": "Claude Code is a command-line tool that lets participants ask Claude to help with coding tasks from a terminal. In the workshop, participants may use it to run or modify parts of an analysis pipeline.",
+      "aira_source_terms": [
+        "Claude Code"
+      ],
+      "workshop_required_terms": [],
+      "sweep_terms": []
+    },
+    {
+      "term": "Cluster",
+      "aliases": [
+        "document cluster",
+        "term cluster"
+      ],
+      "definition": "A group of items that a method places together because they are more connected or similar to each other than to other items.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Cluster"
+      ]
+    },
+    {
+      "term": "Clustering",
+      "aliases": [
+        "cluster algorithm",
+        "topic clustering"
+      ],
+      "definition": "A method that groups similar records, terms, or passages together based on patterns in the data. It helps reveal themes that were not manually listed in advance.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Clustering"
+      ]
+    },
+    {
+      "term": "Co-authorship",
+      "aliases": [
+        "co-authorship network"
+      ],
+      "definition": "A way to study collaboration by linking people who wrote publications together. It can show whether a field is solitary, team-based, fragmented, or internationally connected.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Co-authorship"
+      ]
+    },
+    {
+      "term": "Co-citation",
+      "aliases": [
+        "co-citation analysis"
+      ],
+      "definition": "A method that links two works when later publications cite them together. It is used to map which authors or papers a field treats as related.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Co-citation"
+      ]
+    },
+    {
+      "term": "Codebook",
+      "aliases": [
+        "coding guide"
+      ],
+      "definition": "A codebook explains the labels, categories, definitions, and examples used in an annotation task. It helps different people apply the same rules consistently.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [
+        "Codebook"
+      ],
+      "sweep_terms": []
+    },
+    {
+      "term": "Coder",
+      "aliases": [
+        "human coder",
+        "model coder"
+      ],
+      "definition": "A person or model that assigns labels or categories to text according to a scheme.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Coder"
+      ]
+    },
+    {
+      "term": "Coding agent",
+      "aliases": [
+        "coding assistant"
+      ],
+      "definition": "An artificial intelligence tool that can work with files and folders, run commands, and help perform multi-step coding or analysis tasks from the terminal.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Coding agent"
+      ]
+    },
+    {
+      "term": "Cohen's kappa",
+      "aliases": [
+        "inter-annotator agreement"
+      ],
+      "definition": "Cohen's kappa is a statistic that measures how much two annotators agree after accounting for agreement that could happen by chance. It is useful for checking whether a coding scheme is clear enough.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [
+        "Cohen's kappa"
+      ],
+      "sweep_terms": []
+    },
+    {
+      "term": "Command-line interface",
+      "aliases": [
+        "CLI",
+        "terminal"
+      ],
+      "definition": "A command-line interface (CLI) lets you control software by typing commands instead of clicking buttons. It is often used for reproducible data processing and coding workflows.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [
+        "CLI"
+      ],
+      "sweep_terms": []
+    },
+    {
+      "term": "Command-line option",
+      "aliases": [
+        "flag",
+        "dash option"
+      ],
+      "definition": "An extra piece typed after a command, usually beginning with one or two dashes, that changes what the command does.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Command-line option"
+      ]
+    },
+    {
+      "term": "Command pipeline",
+      "aliases": [
+        "curl pipe bash",
+        "curl to bash",
+        "pipe a downloaded script into a shell"
+      ],
+      "definition": "A command pattern where the output of one command is sent directly into another. Here, a downloaded install script is sent straight to a shell to run it.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Command pipeline"
+      ]
+    },
+    {
+      "term": "Completeness and mutual exclusivity",
+      "aliases": [
+        "MECE",
+        "Mutually Exclusive, Comprehensively Exhaustive"
+      ],
+      "definition": "Completeness means a set of categories covers what it needs to cover; mutual exclusivity means an item should not fit two categories at once. Mutually Exclusive, Comprehensively Exhaustive (MECE) is an ideal, but real data often creates difficult edge cases.",
+      "aira_source_terms": [
+        "MECE (Mutually Exclusive, Comprehensively Exhaustive)"
+      ],
+      "workshop_required_terms": [
+        "Completeness",
+        "Mutual exclusivity"
+      ],
+      "sweep_terms": []
+    },
+    {
+      "term": "Confidence score",
+      "aliases": [
+        "certainty score"
+      ],
+      "definition": "A confidence score is a number that expresses how certain a model says it is about an output. It helps prioritize review, but it is not a guarantee that the answer is correct.",
+      "aira_source_terms": [
+        "Confidence score"
+      ],
+      "workshop_required_terms": [],
+      "sweep_terms": []
+    },
+    {
+      "term": "Configuration string",
+      "aliases": [
+        "config string",
+        "configuration value"
+      ],
+      "definition": "A saved text value used by software to point to files, settings, or resources. If it points to something missing, the program may break even though the setting still exists.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Configuration string"
+      ]
+    },
+    {
+      "term": "Conflict datasets",
+      "aliases": [
+        "Armed Conflict Location and Event Data Project",
+        "Correlates of War",
+        "Global Database of Events, Language, and Tone",
+        "International Crisis Behavior",
+        "Militarized Interstate Dispute",
+        "Uppsala Conflict Data Program"
+      ],
+      "definition": "Common datasets used in conflict and international-relations research. Each records events or cases using its own definitions and coding rules, which can make joining them difficult.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Conflict dataset acronyms"
+      ]
+    },
+    {
+      "term": "Confusion matrix",
+      "aliases": [],
+      "definition": "A confusion matrix is a table that compares model predictions with the correct answers. It shows correct hits, false alarms, missed cases, and correct rejections.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [
+        "Confusion matrix"
+      ],
+      "sweep_terms": []
+    },
+    {
+      "term": "Context window",
+      "aliases": [
+        "model context"
+      ],
+      "definition": "A context window is the maximum amount of text a large language model can consider at one time, including both the input and the output. Longer context helps, but important details can still be overlooked.",
+      "aira_source_terms": [
+        "Context window"
+      ],
+      "workshop_required_terms": [],
+      "sweep_terms": []
+    },
+    {
+      "term": "Controlled vocabulary",
+      "aliases": [
+        "descriptor",
+        "index term",
+        "subject heading"
+      ],
+      "definition": "A fixed list of approved terms used by a database to describe records consistently. It can find relevant records even when authors used different words.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Controlled vocabulary"
+      ]
+    },
+    {
+      "term": "Convex",
+      "aliases": [
+        "convex shape",
+        "non-convex"
+      ],
+      "definition": "A shape is convex if it has no inward dents or holes. The workshop uses non-convex as a metaphor for a topic space with gaps or irregular regions.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Convex"
+      ]
+    },
+    {
+      "term": "Co-occurrence",
+      "aliases": [
+        "co-occurrence link",
+        "co-occurrence structure"
+      ],
+      "definition": "A count of how often two terms appear together in the same documents or passages. Repeated co-occurrence can reveal themes in a field.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Co-occurrence"
+      ]
+    },
+    {
+      "term": "Co-occurrence network",
+      "aliases": [
+        "term co-occurrence network"
+      ],
+      "definition": "A map showing which words, terms, authors, or items appear together often. Connections are drawn when two items co-occur, helping reveal the structure of a literature or corpus.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Co-occurrence network"
+      ]
+    },
+    {
+      "term": "Corpus",
+      "aliases": [
+        "text collection"
+      ],
+      "definition": "A corpus is a structured collection of documents used for research or analysis. Its usefulness depends not only on size, but also on quality, metadata, and fit for the question.",
+      "aira_source_terms": [
+        "Corpus"
+      ],
+      "workshop_required_terms": [],
+      "sweep_terms": []
+    },
+    {
+      "term": "Correlation",
+      "aliases": [
+        "correlated axes",
+        "correlated dimensions"
+      ],
+      "definition": "A relationship in which two things tend to vary together. In a taxonomy, correlated dimensions mean some combinations are common while others are rare.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Correlation"
+      ]
+    },
+    {
+      "term": "Corroboration",
+      "aliases": [
+        "independent confirmation"
+      ],
+      "definition": "Corroboration means checking whether another independent source supports the same claim. It strengthens confidence, but repeated copies of the same original claim do not count as independent support.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [
+        "Corroboration"
+      ],
+      "sweep_terms": []
+    },
+    {
+      "term": "Covariate",
+      "aliases": [
+        "covariates"
+      ],
+      "definition": "A factor measured alongside the main thing being studied because it may help explain or compare outcomes.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Covariate"
+      ]
+    },
+    {
+      "term": "Coverage",
+      "aliases": [
+        "coverage rate"
+      ],
+      "definition": "Coverage describes how much of the relevant material, topic space, or target population is included. Low coverage can lead to blind spots even when the included data is accurate.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [
+        "Coverage"
+      ],
+      "sweep_terms": []
+    },
+    {
+      "term": "Co-word analysis",
+      "aliases": [
+        "keyword co-occurrence analysis"
+      ],
+      "definition": "A bibliometric method that groups topics by counting which keywords or terms appear together across records. It is often used to build thematic maps of a research field.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Co-word analysis"
+      ]
+    },
+    {
+      "term": "Cross-dimensional map",
+      "aliases": [
+        "cross-dimensional maps"
+      ],
+      "definition": "A way to show how different taxonomy dimensions relate to each other, for example which combinations of categories often appear together.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Cross-dimensional map"
+      ]
+    },
+    {
+      "term": "Cross-tabulation",
+      "aliases": [
+        "crosstab"
+      ],
+      "definition": "Cross-tabulation is a table that compares two or more categories, such as source type by topic. It helps reveal patterns that are hard to see in a long list of records.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [
+        "Cross-tabulation"
+      ],
+      "sweep_terms": []
+    },
+    {
+      "term": "CSV",
+      "aliases": [
+        "comma-separated values"
+      ],
+      "definition": "Comma-separated values (CSV) is a simple table file format where each row is a record and commas separate fields. It is widely used, but commas inside text can cause formatting problems if not handled correctly.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [
+        "CSV"
+      ],
+      "sweep_terms": []
+    },
+    {
+      "term": "Dashboard",
+      "aliases": [
+        "analysis dashboard"
+      ],
+      "definition": "A dashboard is a screen that brings together charts, filters, and summary numbers for monitoring or exploring data. It helps users spot patterns without editing raw files directly.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [
+        "Dashboard"
+      ],
+      "sweep_terms": []
+    },
+    {
+      "term": "Dataset",
+      "aliases": [
+        "data set",
+        "empirical dataset"
+      ],
+      "definition": "A structured collection of evidence or observations that can be analyzed, shared, and reused.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Dataset"
+      ]
+    },
+    {
+      "term": "Data type",
+      "aliases": [
+        "type"
+      ],
+      "definition": "A data type describes what kind of value a field can hold, such as text, number, date, or true/false. Correct data types make filtering, sorting, and calculation more reliable.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [
+        "Data type"
+      ],
+      "sweep_terms": []
+    },
+    {
+      "term": "Data warehouse",
+      "aliases": [
+        "Warehouse",
+        "unified storage"
+      ],
+      "definition": "A data warehouse stores information from different sources in one consistent structure. This makes it easier to compare records that originally came from different systems or formats.",
+      "aira_source_terms": [
+        "Data warehouse",
+        "Warehouse (Data warehouse)"
+      ],
+      "workshop_required_terms": [],
+      "sweep_terms": []
+    },
+    {
+      "term": "DBpedia",
+      "aliases": [
+        "DBpedia knowledge base"
+      ],
+      "definition": "An open knowledge base extracted from Wikipedia’s structured infoboxes. It represents facts in a machine-readable form so they can be queried and linked.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "DBpedia"
+      ]
+    },
+    {
+      "term": "Deductive taxonomy",
+      "aliases": [
+        "Deductieve taxonomie",
+        "top-down taxonomy"
+      ],
+      "definition": "A deductive taxonomy starts with categories defined before large-scale annotation begins. The categories can be tested and refined, but the main structure is set by design rather than discovered entirely from the data.",
+      "aira_source_terms": [
+        "Deductieve taxonomie"
+      ],
+      "workshop_required_terms": [],
+      "sweep_terms": []
+    },
+    {
+      "term": "Deduplication",
+      "aliases": [
+        "duplicate detection",
+        "Duplicaatdetectie"
+      ],
+      "definition": "Deduplication is the process of finding and removing repeated content. It prevents reposts or copied items from being mistaken for many independent pieces of evidence.",
+      "aira_source_terms": [
+        "Duplicaatdetectie"
+      ],
+      "workshop_required_terms": [
+        "Deduplication"
+      ],
+      "sweep_terms": []
+    },
+    {
+      "term": "Definition",
+      "aliases": [],
+      "definition": "A definition explains what a term means and how it should be used. Clear definitions reduce confusion when several people annotate or analyze the same material.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [
+        "Definition"
+      ],
+      "sweep_terms": []
+    },
+    {
+      "term": "Deliberately deniable coercion",
+      "aliases": [
+        "deniable coercion",
+        "plausibly deniable coercion"
+      ],
+      "definition": "Pressure or threat behavior designed so the actor can deny making a direct threat. Because the threat is implied rather than stated, some coding schemes may miss it.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Deliberately deniable coercion"
+      ]
+    },
+    {
+      "term": "Denominator",
+      "aliases": [
+        "bottom number of a fraction",
+        "comparison base"
+      ],
+      "definition": "The total set a percentage or ratio is measured against. In recall, the denominator is all relevant material, including material you did not retrieve.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Denominator"
+      ]
+    },
+    {
+      "term": "Derived view",
+      "aliases": [
+        "derived corpus view",
+        "rebuilt view"
+      ],
+      "definition": "A version of data created from raw records plus rules or labels. Because it is derived, it can be rebuilt if the labels or rules change.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Derived view"
+      ]
+    },
+    {
+      "term": "Description logics",
+      "aliases": [
+        "description logic"
+      ],
+      "definition": "A family of formal languages for defining categories and relationships so computers can reason over them. They are often used beneath ontology languages.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Description logics"
+      ]
+    },
+    {
+      "term": "Device-code login",
+      "aliases": [
+        "device authentication",
+        "device-code authentication"
+      ],
+      "definition": "A sign-in method where the terminal shows a short code and a web link. You open the link in a browser, sign in, and enter the code.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Device-code login"
+      ]
+    },
+    {
+      "term": "Devil's Advocacy",
+      "aliases": [
+        "devil's advocate"
+      ],
+      "definition": "Devil's Advocacy is a structured technique where someone is assigned to challenge the prevailing view. The purpose is not to be contrary, but to expose weak assumptions and reduce groupthink.",
+      "aira_source_terms": [
+        "Devil's Advocacy"
+      ],
+      "workshop_required_terms": [],
+      "sweep_terms": []
+    },
+    {
+      "term": "Digital Object Identifier",
+      "aliases": [
+        "DOI"
+      ],
+      "definition": "A permanent identifier assigned to many scholarly articles, book chapters, datasets, and other digital works. It helps readers find the exact item even if the web address changes.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Digital Object Identifier",
+        "DOI"
+      ]
+    },
+    {
+      "term": "Dimension",
+      "aliases": [
+        "High-Level Taxonomic Principle",
+        "HLTP"
+      ],
+      "definition": "A dimension is a major axis for organizing information, such as time, geography, actor, or type of activity. A High-Level Taxonomic Principle (HLTP) is a top-level dimension in a taxonomy.",
+      "aira_source_terms": [
+        "HLTP (High-Level Taxonomic Principle)"
+      ],
+      "workshop_required_terms": [
+        "Dimension"
+      ],
+      "sweep_terms": []
+    },
+    {
+      "term": "Dimensional independence",
+      "aliases": [
+        "independent dimensions"
+      ],
+      "definition": "The requirement that one classification perspective should not automatically determine another. If two dimensions always change together, they may really be one dimension, not two.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Dimensional independence"
+      ]
+    },
+    {
+      "term": "DIME, PMESII, and DIME-FIL",
+      "aliases": [
+        "DIME",
+        "PMESII",
+        "DIME-FIL"
+      ],
+      "definition": "These are frameworks for organizing national power and operating environments: diplomatic, informational, military, economic, and related dimensions. They are mainly used in military and security analysis contexts.",
+      "aira_source_terms": [
+        "DIME / PMESII / DIME-FIL"
+      ],
+      "workshop_required_terms": [],
+      "sweep_terms": []
+    },
+    {
+      "term": "Disconfirmation",
+      "aliases": [
+        "Disconfirmatie"
+      ],
+      "definition": "Disconfirmation means actively looking for evidence that would weaken or rule out a hypothesis. It counters the natural tendency to focus only on information that supports what we already think.",
+      "aira_source_terms": [
+        "Disconfirmatie"
+      ],
+      "workshop_required_terms": [],
+      "sweep_terms": []
+    },
+    {
+      "term": "Document",
+      "aliases": [],
+      "definition": "A document is a unit of source material, such as an article, post, report, transcript, or paper. It may later be split into smaller chunks for analysis.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [
+        "Document"
+      ],
+      "sweep_terms": []
+    },
+    {
+      "term": "Domain-framing",
+      "aliases": [
+        "domain framing section",
+        "framing the domain"
+      ],
+      "definition": "Writing the boundaries, assumptions, and context of a topic before asking a model to help. It is meant to reduce the chance that hidden assumptions drive the output.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Domain-framing"
+      ]
+    },
+    {
+      "term": "Driver alteration",
+      "aliases": [
+        "driver mutation",
+        "molecular driver"
+      ],
+      "definition": "A molecular change that helps cause or sustain a cancer and can guide treatment choice. The deck uses it as an analogy for hidden mechanisms beneath surface labels.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Driver alteration"
+      ]
+    },
+    {
+      "term": "DSPy",
+      "aliases": [],
+      "definition": "DSPy is a Python framework for building and improving prompts and language-model workflows. Participants may use it to define a task, test outputs, and improve instructions systematically.",
+      "aira_source_terms": [
+        "DSPy"
+      ],
+      "workshop_required_terms": [],
+      "sweep_terms": []
+    },
+    {
+      "term": "Dual-energy computed tomography",
+      "aliases": [
+        "DECT",
+        "dual-energy CT"
+      ],
+      "definition": "A scanning method that uses two X-ray energy levels to distinguish materials. The deck uses it to illustrate seeing the same object through different axes.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Dual-energy computed tomography"
+      ]
+    },
+    {
+      "term": "Edge",
+      "aliases": [
+        "graph edge",
+        "relationship edge"
+      ],
+      "definition": "A connection between nodes in a graph. An edge can represent a relationship such as membership, borders, signed treaty, or any other defined link.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Edge"
+      ]
+    },
+    {
+      "term": "Edge case",
+      "aliases": [
+        "borderline case"
+      ],
+      "definition": "An edge case is an unusual or borderline example that does not fit the normal rules cleanly. Edge cases are useful because they reveal where definitions or categories need refinement.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [
+        "Edge case"
+      ],
+      "sweep_terms": []
+    },
+    {
+      "term": "Embargoed data",
+      "aliases": [
+        "embargoed research data"
+      ],
+      "definition": "Research material that exists but is not yet allowed to be shared, published, or uploaded under the rules governing the project or institution.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Embargoed data"
+      ]
+    },
+    {
+      "term": "Embeddings",
+      "aliases": [
+        "vector representations"
+      ],
+      "definition": "Embeddings are numerical representations of text that place similar meanings near each other in a mathematical space. They support semantic search, clustering, and other ways to compare meaning rather than exact wording.",
+      "aira_source_terms": [
+        "Embeddings"
+      ],
+      "workshop_required_terms": [],
+      "sweep_terms": []
+    },
+    {
+      "term": "Empirics",
+      "aliases": [
+        "empirical data",
+        "empirical evidence"
+      ],
+      "definition": "Observed evidence from the real world, rather than argument, theory, or opinion alone. In the workshop, it means checking claims against collected material and measured results.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Empirics"
+      ]
+    },
+    {
+      "term": "Entity type",
+      "aliases": [
+        "entity types",
+        "named entity type"
+      ],
+      "definition": "A category of thing that can be identified in text, such as a person, place, organization, disease, or chemical.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Entity type"
+      ]
+    },
+    {
+      "term": "Epistemic MRI",
+      "aliases": [
+        "field MRI",
+        "knowledge MRI"
+      ],
+      "definition": "A workshop metaphor for using a taxonomy, publication data, or language models to scan a body of texts and reveal how knowledge, themes, or blind spots are distributed within it.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Epistemic MRI"
+      ]
+    },
+    {
+      "term": "Escaped JSON string",
+      "aliases": [
+        "escaped string"
+      ],
+      "definition": "Text inside JavaScript Object Notation where quotation marks and special characters are written with backslashes so they can be stored safely. It can be decoded back into ordinary structured data.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Escaped JSON string"
+      ]
+    },
+    {
+      "term": "Ethology",
+      "aliases": [
+        "animal behavior science"
+      ],
+      "definition": "The scientific study of animal behavior, especially in natural settings. The deck uses ethology to compare animal deterrence categories with strategic-studies categories.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Ethology"
+      ]
+    },
+    {
+      "term": "Evaluation ex ante",
+      "aliases": [
+        "before-the-fact evaluation"
+      ],
+      "definition": "Evaluation ex ante means deciding in advance what good performance will look like. It includes setting criteria, examples, and standards before relying on a model's output.",
+      "aira_source_terms": [
+        "Evaluatie ex ante"
+      ],
+      "workshop_required_terms": [],
+      "sweep_terms": []
+    },
+    {
+      "term": "Evaluation ex interim",
+      "aliases": [
+        "midstream evaluation"
+      ],
+      "definition": "Evaluation ex interim means checking and adjusting an analysis process while it is running. It helps catch systematic problems before they affect the entire dataset.",
+      "aira_source_terms": [
+        "Evaluatie ex interim"
+      ],
+      "workshop_required_terms": [],
+      "sweep_terms": []
+    },
+    {
+      "term": "Evaluation ex post",
+      "aliases": [
+        "after-the-fact evaluation"
+      ],
+      "definition": "Evaluation ex post means checking model outputs after they are produced, often against expert review or a known reference. It helps quantify reliability and identify recurring errors.",
+      "aira_source_terms": [
+        "Evaluatie ex post"
+      ],
+      "workshop_required_terms": [],
+      "sweep_terms": []
+    },
+    {
+      "term": "Evidence and coverage audit",
+      "aliases": [
+        "coverage audit"
+      ],
+      "definition": "A final check that states what evidence was available, what was missing, and which claims most need human verification.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Evidence and coverage audit"
+      ]
+    },
+    {
+      "term": "Evidence grounding",
+      "aliases": [
+        "source verification",
+        "Bronverificatie",
+        "evidence-grounded"
+      ],
+      "definition": "Evidence grounding means making sure an answer or claim is supported by the underlying source material. It is essential because fluent model output can still be wrong or unsupported.",
+      "aira_source_terms": [
+        "Bronverificatie"
+      ],
+      "workshop_required_terms": [
+        "Evidence-grounded"
+      ],
+      "sweep_terms": []
+    },
+    {
+      "term": "Evidence span",
+      "aliases": [
+        "text span"
+      ],
+      "definition": "An evidence span is the exact passage in a source that supports a label, claim, or decision. It makes annotation easier to audit because reviewers can see what the judgment was based on.",
+      "aira_source_terms": [
+        "Text span"
+      ],
+      "workshop_required_terms": [
+        "Evidence span"
+      ],
+      "sweep_terms": []
+    },
+    {
+      "term": "Evidence spine",
+      "aliases": [
+        "evidence base spine",
+        "evidence pipeline"
+      ],
+      "definition": "A workshop metaphor for the ordered chain of evidence-processing stages that supports the final reports.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Evidence spine"
+      ]
+    },
+    {
+      "term": "Exact phrase search",
+      "aliases": [
+        "quotation-mark search",
+        "quoted phrase search"
+      ],
+      "definition": "A search method that puts words in quotation marks so the search engine looks for those words together in that exact order, rather than separately.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Exact phrase search"
+      ]
+    },
+    {
+      "term": "Exploratory analysis",
+      "aliases": [
+        "data exploration"
+      ],
+      "definition": "Exploratory analysis is the early stage of looking through data to find patterns, problems, or promising questions. It is useful for discovery, but findings should be tested before being treated as conclusions.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [
+        "Exploratory analysis"
+      ],
+      "sweep_terms": []
+    },
+    {
+      "term": "Export cap",
+      "aliases": [
+        "download cap",
+        "export limit"
+      ],
+      "definition": "A maximum number of records a service lets you download or export at once or in total. It can prevent you from collecting a whole field in one step.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Export cap"
+      ]
+    },
+    {
+      "term": "F1 score",
+      "aliases": [
+        "F-measure"
+      ],
+      "definition": "The F1 score combines precision and recall into one number. It is useful when you care about both false alarms and missed relevant items.",
+      "aira_source_terms": [
+        "F1 score"
+      ],
+      "workshop_required_terms": [],
+      "sweep_terms": []
+    },
+    {
+      "term": "Fabricated peer review",
+      "aliases": [
+        "fake peer review"
+      ],
+      "definition": "A publication failure where the peer-review process was faked or manipulated, for example through false reviewer identities or sham reviews. It undermines a journal’s quality-control process.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Fabricated peer review"
+      ]
+    },
+    {
+      "term": "Facet",
+      "aliases": [
+        "facet filter",
+        "faceting"
+      ],
+      "definition": "A clickable category, such as author, date, institution, or subject, used to slice a search result set. Facets let you summarize or filter records without starting a new search.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Facet"
+      ]
+    },
+    {
+      "term": "Falsifiability",
+      "aliases": [
+        "Falsifieerbaarheid",
+        "falsificationism",
+        "Popper"
+      ],
+      "definition": "Falsifiability means a claim could, in principle, be shown wrong by some observation. It is a core idea in scientific reasoning because claims that cannot be tested are hard to evaluate.",
+      "aira_source_terms": [
+        "Falsifieerbaarheid",
+        "Popper / falsificationisme"
+      ],
+      "workshop_required_terms": [],
+      "sweep_terms": []
+    },
+    {
+      "term": "FDK reconstruction",
+      "aliases": [
+        "FDK algorithm",
+        "Feldkamp-Davis-Kress reconstruction"
+      ],
+      "definition": "A standard method for reconstructing three-dimensional images from computed tomography scan data. In the deck example, it produces noisier boundaries than the TV–TGV method.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "FDK reconstruction"
+      ]
+    },
+    {
+      "term": "Feature extraction",
+      "aliases": [
+        "information extraction"
+      ],
+      "definition": "Feature extraction means turning unstructured text into structured attributes, such as names, dates, topics, or sentiment. These features make it possible to compare and count information across many documents.",
+      "aira_source_terms": [
+        "Feature extraction"
+      ],
+      "workshop_required_terms": [],
+      "sweep_terms": []
+    },
+    {
+      "term": "Federally Funded Research and Development Center",
+      "aliases": [
+        "FFRDC",
+        "FFRDCs"
+      ],
+      "definition": "A research organization sponsored by the United States government to provide long-term technical or analytic support, often outside normal commercial contracting.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Federally Funded Research and Development Center"
+      ]
+    },
+    {
+      "term": "Few-shot and zero-shot prompting",
+      "aliases": [
+        "few-shot",
+        "zero-shot"
+      ],
+      "definition": "Zero-shot prompting asks a model to do a task without examples; few-shot prompting includes a few examples in the prompt. Examples often help the model match the desired format and judgment standard.",
+      "aira_source_terms": [
+        "Few-shot / zero-shot"
+      ],
+      "workshop_required_terms": [],
+      "sweep_terms": []
+    },
+    {
+      "term": "Field",
+      "aliases": [
+        "column"
+      ],
+      "definition": "A field is one named piece of information in a record, such as date, source name, language, or label. In a table, fields often appear as columns.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [
+        "Field"
+      ],
+      "sweep_terms": []
+    },
+    {
+      "term": "Filter",
+      "aliases": [
+        "screen"
+      ],
+      "definition": "A filter keeps only records that meet selected conditions, such as a date range, source type, or label. Filters help narrow a dataset to the part relevant to a question.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [
+        "Filter"
+      ],
+      "sweep_terms": []
+    },
+    {
+      "term": "Fine-tuning",
+      "aliases": [
+        "model adaptation"
+      ],
+      "definition": "Fine-tuning means further training a pre-existing model on task-specific examples. It can improve performance on a narrow task, but it requires good training data and careful evaluation.",
+      "aira_source_terms": [
+        "Fine-tuning"
+      ],
+      "workshop_required_terms": [],
+      "sweep_terms": []
+    },
+    {
+      "term": "Firmware",
+      "aliases": [
+        "hardware firmware"
+      ],
+      "definition": "Low-level software built into a computer’s hardware that controls basic machine settings before the operating system starts.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Firmware"
+      ]
+    },
+    {
+      "term": "First principles analysis",
+      "aliases": [
+        "from first principles"
+      ],
+      "definition": "A way of reasoning that starts from the basic features of a problem rather than copying existing categories, traditions, or source structures.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "First principles analysis"
+      ]
+    },
+    {
+      "term": "Fiscal year",
+      "aliases": [
+        "FY",
+        "budget year"
+      ],
+      "definition": "A 12-month accounting period used for budgets. It may not match the calendar year.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Fiscal year"
+      ]
+    },
+    {
+      "term": "Former Soviet Union bias",
+      "aliases": [
+        "FSU bias"
+      ],
+      "definition": "A skew in coverage or attention toward material related to the former Soviet Union, or away from other records. Here it marks uneven coverage in databases.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Former Soviet Union bias"
+      ]
+    },
+    {
+      "term": "FrameNet",
+      "aliases": [
+        "FrameNet lexical database"
+      ],
+      "definition": "A language resource that organizes words by the situations or frames they evoke, such as buying, attacking, or negotiating. It supports structured analysis of meaning in text.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "FrameNet"
+      ]
+    },
+    {
+      "term": "Freebase",
+      "aliases": [
+        "Freebase knowledge base"
+      ],
+      "definition": "A large structured knowledge base of entities and facts that was later absorbed into Google’s knowledge graph. It is used in the deck as an example of industrial-scale knowledge representation.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Freebase"
+      ]
+    },
+    {
+      "term": "Free tier",
+      "aliases": [
+        "free service tier"
+      ],
+      "definition": "The no-cost level of a service, usually with stricter limits or fewer features than paid plans.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Free tier"
+      ]
+    },
+    {
+      "term": "Frontier model",
+      "aliases": [
+        "advanced AI model"
+      ],
+      "definition": "A frontier model is a highly capable, general-purpose artificial intelligence model near the leading edge of current performance. The term is comparative and changes over time as technology improves.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [
+        "Frontier model"
+      ],
+      "sweep_terms": []
+    },
+    {
+      "term": "Frozen bytes",
+      "aliases": [
+        "fixed bytes",
+        "frozen artifact"
+      ],
+      "definition": "A technical metaphor for locking the exact file contents before review, so later disagreement is not caused by people seeing different versions.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Frozen bytes"
+      ]
+    },
+    {
+      "term": "Full text",
+      "aliases": [
+        "complete text",
+        "full-text article"
+      ],
+      "definition": "The complete contents of a document, not just its title, abstract, citation, or metadata.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Full text"
+      ]
+    },
+    {
+      "term": "Function call",
+      "aliases": [
+        "model function call",
+        "tool call"
+      ],
+      "definition": "A model output format where the model fills arguments for a named function instead of writing normal prose. Pipelines use it to get structured answers that software can read.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Function call"
+      ]
+    },
+    {
+      "term": "Gene Ontology",
+      "aliases": [
+        "GO controlled vocabulary"
+      ],
+      "definition": "A widely used controlled vocabulary for describing gene functions consistently across species and studies. It helps biological findings from different labs add up.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Gene Ontology"
+      ]
+    },
+    {
+      "term": "Gerasimov, Chekinov, and Bogdanov",
+      "aliases": [
+        "Gerasimov Doctrine",
+        "Russian operational art"
+      ],
+      "definition": "Gerasimov, Chekinov, and Bogdanov are Russian military thinkers often discussed in studies of Russian strategy and operational art. In this workshop, they are used only as context for analyzing Russian military thought.",
+      "aira_source_terms": [
+        "Gerasimov / Chekinov / Bogdanov"
+      ],
+      "workshop_required_terms": [],
+      "sweep_terms": []
+    },
+    {
+      "term": "GitHub",
+      "aliases": [
+        "code repository platform"
+      ],
+      "definition": "GitHub is a website for storing, sharing, and tracking changes to code and documentation. Participants may use it to download workshop materials or follow a shared workflow.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [
+        "GitHub"
+      ],
+      "sweep_terms": []
+    },
+    {
+      "term": "GO/NO-GO",
+      "aliases": [
+        "go or no-go decision",
+        "NO_GO"
+      ],
+      "definition": "A decision label meaning approved to proceed or not approved to proceed. In this workshop, conditional approval is treated as not approved.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "GO/NO-GO"
+      ]
+    },
+    {
+      "term": "Google Cloud Shell",
+      "aliases": [
+        "Cloud Shell"
+      ],
+      "definition": "A browser-based Linux terminal provided by Google. It is used here as a fallback when participants cannot install the required tools on their own laptops.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Google Cloud Shell"
+      ]
+    },
+    {
+      "term": "Graph homomorphism",
+      "aliases": [
+        "graph pattern mapping"
+      ],
+      "definition": "A way of matching a smaller graph pattern into a larger graph while preserving the structure of connections. In practice, it asks whether the stored graph contains the relationship pattern you are looking for.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Graph homomorphism"
+      ]
+    },
+    {
+      "term": "Graphical interface",
+      "aliases": [
+        "graphical user interface",
+        "GUI"
+      ],
+      "definition": "A way of using a computer through windows, menus, buttons, and icons rather than typed commands.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Graphical interface"
+      ]
+    },
+    {
+      "term": "Grey literature",
+      "aliases": [
+        "gray literature",
+        "non-academic reports"
+      ],
+      "definition": "Research or analysis published outside standard academic journals and books, such as government reports, think-tank reports, working papers, or policy documents.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Grey literature"
+      ]
+    },
+    {
+      "term": "Grey zone",
+      "aliases": [
+        "Grijze zone"
+      ],
+      "definition": "The grey zone is the space between routine competition and open war, where states use pressure, covert action, cyber activity, or information operations. In this workshop, it is mainly a Russia and security-policy context term.",
+      "aira_source_terms": [
+        "Grijze zone (Grey zone)"
+      ],
+      "workshop_required_terms": [],
+      "sweep_terms": []
+    },
+    {
+      "term": "Ground truth",
+      "aliases": [
+        "gold standard",
+        "reference labels"
+      ],
+      "definition": "Ground truth is a trusted reference set, usually checked by people, used to evaluate model outputs. If the reference is poor, the evaluation will also be unreliable.",
+      "aira_source_terms": [
+        "Ground truth"
+      ],
+      "workshop_required_terms": [],
+      "sweep_terms": []
+    },
+    {
+      "term": "Gzipped",
+      "aliases": [
+        "compressed file",
+        "gzip compressed"
+      ],
+      "definition": "Compressed using gzip, a common method for making data files smaller for download or storage. A gzipped file usually needs suitable software to open or decompress it.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Gzipped"
+      ]
+    },
+    {
+      "term": "Hallucination",
+      "aliases": [
+        "Hallucinatie"
+      ],
+      "definition": "A hallucination is when a language model produces information that sounds plausible but is false or unsupported. This is especially risky when the output includes invented sources, numbers, or causal links.",
+      "aira_source_terms": [
+        "Hallucinatie"
+      ],
+      "workshop_required_terms": [],
+      "sweep_terms": []
+    },
+    {
+      "term": "Harvest",
+      "aliases": [
+        "bibliographic harvest",
+        "data harvest"
+      ],
+      "definition": "To collect records or documents from one or more sources into a working dataset. In this workshop it usually means gathering publication records for a corpus.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Harvest"
+      ]
+    },
+    {
+      "term": "Hash",
+      "aliases": [
+        "checksum",
+        "file hash",
+        "digital fingerprint"
+      ],
+      "definition": "A short digital fingerprint calculated from a file or text. If the content changes, the hash changes, so it can prove reviewers are looking at the same version.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Hash"
+      ]
+    },
+    {
+      "term": "HGNC",
+      "aliases": [
+        "HUGO Gene Nomenclature Committee"
+      ],
+      "definition": "The body that assigns standardized names and symbols to human genes. Standard names let researchers know when different papers are referring to the same gene.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "HGNC"
+      ]
+    },
+    {
+      "term": "Hierarchy",
+      "aliases": [
+        "tree structure"
+      ],
+      "definition": "A hierarchy organizes items from broad to narrow levels. In a taxonomy, a broad category may contain more specific subcategories beneath it.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [
+        "Hierarchy"
+      ],
+      "sweep_terms": []
+    },
+    {
+      "term": "High-dimensional conceptual space",
+      "aliases": [
+        "conceptual space",
+        "high-dimensional space"
+      ],
+      "definition": "A metaphor for a complex topic that cannot be described well by one scale or category because many different factors matter at once.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "High-dimensional conceptual space"
+      ]
+    },
+    {
+      "term": "HTML dashboard",
+      "aliases": [
+        "HyperText Markup Language dashboard",
+        "interactive HTML dashboard"
+      ],
+      "definition": "A web page that displays data summaries, charts, or filters in a browser. Unlike a static image, an interactive dashboard lets the user click, filter, or explore views.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "HTML dashboard"
+      ]
+    },
+    {
+      "term": "HTTP 404",
+      "aliases": [
+        "404 error",
+        "hard 404"
+      ],
+      "definition": "A web error meaning a requested page or file could not be found at that address. HTTP means HyperText Transfer Protocol.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "HTTP 404"
+      ]
+    },
+    {
+      "term": "Human-in-the-loop",
+      "aliases": [
+        "human review"
+      ],
+      "definition": "Human-in-the-loop means people remain part of an artificial intelligence workflow by reviewing, correcting, and interpreting outputs. The goal is to combine machine speed with human judgment.",
+      "aira_source_terms": [
+        "Human-in-the-loop"
+      ],
+      "workshop_required_terms": [],
+      "sweep_terms": []
+    },
+    {
+      "term": "Human Smell Test",
+      "aliases": [
+        "HST",
+        "quick human check"
+      ],
+      "definition": "The Human Smell Test (HST) is an informal quality check where a person opens a small sample of model-classified items and asks whether the results look reasonable. It is fast, but it does not replace formal evaluation.",
+      "aira_source_terms": [
+        "HST (Human Smell Test)"
+      ],
+      "workshop_required_terms": [],
+      "sweep_terms": []
+    },
+    {
+      "term": "Hybrid taxonomy",
+      "aliases": [
+        "pre-defined plus emergent taxonomy",
+        "Hybride taxonomie"
+      ],
+      "definition": "A hybrid taxonomy starts with a predefined structure but also records new categories that appear during analysis. This balances consistency with openness to unexpected findings.",
+      "aira_source_terms": [
+        "Hybride taxonomie (pre-defined + emergent)"
+      ],
+      "workshop_required_terms": [],
+      "sweep_terms": []
+    },
+    {
+      "term": "Hyperedge",
+      "aliases": [
+        "multi-actor edge"
+      ],
+      "definition": "A connection in a hypergraph that can include three or more members. It keeps a multi-party event as one object instead of breaking it into separate pairs.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Hyperedge"
+      ]
+    },
+    {
+      "term": "Hypergraph",
+      "aliases": [
+        "knowledge hypergraph"
+      ],
+      "definition": "A graph-like structure where one connection can link more than two things at once. It is useful for representing events such as treaties, summits, or supply chains involving several actors.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Hypergraph"
+      ]
+    },
+    {
+      "term": "Hypernym",
+      "aliases": [
+        "broader term"
+      ],
+      "definition": "A broad word that covers several narrower terms. For example, “deterrence” can be a hypernym for more specific kinds such as deterrence by denial or by punishment.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Hypernym"
+      ]
+    },
+    {
+      "term": "Hyperspectral scan",
+      "aliases": [
+        "hyperspectral imaging"
+      ],
+      "definition": "An imaging method that records many wavelengths or energy bands instead of a simple color image. Different reconstruction methods can reveal or blur structures in the same underlying data.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Hyperspectral scan"
+      ]
+    },
+    {
+      "term": "Hyponym",
+      "aliases": [
+        "narrower term"
+      ],
+      "definition": "A more specific word or category that sits under a broader one. For example, “deterrence by denial” is a hyponym of “deterrence.”",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Hyponym"
+      ]
+    },
+    {
+      "term": "Hypothesis generation",
+      "aliases": [
+        "Hypothesegeneratie"
+      ],
+      "definition": "Hypothesis generation means developing testable explanations from patterns in data. Language models can suggest possibilities, but analysts must assess whether they are plausible, distinct, and supported.",
+      "aira_source_terms": [
+        "Hypothesegeneratie"
+      ],
+      "workshop_required_terms": [],
+      "sweep_terms": []
+    },
+    {
+      "term": "ICD-11",
+      "aliases": [
+        "International Classification of Diseases, Eleventh Revision"
+      ],
+      "definition": "The World Health Organization’s classification system for diseases and health conditions. It is used for reporting, statistics, billing, and comparing health data across countries.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "ICD-11"
+      ]
+    },
+    {
+      "term": "Immutable",
+      "aliases": [
+        "read-only version",
+        "unchangeable version"
+      ],
+      "definition": "Not meant to be changed after it is fixed. An immutable version lets reviewers know they are judging the same object over time.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Immutable"
+      ]
+    },
+    {
+      "term": "Independence test",
+      "aliases": [
+        "peer independence test",
+        "taxonomy independence test"
+      ],
+      "definition": "A check of whether someone else can apply your category scheme without asking you what you meant. If they cannot, the scheme is probably unclear.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Independence test"
+      ]
+    },
+    {
+      "term": "Indexed journal",
+      "aliases": [
+        "indexed source",
+        "non-indexed journal"
+      ],
+      "definition": "A journal included in a searchable database or index. Non-indexed journals may be harder to find and can be missed by database-only searches.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Indexed journal"
+      ]
+    },
+    {
+      "term": "Indicators and Warning",
+      "aliases": [
+        "I&W"
+      ],
+      "definition": "Indicators and Warning (I&W) is an intelligence approach that watches observable signs linked to a possible threat. It compares current activity with normal baselines and warning thresholds.",
+      "aira_source_terms": [
+        "I&W (Indicators and Warning)"
+      ],
+      "workshop_required_terms": [],
+      "sweep_terms": []
+    },
+    {
+      "term": "Inductive taxonomy",
+      "aliases": [
+        "Inductieve taxonomie",
+        "bottom-up taxonomy"
+      ],
+      "definition": "An inductive taxonomy lets categories emerge from the data during analysis. It is useful for discovery, but it can be harder to keep consistent across many annotators or batches.",
+      "aira_source_terms": [
+        "Inductieve taxonomie"
+      ],
+      "workshop_required_terms": [],
+      "sweep_terms": []
+    },
+    {
+      "term": "Inference",
+      "aliases": [
+        "Inferentie",
+        "model prediction"
+      ],
+      "definition": "Inference is the moment when a trained model applies what it has learned to new input and produces an output. For example, classifying a new text chunk is an inference task.",
+      "aira_source_terms": [
+        "Inferentie"
+      ],
+      "workshop_required_terms": [],
+      "sweep_terms": []
+    },
+    {
+      "term": "Ingestion",
+      "aliases": [
+        "data intake"
+      ],
+      "definition": "Ingestion is the process of bringing source data into a system in a usable format. It can include downloading, scraping, optical character recognition, cleaning, and standardizing files.",
+      "aira_source_terms": [
+        "Ingestion"
+      ],
+      "workshop_required_terms": [],
+      "sweep_terms": []
+    },
+    {
+      "term": "Input contract",
+      "aliases": [
+        "data contract",
+        "stage input contract"
+      ],
+      "definition": "A written statement of what a stage expects as its input, such as required files, fields, format, or conditions before the stage can run.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Input contract"
+      ]
+    },
+    {
+      "term": "Institutionally restricted data",
+      "aliases": [
+        "restricted research data"
+      ],
+      "definition": "Data that an employer, university, funder, or ethics rule limits you from sharing or sending to outside services.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Institutionally restricted data"
+      ]
+    },
+    {
+      "term": "Instrument",
+      "aliases": [
+        "analytic instrument",
+        "research instrument"
+      ],
+      "definition": "A tool or procedure that determines what the study can detect and count. Here, a taxonomy is treated as an instrument because its categories shape what becomes visible.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Instrument"
+      ]
+    },
+    {
+      "term": "Intelligence cycle",
+      "aliases": [],
+      "definition": "The intelligence cycle is a model of intelligence work: defining needs, collecting information, processing it, analyzing it, and sharing results. Real work often loops back and forth rather than moving in a perfect circle.",
+      "aira_source_terms": [
+        "Intelligence cycle"
+      ],
+      "workshop_required_terms": [],
+      "sweep_terms": []
+    },
+    {
+      "term": "Intelligence Preparation of the Operational Environment",
+      "aliases": [
+        "IPB",
+        "IPOE",
+        "Intelligence Preparation of the Battlespace"
+      ],
+      "definition": "Intelligence Preparation of the Operational Environment (IPOE), also called Intelligence Preparation of the Battlespace (IPB), is a structured way to analyze terrain, actors, capabilities, and likely actions before planning. It is mainly a military planning term.",
+      "aira_source_terms": [
+        "IPB / IPOE"
+      ],
+      "workshop_required_terms": [],
+      "sweep_terms": []
+    },
+    {
+      "term": "Intelligence, Surveillance, and Reconnaissance",
+      "aliases": [
+        "ISR"
+      ],
+      "definition": "Intelligence, Surveillance, and Reconnaissance (ISR) refers to systems and activities that collect information, such as satellites, aircraft, sensors, and reconnaissance teams. The term is most common in military contexts.",
+      "aira_source_terms": [
+        "ISR"
+      ],
+      "workshop_required_terms": [],
+      "sweep_terms": []
+    },
+    {
+      "term": "Interactive visualization",
+      "aliases": [
+        "visualization",
+        "visual analytics"
+      ],
+      "definition": "A visualization turns data into charts, maps, or diagrams; an interactive visualization lets users click, filter, zoom, or explore. Interactivity helps investigation, but it can also make weak data look more persuasive than it is.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [
+        "Interactive visualization",
+        "Visualization"
+      ],
+      "sweep_terms": []
+    },
+    {
+      "term": "Join",
+      "aliases": [
+        "table join"
+      ],
+      "definition": "A join combines records from two tables using a shared field, such as a document identifier. Joins are powerful, but mismatched identifiers can create missing or duplicated results.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [
+        "Join"
+      ],
+      "sweep_terms": []
+    },
+    {
+      "term": "JSON",
+      "aliases": [
+        "JavaScript Object Notation"
+      ],
+      "definition": "JavaScript Object Notation (JSON) is a structured text format for storing objects, lists, numbers, and strings. It is common in application programming interfaces and model outputs.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [
+        "JSON"
+      ],
+      "sweep_terms": []
+    },
+    {
+      "term": "JSONL",
+      "aliases": [
+        "JSON Lines"
+      ],
+      "definition": "JSON Lines (JSONL) stores one JavaScript Object Notation object per line. It is useful for large datasets because programs can read or write one record at a time.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [
+        "JSONL"
+      ],
+      "sweep_terms": []
+    },
+    {
+      "term": "Kent estimative language",
+      "aliases": [
+        "Sherman Kent",
+        "Kesselman"
+      ],
+      "definition": "Kent estimative language is a disciplined way to express likelihood in intelligence assessments using standardized probability words. It helps readers understand how confident an assessment is, but numbers and words still require explanation.",
+      "aira_source_terms": [
+        "Kent / Kent estimative language / Kesselman"
+      ],
+      "workshop_required_terms": [],
+      "sweep_terms": []
+    },
+    {
+      "term": "Keyword and semantic search",
+      "aliases": [
+        "keyword search vs. semantic search"
+      ],
+      "definition": "Keyword search looks for exact words; semantic search looks for similar meaning even when different words are used. The contrast matters when language, spelling, translation, or wording varies across sources.",
+      "aira_source_terms": [
+        "Keyword search vs. semantic search"
+      ],
+      "workshop_required_terms": [],
+      "sweep_terms": []
+    },
+    {
+      "term": "Knowledge graph",
+      "aliases": [
+        "graph of knowledge",
+        "linked knowledge graph"
+      ],
+      "definition": "A structured network of things and relationships, such as people, places, organizations, and events. It lets software answer questions by following connections rather than only matching words.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Knowledge graph"
+      ]
+    },
+    {
+      "term": "Knowledge representation",
+      "aliases": [
+        "representing knowledge",
+        "structured knowledge"
+      ],
+      "definition": "Ways of storing ideas so that categories, facts, and relationships can be compared or used by people and computers.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Knowledge representation"
+      ]
+    },
+    {
+      "term": "Label",
+      "aliases": [
+        "tag"
+      ],
+      "definition": "A label is a category name assigned to a text, record, or passage during annotation. Labels make qualitative material easier to sort, compare, and count.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [
+        "Label"
+      ],
+      "sweep_terms": []
+    },
+    {
+      "term": "Labeled graph",
+      "aliases": [
+        "labelled graph"
+      ],
+      "definition": "A graph whose nodes and connections carry names or types. The labels explain what each thing is and what kind of relationship connects two things.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Labeled graph"
+      ]
+    },
+    {
+      "term": "Large language model",
+      "aliases": [
+        "LLM"
+      ],
+      "definition": "A large language model (LLM) is an artificial intelligence model trained to process and generate text. It can summarize, classify, draft, and answer questions, but its outputs need verification.",
+      "aira_source_terms": [
+        "LLM (Large Language Model)"
+      ],
+      "workshop_required_terms": [],
+      "sweep_terms": []
+    },
+    {
+      "term": "Level 2 and Level 3",
+      "aliases": [
+        "L2",
+        "L3",
+        "2nd Level TE",
+        "3rd Level TE",
+        "second-level taxonomy element",
+        "third-level taxonomy element"
+      ],
+      "definition": "Level 2 (L2) and Level 3 (L3) are lower levels in a hierarchy beneath a broader top-level category. They usually represent increasingly specific subcategories.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [
+        "Level 2 (L2)",
+        "Level 3 (L3)"
+      ],
+      "sweep_terms": []
+    },
+    {
+      "term": "Licensed source",
+      "aliases": [
+        "access-controlled source",
+        "subscription source"
+      ],
+      "definition": "A source that can only be used under a paid license, institutional agreement, or other access restriction.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Licensed source"
+      ]
+    },
+    {
+      "term": "Literature review",
+      "aliases": [
+        "review of literature"
+      ],
+      "definition": "A structured search and reading of existing publications on a topic to understand what has already been studied, argued, or classified.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Literature review"
+      ]
+    },
+    {
+      "term": "LLM-as-a-judge",
+      "aliases": [
+        "model judge"
+      ],
+      "definition": "LLM-as-a-judge uses a large language model to evaluate another model's output. It can reduce human workload, but it should be calibrated against human judgments.",
+      "aira_source_terms": [
+        "LLM-as-a-judge"
+      ],
+      "workshop_required_terms": [],
+      "sweep_terms": []
+    },
+    {
+      "term": "LM Studio",
+      "aliases": [],
+      "definition": "LM Studio is a desktop application for running selected open-source language models on a local computer. Participants can use it to experiment without sending text to an external service.",
+      "aira_source_terms": [
+        "LM Studio"
+      ],
+      "workshop_required_terms": [],
+      "sweep_terms": []
+    },
+    {
+      "term": "Load-balancing router",
+      "aliases": [
+        "model router",
+        "routing service"
+      ],
+      "definition": "A service that sends a request to one of several available computers or providers. If not recorded, the same model name may actually be answered by different hosts with different behavior.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Load-balancing router"
+      ]
+    },
+    {
+      "term": "Local execution versus local processing",
+      "aliases": [
+        "local execution",
+        "local processing"
+      ],
+      "definition": "Local execution means a tool runs on your computer. Local processing means the data stays on your computer and is not sent to an outside model provider.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Local execution",
+        "Local processing"
+      ]
+    },
+    {
+      "term": "Logarithmic axis",
+      "aliases": [
+        "log scale",
+        "logarithmic scale"
+      ],
+      "definition": "A chart scale where each step represents multiplication, often by ten, rather than adding the same amount. It lets very small and very large counts appear on one chart.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Logarithmic axis",
+        "Logarithmic scale"
+      ]
+    },
+    {
+      "term": "Maneuver / positional / attrition dialectic",
+      "aliases": [
+        "maneuver-positional-attrition dialectic",
+        "movement versus mass dialectic"
+      ],
+      "definition": "A way of framing war as a tension among movement, holding positions, and wearing down the opponent. The case asks whether this pattern appears beyond the battlefield.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Maneuver / positional / attrition dialectic"
+      ]
+    },
+    {
+      "term": "Markdown",
+      "aliases": [
+        ".md"
+      ],
+      "definition": "Markdown is a plain-text format for writing headings, lists, links, tables, and simple formatting. It is easy for both people and software to read.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [
+        "Markdown"
+      ],
+      "sweep_terms": []
+    },
+    {
+      "term": "Maskirovka",
+      "aliases": [
+        "Russian military deception"
+      ],
+      "definition": "Maskirovka is a Russian term for camouflage, concealment, and deception used in military and statecraft contexts. In this workshop it refers specifically to Russian doctrine and practice, not deception in general.",
+      "aira_source_terms": [
+        "Maskirovka"
+      ],
+      "workshop_required_terms": [],
+      "sweep_terms": []
+    },
+    {
+      "term": "McNamara’s First Law of Analysis",
+      "aliases": [
+        "McNamara's first law",
+        "grand totals first"
+      ],
+      "definition": "A workshop rule of thumb: start by looking at the whole problem before breaking it into parts. For literature work, it means first estimating the full body of relevant work.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "McNamara’s First Law of Analysis"
+      ]
+    },
+    {
+      "term": "MDTDF independence test",
+      "aliases": [
+        "Multi-Dimensional Taxonomy Development Framework independence test"
+      ],
+      "definition": "A workshop-named test for deciding whether two ways of classifying material vary independently enough to be treated as separate dimensions or taxonomies.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "MDTDF independence test"
+      ]
+    },
+    {
+      "term": "Median",
+      "aliases": [
+        "middle value"
+      ],
+      "definition": "The middle value when numbers are ordered from smallest to largest. It is often used instead of an average when very large or small values could distort the picture.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Median"
+      ]
+    },
+    {
+      "term": "MeSH",
+      "aliases": [
+        "Medical Subject Headings"
+      ],
+      "definition": "A controlled vocabulary used to index biomedical literature. It helps searches find papers about the same concept even when authors use different wording.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "MeSH"
+      ]
+    },
+    {
+      "term": "Metadata",
+      "aliases": [
+        "data about data"
+      ],
+      "definition": "Metadata is information about a document or record, such as date, author, language, source, or location. Good metadata makes searching, filtering, and interpretation much easier.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [
+        "Metadata"
+      ],
+      "sweep_terms": []
+    },
+    {
+      "term": "Methods block",
+      "aliases": [
+        "methods template",
+        "six-line methods block"
+      ],
+      "definition": "A short, structured description of the research process: question, query, corpus, scheme, reliability, and blind spot. It helps readers inspect how the claim was produced.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Methods block"
+      ]
+    },
+    {
+      "term": "Microbiome",
+      "aliases": [
+        "microbial community"
+      ],
+      "definition": "The collection of bacteria, fungi, viruses, and other microorganisms living in or on an organism. It adds another biological layer beyond a person’s own deoxyribonucleic acid.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Microbiome"
+      ]
+    },
+    {
+      "term": "Middleware",
+      "aliases": [
+        "evidence middleware",
+        "middleware report"
+      ],
+      "definition": "An intermediate product between raw evidence and final writing. In this case, it is a large evidence report that shorter arguments rest on.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Middleware"
+      ]
+    },
+    {
+      "term": "Milbloggers",
+      "aliases": [
+        "Russian military bloggers"
+      ],
+      "definition": "Milbloggers are informal military commentators, often posting on social media about war or military operations. In this workshop the term mainly refers to Russia- and Ukraine-war-related Telegram commentators.",
+      "aira_source_terms": [
+        "Milbloggers"
+      ],
+      "workshop_required_terms": [],
+      "sweep_terms": []
+    },
+    {
+      "term": "Missingness",
+      "aliases": [
+        "missing data"
+      ],
+      "definition": "Missingness describes where expected data is absent, such as blank dates or unknown source types. Patterns of missingness can bias analysis if they are ignored.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [
+        "Missingness"
+      ],
+      "sweep_terms": []
+    },
+    {
+      "term": "Mixed methods",
+      "aliases": [],
+      "definition": "Mixed methods combine quantitative approaches, such as counting and clustering, with qualitative approaches, such as close reading and expert interpretation. The combination helps balance scale with context.",
+      "aira_source_terms": [
+        "Mixed methods"
+      ],
+      "workshop_required_terms": [],
+      "sweep_terms": []
+    },
+    {
+      "term": "Model build",
+      "aliases": [
+        "dated build",
+        "model version"
+      ],
+      "definition": "A specific released version of an artificial intelligence model. Recording the build matters because a later model with the same general name may behave differently.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Model build"
+      ]
+    },
+    {
+      "term": "Model call",
+      "aliases": [
+        "per call",
+        "model request"
+      ],
+      "definition": "One request sent to an artificial intelligence model and its response. In this guide, batching documents changes how many texts are handled in each request.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Model call"
+      ]
+    },
+    {
+      "term": "Model identifier",
+      "aliases": [
+        "exact identifier"
+      ],
+      "definition": "The precise name or code a tool uses to select a specific artificial intelligence model. These names can change often, so recording the exact identifier supports reproducibility.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Model identifier"
+      ]
+    },
+    {
+      "term": "Model provider",
+      "aliases": [
+        "AI provider",
+        "vendor"
+      ],
+      "definition": "The company or service that runs the artificial intelligence model and receives the prompts and context sent by the tool.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Model provider"
+      ]
+    },
+    {
+      "term": "Model selection",
+      "aliases": [
+        "Modelselectie"
+      ],
+      "definition": "Model selection is the process of choosing which artificial intelligence model best fits a task. The choice depends on quality, speed, cost, privacy, and how much review is required.",
+      "aira_source_terms": [
+        "Modelselectie"
+      ],
+      "workshop_required_terms": [],
+      "sweep_terms": []
+    },
+    {
+      "term": "Monograph",
+      "aliases": [
+        "academic monograph",
+        "scholarly book"
+      ],
+      "definition": "A detailed book-length study on a specific topic, usually written by one author or a small group of authors.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Monograph"
+      ]
+    },
+    {
+      "term": "MTProto",
+      "aliases": [
+        "Telegram protocol"
+      ],
+      "definition": "MTProto is the protocol used by Telegram clients to communicate with Telegram servers. It matters when collecting Telegram channel content through software rather than through the normal app interface.",
+      "aira_source_terms": [
+        "MTProto"
+      ],
+      "workshop_required_terms": [],
+      "sweep_terms": []
+    },
+    {
+      "term": "Multi-Criteria Decision Analysis",
+      "aliases": [
+        "MCDA"
+      ],
+      "definition": "Multi-Criteria Decision Analysis (MCDA) is a method for comparing options across several criteria, such as cost, quality, speed, and risk. It makes tradeoffs explicit rather than hiding them in an overall impression.",
+      "aira_source_terms": [
+        "MCDA (Multi-Criteria Decision Analysis)"
+      ],
+      "workshop_required_terms": [],
+      "sweep_terms": []
+    },
+    {
+      "term": "Multidimensional taxonomy",
+      "aliases": [
+        "multi-dimensional taxonomy"
+      ],
+      "definition": "A classification scheme that describes the same item along several independent axes at once. Instead of one path down a tree, a case receives positions on multiple dimensions.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Multi-dimensional taxonomy",
+        "Multidimensional taxonomy"
+      ]
+    },
+    {
+      "term": "Multi-Dimensional Taxonomy Development Framework",
+      "aliases": [
+        "MDTDF"
+      ],
+      "definition": "The workshop’s framework for generating, refining, testing, and validating taxonomies that classify the same thing from several independent analytical perspectives.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Multi-Dimensional Taxonomy Development Framework"
+      ]
+    },
+    {
+      "term": "Multiple Hypotheses Generator",
+      "aliases": [
+        "MHG"
+      ],
+      "definition": "The Multiple Hypotheses Generator (MHG) is a structured method for producing many possible explanations by combining different answers to who, what, and why questions. It encourages breadth before narrowing to the most plausible options.",
+      "aira_source_terms": [
+        "MHG (Multiple Hypotheses Generator®)"
+      ],
+      "workshop_required_terms": [],
+      "sweep_terms": []
+    },
+    {
+      "term": "Murderboard",
+      "aliases": [
+        "murderboard skill",
+        "murderboarding",
+        "stress test"
+      ],
+      "definition": "A deliberately tough review session where people or models try to find weaknesses, overlaps, missing cases, or bad assumptions in a draft taxonomy or argument.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Murderboard"
+      ]
+    },
+    {
+      "term": "N",
+      "aliases": [
+        "count",
+        "number of cases",
+        "sample size",
+        "small N"
+      ],
+      "definition": "The number of cases, records, people, or observations being counted or analyzed. A small N can make conclusions fragile because one missing or changed item may alter the result.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "N",
+        "Small N"
+      ]
+    },
+    {
+      "term": "Named Entity Recognition",
+      "aliases": [
+        "NER"
+      ],
+      "definition": "Named Entity Recognition (NER) automatically identifies names of people, places, organizations, and similar items in text. It can struggle with spelling variants, translation, ambiguity, and languages with complex grammar.",
+      "aira_source_terms": [
+        "Named Entity Recognition (NER)"
+      ],
+      "workshop_required_terms": [],
+      "sweep_terms": []
+    },
+    {
+      "term": "Near-duplicate",
+      "aliases": [
+        "almost duplicate"
+      ],
+      "definition": "A near-duplicate is content that is almost the same as another item, with small changes such as a new headline, added sentence, or reposted excerpt. Near-duplicates can distort counts if treated as fully independent.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [
+        "Near-duplicate"
+      ],
+      "sweep_terms": []
+    },
+    {
+      "term": "Negative case",
+      "aliases": [
+        "contrast case",
+        "plausible negative case"
+      ],
+      "definition": "An example that should not receive a given label. Naming negative cases tests whether a category can actually exclude anything, rather than applying to everything.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Negative case"
+      ]
+    },
+    {
+      "term": "Node",
+      "aliases": [
+        "graph node"
+      ],
+      "definition": "A point in a graph representing a thing, such as a state, organization, person, document, or concept. Connections between nodes represent relationships or events.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Node"
+      ]
+    },
+    {
+      "term": "Node.js",
+      "aliases": [
+        "JavaScript runtime",
+        "Node"
+      ],
+      "definition": "Software that lets JavaScript programs run outside a web browser. The setup note says participants do not need it for this workshop path.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Node.js"
+      ]
+    },
+    {
+      "term": "Non-destructive filtering",
+      "aliases": [
+        "filter without deleting",
+        "label never delete"
+      ],
+      "definition": "A filtering practice where records are kept and given labels instead of being removed. This lets you change decisions later and audit what happened.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Non-destructive filtering"
+      ]
+    },
+    {
+      "term": "Normalization",
+      "aliases": [
+        "standardization"
+      ],
+      "definition": "Normalization means converting different forms of the same kind of information into a consistent format. Examples include standard date formats, consistent place names, or unified spelling variants.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [
+        "Normalization"
+      ],
+      "sweep_terms": []
+    },
+    {
+      "term": "Null finding",
+      "aliases": [
+        "negative finding",
+        "null result"
+      ],
+      "definition": "A result showing that an expected relationship was not found. It is still a finding because it says the evidence did not support the proposed pattern.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Null finding"
+      ]
+    },
+    {
+      "term": "Numerator",
+      "aliases": [
+        "count being measured",
+        "top number of a fraction"
+      ],
+      "definition": "The part of a total that is being counted in a ratio or percentage. It is the number being compared to the denominator.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Numerator"
+      ]
+    },
+    {
+      "term": "Observational bias",
+      "aliases": [
+        "measurement bias",
+        "search bias"
+      ],
+      "definition": "A systematic distortion caused by what you are able or willing to observe. If your search only covers easy sources, your conclusions may reflect search limits rather than the real field.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Observational bias"
+      ]
+    },
+    {
+      "term": "Omics",
+      "aliases": [
+        "the omics"
+      ],
+      "definition": "A family of approaches that measure whole biological layers at once, such as genomes or proteomes, then study how the layers connect. The workshop uses this as an analogy for measuring layers of conflict.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Omics"
+      ]
+    },
+    {
+      "term": "One dimension wearing two hats",
+      "aliases": [
+        "wearing two hats"
+      ],
+      "definition": "A workshop metaphor for a taxonomy dimension that is trying to represent two overlapping ideas at once and should probably be merged or redesigned.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "One dimension wearing two hats"
+      ]
+    },
+    {
+      "term": "Ontology",
+      "aliases": [],
+      "definition": "An ontology is a structured description of concepts and the relationships among them. Compared with a simple taxonomy, it usually says more about how categories connect.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [
+        "Ontology"
+      ],
+      "sweep_terms": []
+    },
+    {
+      "term": "OODA loop",
+      "aliases": [
+        "Observe, Orient, Decide, Act"
+      ],
+      "definition": "The Observe, Orient, Decide, Act (OODA) loop is a model of how information turns into action. It is often used in military and competitive contexts to discuss decision speed and adaptation.",
+      "aira_source_terms": [
+        "OODA-loop"
+      ],
+      "workshop_required_terms": [],
+      "sweep_terms": []
+    },
+    {
+      "term": "Open access",
+      "aliases": [
+        "open-access status"
+      ],
+      "definition": "A publication status indicating that a work can be read online without a subscription or payment. Databases often let users filter by open-access status.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Open access"
+      ]
+    },
+    {
+      "term": "OpenAlex",
+      "aliases": [],
+      "definition": "OpenAlex is an open catalog of scholarly works, authors, institutions, and related research metadata. Participants may use it to find or enrich information about academic publications.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [
+        "OpenAlex"
+      ],
+      "sweep_terms": []
+    },
+    {
+      "term": "Open Graph",
+      "aliases": [
+        "Facebook Open Graph"
+      ],
+      "definition": "A system for describing web pages and objects with structured properties so platforms can understand and display them consistently. The deck lists it as one corporate knowledge-graph effort.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Open Graph"
+      ]
+    },
+    {
+      "term": "Open seam",
+      "aliases": [
+        "known unfinished seam",
+        "stated open seam"
+      ],
+      "definition": "A deliberately stated gap, limitation, or unfinished part of a pipeline, shown next to the result instead of hidden elsewhere.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Open seam"
+      ]
+    },
+    {
+      "term": "Open Source Intelligence",
+      "aliases": [
+        "OSINT"
+      ],
+      "definition": "Open Source Intelligence (OSINT) is intelligence drawn from publicly available information, such as news, social media, public records, and commercial imagery. Public availability does not remove the need for verification and ethics.",
+      "aira_source_terms": [
+        "OSINT (Open Source Intelligence)"
+      ],
+      "workshop_required_terms": [],
+      "sweep_terms": []
+    },
+    {
+      "term": "Open subcategory",
+      "aliases": [
+        "open slot",
+        "residual category"
+      ],
+      "definition": "A category reserved for relevant cases that do not fit the current named categories. It prevents unexpected material from being silently dropped, but it must be monitored.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Open subcategory"
+      ]
+    },
+    {
+      "term": "Open-weight model",
+      "aliases": [
+        "open weights"
+      ],
+      "definition": "An artificial intelligence model whose internal learned numbers are made available for others to run or adapt. This differs from a closed service where users can send prompts but cannot host the model.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Open-weight model"
+      ]
+    },
+    {
+      "term": "Orthogonal axes",
+      "aliases": [
+        "independent axes",
+        "perpendicular axes"
+      ],
+      "definition": "Dimensions that vary independently, so knowing a case’s position on one axis does not determine its position on another. In taxonomy work, they help avoid counting the same distinction twice.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Orthogonal axes"
+      ]
+    },
+    {
+      "term": "Orthogonal plurality",
+      "aliases": [
+        "Orthogonale plurality"
+      ],
+      "definition": "Orthogonal plurality means using multiple perspectives that add different information rather than repeating the same distinction. It is useful when designing taxonomies, hypotheses, or prompts that should capture genuinely different angles.",
+      "aira_source_terms": [
+        "Orthogonale plurality"
+      ],
+      "workshop_required_terms": [],
+      "sweep_terms": []
+    },
+    {
+      "term": "Outlier",
+      "aliases": [],
+      "definition": "An outlier is a record or value that differs sharply from the rest. Outliers can be errors, rare but important cases, or early signs of change.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [
+        "Outlier"
+      ],
+      "sweep_terms": []
+    },
+    {
+      "term": "Output contract",
+      "aliases": [
+        "required output format"
+      ],
+      "definition": "A precise instruction for what a model or pipeline must return, such as columns, field names, or JavaScript Object Notation structure. It makes outputs easier to check, combine, and rerun.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Output contract"
+      ]
+    },
+    {
+      "term": "Over-tagging",
+      "aliases": [
+        "over-tag"
+      ],
+      "definition": "Assigning too many labels to a text, including weak or indirect matches. This can make later analysis misleading.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Over-tagging"
+      ]
+    },
+    {
+      "term": "OWL",
+      "aliases": [
+        "Web Ontology Language"
+      ],
+      "definition": "A standard language for writing ontologies on the web. It lets people define classes, relationships, and rules in a machine-readable form.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "OWL"
+      ]
+    },
+    {
+      "term": "Pagination",
+      "aliases": [
+        "paged results",
+        "result pages"
+      ],
+      "definition": "The practice of splitting search results into pages. When collecting many records, you may need code to move through all pages and retrieve everything.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Pagination"
+      ]
+    },
+    {
+      "term": "Paper mill",
+      "aliases": [
+        "paper-mill product"
+      ],
+      "definition": "An organization or scheme that produces fraudulent or low-quality academic papers for publication. Paper mills can create fake data, fake authorship, or manipulated peer review.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Paper mill"
+      ]
+    },
+    {
+      "term": "Paragraph-based chunking",
+      "aliases": [],
+      "definition": "Paragraph-based chunking splits text at natural paragraph breaks. It helps preserve meaning better than cutting at a fixed number of characters or tokens.",
+      "aira_source_terms": [
+        "Paragraph-based chunking"
+      ],
+      "workshop_required_terms": [],
+      "sweep_terms": []
+    },
+    {
+      "term": "Paraphrase and verbatim text",
+      "aliases": [
+        "paraphrasing",
+        "direct quote"
+      ],
+      "definition": "A paraphrase restates an idea in new words, while verbatim text repeats the original wording exactly. Use verbatim wording when exact language matters, and paraphrase when summarizing meaning.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [
+        "Paraphrase",
+        "Verbatim"
+      ],
+      "sweep_terms": []
+    },
+    {
+      "term": "Parser",
+      "aliases": [
+        "JSON parser",
+        "output parser"
+      ],
+      "definition": "Software that reads structured text and turns it into data fields a program can use. If the output format changes or breaks, a parser may fail or misread the result.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Parser"
+      ]
+    },
+    {
+      "term": "Paso Doble",
+      "aliases": [
+        "human-model iteration"
+      ],
+      "definition": "Paso Doble is a shorthand for an iterative workflow where a model proposes, a person critiques, the model revises, and the person validates. The value comes from repeated interaction, not one-shot automation.",
+      "aira_source_terms": [
+        "Paso Doble"
+      ],
+      "workshop_required_terms": [],
+      "sweep_terms": []
+    },
+    {
+      "term": "Patent citation",
+      "aliases": [
+        "citing patents"
+      ],
+      "definition": "A link between a patent and a scholarly work or another patent. Patent citations can show where research is connected to inventions, technology, or commercial applications.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Patent citation"
+      ]
+    },
+    {
+      "term": "Patent record",
+      "aliases": [
+        "patent database record",
+        "patent literature"
+      ],
+      "definition": "Information about patents, such as inventions, applicants, dates, and classifications. It is a different body of evidence from scholarly publications.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Patent record"
+      ]
+    },
+    {
+      "term": "PATH",
+      "aliases": [
+        "command search path",
+        "on your PATH"
+      ],
+      "definition": "The list of folders your terminal searches when you type a command. If a tool is installed but not on this list, the terminal may say “command not found.”",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "PATH"
+      ]
+    },
+    {
+      "term": "Peer-reviewed journal",
+      "aliases": [
+        "peer review",
+        "refereed journal"
+      ],
+      "definition": "An academic journal where submitted articles are evaluated by other specialists before publication. Peer review is a quality filter, but it does not guarantee that a claim is correct.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Peer-reviewed journal"
+      ]
+    },
+    {
+      "term": "Persistent storage",
+      "aliases": [
+        "persists between sessions"
+      ],
+      "definition": "Saved space where files remain available after you close and reopen the service, instead of disappearing at the end of a session.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Persistent storage"
+      ]
+    },
+    {
+      "term": "Phenotype",
+      "aliases": [
+        "observable traits"
+      ],
+      "definition": "The observable characteristics or behavior of an organism or system. In the workshop analogy, phenotype is the visible outcome produced by deeper layers.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Phenotype"
+      ]
+    },
+    {
+      "term": "Pipeline",
+      "aliases": [
+        "analysis pipeline",
+        "classification pipeline",
+        "data pipeline",
+        "research pipeline",
+        "workshop pipeline"
+      ],
+      "definition": "A sequence of recorded steps that transforms inputs into outputs, such as collecting records, labeling them, splitting text, classifying it, and producing evidence.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Analysis pipeline",
+        "Pipeline",
+        "Research pipeline"
+      ]
+    },
+    {
+      "term": "Pipe-separated",
+      "aliases": [
+        "pipe character",
+        "pipe-separated list"
+      ],
+      "definition": "A text format where values are separated by the vertical bar character, often used to show a path through categories.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Pipe-separated"
+      ]
+    },
+    {
+      "term": "Placeholder",
+      "aliases": [
+        "stub value"
+      ],
+      "definition": "A placeholder is temporary text or a temporary value used until the real content is available. It should be clearly marked so it is not mistaken for final information.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [
+        "Placeholder"
+      ],
+      "sweep_terms": []
+    },
+    {
+      "term": "Playwright",
+      "aliases": [],
+      "definition": "Playwright is a software library for automating web browsers. Participants or developers may use it to collect information from websites that require browser interaction.",
+      "aira_source_terms": [
+        "Playwright"
+      ],
+      "workshop_required_terms": [],
+      "sweep_terms": []
+    },
+    {
+      "term": "PowerShell",
+      "aliases": [
+        "Windows PowerShell"
+      ],
+      "definition": "A Windows command environment where users can type commands to manage the computer or install tools.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "PowerShell"
+      ]
+    },
+    {
+      "term": "Precision",
+      "aliases": [
+        "positive predictive value"
+      ],
+      "definition": "Precision is the share of items marked relevant by a model that truly are relevant. High precision means fewer false alarms and less irrelevant material for analysts to review.",
+      "aira_source_terms": [
+        "Precision"
+      ],
+      "workshop_required_terms": [],
+      "sweep_terms": []
+    },
+    {
+      "term": "Precision oncology",
+      "aliases": [
+        "molecular oncology"
+      ],
+      "definition": "Cancer treatment that uses molecular features of a tumor to choose therapy, rather than relying only on where the tumor is located. The workshop uses it as an analogy for classifying conflict by mechanism.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Precision oncology"
+      ]
+    },
+    {
+      "term": "Predicate logic",
+      "aliases": [
+        "first-order logic"
+      ],
+      "definition": "A formal way to write statements about objects and their properties or relationships. It underlies many knowledge-representation systems because it makes the meaning of statements explicit.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Predicate logic"
+      ]
+    },
+    {
+      "term": "Pre-Mortem",
+      "aliases": [
+        "premortem analysis"
+      ],
+      "definition": "A Pre-Mortem asks a team to imagine that its analysis later proved wrong and then explain why. This helps identify hidden weaknesses before decisions are made.",
+      "aira_source_terms": [
+        "Pre-Mortem"
+      ],
+      "workshop_required_terms": [],
+      "sweep_terms": []
+    },
+    {
+      "term": "Priors",
+      "aliases": [
+        "prior assumptions",
+        "starting assumptions"
+      ],
+      "definition": "Beliefs or expectations you bring before looking at the evidence. In the workshop, priors can shape the categories you build and therefore what you later notice.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Priors"
+      ]
+    },
+    {
+      "term": "Programmatically",
+      "aliases": [
+        "by code",
+        "query programmatically"
+      ],
+      "definition": "Done by writing code rather than clicking manually in a website. Programmatic access lets you repeat searches or collect many records consistently.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Programmatically"
+      ]
+    },
+    {
+      "term": "Prompt",
+      "aliases": [
+        "instruction",
+        "prompt engineering"
+      ],
+      "definition": "A prompt is the instruction or question given to a language model. Prompt engineering means designing that instruction carefully, often with examples, rules, and output requirements.",
+      "aira_source_terms": [
+        "Prompt engineering"
+      ],
+      "workshop_required_terms": [
+        "Prompt"
+      ],
+      "sweep_terms": []
+    },
+    {
+      "term": "Prompt caching",
+      "aliases": [
+        "cached prompt",
+        "cached tokens",
+        "cache the system prompt"
+      ],
+      "definition": "A cost-saving method where repeated parts of a prompt are reused by the artificial intelligence service instead of fully processed again. It matters when the same long taxonomy is sent in many calls.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Prompt caching"
+      ]
+    },
+    {
+      "term": "Proteome",
+      "aliases": [
+        "protein layer"
+      ],
+      "definition": "The full set of proteins present or produced in a cell, tissue, or organism. It shows what has actually been built from genetic instructions.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Proteome"
+      ]
+    },
+    {
+      "term": "Provenance and source attribution",
+      "aliases": [
+        "bron-attributie",
+        "primary source",
+        "secondary source",
+        "traceability"
+      ],
+      "definition": "Provenance means tracking where a claim or item came from, including whether it is a primary source or a secondary source. Good attribution, citation, and traceability let readers verify the path from evidence to claim.",
+      "aira_source_terms": [
+        "Provenance / bron-attributie"
+      ],
+      "workshop_required_terms": [
+        "Primary source",
+        "Secondary source",
+        "Traceability"
+      ],
+      "sweep_terms": []
+    },
+    {
+      "term": "Proximity search",
+      "aliases": [
+        "proximity operator",
+        "near operator",
+        "NEAR",
+        "ADJ5",
+        "W/5"
+      ],
+      "definition": "A search method that requires words to appear close to each other, not merely somewhere in the same document. It improves precision when simple AND would return loosely related results.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Proximity operator",
+        "Proximity search"
+      ]
+    },
+    {
+      "term": "Prozrachnoye pole boya",
+      "aliases": [
+        "transparent battlefield"
+      ],
+      "definition": "Prozrachnoye pole boya is Russian for “transparent battlefield,” the idea that sensors, drones, and digital traces make concealment much harder in modern war. In this workshop it is a Russia-related military analysis concept.",
+      "aira_source_terms": [
+        "Prozrachnoye pole boya"
+      ],
+      "workshop_required_terms": [],
+      "sweep_terms": []
+    },
+    {
+      "term": "PubTator3",
+      "aliases": [
+        "PubTator"
+      ],
+      "definition": "A biomedical text-mining system that identifies entities such as genes, diseases, and chemicals and links them to standard terminologies. The deck uses it as an example combining taxonomy and relations.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "PubTator3"
+      ]
+    },
+    {
+      "term": "Pydantic",
+      "aliases": [],
+      "definition": "Pydantic is a Python library for checking whether data matches expected fields and data types. It helps catch malformed model outputs or files before they move through a pipeline.",
+      "aira_source_terms": [
+        "Pydantic"
+      ],
+      "workshop_required_terms": [],
+      "sweep_terms": []
+    },
+    {
+      "term": "Quantization",
+      "aliases": [
+        "FP8",
+        "INT4",
+        "quantised model",
+        "quantized model"
+      ],
+      "definition": "A way to make an artificial intelligence model smaller or faster by storing its internal numbers with fewer bits. Low-precision formats can reduce cost but may change outputs.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Quantization"
+      ]
+    },
+    {
+      "term": "Query",
+      "aliases": [
+        "search request"
+      ],
+      "definition": "A query is a request for information from a search system, database, or model. A good query states clearly what you want and may include filters or search logic.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [
+        "Query"
+      ],
+      "sweep_terms": []
+    },
+    {
+      "term": "Query band",
+      "aliases": [
+        "query group",
+        "search band"
+      ],
+      "definition": "A grouped part of a larger search strategy. The seed corpus uses bands so different parts of the search can be logged and sampled separately.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Query band"
+      ]
+    },
+    {
+      "term": "Query client",
+      "aliases": [
+        "model query client"
+      ],
+      "definition": "A tool mainly used to send questions to artificial intelligence models and compare their replies, rather than to act across files and folders like a coding assistant.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Query client"
+      ]
+    },
+    {
+      "term": "Query ledger",
+      "aliases": [
+        "search log"
+      ],
+      "definition": "A query ledger records the searches, prompts, filters, dates, and decisions used during analysis. It supports transparency and makes it easier to repeat or audit the work.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [
+        "Query ledger"
+      ],
+      "sweep_terms": []
+    },
+    {
+      "term": "Random and stratified samples",
+      "aliases": [
+        "random sample",
+        "stratified sample"
+      ],
+      "definition": "A random sample selects items by chance; a stratified sample first divides data into groups and samples within each group. Stratified sampling helps ensure important groups are represented.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [
+        "Random sample",
+        "Stratified sample"
+      ],
+      "sweep_terms": []
+    },
+    {
+      "term": "Rate limit",
+      "aliases": [
+        "API rate limit",
+        "query rate limit",
+        "quota",
+        "usage limit",
+        "weekly limit"
+      ],
+      "definition": "A rule that restricts how many requests you can make to a service in a given time. It can make large-scale downloading or model use slow or difficult.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Rate limit"
+      ]
+    },
+    {
+      "term": "Raw agreement",
+      "aliases": [
+        "percent agreement",
+        "percentage agreement",
+        "plain agreement"
+      ],
+      "definition": "The simple percentage of cases where two coders gave the same answer, before correcting for agreement that could happen by chance.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Raw agreement"
+      ]
+    },
+    {
+      "term": "RDF triple",
+      "aliases": [
+        "Resource Description Framework triple",
+        "subject-predicate-object triple"
+      ],
+      "definition": "A three-part machine-readable statement: subject, predicate, object. For example, “Jaguar – type – Mammal” is a triple that software can query.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "RDF triple"
+      ]
+    },
+    {
+      "term": "Readiness state",
+      "aliases": [
+        "readiness status",
+        "status color"
+      ],
+      "definition": "A displayed status showing how complete or ready a stage is. In the workshop, readiness is not the same as quality.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Readiness state"
+      ]
+    },
+    {
+      "term": "README",
+      "aliases": [
+        "README file",
+        "read-me file"
+      ],
+      "definition": "A file that explains what a dataset, code package, or project contains and how to use it.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "README"
+      ]
+    },
+    {
+      "term": "Re-annotation",
+      "aliases": [
+        "expert re-annotation",
+        "second annotation"
+      ],
+      "definition": "Annotating the same material again, often by experts, to check or revise earlier labels.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Re-annotation"
+      ]
+    },
+    {
+      "term": "Recall",
+      "aliases": [
+        "sensitivity"
+      ],
+      "definition": "Recall is the share of all truly relevant items that a model successfully finds. High recall means fewer important items are missed, though it may allow more irrelevant items through.",
+      "aira_source_terms": [
+        "Recall"
+      ],
+      "workshop_required_terms": [],
+      "sweep_terms": []
+    },
+    {
+      "term": "Recall arm",
+      "aliases": [
+        "independent harvest arm",
+        "recall arms"
+      ],
+      "definition": "One of several broad, separate collection attempts designed to find as much relevant material as possible before narrowing it later.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Recall arm"
+      ]
+    },
+    {
+      "term": "Record",
+      "aliases": [
+        "row"
+      ],
+      "definition": "A record is one complete entry in a dataset, such as one document, chunk, or annotation result. In a table, a record usually appears as a row.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [
+        "Record"
+      ],
+      "sweep_terms": []
+    },
+    {
+      "term": "Red Team",
+      "aliases": [
+        "adversarial analysis"
+      ],
+      "definition": "A Red Team is a person or group assigned to challenge assumptions, plans, or analysis from an opposing perspective. The goal is better judgment, not winning an argument.",
+      "aira_source_terms": [
+        "Red Team"
+      ],
+      "workshop_required_terms": [],
+      "sweep_terms": []
+    },
+    {
+      "term": "Redundancy elimination",
+      "aliases": [
+        "merge overlapping dimensions",
+        "remove overlapping dimensions"
+      ],
+      "definition": "The step of removing or combining categories that capture the same idea, so the taxonomy does not count the same feature twice.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Redundancy elimination"
+      ]
+    },
+    {
+      "term": "Reflexive control",
+      "aliases": [
+        "Russian strategic influence"
+      ],
+      "definition": "Reflexive control is a Russian strategic concept about shaping an opponent's perceptions so the opponent chooses the action you want. In this workshop it is used only in the context of Russian security thought.",
+      "aira_source_terms": [
+        "Reflexive control"
+      ],
+      "workshop_required_terms": [],
+      "sweep_terms": []
+    },
+    {
+      "term": "Relation type",
+      "aliases": [
+        "relationship type",
+        "typed relation"
+      ],
+      "definition": "A named kind of connection between two things, such as causes, prevents, treats, or interacts with. The label on the connection is part of the information.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Relation type"
+      ]
+    },
+    {
+      "term": "Relevance screening",
+      "aliases": [
+        "Pass 1",
+        "relevantie-screening",
+        "gatekeeping"
+      ],
+      "definition": "Relevance screening is a first-pass decision about whether a text is worth deeper analysis. It acts as gatekeeping: it should avoid missing important material while reducing obvious noise.",
+      "aira_source_terms": [
+        "Pass 1 (relevantie-screening)",
+        "Relevantie-screening"
+      ],
+      "workshop_required_terms": [
+        "Gatekeeping"
+      ],
+      "sweep_terms": []
+    },
+    {
+      "term": "Replication",
+      "aliases": [
+        "replicate",
+        "replication attempt"
+      ],
+      "definition": "Repeating a study’s test or analysis to see whether the original finding holds up. A finding that fails to replicate may have been wrong, fragile, or dependent on unreported conditions.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Replication"
+      ]
+    },
+    {
+      "term": "Reproducibility",
+      "aliases": [
+        "repeatability"
+      ],
+      "definition": "Reproducibility means another person can repeat the workflow and reach the same or comparable results. It depends on saved data, code, prompts, settings, and documentation.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [
+        "Reproducibility"
+      ],
+      "sweep_terms": []
+    },
+    {
+      "term": "Request for Information",
+      "aliases": [
+        "RFI"
+      ],
+      "definition": "A Request for Information (RFI) is a formal request for additional collection or reporting to answer a specific information need. It is mainly used in intelligence and military workflows.",
+      "aira_source_terms": [
+        "RFI (Request for Information)"
+      ],
+      "workshop_required_terms": [],
+      "sweep_terms": []
+    },
+    {
+      "term": "Research infrastructure",
+      "aliases": [
+        "national research infrastructure"
+      ],
+      "definition": "The people, funding, institutions, tools, training, and routines that let a field keep producing knowledge over time, rather than a single short-term study or grant.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Research infrastructure"
+      ]
+    },
+    {
+      "term": "Retraction",
+      "aliases": [
+        "retracted paper"
+      ],
+      "definition": "The formal withdrawal of a published scholarly work from the record because of serious error, misconduct, or unreliability. Retractions are counted in the deck as evidence of a trust problem.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Retraction"
+      ]
+    },
+    {
+      "term": "Retrieval-Augmented Generation",
+      "aliases": [
+        "RAG"
+      ],
+      "definition": "Retrieval-Augmented Generation (RAG) is a method where a language model first retrieves relevant source passages and then uses them to answer. It helps ground responses, but the retrieved passages and final answer still need checking.",
+      "aira_source_terms": [
+        "RAG (Retrieval-Augmented Generation)"
+      ],
+      "workshop_required_terms": [],
+      "sweep_terms": []
+    },
+    {
+      "term": "RIS",
+      "aliases": [
+        "Research Information Systems format"
+      ],
+      "definition": "A plain-text file format for moving citation records between databases and reference managers. Each reference is stored as tagged lines, such as title, author, year, and journal.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "RIS"
+      ]
+    },
+    {
+      "term": "Rolling limit",
+      "aliases": [
+        "rolling session limit"
+      ],
+      "definition": "A usage limit measured over a moving time window, rather than resetting at the same clock time every day.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Rolling limit"
+      ]
+    },
+    {
+      "term": "Router trap",
+      "aliases": [
+        "gatekeeping trap",
+        "routing trap"
+      ],
+      "definition": "A workflow problem where an early decision about what text goes where controls all later results. If that first routing step is wrong, later analysis may never see the missing material.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Router trap"
+      ]
+    },
+    {
+      "term": "RuBase",
+      "aliases": [],
+      "definition": "RuBase is a research platform and document collection used in the workshop for studying Russian, Western, and Eurasian foreign and security policy discourse. Participants use it as a shared data source for exercises.",
+      "aira_source_terms": [
+        "RuBase"
+      ],
+      "workshop_required_terms": [],
+      "sweep_terms": []
+    },
+    {
+      "term": "Russia-Ukraine War Taxonomy",
+      "aliases": [
+        "RUW Taxonomie",
+        "RUW Taxonomy"
+      ],
+      "definition": "The Russia-Ukraine War Taxonomy is a structured category system for annotating material related to the war and its wider political and security context. It provides shared labels so results can be compared across documents.",
+      "aira_source_terms": [
+        "RUW Taxonomie"
+      ],
+      "workshop_required_terms": [],
+      "sweep_terms": []
+    },
+    {
+      "term": "Satisficing",
+      "aliases": [
+        "good-enough stopping"
+      ],
+      "definition": "Satisficing means accepting the first explanation or option that seems good enough instead of continuing to search. It is understandable under time pressure, but it can cause analysts to miss better explanations.",
+      "aira_source_terms": [
+        "Satisficing"
+      ],
+      "workshop_required_terms": [],
+      "sweep_terms": []
+    },
+    {
+      "term": "Satori",
+      "aliases": [
+        "Microsoft Satori"
+      ],
+      "definition": "Microsoft’s knowledge graph project for representing entities and relationships used in search and question answering. It is listed as an industry example of knowledge representation.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Satori"
+      ]
+    },
+    {
+      "term": "Schema",
+      "aliases": [
+        "data structure"
+      ],
+      "definition": "A schema defines the expected structure of data, including fields, data types, and allowed values. Schemas help systems and people interpret records consistently.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [
+        "Schema"
+      ],
+      "sweep_terms": []
+    },
+    {
+      "term": "Scope",
+      "aliases": [
+        "bounds"
+      ],
+      "definition": "Scope defines what is included and excluded in a project, dataset, question, or taxonomy. Clear scope prevents a task from expanding beyond what can be analyzed responsibly.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [
+        "Scope"
+      ],
+      "sweep_terms": []
+    },
+    {
+      "term": "Scraping",
+      "aliases": [
+        "web scraping",
+        "website scraping"
+      ],
+      "definition": "Automatically collecting information from websites, often by using software to copy pages or fields into a dataset.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Scraping"
+      ]
+    },
+    {
+      "term": "Search basket",
+      "aliases": [
+        "query basket",
+        "term basket"
+      ],
+      "definition": "A grouped set of related search terms, usually synonyms or closely related phrases, used together when building a search query.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Search basket"
+      ]
+    },
+    {
+      "term": "Second-degree citation",
+      "aliases": [
+        "indirect citation"
+      ],
+      "definition": "A citation relationship one step removed from a direct citation, such as papers that cite papers that cited the original work. It is used to study broader influence through citation chains.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Second-degree citation"
+      ]
+    },
+    {
+      "term": "Seed corpus",
+      "aliases": [
+        "starter corpus"
+      ],
+      "definition": "A seed corpus is the initial set of documents used to start an analysis, search expansion, or model-assisted workflow. Its selection can strongly shape what later analysis finds.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [
+        "Seed corpus"
+      ],
+      "sweep_terms": []
+    },
+    {
+      "term": "Semantic search",
+      "aliases": [
+        "meaning-based search"
+      ],
+      "definition": "Semantic search finds material by meaning rather than exact words. It is useful when different languages, synonyms, or phrasing describe the same idea.",
+      "aira_source_terms": [
+        "Semantic search"
+      ],
+      "workshop_required_terms": [],
+      "sweep_terms": []
+    },
+    {
+      "term": "Semantic Web",
+      "aliases": [
+        "web of linked data"
+      ],
+      "definition": "A vision and set of standards for making web data machine-readable and linked by meaning, not just displayed as pages. Ontologies and Resource Description Framework data are central parts of it.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Semantic Web"
+      ]
+    },
+    {
+      "term": "Sentiment analysis",
+      "aliases": [
+        "Sentimentanalyse"
+      ],
+      "definition": "Sentiment analysis estimates the emotional tone or attitude in text, such as positive, negative, neutral, or mixed. It can miss irony, propaganda style, and context-specific signals.",
+      "aira_source_terms": [
+        "Sentimentanalyse"
+      ],
+      "workshop_required_terms": [],
+      "sweep_terms": []
+    },
+    {
+      "term": "Shell",
+      "aliases": [
+        "bash",
+        "zsh"
+      ],
+      "definition": "The command interpreter inside a terminal: it reads what you type and runs programs. Bash and zsh are common shells.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Shell"
+      ]
+    },
+    {
+      "term": "Sidecar file",
+      "aliases": [
+        "separate label file",
+        "sidecar label file"
+      ],
+      "definition": "A separate file that stores added information about records, such as labels or scores, while leaving the original records unchanged.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Sidecar file"
+      ]
+    },
+    {
+      "term": "Signal-to-noise ratio",
+      "aliases": [
+        "SNR"
+      ],
+      "definition": "A way to describe how much useful material appears compared with irrelevant material. In search, a high signal-to-noise ratio means many top results are relevant; a low one means noise dominates.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Signal-to-noise ratio"
+      ]
+    },
+    {
+      "term": "Silent drop",
+      "aliases": [
+        "silently dropped record"
+      ],
+      "definition": "A data-processing failure where a record disappears from later results without an obvious error message, often because two labels or keys do not match exactly.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Silent drop"
+      ]
+    },
+    {
+      "term": "site:.edu search operator",
+      "aliases": [
+        "site colon operator",
+        "site search"
+      ],
+      "definition": "A search command that limits results to a particular web domain. For example, site:.edu asks a search engine to return pages from educational institutions.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "site:.edu search operator"
+      ]
+    },
+    {
+      "term": "Slicing and dicing",
+      "aliases": [
+        "data slice",
+        "slicing"
+      ],
+      "definition": "A data-analysis metaphor for cutting the same collection into different views, such as by author, institution, country, or year.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Slicing and dicing"
+      ]
+    },
+    {
+      "term": "SNOMED CT",
+      "aliases": [
+        "Systematized Nomenclature of Medicine Clinical Terms"
+      ],
+      "definition": "A large clinical terminology used to record medical concepts consistently, such as diseases, findings, procedures, and body structures. It supports comparable medical records and research.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "SNOMED CT"
+      ]
+    },
+    {
+      "term": "Soft power",
+      "aliases": [
+        "persuasive power"
+      ],
+      "definition": "Influence achieved through attraction, persuasion, relationships, or legitimacy rather than force, threats, or payment.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Soft power"
+      ]
+    },
+    {
+      "term": "Source and source type",
+      "aliases": [
+        "data source"
+      ],
+      "definition": "A source is where information comes from; a source type is the kind of source, such as news, social media, official statement, academic article, or interview. Source type affects how evidence should be interpreted.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [
+        "Source",
+        "Source type"
+      ],
+      "sweep_terms": []
+    },
+    {
+      "term": "Stop word",
+      "aliases": [
+        "ignored search word"
+      ],
+      "definition": "A very common word that a search engine may ignore, such as “and” or “the.” If an operator is typed in the wrong form, a database may treat it as a stop word.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Stop word"
+      ]
+    },
+    {
+      "term": "Streetlight effect",
+      "aliases": [
+        "looking under the streetlamp",
+        "streetlamp problem"
+      ],
+      "definition": "A bias where people search where it is easiest to look, not where the answer is most likely to be. The workshop uses it as a metaphor for narrow literature searches.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Streetlight effect"
+      ]
+    },
+    {
+      "term": "Structured Analytic Techniques",
+      "aliases": [
+        "SAT"
+      ],
+      "definition": "Structured Analytic Techniques (SAT) are step-by-step methods designed to reduce common reasoning errors in analysis. They make assumptions, alternatives, and evidence handling more explicit.",
+      "aira_source_terms": [
+        "SAT (Structured Analytic Techniques)"
+      ],
+      "workshop_required_terms": [],
+      "sweep_terms": []
+    },
+    {
+      "term": "SWOT",
+      "aliases": [
+        "strengths, weaknesses, opportunities, threats"
+      ],
+      "definition": "SWOT is a simple framework for organizing strengths, weaknesses, opportunities, and threats. It is useful for quick strategic discussion, but it should not replace evidence-based analysis.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [
+        "SWOT"
+      ],
+      "sweep_terms": []
+    },
+    {
+      "term": "Systematic review",
+      "aliases": [
+        "systematic literature review"
+      ],
+      "definition": "A review of publications that follows an explicit, repeatable method for finding, selecting, and analyzing sources, rather than relying on informal reading.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Systematic literature review",
+        "Systematic review"
+      ]
+    },
+    {
+      "term": "System prompt",
+      "aliases": [],
+      "definition": "A system prompt is a high-priority instruction that sets a model's role, style, rules, or output format for a session. It differs from a normal user question because it guides the whole interaction.",
+      "aira_source_terms": [
+        "System prompt"
+      ],
+      "workshop_required_terms": [],
+      "sweep_terms": []
+    },
+    {
+      "term": "Tacit knowledge",
+      "aliases": [
+        "experiential know-how"
+      ],
+      "definition": "Knowledge gained through experience that may be hard to write down as formal rules, such as practical judgment or know-how.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Tacit knowledge"
+      ]
+    },
+    {
+      "term": "Taxon and taxonomy element",
+      "aliases": [
+        "taxon",
+        "taxonomy element"
+      ],
+      "definition": "A taxon is one named unit inside a taxonomy, such as a category or subcategory. A taxonomy element is any defined part of that taxonomy, including dimensions, levels, or taxa.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [
+        "Taxon",
+        "Taxonomy element"
+      ],
+      "sweep_terms": []
+    },
+    {
+      "term": "Taxonomic annotation",
+      "aliases": [
+        "Pass 2",
+        "taxonomic classification",
+        "classification"
+      ],
+      "definition": "Taxonomic annotation assigns detailed taxonomy labels to text that has passed relevance screening. It is a form of classification focused on placing evidence into a defined category system.",
+      "aira_source_terms": [
+        "Pass 2 (taxonomische annotatie)"
+      ],
+      "workshop_required_terms": [
+        "Classification",
+        "Taxonomic classification"
+      ],
+      "sweep_terms": []
+    },
+    {
+      "term": "Taxonomy",
+      "aliases": [
+        "Taxonomie"
+      ],
+      "definition": "A taxonomy is a structured system of categories used to classify material. It reflects design choices, so what it can reveal depends on what categories it includes.",
+      "aira_source_terms": [
+        "Taxonomie"
+      ],
+      "workshop_required_terms": [],
+      "sweep_terms": []
+    },
+    {
+      "term": "Taxonomy element abbreviation",
+      "aliases": [
+        "TE",
+        "2nd Level TE",
+        "3rd Level TE"
+      ],
+      "definition": "In this workshop, TE means taxonomy element: one named category or subcategory inside the taxonomy.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Taxonomy element abbreviation"
+      ]
+    },
+    {
+      "term": "Team A / Team B",
+      "aliases": [
+        "competing teams analysis"
+      ],
+      "definition": "Team A / Team B is an adversarial method where two separate groups analyze the same question independently. Comparing their conclusions can reveal how assumptions shape judgments.",
+      "aira_source_terms": [
+        "Team A / Team B"
+      ],
+      "workshop_required_terms": [],
+      "sweep_terms": []
+    },
+    {
+      "term": "Telethon",
+      "aliases": [],
+      "definition": "Telethon is a Python library for interacting with Telegram through MTProto. Developers may use it to collect or manage Telegram content in scripted workflows.",
+      "aira_source_terms": [
+        "Telethon"
+      ],
+      "workshop_required_terms": [],
+      "sweep_terms": []
+    },
+    {
+      "term": "Temperature",
+      "aliases": [
+        "sampling temperature"
+      ],
+      "definition": "Temperature is a model setting that controls how varied or predictable generated text is. Lower values make output more consistent; higher values make it more varied but potentially less stable.",
+      "aira_source_terms": [
+        "Temperature"
+      ],
+      "workshop_required_terms": [],
+      "sweep_terms": []
+    },
+    {
+      "term": "Tension matrix",
+      "aliases": [
+        "matrix of tensions"
+      ],
+      "definition": "A structured table meant to show tensions, conflicts, or tradeoffs among findings or categories. In the case study, it is named as a product not yet built.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Tension matrix"
+      ]
+    },
+    {
+      "term": "Text mining",
+      "aliases": [
+        "automated text analysis",
+        "machine reading"
+      ],
+      "definition": "Using software to extract patterns, facts, or categories from large amounts of text that would be too much to read manually.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Text mining"
+      ]
+    },
+    {
+      "term": "Thematic map",
+      "aliases": [
+        "strategic diagram"
+      ],
+      "definition": "A chart that places topic clusters on two axes, usually how developed they are and how connected they are to the rest of the field. It helps identify central, niche, basic, or emerging themes.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Thematic map"
+      ]
+    },
+    {
+      "term": "Things not strings",
+      "aliases": [
+        "entity-based representation",
+        "thing-based representation"
+      ],
+      "definition": "A phrase for treating information as real-world objects and relationships, not just as words in text. For example, a person, event, or place is represented as a thing with properties.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Things not strings"
+      ]
+    },
+    {
+      "term": "Threatened-consequence span",
+      "aliases": [
+        "consequence span",
+        "threatened consequence span"
+      ],
+      "definition": "In the Red Lines coding scheme, the passage that states what will happen if the boundary is crossed.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Threatened-consequence span"
+      ]
+    },
+    {
+      "term": "Threshold",
+      "aliases": [
+        "cutoff",
+        "score threshold"
+      ],
+      "definition": "A chosen cutoff value used to decide whether a score counts as included or excluded. Re-thresholding means changing that cutoff later.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Threshold"
+      ]
+    },
+    {
+      "term": "Throughput process",
+      "aliases": [
+        "throughput"
+      ],
+      "definition": "The ongoing work that happens between inputs and outputs: the activity or process itself, rather than what starts it or what it produces.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Throughput process"
+      ]
+    },
+    {
+      "term": "Time series",
+      "aliases": [
+        "time-series view",
+        "trend over time"
+      ],
+      "definition": "A set of measurements ordered by date or time, used to show how something changes across a period.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Time series"
+      ]
+    },
+    {
+      "term": "Token",
+      "aliases": [],
+      "definition": "A token is a unit of text processed by a language model, often a word or part of a word. Token counts affect how much text can fit into a prompt and how processing is measured.",
+      "aira_source_terms": [
+        "Token"
+      ],
+      "workshop_required_terms": [],
+      "sweep_terms": []
+    },
+    {
+      "term": "Tortured phrases",
+      "aliases": [
+        "AI-detection phrase artifacts"
+      ],
+      "definition": "Awkward substitute phrases that can appear when text is automatically paraphrased to hide copying or machine generation. They are used as warning signs in some publication-integrity checks.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Tortured phrases"
+      ]
+    },
+    {
+      "term": "Tradecraft Primer",
+      "aliases": [
+        "structured analytic techniques handbook"
+      ],
+      "definition": "The Tradecraft Primer is a guide to structured analytic techniques used in intelligence analysis. In the workshop, it is useful as background for methods that make reasoning more explicit.",
+      "aira_source_terms": [
+        "Tradecraft Primer"
+      ],
+      "workshop_required_terms": [],
+      "sweep_terms": []
+    },
+    {
+      "term": "Transcriptome",
+      "aliases": [
+        "RNA expression layer"
+      ],
+      "definition": "The full set of gene readouts active in a cell or organism at a given time. RNA means ribonucleic acid; this layer shows what parts of the genetic code are being used.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Transcriptome"
+      ]
+    },
+    {
+      "term": "Transliteration",
+      "aliases": [
+        "Transliteratie"
+      ],
+      "definition": "Transliteration converts text from one writing system into another, such as Cyrillic into Latin letters. Different transliterations of the same name can make search and entity recognition harder.",
+      "aira_source_terms": [
+        "Transliteratie"
+      ],
+      "workshop_required_terms": [],
+      "sweep_terms": []
+    },
+    {
+      "term": "Treemap and sunburst chart",
+      "aliases": [
+        "treemap",
+        "sunburst chart"
+      ],
+      "definition": "Treemaps and sunburst charts visualize hierarchical categories. A treemap uses nested rectangles, while a sunburst chart uses rings; both help show how parts fit into a larger structure.",
+      "aira_source_terms": [
+        "Sunburst chart"
+      ],
+      "workshop_required_terms": [
+        "Treemap"
+      ],
+      "sweep_terms": []
+    },
+    {
+      "term": "Trend analysis",
+      "aliases": [
+        "Trendanalyse"
+      ],
+      "definition": "Trend analysis tracks how topics, labels, or measurements change over time. It can reveal shifts in attention or behavior, but changes in data collection can also create false trends.",
+      "aira_source_terms": [
+        "Trendanalyse"
+      ],
+      "workshop_required_terms": [],
+      "sweep_terms": []
+    },
+    {
+      "term": "Truthiness",
+      "aliases": [
+        "plausibility without proof",
+        "seeming true"
+      ],
+      "definition": "The quality of sounding or feeling true without enough evidence. The workshop uses it as a warning about persuasive outputs that still need checking.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Truthiness"
+      ]
+    },
+    {
+      "term": "TSV",
+      "aliases": [
+        "tab-separated values"
+      ],
+      "definition": "Tab-separated values (TSV) is a table file format where tabs separate fields. It is similar to comma-separated values, but often handles comma-heavy text more cleanly.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [
+        "TSV"
+      ],
+      "sweep_terms": []
+    },
+    {
+      "term": "TV–TGV algorithm",
+      "aliases": [
+        "total variation–total generalized variation"
+      ],
+      "definition": "A mathematical reconstruction method used to turn scan measurements into an image while preserving useful boundaries. In the slide, it is compared with a weaker reconstruction method.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "TV–TGV algorithm"
+      ]
+    },
+    {
+      "term": "Ubuntu",
+      "aliases": [
+        "Ubuntu Linux"
+      ],
+      "definition": "A widely used version of Linux. In this guide, Windows users install Ubuntu through Windows Subsystem for Linux to get the kind of terminal the tools expect.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Ubuntu"
+      ]
+    },
+    {
+      "term": "UMLS",
+      "aliases": [
+        "Unified Medical Language System"
+      ],
+      "definition": "A system that links many biomedical vocabularies so concepts can be compared across databases. It helps connect different names and coding systems for similar medical ideas.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "UMLS"
+      ]
+    },
+    {
+      "term": "Unit of analysis",
+      "aliases": [
+        "analytic unit"
+      ],
+      "definition": "The unit of analysis is the thing being studied or counted, such as a document, paragraph, person, event, or organization. Choosing the wrong unit can distort results.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [
+        "Unit of analysis"
+      ],
+      "sweep_terms": []
+    },
+    {
+      "term": "Universal Dependencies",
+      "aliases": [
+        "UD"
+      ],
+      "definition": "A cross-language system for labeling grammatical relationships in sentences. It helps language tools analyze syntax consistently across many languages.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Universal Dependencies"
+      ]
+    },
+    {
+      "term": "University Affiliated Research Center",
+      "aliases": [
+        "UARC",
+        "UARCs"
+      ],
+      "definition": "A university-linked research center that works closely with the United States government on specialized long-term research and analysis.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "University Affiliated Research Center"
+      ]
+    },
+    {
+      "term": "Untagged escape",
+      "aliases": [
+        "no-label escape option",
+        "untagged label"
+      ],
+      "definition": "An allowed output when none of the taxonomy labels fits a text. It prevents forcing every passage into a category that may not apply.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Untagged escape"
+      ]
+    },
+    {
+      "term": "Vector database",
+      "aliases": [
+        "embedding database"
+      ],
+      "definition": "A vector database stores and searches embeddings efficiently. It is commonly used to find texts with similar meaning across large collections.",
+      "aira_source_terms": [
+        "Vector database"
+      ],
+      "workshop_required_terms": [],
+      "sweep_terms": []
+    },
+    {
+      "term": "Virtualization",
+      "aliases": [
+        "virtualisation"
+      ],
+      "definition": "A computer feature that lets one operating system run another operating-system environment inside it, such as Linux running inside Windows through Windows Subsystem for Linux.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Virtualization"
+      ]
+    },
+    {
+      "term": "Voennaya Mysl",
+      "aliases": [
+        "Military Thought"
+      ],
+      "definition": "Voennaya Mysl, meaning “Military Thought,” is a Russian military-theoretical journal. In this workshop it is relevant as a source for studying official Russian military strategy and doctrine discussions.",
+      "aira_source_terms": [
+        "Voennaya Mysl"
+      ],
+      "workshop_required_terms": [],
+      "sweep_terms": []
+    },
+    {
+      "term": "WACKO",
+      "aliases": [
+        "Weltanschauung Analysis of Contemporary Kremlin Ontologies"
+      ],
+      "definition": "WACKO is a project name used as a workshop case study for artificial-intelligence-assisted analysis of Russian strategic thinking. Participants can treat it as an example workflow rather than a general method name.",
+      "aira_source_terms": [
+        "WACKO"
+      ],
+      "workshop_required_terms": [],
+      "sweep_terms": []
+    },
+    {
+      "term": "Warning Problem",
+      "aliases": [
+        "warning file"
+      ],
+      "definition": "A Warning Problem is a documented intelligence question about a possible threat, including hypotheses, indicators, baselines, thresholds, and collection needs. It is mainly used in warning and watch-floor contexts.",
+      "aira_source_terms": [
+        "Warning Problem"
+      ],
+      "workshop_required_terms": [],
+      "sweep_terms": []
+    },
+    {
+      "term": "Watch floor",
+      "aliases": [
+        "operations watch"
+      ],
+      "definition": "A watch floor is a continuously staffed place where analysts monitor indicators and ongoing warning problems. It focuses on real-time awareness and escalation rather than deep long-form analysis.",
+      "aira_source_terms": [
+        "Watch floor"
+      ],
+      "workshop_required_terms": [],
+      "sweep_terms": []
+    },
+    {
+      "term": "Web of Science",
+      "aliases": [
+        "WoS"
+      ],
+      "definition": "A subscription database of scholarly publications and citations. Researchers use it to search literature, export records, and count publications or citations.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Web of Science"
+      ]
+    },
+    {
+      "term": "Windows Subsystem for Linux",
+      "aliases": [
+        "WSL"
+      ],
+      "definition": "Windows Subsystem for Linux (WSL) lets users run a Linux command-line environment inside Windows. Participants may use it to run tools or scripts that expect a Linux-style setup.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [
+        "WSL"
+      ],
+      "sweep_terms": []
+    },
+    {
+      "term": "WordNet",
+      "aliases": [
+        "WordNet lexical database"
+      ],
+      "definition": "A large lexical database that groups English words into meaning-based sets and records relationships among them. It is used in language technology and ontology examples.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "WordNet"
+      ]
+    },
+    {
+      "term": "Zotero",
+      "aliases": [
+        "citation manager",
+        "reference manager"
+      ],
+      "definition": "A tool for saving, organizing, annotating, and exporting research references and portable document format files. It turns search results into a reusable personal or shared library.",
+      "aira_source_terms": [],
+      "workshop_required_terms": [],
+      "sweep_terms": [
+        "Zotero"
+      ]
+    }
+  ]
+}

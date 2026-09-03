@@ -12,6 +12,10 @@ echo "== 1. regressions: flash / type floor / SVG class scoping =="
 python3 tools/check_regressions.py || fail=1
 
 echo
+echo "== 1b. glossary: authoritative coverage / full-surface ledger / A–Z integration =="
+python3 tools/audit_glossary.py || fail=1
+
+echo
 echo "== 2. inventory: png dumps, text walls, sub-floor labels =="
 python3 tools/slide_inventory.py --out /tmp/inventory_now.json || fail=1
 
