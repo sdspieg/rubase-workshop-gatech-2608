@@ -14,6 +14,7 @@ ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "resources" / "glossary.json"
 INDEX = ROOT / "index.html"
 SCRIPT = ROOT / "glossary.js"
+TOOLTIPS = ROOT / "glossary-tooltips.js"
 SOURCE = Path("/mnt/g/My Drive/Begrippenlijst.docx")
 
 
@@ -84,6 +85,14 @@ if "ABCDEFGHIJKLMNOPQRSTUVWXYZ" not in script:
 if "innerHTML" in script:
     fail("glossary renderer must not inject HTML")
 
+tooltip_script = TOOLTIPS.read_text(encoding="utf-8")
+if "MutationObserver" not in tooltip_script or "tabIndex = 0" not in tooltip_script:
+    fail("tooltip layer must cover dynamically inserted deck content and keyboard focus")
+html_pages = sorted(ROOT.glob("*.html"))
+missing_tooltips = [page.name for page in html_pages if 'src="glossary-tooltips.js"' not in page.read_text(encoding="utf-8")]
+if missing_tooltips:
+    fail("tooltip layer missing from: " + ", ".join(missing_tooltips))
+
 if SOURCE.exists():
     digest = hashlib.sha256(SOURCE.read_bytes()).hexdigest()
     if digest != meta["aira_source"]["sha256"]:
@@ -107,5 +116,6 @@ print(
     f"{len(entries)} entries; AIRA {len(set(aira))}/105; "
     f"workshop-required {len(set(required))}/76; "
     f"surface sweep {len(set(sweep))} included + {len(excluded)} excluded = 251; "
-    f"{meta['surface_sweep']['participant_characters_reviewed']:,} participant-facing characters reviewed"
+    f"{meta['surface_sweep']['participant_characters_reviewed']:,} participant-facing characters reviewed; "
+    f"tooltips loaded on {len(html_pages)}/{len(html_pages)} HTML pages"
 )
