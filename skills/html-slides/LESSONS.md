@@ -34,3 +34,41 @@ enforcing check is a lesson that will be unlearned; the "enforced by" column is 
 | 2026-09-02 | Worked examples across the deck never named their topic - a 3-D taxonomy figure, two blind generations, a Red Lines case. | rule SKILL.md 4c - no check yet |
 | 2026-09-02 | A deliberately empty chart ("guess first") read as a bug: "Why are these empty?" | rule SKILL.md 4c - say that you are withholding |
 | 2026-09-02 | Two Day-3 comments would have gone to the WRONG slide by number - a slide had been inserted since. Matched by elText instead. | rule SKILL.md 7 |
+| 2026-09-02 | A DIKW pyramid rebuild dropped the original's "top-2-only" red line; a wordmark rebuild dropped three original bullets. Both "looked rebuilt" but were never checked against the source. | rule SKILL.md 4d - no check yet |
+| 2026-09-02 | A rebuilt pipeline/pyramid appeared all at once instead of building step by step, on a slide that clearly needed it - across three separate decks, this is the single most-repeated correction (15+ instances). | rule SKILL.md 4d - no check yet |
+| 2026-09-02 | review_server.py's write_store() used one literal ".tmp" filename; two concurrent autosave POSTs (comment text + author name) raced on it, one lost FileNotFoundError, surfaced as "server write failed". | tmp filename now unique per-thread (pid+thread id) |
+| 2026-09-02 | review.js's "prefer an image under the pointer" rule unconditionally beat an .ob-note that geometrically overlapped a full-inset picture - 31 of 69 visible note/image targets unreachable on one deck. | resolveTarget() now returns an .ob-note over any image match |
+| 2026-09-02 | A closing `.ob-scrim` step on a MULTI-COMPONENT build (pyramid, pipeline, spiral) triggers `.slide:has(.ob-step:last-child.shown .ob-scrim) .ob-step:not(:last-child){visibility:hidden}` and wipes out the ENTIRE accumulated diagram, not just dims a picture. Correct for a single-image chart slide; wrong for anything built up over multiple steps. Shipped on 6 slides, survived box_collisions.py/verify_build.py/per-step screenshots, only caught by SDS clicking through the TRUE final state live. | no mechanical check yet - box_collisions.py/verify_build.py need a mode that reveals ALL frags at once (not per-step) and flags any `.ob-step` losing >0 rendered content when the scrim step is added |
+
+## 2026-09-02 – the review store is SHARED across decks and falls back to local-only
+
+**Symptom.** Asked to open a deck in feedback mode, I checked the comment store first and found
+`generic_deck/comments.json` holding a comment keyed `page: "index.html#2"` – a comment about a deck
+SDS had already rejected, sitting where a different deck would load it. `review.js` pushes the server's
+store into localStorage on page load, so opening the new deck would have adopted the wrong deck's
+comments.
+
+**Cause, from reading `review_server.py::_pick_store()` rather than inferring it.** The store path is
+resolved to a **hardcoded GaTech location**, `RuBase/Workshops/2026/GATech/OFFLINE-REVIEW/comments.json`,
+so **every deck that runs this server writes into the same file**. When that path is absent – which is
+the case for any other deck – it falls back to `ROOT / "comments.json"`, **local, beside the deck, not on
+Drive**, under a comment reading *"never fails to run"*.
+
+***That fallback is the defect, not a safety net: it is the branch that silently produces an unsynced,
+deck-local store.***
+
+**SDS's rule, 2026-09-02:** *"make sure every slidedeck has a separate (AND persistent  –  meaning copied
+to gdrive!) folder!!!"*
+
+**The fix (specified, not yet implemented – awaiting his go):**
+
+1. **One store per deck, on Drive:** `<deck>/review/comments.json`, resolved from the deck's OWN
+   directory, with the deck name embedded so a mismatched store is **detectable rather than silently
+   loaded**.
+2. **Refuse rather than fall back.** If the resolved store is not under Drive, stop and say so. *A
+   review server that always starts is worse than one that refuses, because the failure is invisible
+   until the comments are gone.*
+3. **Migrate** the existing 530-byte comment to the GaTech store it belongs to.
+
+**Related:** the skill already warns that starting the server with an empty store destroyed 25 comments.
+This is the same wound from the other side – starting it with the WRONG store.

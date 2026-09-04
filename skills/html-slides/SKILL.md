@@ -116,6 +116,51 @@ The same instinct covers a related defect: a slide that deliberately withholds a
 is withholding. Six empty bars read as a bug, not as an invitation, until the slide asks the question
 out loud.
 
+## 4d · Build-up is the default, and fidelity to the original is VERIFIED, not assumed
+
+Extracted 2026-09-02 from a cross-deck pattern analysis of 135 review comments across three decks
+(the GaTech workshop deck, `generic_deck`, and a CNS/OSINT deck) — these are not one-off complaints,
+they are the two most-repeated corrections SDS has given across every deck he has reviewed.
+
+🟥 **Every `.ob-pic` slide builds up, unless it is genuinely a single static figure.** *"Build up!!!!"*
+&middot; *"Needs to be built up - like I mentioned in the previous slide with explanatory boxes on the
+current box appearing and the disappearing"* &middot; *"You TOTALLY messed up the build up. Make sure
+ALL slides are 'built up'!!!!!"* &middot; *"NEEDS to be built up. ALWAYS. In ALL slides that have
+pipelines like this one."* A slide that shows its whole figure on the first click, with only the note
+text changing, has not been built up — every distinct component (a pyramid band, a pipeline stage, a
+diagram box) is its own `.ob-step` reveal per the house grammar in §4, with the explanatory box
+appearing and disappearing in step with it (already the `.ob-note` default — see §4/VISUAL_SPEC §2).
+Default to build-up for ANY diagram with more than one identifiable component; a single indivisible
+photo/chart with one caption is the only real exception.
+
+🟥 **"Rebuilt to look like the original" is a VERIFIED claim, not a rendered guess.** *"DOUBLE CHECK
+AGAINST THE ORIGINAL!!! ALWAYS!!!"* &middot; *"Whenever I ask you to replicate a ppt slide EXACTLY, you
+SHOULD verify that's the case!!! ALWAYS."* &middot; *"THIS needs the three bullets on the right from the
+original!!!"* &middot; *"Where are the two answers??!"* &middot; *"You cropped this very badly."* A
+rebuild that captures the gist but drops a bullet list, an annotation, a red line, a second half of a
+comparison, or the two-tone coloring of the source image has failed even though it "looks like a
+rebuild." **The check is mechanical, not impressionistic:** open the actual source image/slide text
+side by side with the new fragment and enumerate every distinct visual element in the original (every
+bullet, every label, every colored line, every callout) before writing a single line of the rebuild;
+after writing it, re-open the source and tick off that every element you listed is present in the
+fragment. State in your own summary which elements you verified present, not just "rebuilt to match."
+Missing this step, twice in one afternoon, produced a DIKW pyramid missing its "top-2-only" red line
+and a wordmark slide missing three original bullet points — both had to be redone.
+
+🟥 **Font sizes come from the shared CSS classes, never ad hoc per-slide values.** *"Is this
+css-compliant? Make it the standard."* &middot; *"font-sizes on this slide seem different from the
+other slides."* A slide-scoped override that happens to look fine in isolation still breaks the
+deck's visual consistency; reuse `h2`, `.sub`/`.deck-sub`, `.kicker`, `.ob-note .k`/`.d` sizing rather
+than inventing a new `font-size` for text that plays the same role as text elsewhere in the deck.
+
+🟥 **No text overflow, ever.** *"NO OVERFLOW!"* Verified by `render_audit.py`, not by eye — a box
+whose text visually looks fine at one viewport can clip at another; run the tool.
+
+🟢 **Hyperlink and QR-code anything the audience needs to act on.** *"I'd hyperlink all of these"*
+&middot; *"This slide needs a QR code for the Google Doc!"* A programme item, a resource list, a
+dashboard reference, or a form the audience is meant to open: make it a real link on the slide (and a
+QR code if the audience is in the room, not at a keyboard), not a URL typed in prose.
+
 ## 5 · Four traps, each of which has shipped a defect
 
 - 🟥 **Hidden states carry `transition:none`.** `autofit()` lights everything via `body.measuring` to

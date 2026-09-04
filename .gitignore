@@ -2,3 +2,5 @@ review.js
 *.bak-preghost
 .claude/state/
 .playwright-mcp/
+__pycache__/
+*.pyc
