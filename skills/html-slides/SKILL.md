@@ -1,6 +1,6 @@
 ---
 name: html-slides
-description: Build or repair SDS's HTML slide decks (GaTech workshop deck and its siblings) - rebuilding PowerPoint png-dump slides from the unzipped pptx /media assets, building slides up one component at a time with appearing/disappearing explanation boxes, making text-wall slides visual, and fixing small type and wasted screen. Use WHENEVER the task touches deck.html, a slide build-up, a "rebuild this slide", a review comment on a slide, or any HTML presentation in this house style. Carries four gates that refuse the defects that have already shipped once.
+description: Build, verify, or repair SDS's HTML slide decks. Use whenever work touches deck.html, presentation.html, slide build-up, review comments, visual QA, or shipping an HTML presentation in this house style. The skill requires fresh hash-bound state renders and eyes-on approval before deployment.
 ---
 
 # HTML slides, the way SDS wants them
@@ -12,9 +12,21 @@ had rejected, and a fix that had been made once came back because nothing was wa
 **Run the gates. Do not rely on remembering this file.**
 
 ```bash
-bash tools/preflight.sh [baseline.json]     # all gates
-python3 tools/slide_inventory.py --out /tmp/before.json    # baseline BEFORE you edit
+python3 tools/slide_inventory.py --deck deck.html --out /tmp/before.json  # BEFORE editing
+bash tools/preflight.sh /tmp/before.json deck.html presentation.html
 ```
+
+🟥 **`preflight.sh` is the shipping workflow, not merely a static lint.** It runs the full
+hash-bound verifier for every named or discovered `deck.html` and `presentation.html`. A first clean
+run deliberately stops after creating a **new** render directory and a PNG manifest covering state
+0 through the final state at 1280/1366/1440/1600. Read every named PNG, acknowledge the exact list
+with `deck_verify.py --eyes-on-file`, then rerun preflight. Only that second run can say
+`PREFLIGHT OK`.
+
+🟥 **Existing `qa/` images are never evidence.** A copied project can carry beautiful screenshots
+of a different deck. The renderer refuses an existing output directory; the receipt binds the HTML
+hash, manifest hash, every PNG hash, complete state coverage, all checks, and every per-state
+acknowledgement. Any later HTML or PNG edit voids shipment.
 
 ---
 
@@ -45,7 +57,18 @@ three-component rebuild, and the gate fired on progress the first time it ran.
 
 ## 3 · Type floor and screen real estate
 
-Floor: **1.10% of slide width**. *"Too small font. Let's define a mandatory lower threshold."*
+Floor: **1.10% of slide width**.
+
+🟥 **AND IT IS NOW A GATE: `tools/sre_audit.py`.** *"It's still VERY poor use of the screen real
+estate!!! ... THIS HAS TO BE A GATE!!!"* (2026-09-16). Measures coverage, vertical span, the tallest
+dead horizontal strip, and text spilling past its own container. Run it with **`--present`** &ndash;
+the windowed view hides the waste behind the sidebar. It refuses to pass on an empty measurement.
+
+🟥 **The gate does NOT replace reading the images, and cannot.** It measures the fully built state, so
+a box pinned at a fixed y &ndash; leaving a third of the slide empty on step 1 and closing the gap only
+on the last step &ndash; passes it. That exact defect shipped. **58 step PNGs were read by 21 agents
+and found 98 defects, 34 high, on a deck that had passed every mechanical gate.** Render every step,
+read every one. *"Too small font. Let's define a mandatory lower threshold."*
 
 "Optimize SRE" usually means the defect is **inside the figure**. He said it three times on one slide;
 the cause was a viewBox whose aspect did not match its container, so `object-fit` letterboxed ~60px
@@ -180,6 +203,11 @@ QR code if the audience is in the room, not at a keyboard), not a URL typed in p
 failed images and box-over-revealed-art. Then **read the PNGs**. DOM inspection is not verification
 here, and neither is "the tool passed" — the tool's blind spots are listed above.
 
+The deploy/commit gate resolves the **actual local source bytes** in `cp`, `scp`, `rsync`, `install`,
+`mv`, `rclone`, and deck-repository `git commit/push` commands. It reads either `command` or `cmd`
+plus `workdir`, handles arbitrary relative paths, and checks both canonical filenames. It never
+substitutes one hard-coded project deck for the file being shipped.
+
 ## 7 · Review comments are the spec
 
 🟥 **Match a comment to its slide by `elText`, never by the slide number in its route** — numbers shift
@@ -202,6 +230,30 @@ House style: US English · entities `&middot; &ndash; &rsquo;` · no em-dashes i
 
 ---
 
+## 8b · Every shipped deck enters the genealogy of ALL of SDS's decks
+
+🟥 **Mandatory, and part of `preflight.sh`.** SDS, 2026-10-08: *"make sure they're added to our
+genealogy of all of my slidedecks! Also check whether this is already part of the skill - if not add
+it and make it mandatory."* It was not. The genealogy (Dropbox `Presentations/_PDF_archive/`, 1,162
+decks / 43,088 slides / 4,558 reused-slide families as of 2 June 2026) was built only from
+PowerPoint, so **not one HTML deck had ever reached it** – the GaTech workshop, the Caucasus and Central
+Asia trip decks and the PASP method deck were all missing, and nothing said so. A deck nobody can find
+the ancestors of gets rebuilt from scratch next time.
+
+- `tools/register_genealogy.sh <deck.html>` renders every slide fully built, writes the PDF, PNGs and
+  per-slide summary into the archive, rebuilds the genealogy over the WHOLE archive and refuses to
+  publish it if any previously indexed deck vanished. Idempotent: an unchanged deck is a no-op.
+- Registration is bound to the deck's **SHA-256**: after any edit the deck counts as unregistered.
+- `preflight.sh` registers a deck automatically once its verification passes, re-checks with
+  `register_genealogy.sh --check`, and **cannot print `PREFLIGHT OK` for an unregistered deck**.
+- The archive exists only on the machine that holds SDS's Dropbox. Elsewhere the step fails closed;
+  `HTML_SLIDES_GENEALOGY_SKIP="<reason>"` lets preflight pass and logs the skip to
+  `~/.claude/state/html-slides-genealogy-skips.log` – register from the Dropbox machine afterwards.
+- The renderer also refuses blank slides. Its first run found **four blank final slides in the live
+  ADA morning deck** – see `LESSONS.md`, 2026-10-08.
+
+Test: `tests/test_genealogy_gate.sh`.
+
 ## 9 · How this skill improves, and why it cannot quietly un-improve
 
 **The rule: a lesson is not learned until it is a check that runs, or an entry with its incident.**
@@ -213,7 +265,16 @@ When you learn something new here:
    rule was written down and violated by three separate authors including its own author.
 2. If it cannot be → add it above **with the incident that produced it**, in one or two lines.
 3. Append the date, the symptom and the fix to `LESSONS.md` in this folder.
-4. Re-run `bash tools/preflight.sh` and commit the skill together with the code change.
+4. Re-run the skill tests and `bash tools/preflight.sh`; commit the skill with the code change.
+
+🟥 **And step 4 is not optional, because the master is the source and your copy is a cache.**
+`sync-llm-instructions.sh` copies `$GDRIVE_ROOT/claude-skills/<skill>/` over every CLI skill
+directory on each WSL login &ndash; its own comment reads *"EDIT THE GDRIVE COPY, never the local one
+(local is a cache and gets overwritten)."* On 2026-09-16 a fail-closed assertion added to
+`render_audit.py` in `~/.claude/skills/` was collected by that sync and the tool went back to passing
+on a deck it never loaded. **Run `install.sh`** &ndash; it writes all three CLIs and the master
+together and cannot forget a file the way a hand-picked `cp` list can, which is exactly how that file
+was missed. Enforced by gate #169.
 
 **Nothing is ever removed from this file to make a task easier.** A rule that turns out to be wrong is
 *corrected in place with its evidence* — as the visual metric was, when it proved to reward the very

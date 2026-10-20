@@ -3,7 +3,7 @@ async def main(url):
     from playwright.async_api import async_playwright
     async with async_playwright() as p:
         b=await p.chromium.launch(); pg=await b.new_page(viewport={'width':1366,'height':800})
-        await pg.goto(url); await pg.wait_for_timeout(2400)
+        await pg.goto(url, timeout=180000); await pg.wait_for_timeout(2400)
         n=await pg.evaluate("document.querySelectorAll('.slide').length")
         tot=bad=0; worst=[]
         for i in range(n):

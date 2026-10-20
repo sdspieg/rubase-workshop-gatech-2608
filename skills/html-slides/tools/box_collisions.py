@@ -62,7 +62,7 @@ async def run(deck, lo, hi, width):
     async with async_playwright() as p:
         b = await p.chromium.launch()
         pg = await b.new_page(viewport={'width': width, 'height': 768})
-        await pg.goto(f'file://{deck}#13')
+        await pg.goto(f'file://{deck}#13', timeout=180000)
         await pg.wait_for_timeout(1600)
         n = await pg.evaluate("document.querySelectorAll('.slide').length")
         for i in range(n):

@@ -31,7 +31,7 @@ async def run(deck, sid, widths, shots, manifest, allow):
             errs = []
             pg.on('console', lambda m: errs.append(m.text) if m.type == 'error' else None)
             # the stage only has a size once a slide hash is live, so land on one first
-            await pg.goto(f'file://{deck}#13'); await pg.wait_for_timeout(1500)
+            await pg.goto(f'file://{deck}#13', timeout=180000); await pg.wait_for_timeout(1500)
             i = await pg.evaluate(f"[...document.querySelectorAll('.slide')].findIndex(s=>s.dataset.sid==='{sid}')")
             if i < 0: sys.exit(f'no slide with data-sid={sid}')
             await pg.evaluate(f"go({i})"); await pg.wait_for_timeout(900)

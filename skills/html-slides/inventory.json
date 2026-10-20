@@ -1,0 +1,560 @@
+{
+ "deck": "deck.html",
+ "slides": [
+  {
+   "n": 1,
+   "sid": "s00a",
+   "title": "Title",
+   "cls": "slide obuild s00a",
+   "chars": 411,
+   "imgs": [
+    "img/src2025/image1.png"
+   ],
+   "visual": 10
+  },
+  {
+   "n": 2,
+   "sid": "s00b",
+   "title": "OSINT taxonomy (1/2)",
+   "cls": "slide obuild s00b",
+   "chars": 2030,
+   "imgs": [],
+   "visual": 37
+  },
+  {
+   "n": 3,
+   "sid": "s00c",
+   "title": "OSINT taxonomy (2/2)",
+   "cls": "slide obuild s00c",
+   "chars": 1928,
+   "imgs": [],
+   "visual": 32
+  },
+  {
+   "n": 4,
+   "sid": "s00d",
+   "title": "Live dashboards",
+   "cls": "slide obuild s00d",
+   "chars": 864,
+   "imgs": [
+    "img/qr/qr_redlines.png",
+    "img/qr/qr_causal.png",
+    "img/qr/qr_maneuver.png",
+    "img/qr/qr_futurebase.png"
+   ],
+   "visual": 40
+  },
+  {
+   "n": 5,
+   "sid": "s02",
+   "title": "Section 1: What is RuBase?",
+   "cls": "slide obuild s02",
+   "chars": 142,
+   "imgs": [],
+   "visual": 0
+  },
+  {
+   "n": 6,
+   "sid": "s03",
+   "title": "The gap",
+   "cls": "slide obuild s03",
+   "chars": 2116,
+   "imgs": [],
+   "visual": 64
+  },
+  {
+   "n": 7,
+   "sid": "s04",
+   "title": "The DIKW climb",
+   "cls": "slide obuild s04",
+   "chars": 3185,
+   "imgs": [],
+   "visual": 86
+  },
+  {
+   "n": 8,
+   "sid": "s05",
+   "title": "What's in a name",
+   "cls": "slide obuild s05",
+   "chars": 1245,
+   "imgs": [],
+   "visual": 16
+  },
+  {
+   "n": 9,
+   "sid": "s06",
+   "title": "RuBase pipeline",
+   "cls": "slide obuild s06",
+   "chars": 1353,
+   "imgs": [],
+   "visual": 50
+  },
+  {
+   "n": 10,
+   "sid": "s07",
+   "title": "Spiral development",
+   "cls": "slide obuild s07",
+   "chars": 1750,
+   "imgs": [],
+   "visual": 55
+  },
+  {
+   "n": 11,
+   "sid": "s09",
+   "title": "Section 2: Red Lines",
+   "cls": "slide obuild s09",
+   "chars": 123,
+   "imgs": [],
+   "visual": 0
+  },
+  {
+   "n": 12,
+   "sid": "s10",
+   "title": "The corpus",
+   "cls": "slide obuild s10",
+   "chars": 929,
+   "imgs": [],
+   "visual": 0,
+   "germanic": true
+  },
+  {
+   "n": 13,
+   "sid": "s11",
+   "title": "Building the rhetoric data",
+   "cls": "slide obuild s11",
+   "chars": 1550,
+   "imgs": [],
+   "visual": 0,
+   "germanic": true
+  },
+  {
+   "n": 14,
+   "sid": "s12",
+   "title": "Classifying statements",
+   "cls": "slide obuild s12",
+   "chars": 412,
+   "imgs": [
+    "img/src2025/image7.png",
+    "img/src2025/image1.png"
+   ],
+   "visual": 20
+  },
+  {
+   "n": 15,
+   "sid": "s13",
+   "title": "The war, measured",
+   "cls": "slide obuild s13",
+   "chars": 1619,
+   "imgs": [],
+   "visual": 0,
+   "germanic": true
+  },
+  {
+   "n": 16,
+   "sid": "s14",
+   "title": "Live Red Lines dashboard",
+   "cls": "slide obuild s14",
+   "chars": 430,
+   "imgs": [
+    "img/src2025/image9.png",
+    "img/qr/qr_redlines_cred.png"
+   ],
+   "visual": 20
+  },
+  {
+   "n": 17,
+   "sid": "s15",
+   "title": "Correlation to cause",
+   "cls": "slide obuild s15",
+   "chars": 1283,
+   "imgs": [],
+   "visual": 35
+  },
+  {
+   "n": 18,
+   "sid": "s16",
+   "title": "Section 3 divider",
+   "cls": "slide obuild s16",
+   "chars": 174,
+   "imgs": [],
+   "visual": 0
+  },
+  {
+   "n": 19,
+   "sid": "s17",
+   "title": "Testing all 30 predicates",
+   "cls": "slide obuild s17",
+   "chars": 1150,
+   "imgs": [],
+   "visual": 35
+  },
+  {
+   "n": 20,
+   "sid": "s18",
+   "title": "Escalation spiral, answered",
+   "cls": "slide obuild s18",
+   "chars": 930,
+   "imgs": [],
+   "visual": 23
+  },
+  {
+   "n": 21,
+   "sid": "s19",
+   "title": "Strike dataset stats",
+   "cls": "slide obuild s19",
+   "chars": 1154,
+   "imgs": [],
+   "visual": 59
+  },
+  {
+   "n": 22,
+   "sid": "s20",
+   "title": "Strikes up, rhetoric down",
+   "cls": "slide obuild s20",
+   "chars": 340,
+   "imgs": [
+    "img/src2025/image13.png"
+   ],
+   "visual": 10
+  },
+  {
+   "n": 23,
+   "sid": "s21",
+   "title": "Eight robustness checks",
+   "cls": "slide obuild s21",
+   "chars": 1356,
+   "imgs": [],
+   "visual": 0,
+   "germanic": true
+  },
+  {
+   "n": 24,
+   "sid": "s22",
+   "title": "Impulse response: null",
+   "cls": "slide obuild s22",
+   "chars": 492,
+   "imgs": [
+    "img/src2025/image15.png"
+   ],
+   "visual": 10,
+   "germanic": true
+  },
+  {
+   "n": 25,
+   "sid": "s23",
+   "title": "Nov 2024 spike, weekly",
+   "cls": "slide obuild s23",
+   "chars": 1404,
+   "imgs": [],
+   "visual": 32
+  },
+  {
+   "n": 26,
+   "sid": "s24",
+   "title": "Nov 2024, daily order",
+   "cls": "slide obuild s24",
+   "chars": 1122,
+   "imgs": [],
+   "visual": 58
+  },
+  {
+   "n": 27,
+   "sid": "s25",
+   "title": "Robust by weapon &amp; territory",
+   "cls": "slide obuild s25",
+   "chars": 1049,
+   "imgs": [],
+   "visual": 10,
+   "germanic": true
+  },
+  {
+   "n": 28,
+   "sid": "s26",
+   "title": "Graph + econ agree",
+   "cls": "slide obuild s26",
+   "chars": 519,
+   "imgs": [
+    "img/src2025/image19.png"
+   ],
+   "visual": 10,
+   "germanic": true
+  },
+  {
+   "n": 29,
+   "sid": "s27",
+   "title": "Positive thesis tested",
+   "cls": "slide obuild s27",
+   "chars": 497,
+   "imgs": [
+    "img/src2025/image20.png"
+   ],
+   "visual": 10,
+   "germanic": true
+  },
+  {
+   "n": 30,
+   "sid": "s28",
+   "title": "Human cost ruled out",
+   "cls": "slide obuild s28",
+   "chars": 1703,
+   "imgs": [],
+   "visual": 37
+  },
+  {
+   "n": 31,
+   "sid": "s29",
+   "title": "Structure vs. discourse",
+   "cls": "slide obuild s29",
+   "chars": 1040,
+   "imgs": [],
+   "visual": 47
+  },
+  {
+   "n": 32,
+   "sid": "s30",
+   "title": "Live dashboard",
+   "cls": "slide obuild s30",
+   "chars": 441,
+   "imgs": [
+    "img/src2025/image22.png"
+   ],
+   "visual": 10,
+   "germanic": true
+  },
+  {
+   "n": 33,
+   "sid": "s31",
+   "title": "Treatment, not topic",
+   "cls": "slide obuild s31",
+   "chars": 1370,
+   "imgs": [],
+   "visual": 31
+  },
+  {
+   "n": 34,
+   "sid": "s32",
+   "title": "GNN &times; VARX hybrid",
+   "cls": "slide obuild s32",
+   "chars": 1558,
+   "imgs": [],
+   "visual": 37
+  },
+  {
+   "n": 35,
+   "sid": "s33",
+   "title": "Method: causal audit",
+   "cls": "slide obuild s33",
+   "chars": 1580,
+   "imgs": [],
+   "visual": 50
+  },
+  {
+   "n": 36,
+   "sid": "s34",
+   "title": "Where this sits: academia",
+   "cls": "slide obuild s34",
+   "chars": 555,
+   "imgs": [
+    "img/src2025/image26.png"
+   ],
+   "visual": 10,
+   "germanic": true
+  },
+  {
+   "n": 37,
+   "sid": "s35",
+   "title": "Method adoption, 2025",
+   "cls": "slide obuild s35",
+   "chars": 487,
+   "imgs": [
+    "img/src2025/image27.png"
+   ],
+   "visual": 10,
+   "germanic": true
+  },
+  {
+   "n": 38,
+   "sid": "s36",
+   "title": "Think tanks: zero uptake",
+   "cls": "slide obuild s36",
+   "chars": 445,
+   "imgs": [
+    "img/src2025/image28.png"
+   ],
+   "visual": 10,
+   "germanic": true
+  },
+  {
+   "n": 39,
+   "sid": "s37",
+   "title": "Thesis: signalling calendar",
+   "cls": "slide obuild s37",
+   "chars": 1687,
+   "imgs": [],
+   "visual": 54
+  },
+  {
+   "n": 40,
+   "sid": "s38",
+   "title": "Closing: in one line",
+   "cls": "slide obuild s38",
+   "chars": 652,
+   "imgs": [
+    "img/qr/qr_causal.png"
+   ],
+   "visual": 10,
+   "germanic": true
+  }
+ ],
+ "A_dumps": [],
+ "B_germanic": [
+  {
+   "n": 12,
+   "sid": "s10",
+   "title": "The corpus",
+   "cls": "slide obuild s10",
+   "chars": 929,
+   "imgs": [],
+   "visual": 0,
+   "germanic": true
+  },
+  {
+   "n": 13,
+   "sid": "s11",
+   "title": "Building the rhetoric data",
+   "cls": "slide obuild s11",
+   "chars": 1550,
+   "imgs": [],
+   "visual": 0,
+   "germanic": true
+  },
+  {
+   "n": 15,
+   "sid": "s13",
+   "title": "The war, measured",
+   "cls": "slide obuild s13",
+   "chars": 1619,
+   "imgs": [],
+   "visual": 0,
+   "germanic": true
+  },
+  {
+   "n": 23,
+   "sid": "s21",
+   "title": "Eight robustness checks",
+   "cls": "slide obuild s21",
+   "chars": 1356,
+   "imgs": [],
+   "visual": 0,
+   "germanic": true
+  },
+  {
+   "n": 24,
+   "sid": "s22",
+   "title": "Impulse response: null",
+   "cls": "slide obuild s22",
+   "chars": 492,
+   "imgs": [
+    "img/src2025/image15.png"
+   ],
+   "visual": 10,
+   "germanic": true
+  },
+  {
+   "n": 27,
+   "sid": "s25",
+   "title": "Robust by weapon &amp; territory",
+   "cls": "slide obuild s25",
+   "chars": 1049,
+   "imgs": [],
+   "visual": 10,
+   "germanic": true
+  },
+  {
+   "n": 28,
+   "sid": "s26",
+   "title": "Graph + econ agree",
+   "cls": "slide obuild s26",
+   "chars": 519,
+   "imgs": [
+    "img/src2025/image19.png"
+   ],
+   "visual": 10,
+   "germanic": true
+  },
+  {
+   "n": 29,
+   "sid": "s27",
+   "title": "Positive thesis tested",
+   "cls": "slide obuild s27",
+   "chars": 497,
+   "imgs": [
+    "img/src2025/image20.png"
+   ],
+   "visual": 10,
+   "germanic": true
+  },
+  {
+   "n": 32,
+   "sid": "s30",
+   "title": "Live dashboard",
+   "cls": "slide obuild s30",
+   "chars": 441,
+   "imgs": [
+    "img/src2025/image22.png"
+   ],
+   "visual": 10,
+   "germanic": true
+  },
+  {
+   "n": 36,
+   "sid": "s34",
+   "title": "Where this sits: academia",
+   "cls": "slide obuild s34",
+   "chars": 555,
+   "imgs": [
+    "img/src2025/image26.png"
+   ],
+   "visual": 10,
+   "germanic": true
+  },
+  {
+   "n": 37,
+   "sid": "s35",
+   "title": "Method adoption, 2025",
+   "cls": "slide obuild s35",
+   "chars": 487,
+   "imgs": [
+    "img/src2025/image27.png"
+   ],
+   "visual": 10,
+   "germanic": true
+  },
+  {
+   "n": 38,
+   "sid": "s36",
+   "title": "Think tanks: zero uptake",
+   "cls": "slide obuild s36",
+   "chars": 445,
+   "imgs": [
+    "img/src2025/image28.png"
+   ],
+   "visual": 10,
+   "germanic": true
+  },
+  {
+   "n": 40,
+   "sid": "s38",
+   "title": "Closing: in one line",
+   "cls": "slide obuild s38",
+   "chars": 652,
+   "imgs": [
+    "img/qr/qr_causal.png"
+   ],
+   "visual": 10,
+   "germanic": true
+  }
+ ],
+ "C_small_css_cqw": [],
+ "C_small_svg_px": []
+}

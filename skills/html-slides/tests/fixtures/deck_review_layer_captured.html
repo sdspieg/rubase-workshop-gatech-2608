@@ -1,0 +1,3006 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>RuBase · Reading Russia at Machine Scale · CENTREPEACE</title>
+<meta name="description" content="Zero-content house deck shell. Splice slides into the #deck template.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,300;0,400;0,600;0,700;0,900;1,400&amp;display=swap">
+<style>
+/* == StratBase house palette - identical tokens to the sibling workshop apps == */
+:root{ --prograil-h: 2.9vh; 
+  --bg:#09182f; --db:#132f59; --db2:#173966; --gold:#dbad50;
+  --lb:#9db8d6; --wh:#f3f6fb; --line:rgba(255,255,255,.12); --r:8px;
+  --title-size:4.5cqw; --title-weight:700; --font:"Titillium Web",-apple-system,"Segoe UI",Roboto,Helvetica,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%}
+body{font-family:var(--font);background:var(--bg);color:var(--wh);overflow:hidden}
+#app{display:flex;flex-direction:column;height:100%}
+
+/* ---------- house header ---------- */
+.header{background:var(--db);border-bottom:1px solid var(--line);padding:8px 1.5rem;
+ display:grid;grid-template-rows:auto auto;row-gap:6px;box-shadow:0 2px 8px rgba(0,0,0,.25);z-index:100;flex-shrink:0}
+.header-row1{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:1rem}
+.header-row2{display:flex;align-items:center;justify-content:center;gap:.5rem;padding-top:6px;
+ border-top:1px solid rgba(255,255,255,.06);flex-wrap:wrap}
+.h-left,.h-right{display:flex;align-items:center;gap:1rem}
+.h-right{justify-content:flex-end}
+
+/* the shared Google Doc, on the slide where the room is asked to fill it in */
+.docqr{display:flex;align-items:center;gap:1.2em;margin-top:.7em;
+ background:rgba(219,173,80,.07);border:1px solid rgba(219,173,80,.4);
+ border-left:3px solid var(--gold);border-radius:6px;padding:.7em .9em}
+.docqr img{width:calc(9.5cqw * min(var(--sc),1.25));height:auto;flex:0 0 auto;
+ background:#fff;padding:5px;border-radius:5px;image-rendering:pixelated}
+.docqr .k{color:var(--gold);font-weight:700;font-size:calc(1.5cqw * min(var(--sc),1.4));margin-bottom:.15em}
+.docqr .d{color:var(--wh);font-size:calc(1.32cqw * min(var(--sc),1.4));line-height:1.4}
+/* The QR lived only on the site, never in the deck he actually presents from (SDS, 2026-08-31:
+   'because I don't see the QR code!!!!'). Same markup, same CSS, same behaviour as index.html. */
+.h-qr{background:#fff;border:1px solid rgba(219,173,80,.55);border-radius:5px;padding:2px;
+ line-height:0;cursor:pointer;flex:0 0 auto}
+.h-qr img{width:52px;height:52px;display:block;image-rendering:pixelated}
+.h-qr:hover{border-color:var(--gold);box-shadow:0 0 0 2px rgba(219,173,80,.25)}
+#qrOverlay{position:fixed;inset:0;z-index:9999;background:rgba(4,12,26,.94);
+ display:flex;align-items:center;justify-content:center;cursor:zoom-out}
+#qrOverlay[hidden]{display:none}
+#qrOverlay img{width:min(70vh,70vw);height:min(70vh,70vw);background:#fff;padding:14px;
+ border-radius:10px;image-rendering:pixelated}
+.qr-inner{text-align:center}
+.qr-url{margin-top:14px;color:var(--gold);font-size:1.05rem;letter-spacing:.02em}
+.qr-hint{margin-top:5px;color:var(--lb);font-size:.82rem;opacity:.8}
+/* the right-hand group is hidden under 980px; the QR is the one thing in it that must survive,
+   because a QR nobody can see is the same as no QR at all */
+.h-logo{height:34px;width:auto;flex-shrink:0;display:inline-flex;align-items:center;border-radius:4px;
+ transition:opacity .15s,transform .15s;opacity:.9}
+.h-logo:hover,.h-logo:focus-visible{opacity:1;transform:translateY(-1px)}
+.h-logo:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.h-logo img{height:34px;width:auto;display:block}
+.h-logo.invert img{filter:brightness(0) invert(1)}
+.header-title{font-size:1.06rem;font-weight:700;color:var(--wh);letter-spacing:.4px;text-align:center;
+ white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.header-title span{color:var(--gold)}
+.header-nav{display:flex;gap:.5rem;align-items:center;flex-wrap:wrap;justify-content:center}
+.header-nav a,.header-nav button,.header-nav select{background:transparent;border:1px solid var(--gold);
+ color:var(--gold);padding:.34rem .78rem;border-radius:6px;cursor:pointer;font-family:inherit;font-weight:700;
+ font-size:.8rem;text-decoration:none;white-space:nowrap;transition:background .15s,color .15s}
+.header-nav a:hover,.header-nav button:hover{background:var(--gold);color:var(--db)}
+.header-nav button.on{background:var(--gold);color:var(--db)}
+.header-nav select option{background:var(--db);color:var(--wh)}
+@media (max-width:1200px){.h-logo,.h-logo img{height:28px}.header-title{font-size:.94rem}
+ .header-nav a,.header-nav button,.header-nav select{font-size:.75rem;padding:.3rem .6rem}}
+@media (max-width:980px){.header-row1{grid-template-columns:auto 1fr auto}
+ /* the right group used to vanish whole under 980px, which took the QR with it.
+    Drop the logos, keep the QR - a QR nobody can see is the same as no QR. */
+ .h-right{display:flex}.h-right .h-logo{display:none}
+ .header-title{white-space:normal}}
+
+/* ---------- day timeline ---------- */
+.timeline-bar{background:var(--db2);padding:9px 24px;border-bottom:1px solid var(--line);
+ display:flex;align-items:center;gap:0;overflow-x:auto;flex-shrink:0}
+.timeline-block{flex:1;text-align:center;padding:7px 8px;cursor:pointer;transition:background .14s;
+ min-width:126px;border-radius:6px;border:0;background:transparent;font-family:inherit;color:inherit}
+.timeline-block:hover{background:rgba(219,173,80,.08)}
+.timeline-block.active{background:rgba(219,173,80,.14);box-shadow:inset 0 -2px 0 var(--gold)}
+.timeline-time{font-size:.7rem;color:var(--gold);font-weight:600;margin-bottom:3px;text-transform:uppercase;letter-spacing:.5px}
+.timeline-label{font-size:.85rem;font-weight:700;color:var(--wh)}
+.timeline-duration{font-size:.68rem;color:var(--lb);margin-top:2px}
+.timeline-connector{width:18px;height:2px;background:var(--line);flex-shrink:0}
+
+/* ---------- layout ---------- */
+.main-container{display:flex;flex:1;min-height:0}
+.sidebar{width:284px;flex-shrink:0;background:var(--db);border-right:1px solid var(--line);
+ padding:16px 16px 26px;overflow-y:auto}
+.sidebar-section{margin-bottom:18px}
+.sidebar-section-title{color:var(--gold);font-size:.76rem;text-transform:uppercase;letter-spacing:1px;
+ margin-bottom:9px;padding-bottom:5px;border-bottom:1px solid rgba(219,173,80,.25)}
+.sidebar-item{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:6px 10px;
+ margin:2px 0;border-radius:6px;cursor:pointer;transition:all .14s;border:1px solid transparent;
+ background:transparent;font-family:inherit;color:inherit;width:100%;text-align:left}
+.sidebar-item:hover{border-color:var(--gold);background:rgba(219,173,80,.06);transform:translateX(3px)}
+.sidebar-item.active{background:rgba(219,173,80,.12);border-color:var(--gold)}
+.sidebar-item-title{font-size:.83rem;font-weight:600;line-height:1.3}
+.sidebar-item.active .sidebar-item-title{color:var(--gold)}
+.sidebar-badge{font-size:.66rem;color:var(--lb);font-variant-numeric:tabular-nums;flex-shrink:0}
+.content-area{flex:1;min-width:0;display:flex;flex-direction:column;background:var(--bg)}
+
+/* ---------- stage ---------- */
+#stage{flex:1;min-height:0;display:none;place-items:center;padding:14px;container-type:size}
+#stage.on{display:grid}
+.slide{position:relative;width:min(100%,100cqh * 16/9);aspect-ratio:16/9;background:var(--bg);
+ border:1px solid var(--line);border-radius:var(--r);padding:3.1% 3.6%;display:none;flex-direction:column;
+ container-type:inline-size;overflow:hidden;box-shadow:0 10px 40px rgba(0,0,0,.45);--sc:1}
+.slide.on{display:flex}
+
+/* --- audience switcher (SDS 2026-09-04). One deck, several rooms: a slide declares
+   which audiences it belongs to via data-audience; the chooser hides the rest. --- */
+.slide.aud-hidden{display:none !important}
+.audgrid{display:flex;flex-direction:column;gap:1rem;width:100%;padding:0 1% .3rem;max-height:none}
+.audrow{display:flex;flex-wrap:wrap;gap:.5rem;width:100%;box-sizing:border-box}
+.audrow .rl{flex:0 0 100%;font-size:.92rem;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--lb);opacity:.75;margin-bottom:.15rem}
+.audbtn{background:var(--db);border:1px solid #2f5a8f;color:var(--wh);border-radius:.5rem;
+  padding:.42rem .8rem;font:inherit;font-size:.95rem;cursor:pointer;text-align:left;line-height:1.2;flex:1 1 auto;min-width:0;max-width:100%}
+.audbtn:hover{border-color:var(--gold);color:var(--gold)}
+.audbtn.on{border-color:var(--gold);color:var(--gold);box-shadow:inset 0 0 0 1px var(--gold)}
+.audbtn .w{display:block;font-size:max(1.30cqw,.86rem);opacity:.72;color:var(--lb);overflow-wrap:anywhere}
+.audrow.meets .audbtn{flex:1 1 21%;white-space:nowrap}
+.audrow.meets .audbtn .w{display:inline;margin-left:.45rem;font-size:max(1.28cqw,.82rem)}
+@media (max-width:1340px){.audbtn{font-size:.9rem;padding:.36rem .7rem}
+ .audbtn .w{font-size:max(1.28cqw,.8rem)}.audgrid{gap:.7rem}}
+.audbtn.on .w{color:var(--gold);opacity:.85}
+.audnow{margin:.35rem 0 0;font-size:.92rem;color:var(--lb);flex:0 0 auto}
+.audnow b{color:var(--gold)}
+
+.slide.img{padding:0;background:#000}
+.slide.img img{width:100%;height:100%;object-fit:contain;display:block;border-radius:var(--r)}
+.src{position:absolute;right:.6%;top:.6%;background:rgba(9,24,47,.72);padding:2px 6px;border-radius:3px;
+ font-size:10px;color:#5d7a9d;letter-spacing:.05em}
+
+/* ---- type scale: every size is cqw * --sc; the autofit engine grows --sc to fill ---- */
+/* STANDARD title size: 4.5cqw is the ceiling every h2 uses (SDS liked it on "Sound familiar?",
+   2026-08-31, and asked whether it was the standard - it is). min(--sc,1) only ever SHRINKS a
+   title, on content-dense slides that would otherwise overflow; it never grows one past the
+   ceiling. Do not add a per-slide h2 override to "fix" a title that looks small - that slide's
+   autofit --sc is below 1 because its own content needs the room. */
+h2{margin:0 0 .34em;color:var(--gold);font-weight:var(--title-weight);font-size:var(--title-size);
+ line-height:1.04;letter-spacing:-.01em;text-wrap:balance}
+/* measured 2026-09-04: on a dense slide --sc drops well below 1 and drove gt25's sub to
+   0.90% of slide width, under the 1.10% floor. The floor is now explicit, so autofit can
+   shrink the sub only as far as 1.30cqw = 1.21% of slide width. */
+.sub{margin:-.1em 0 .8em;color:var(--lb);font-size:max(1.30cqw, calc(1.95cqw * min(var(--sc), 1)));line-height:1.35;max-width:62ch}
+.sub2{color:var(--lb);font-weight:400;font-size:.62em}
+.body-lg{font-size:calc(2.75cqw * var(--sc));line-height:1.3;font-weight:500;text-wrap:balance}
+/* A statement slide does not need to shout. 'calm' drops the scale a notch, and a
+   highlighted figure keeps the gold without the extra weight - a bold gold number
+   at full body-lg size dominated the entire slide. */
+.body-lg .y{font-weight:600}
+.kicker{font-size:calc(1.25cqw * min(var(--sc), 1));letter-spacing:.2em;text-transform:uppercase;color:var(--gold);
+ font-weight:700;margin-bottom:.9em}
+.fill{flex:1;min-height:0;display:flex;flex-direction:column;justify-content:center;gap:calc(1.6cqw * var(--sc))}
+/* SDS "Eyeball. Fix" on the 186-million slide, 2026-08-31: .small-note scaled with the FULL --sc,
+   so on a sparse slide (--sc 3.2) the source line rendered as large as the sentence it supports.
+   A footnote must never compete with the statement above it - hence the cap. */
+.small-note{margin-top:.8em;color:var(--lb);font-size:calc(1.4cqw * min(var(--sc), 1.45));line-height:1.4}
+.small-note b{color:var(--wh)}
+.title-slide .t{font-size:var(--title-size);font-weight:var(--title-weight);color:var(--gold);line-height:1.06;letter-spacing:-.02em}
+.title-slide .s{font-size:calc(2.9cqw * min(var(--sc), 1));color:var(--wh);font-weight:600}
+.title-slide .m{font-size:calc(1.5cqw * var(--sc));color:var(--lb);margin-top:.7em;line-height:1.6}
+.slide.divider{background:linear-gradient(135deg,#09182f 0%,#173966 58%,#09182f 100%);border-color:var(--gold)}
+.daycard{justify-content:center;gap:.28em}
+.daytitle{font-size:var(--title-size);font-weight:var(--title-weight);color:var(--gold);line-height:1.06;letter-spacing:-.012em}
+.daysub{font-size:calc(2.6cqw * min(var(--sc), 1));color:var(--wh);font-weight:600;max-width:30ch;line-height:1.25}
+.daymins{font-size:calc(1.45cqw * min(var(--sc), 1));color:var(--lb);margin-top:.9em;letter-spacing:.12em}
+
+/* grids: rows STRETCH so cards fill the frame (align-content:center was the bug) */
+.grid{display:grid;gap:1.8%;flex:1;min-height:0;align-content:stretch;grid-auto-rows:1fr}
+.c2{grid-template-columns:repeat(2,1fr)}.c3{grid-template-columns:repeat(3,1fr)}
+.c4{grid-template-columns:repeat(4,1fr)}.c5{grid-template-columns:repeat(5,1fr)}
+.r2{grid-template-rows:repeat(2,1fr)}
+.top .card{justify-content:flex-start}
+.card{background:var(--db);border:1px solid var(--line);border-left:3px solid var(--gold);border-radius:var(--r);
+ padding:3.4% 4%;display:flex;flex-direction:column;justify-content:center;gap:.4em;min-height:0;min-width:0;overflow:hidden}
+.card .k{font-size:calc(2.45cqw * var(--sc));font-weight:700;line-height:1.16;text-wrap:balance;color:var(--wh)}
+.card .d{font-size:calc(1.55cqw * var(--sc));color:var(--lb);line-height:1.4}
+/* A punchline card - .hot with no .k heading - is the payoff of the build-up and
+   was rendering at body size, smaller than the layer headings it concludes. */
+.card.hot > .d:only-child{font-size:calc(2.05cqw * var(--sc));color:var(--wh,#e8edf3);line-height:1.35}
+.card .v{font-size:calc(5.4cqw * var(--sc));font-weight:900;color:var(--gold);line-height:1.02;
+ font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.num .k{color:var(--gold)}
+.q .k{font-weight:400;font-style:italic;color:var(--wh)}
+.q .k::before{content:"\201C"}.q .k::after{content:"\201D"}
+.q{border-left-color:var(--lb)}
+.tint{background:transparent;border-left-color:var(--lb)}
+.hot{border-color:var(--gold);background:rgba(219,173,80,.10)}
+.hot .k{color:var(--gold)}
+.y,.c{color:var(--gold)}
+ul.big{margin:auto 0;padding-left:1.05em;display:flex;flex-direction:column;gap:.6em}
+ul.big li{font-size:calc(2.55cqw * var(--sc));line-height:1.26}
+ul.big li::marker{color:var(--gold)}
+ul.big li b{color:var(--gold)}
+ul.big li em{color:var(--wh);font-style:normal;font-weight:700}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:3%;flex:1;min-height:0;align-items:stretch}
+.stack{display:flex;flex-direction:column;gap:.7em;min-width:0;justify-content:center}
+/* was flex:0 0 30% - a fixed band that left half the slide empty */
+.arrowrow{display:flex;align-items:stretch;gap:1.2%;flex:1 1 auto;min-height:0;min-width:0;margin-bottom:2%}
+.arrowrow .card{flex:1 1 0;min-width:0;height:100%;padding:2.6% 2.4%}
+.arrowrow .ar{color:var(--gold);font-size:calc(2.4cqw * var(--sc));font-weight:700;opacity:.75;flex:0 0 auto;align-self:center}
+
+
+/* confusion matrix */
+table.cm{border-collapse:collapse;width:100%;font-variant-numeric:tabular-nums}
+table.cm td{border:1px solid var(--line);padding:3.2% 2%;text-align:center;
+ font-size:calc(2.6cqw * var(--sc));font-weight:800;line-height:1.05}
+table.cm td.h{background:transparent;border:0;color:var(--lb);font-weight:600;
+ font-size:calc(1.5cqw * var(--sc));text-align:right;padding:1.4% 2%}
+table.cm td.ok{background:var(--db);color:var(--wh)}
+table.cm td.dis{background:rgba(219,173,80,.16);color:var(--gold);border-color:var(--gold)}
+
+
+/* paradigm-shift tables */
+table.shift{border-collapse:collapse;width:100%;flex:1;min-height:0;table-layout:fixed}
+table.shift th{background:var(--db2);color:var(--gold);font-size:calc(1.35cqw * var(--sc));
+ text-transform:uppercase;letter-spacing:.06em;padding:.7% .8%;text-align:left;
+ border-bottom:1px solid var(--gold);font-weight:700}
+table.shift td{border-bottom:1px solid var(--line);padding:.75% .8%;vertical-align:top;
+ color:var(--lb);font-size:calc(1.35cqw * var(--sc));line-height:1.28}
+table.shift td.d{color:var(--wh);font-weight:700}
+table.shift td.k{color:var(--wh)}
+table.shift tr:nth-child(even) td{background:rgba(255,255,255,.025)}
+table.shift ul{margin:0;padding-left:1em;list-style:none}
+table.shift ul li{position:relative;padding-left:.15em}
+table.shift ul li::before{content:"\2022";color:var(--gold);position:absolute;left:-.8em}
+table.shift col:first-child{width:12%}
+
+
+/* ---------- build-up fragments ----------
+   Fragments use OPACITY, not display, so they still occupy layout: the autofit
+   engine measures the fully-built slide and must not resize mid-build. */
+.slide [data-frag]{opacity:0;transform:translateY(.28em);transition:none}
+/* ---- PAIRED REVEAL (SDS, 2026-08-31) ----------------------------------------
+   His words: "the explanation shows while that ELEMENT shows, but then it
+   disappears when the next element 'builds up'". The elements are parts of the
+   PICTURE, not a column of cards - which is what I got wrong the first time.
+   So: each explanation lights its OWN layer in the diagram, and only ONE
+   explanation is on screen at a time. Earlier layers stay visible but dimmed, so
+   the stack still accumulates while attention sits on the current one. */
+
+/* ============================================================================
+   SHELL NOTE - the .omics-specific paired-reveal implementation (deck.html
+   lines 226-252) has been dropped: it is one slide's :has() layer wiring, not
+   house grammar. The generic version of the same idea is the .obuild/.ob-step
+   block below.
+   ============================================================================ */
+/* ---- comment #49 "ATROCIOUS font" on the day divider, and #54 the oversized hero number ----
+   .daytitle was capped at min(--sc,1) so it rendered at 4.5cqw on a slide whose autofit had
+   already run to 3.2 - a day divider smaller than the body text of the slide before it. And
+   .body-lg took --sc uncapped, which is how "200 million" got to ~6.2cqw. Both are now scaled
+   deliberately rather than by whatever the fitter happened to land on. */
+.slide.divider .daycard{justify-content:center;gap:.15em}
+.slide.divider .kicker{font-size:1.85cqw;letter-spacing:.24em}
+.slide.divider .daytitle{font-size:9.6cqw;line-height:1.0;margin:.06em 0 .1em}
+.slide.divider .daysub{font-size:3.0cqw;line-height:1.24;max-width:26ch}
+.slide.divider .daymins{font-size:1.7cqw;letter-spacing:.16em;margin-top:.5em}
+.body-lg{font-size:calc(2.75cqw * min(var(--sc), 1.7))}
+
+/* ---------- THE BUILD GRAMMAR (verbatim, deck.html 271-288) ----------------
+   One click = one component of the picture + the box that explains it; the
+   previous box disappears, by CSS alone. Markup:
+     <section class="slide obuild myslide" data-t data-sid data-n>
+       <div class="ob-pic">
+         <img class="ob-plate" src="...">            <- optional dimmed base plate
+         <div class="ob-step" data-frag="1">         <- ONE step = ONE click
+           <img class="ob-reveal c1" src="...">      <- the component lives INSIDE
+           <div class="ob-note" style="--x:52%;--y:14%;--w:40%">
+             <div class="k">Heading</div><div class="d">Two or three sentences.</div>
+           </div>
+         </div>
+         <div class="ob-step" data-frag="1">
+           <img class="ob-reveal c2" src="...">
+           <div class="ob-note" style="--x:8%;--y:58%;--w:40%"> ... </div>
+         </div>
+       </div>
+     </section>
+
+
+   The component is a CHILD of its step, next to the note. That is what makes an
+   earlier component STAY lit while its note disappears. data-frag's VALUE is
+   ignored - setFrags() walks [data-frag] in document order.
+   -------------------------------------------------------------------------- */
+.obuild .ob-pic{position:relative;width:100%;aspect-ratio:1770/750;margin:0 auto;
+  max-height:66cqh;border-radius:4px;overflow:hidden;background:#0a1830}
+.obuild .ob-pic img{position:absolute;inset:0;width:100%;height:100%;display:block}
+.obuild .ob-step{position:absolute;inset:0;transform:none}
+.obuild .ob-note{position:absolute;left:var(--x);top:var(--y);width:var(--w);
+  background:rgba(10,24,47,.94);border:1px solid rgba(219,173,80,.55);
+  border-left:3px solid var(--gold);border-radius:5px;padding:.72em .9em;
+  box-shadow:0 8px 26px rgba(0,0,0,.55);transition:opacity .2s ease}
+.obuild .ob-note .k{color:var(--gold);font-weight:700;font-size:1.72cqw;line-height:1.18;margin-bottom:.2em}
+.obuild .ob-note .d{color:var(--wh);font-size:1.46cqw;line-height:1.42}
+.obuild .ob-note.wide .d{font-size:1.62cqw}
+/* only the CURRENT step keeps its box; every earlier one gives it up */
+.obuild .ob-step:has(~ .ob-step.shown) .ob-note{opacity:0;visibility:hidden;transition:none}
+/* the closing card dims the finished picture rather than covering any one part of it */
+.obuild .ob-scrim{position:absolute;inset:0;background:rgba(6,16,34,.74)}
+.obuild .ob-scrim.soft{background:rgba(6,16,34,.34)}
+.obuild .ob-dates{position:absolute;left:0;right:0;bottom:.5em;text-align:center;
+  color:var(--lb);font-size:1.18cqw}
+
+/* ---------- reveal states -------------------------------------------------
+   VERBATIM from deck.html 616-619 is the SHOWN transition. The hidden state in
+   the GaTech deck is written once per slide class (".an3b .ob-reveal{opacity:0}"
+   and friends, ~40 near-identical triples). This shell generalizes it to .obuild
+   so a new slide needs no per-slide boilerplate - same effect, one rule.
+   *** SHELL ADDITION - not byte-verbatim. ***
+   The transition:none on the HIDDEN state is the ghosting fix and is mandatory:
+   autofit() lights everything under body.measuring, and a hidden state that
+   TRANSITIONS animates back to hidden, so the slide paints fully built and fades.
+   -------------------------------------------------------------------------- */
+.obuild .ob-reveal{opacity:0;transition:none}
+.obuild .ob-step.shown .ob-reveal{opacity:1}
+body.measuring .obuild .ob-reveal,body.nobuild .obuild .ob-reveal{opacity:1;transition:none}
+.obuild .ob-plate{opacity:.16;filter:grayscale(.45)}
+
+.obuild .ob-step.shown .ob-reveal,
+.lungb .ob-step.shown ~ * svg .lg,
+.slide svg .lg[style],
+.obuild.slide .ob-step.shown img.ob-reveal{transition:opacity .3s ease}
+
+
+/* SOLO CARDS - the appearing/disappearing explanatory box SDS asked for twice.
+   The layer HEADING (.k) accumulates so the structure builds visibly; the
+   EXPLANATION (.d) is present only while its layer is the current one, and
+   collapses the moment the next layer appears. Driven entirely by the deck's own
+   .shown mechanism via :has(), so there is no extra JS and no separate state to
+   drift out of sync. Hidden state carries transition:none, per the ghosting fix. */
+.slide .card.solo .d{max-height:14em;opacity:1;overflow:hidden;
+  transition:max-height .38s ease,opacity .24s ease,margin .38s ease}
+.slide .card.solo:has(~ .card.solo.shown) .d{max-height:0;opacity:0;margin:0}
+.slide [data-frag].card.solo:not(.shown) .d{transition:none}
+.slide .card.solo{transition:border-color .3s ease,background .3s ease}
+.slide .card.solo.shown:not(:has(~ .card.solo.shown)){
+  border-color:var(--gold,#dbad50)}
+.slide .card.solo:has(~ .card.solo.shown) .k{opacity:.72}
+.slide [data-frag].shown{opacity:1;transform:none;transition:opacity .26s ease,transform .26s ease}
+/* geometry must always be measured in the BUILT state: an unbuilt fragment is
+   translated a little, and the overflow detector correctly reads that shift as
+   clipping. Autofit and the detector both raise this flag while measuring. */
+body.measuring .slide [data-frag]{opacity:1;transform:none;transition:none}
+body.nobuild .slide [data-frag]{opacity:1;transform:none}
+#buildpip{margin-left:2px;color:var(--gold);font-variant-numeric:tabular-nums;font-weight:700}
+@media (prefers-reduced-motion:reduce){.slide [data-frag]{transition:none}}
+
+
+
+/* prompt blocks: the originals were screenshots of 6pt code, unreadable past row two */
+pre.prompt{margin:0;flex:1 1 auto;background:#0c2038;border:1px solid var(--line);border-left:3px solid var(--gold);
+ border-radius:var(--r);padding:2.4% 2.8%;overflow:hidden;white-space:pre-wrap;
+ font-family:"SFMono-Regular",Consolas,"Liberation Mono",Menlo,monospace;
+ font-size:calc(1.5cqw * var(--sc));line-height:1.5;color:var(--lb)}
+pre.prompt b{color:var(--gold);font-weight:700}
+pre.prompt i{color:var(--wh);font-style:normal}
+pre.prompt .c{color:#6e88a8}
+.promptwrap{display:flex;flex:1 1 auto;min-height:0;gap:2%;align-items:stretch}
+.promptwrap>*{flex:1 1 0;min-width:0;display:flex;flex-direction:column}
+
+
+/* ---------- deck toolbar ---------- */
+.deckbar{flex-shrink:0;display:none;align-items:center;gap:10px;padding:7px 16px 10px;
+ border-top:1px solid var(--line);background:var(--db);font-size:.78rem;color:var(--lb)}
+.deckbar.on{display:flex}
+.deckbar button{background:transparent;border:1px solid var(--line);color:var(--lb);font:inherit;
+ padding:4px 11px;border-radius:6px;cursor:pointer;font-weight:700}
+.deckbar button:hover,.deckbar button:focus-visible{border-color:var(--gold);color:var(--gold);outline:none}
+.deckbar .spacer{flex:1}
+#counter{font-variant-numeric:tabular-nums;color:var(--gold);font-weight:700}
+#slidetitle{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:34ch}
+#keyhelp{color:#6e88a8;font-size:.72rem}
+#notes{flex-shrink:0;max-height:26vh;overflow:auto;background:#0d2038;border-top:1px solid var(--line);
+ padding:11px 18px 14px;display:none;color:var(--lb);font-size:.86rem;line-height:1.6}
+#notes.on{display:block}
+#notes b{color:var(--wh)}
+
+/* ---------- home ---------- */
+#home{flex:1;min-height:0;overflow-y:auto;padding:28px;display:none}
+#home.on{display:block}
+.welcome-screen{text-align:center;padding:12px 10px 28px}
+.welcome-title{font-size:2.5rem;margin-bottom:14px;color:var(--gold);font-weight:800;letter-spacing:.5px}
+.welcome-subtitle{font-size:1.08rem;color:var(--lb);margin-bottom:8px;line-height:1.55;max-width:860px;margin-left:auto;margin-right:auto}
+.welcome-meta{font-size:.94rem;color:var(--gold);margin-bottom:24px}
+.pipeline{display:flex;align-items:stretch;justify-content:center;gap:8px;flex-wrap:wrap;margin:0 auto 30px;
+ padding:16px;background:rgba(219,173,80,.06);border:1px dashed var(--line);border-radius:var(--r);max-width:1200px}
+.pipe-step{text-align:center;padding:8px 14px;min-width:114px;cursor:pointer;border-radius:6px;
+ transition:background .14s;border:0;background:transparent;font-family:inherit}
+.pipe-step:hover{background:rgba(219,173,80,.1)}
+.pipe-step .step-label{font-size:.68rem;color:var(--lb);text-transform:uppercase;letter-spacing:1px}
+.pipe-step .step-name{font-size:.96rem;font-weight:700;margin-top:4px;color:var(--gold)}
+.pipe-arrow{color:var(--gold);font-size:1.25rem;align-self:center}
+@media (max-width:900px){.pipe-arrow{display:none}}
+.session-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(252px,1fr));gap:17px;max-width:1320px;margin:0 auto;text-align:left}
+.session-card{background:var(--db);border:1px solid rgba(255,255,255,.08);border-left:4px solid var(--gold);
+ border-radius:var(--r);padding:20px;cursor:pointer;transition:transform .14s,border-color .14s,box-shadow .14s;
+ font-family:inherit;color:inherit;text-align:left}
+.session-card:hover{transform:translateY(-3px);border-color:var(--gold);box-shadow:0 8px 24px rgba(0,0,0,.35)}
+.card-num{font-size:2.15rem;line-height:1;color:var(--gold);font-weight:900;margin-bottom:6px}
+.card-time{font-size:.74rem;color:var(--gold);font-weight:700;margin-bottom:6px;text-transform:uppercase;letter-spacing:.5px}
+.card-title{font-size:1.06rem;font-weight:700;margin-bottom:8px;color:var(--wh)}
+.card-desc{color:var(--lb);font-size:.85rem;line-height:1.55}
+.card-items{margin-top:11px;border-top:1px solid var(--line);padding-top:9px}
+.card-item{display:flex;align-items:baseline;gap:8px;padding:2px 0;font-size:.8rem;color:var(--lb)}
+.card-item-bullet{width:6px;height:6px;border-radius:50%;flex-shrink:0;background:var(--gold)}
+
+/* ---------- overview ---------- */
+#ov{position:fixed;inset:0;z-index:200;background:rgba(9,24,47,.985);display:none;overflow:auto;padding:22px}
+#ov.on{display:block}
+#ovg{display:grid;grid-template-columns:repeat(auto-fill,minmax(152px,1fr));gap:9px;max-width:1600px;margin:0 auto}
+#ovg button{aspect-ratio:16/9;background:var(--db);border:1px solid var(--line);color:var(--lb);font:inherit;
+ font-size:10px;text-align:left;padding:7px;cursor:pointer;line-height:1.22;overflow:hidden;border-radius:5px}
+#ovg button.d{background:#173966;border-color:var(--gold);color:var(--gold);font-weight:700}
+#ovg button:hover,#ovg button:focus-visible{border-color:var(--gold);color:var(--wh);outline:none}
+#ovg button i{display:block;color:var(--gold);font-style:normal;font-weight:700;margin-bottom:4px;font-variant-numeric:tabular-nums}
+
+/* ---------- present mode ---------- */
+body.present .header,body.present .timeline-bar,body.present .sidebar,body.present .deckbar{display:none}
+body.present #stage{padding:0}
+body.present .slide{border:0;border-radius:0;box-shadow:none}
+body.present #notes{position:fixed;left:0;right:0;bottom:0;z-index:60}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+a.sidebar-item,a.sidebar-item:visited{color:var(--wh);text-decoration:none}
+.slide .small-note a{color:var(--gold)}
+.session-card.empty{opacity:.45}
+.session-card.empty .card-title:after{content:' \\2014 not yet built';color:#dbad50;font-weight:400}
+
+/* ---- deck-only view: the slide and one section progress rail, nothing else.
+   SDS 2026-09-01: "get rid of the navigation on top of the slides, just show a
+   progress bar (with the sections) at the very bottom ... only the slide deck
+   in the browser window - so I can see more". Chrome is hidden rather than
+   removed, so the home view keeps it and one key brings it back. */
+body.deckonly .header,
+body.deckonly .timeline-bar,
+body.deckonly .sidebar,
+body.deckonly .deckbar { display: none !important; }
+body.deckonly #stage { padding: 0; }
+body.deckonly .prograil { display: flex; }
+/* the review toolbar is pinned bottom:14px and lands on the rail; lift it clear */
+body.deckonly #gtr-bar { bottom: calc(var(--prograil-h) + 12px) !important; }
+body.deckonly #gtr-flash { bottom: calc(var(--prograil-h) + 46px) !important; }
+body.deckonly #stage.on { padding-bottom: var(--prograil-h); }
+
+.prograil{
+  position: fixed; left: 0; right: 0; bottom: 0; height: var(--prograil-h);
+  display: none; align-items: stretch;
+  background: #071122; border-top: 1px solid #12294a;
+  font-size: 1.02vw; z-index: 950; user-select: none;
+}
+.prograil .pseg{
+  position: relative; flex: var(--w,1) 1 0; min-width: 0;
+  display: flex; align-items: center; justify-content: center; gap: .45em;
+  padding: 0 .7em; border: 0; border-right: 1px solid #12294a;
+  background: transparent; color: #6f8dae; font: inherit; cursor: pointer;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  transition: color 140ms ease;
+}
+.prograil .pseg:last-child{ border-right: 0; }
+.prograil .pseg .plabel{ position: relative; z-index: 2; overflow: hidden; text-overflow: ellipsis; }
+.prograil .pseg .pfill{
+  position: absolute; left: 0; top: 0; bottom: 0; width: 0; z-index: 1;
+  background: #13294b; transition: width 200ms ease;
+}
+.prograil .pseg.done .pfill{ width: 100%; }
+.prograil .pseg.done{ color: #85a4c6; }
+.prograil .pseg.on{ color: #f3f6fb; }
+.prograil .pseg.on .pfill{ background: #1d4478; }
+.prograil .pseg.on:after{
+  content:''; position: absolute; left: 0; right: 0; bottom: 0; height: 2px;
+  background: var(--gold, #dbad50); z-index: 3;
+}
+.prograil .pseg.empty{ opacity: .4; cursor: default; }
+.prograil .pseg:hover .plabel{ color: #f3f6fb; }
+
+</style><style id="gtr-fs-hint">body.present::after{content:"F or Esc to exit full screen";position:fixed;right:14px;bottom:12px;font:500 12px system-ui,sans-serif;color:#7d93ad;opacity:.0;transition:opacity .3s;pointer-events:none;z-index:9999}body.present:hover::after{opacity:.75}
+/* --- SDS 2026-09-03: the horizontal timeline strip duplicated the left sidebar
+   exactly (same sections, same slide counts). Removed; the sidebar is the one
+   that stays. This also returns its height to the slide, which was rendering at
+   only 825x464 inside a 1366x768 viewport. --- */
+.timeline-bar{display:none !important}
+</style><style id="frag-css">
+/* ---- gt01 (frag_gt01.css) ---- */
+/* ---- gt01 · Title: "RuBase · reading Russia at machine scale" ---------------
+   Per-slide-family rules. .ob-plate / .ob-reveal / img.cmp have NO generic rule
+   in the deck (each build family redeclares them), so everything this slide needs
+   is declared here, prefixed .gt01, and nothing leaks to another slide.
+
+   Components are real crops taken out of the source title renders, not the flat
+   renders themselves:
+     img/gt01/map_russia.png     <- sources/eucom-ruminations/slide-01.png (140,55,1625,772)
+     img/gt01/mark_redlines.png  <- sources/red-lines/slide-01.png        (1050,30,1730,950)
+     img/gt01/mark_wacko.png     <- sources/wacko/slide-01.png           (248,382,1512,830)
+   The route rail, the bluff banner and the third-cut badge have no original art
+   and are built in live deck type (route 3, HTML rather than inline SVG, mirroring
+   the deck's own .rb-tl/.rb-stop precedent so every label is cqw-sized).
+
+   TYPE FLOOR, measured not assumed: .slide is container-type:inline-size, so 1cqw
+   is 1% of the slide's CONTENT box, which is ~92.8% of the slide's border box after
+   the 3.6% side padding. The 1.10%-of-slide-width floor is therefore 1.185cqw, and
+   nothing here is set below 1.26cqw. Smallest rendered type measured at 1280/1366/
+   1600: 1.17% of slide width.
+
+   GEOMETRY, measured not assumed: .ob-pic does NOT keep its declared aspect-ratio.
+   It is a flex item in a height-constrained column, so it shrinks and the real
+   aspect came out 2.60 at all three widths. Anything anchored by top:% therefore
+   moves when the header wraps. The rail and the three cut marks are anchored to
+   the BOTTOM of the picture instead, so they cannot be pushed through it and
+   silently clipped by .ob-pic{overflow:hidden} - which is not reported as an
+   escape and has shipped three times.                                        */
+
+.gt01 .ob-pic{aspect-ratio:2.6;max-height:70cqh;background:#0b1c38;border-radius:5px}
+
+/* .obuild .ob-pic img{position:absolute;inset:0;width:100%;height:100%} outranks a
+   two-class selector and would force-stretch every component, so this is 3 classes
+   + element and it kills right/bottom explicitly. */
+.gt01 .ob-pic img.cmp{position:absolute;inset:auto;left:var(--x);top:var(--y);
+  width:var(--w);height:auto;right:auto;bottom:auto;border-radius:4px;
+  border:1px solid rgba(219,173,80,.30);box-shadow:0 7px 22px rgba(0,0,0,.55)}
+.gt01 .ob-pic img.cmp.low{top:auto;bottom:var(--b)}
+
+/* the byline sits in the slide header, not in the picture */
+.gt01 .gt01-by{margin:-.3em 0 .55em;color:var(--lb);font-size:1.5cqw;line-height:1.28}
+.gt01 .gt01-by b{color:var(--wh);font-weight:600}
+.gt01 .gt01-slot{color:var(--gold);border-bottom:1px dashed rgba(219,173,80,.6);
+  padding-bottom:.06em}
+
+/* step 2 · the closing sentence, planted at the outset */
+.gt01 .gt01-bluff{position:absolute;left:var(--x);top:var(--y);width:var(--w);
+  background:rgba(19,47,89,.88);border:1px solid rgba(219,173,80,.5);
+  border-top:3px solid var(--gold);border-radius:5px;padding:.6em .85em .68em}
+.gt01 .gt01-bluff i{display:block;color:var(--gold);font-style:normal;font-weight:700;
+  font-size:1.28cqw;letter-spacing:.09em;text-transform:uppercase;margin-bottom:.26em}
+.gt01 .gt01-bluff p{margin:0;color:var(--wh);font-size:1.74cqw;line-height:1.3;
+  font-style:italic}
+
+/* step 3 · the five-move route rail, anchored to the foot of the picture */
+.gt01 .gt01-rail{position:absolute;left:var(--x);bottom:var(--b);width:var(--w);
+  display:flex;gap:1.3%;border-top:1px solid rgba(219,173,80,.42);padding-top:1.1em}
+.gt01 .gt01-stn{flex:1;position:relative}
+.gt01 .gt01-stn i{position:absolute;top:-1.38em;left:0;width:.66em;height:.66em;
+  border-radius:50%;background:var(--gold);font-size:1.6cqw}
+.gt01 .gt01-stn u{display:block;color:var(--gold);font-size:1.3cqw;font-weight:700;
+  text-decoration:none;line-height:1.06}
+.gt01 .gt01-stn b{display:block;color:var(--wh);font-size:1.34cqw;font-weight:600;
+  line-height:1.16;margin-top:.06em}
+.gt01 .gt01-stn span{display:block;color:var(--lb);font-size:1.26cqw;line-height:1.22;
+  margin-top:.14em}
+.gt01 .gt01-stn.cuts u,.gt01 .gt01-stn.cuts span{color:var(--gold)}
+
+/* step 6 · the third cut has no art of its own, and says so */
+.gt01 .gt01-tb{position:absolute;left:var(--x);bottom:var(--b);width:var(--w);
+  border:1px dashed rgba(219,173,80,.66);border-radius:4px;background:rgba(11,28,56,.72);
+  padding:.55em .6em;text-align:center}
+.gt01 .gt01-tb b{display:block;color:var(--gold);font-size:1.34cqw;font-weight:700;
+  line-height:1.14}
+.gt01 .gt01-tb span{display:block;color:var(--lb);font-size:1.26cqw;line-height:1.2;
+  margin-top:.22em}
+
+/* motion · the hidden state carries transition:none, the fade lives on .shown.
+   A hidden state that transitions animates back to hidden while autofit() lights
+   the slide via body.measuring, and the room sees the built slide flash first. */
+.gt01 .ob-reveal{opacity:0;transition:none}
+.gt01 .ob-step.shown .ob-reveal{opacity:1;transition:opacity .3s ease}
+body.measuring .gt01 .ob-reveal,body.nobuild .gt01 .ob-reveal{opacity:1;transition:none}
+
+/* every .ob-step is a full-size transparent layer; without this it swallows the
+   pointer and nothing on the slide can be selected or commented on */
+.gt01 .ob-step{pointer-events:none}
+.gt01 .ob-step > *{pointer-events:auto}
+.gt01 .ob-scrim{pointer-events:none}
+
+/* ---- gt02 (frag_gt02.css) ---- */
+/* ---- gt02 "The policy gap" -------------------------------------------------
+   Route 3: the quantity figure is drawn as inline SVG (no generator layers and
+   no pptx media exist for this argument), plus one real cutout component,
+   img/meta/ic2.png, inside the "reaches the desk" tray.
+   Every class is prefixed pg- because an inline SVG <style> is NOT scoped and
+   bare names leak page-wide. Hidden states carry transition:none so that
+   autofit's body.measuring pass cannot animate the slide back to hidden.
+   ------------------------------------------------------------------------- */
+.slide.pgap .ob-pic{position:relative;width:100%;aspect-ratio:1200/420;margin:0 auto;
+  max-height:70cqh;border-radius:4px;overflow:hidden;background:#0a1830}
+.slide.pgap .ob-pic .pg-svg{position:absolute;inset:0;width:100%;height:100%;display:block}
+
+/* the SVG groups are the components; each is lit by its own step and stays lit */
+.slide.pgap .pg-g{opacity:0;transition:none}
+.slide.pgap:has(.ob-step.s1.shown) .pg-g1,
+.slide.pgap:has(.ob-step.s2.shown) .pg-g1,
+.slide.pgap:has(.ob-step.s3.shown) .pg-g1,
+.slide.pgap:has(.ob-step.s4.shown) .pg-g1,
+.slide.pgap:has(.ob-step.s5.shown) .pg-g1{opacity:1;transition:opacity .3s ease}
+.slide.pgap:has(.ob-step.s2.shown) .pg-g2,
+.slide.pgap:has(.ob-step.s3.shown) .pg-g2,
+.slide.pgap:has(.ob-step.s4.shown) .pg-g2,
+.slide.pgap:has(.ob-step.s5.shown) .pg-g2{opacity:1;transition:opacity .3s ease}
+.slide.pgap:has(.ob-step.s3.shown) .pg-g3,
+.slide.pgap:has(.ob-step.s4.shown) .pg-g3,
+.slide.pgap:has(.ob-step.s5.shown) .pg-g3{opacity:1;transition:opacity .3s ease}
+.slide.pgap:has(.ob-step.s4.shown) .pg-g4,
+.slide.pgap:has(.ob-step.s5.shown) .pg-g4{opacity:1;transition:opacity .3s ease}
+
+/* body.measuring lights every [data-frag]; the SVG groups are not fragments, so
+   light them too, with no transition, or the measured slide is a blank picture */
+body.measuring .slide.pgap .pg-g{opacity:1;transition:none}
+body.nobuild .slide.pgap .pg-g{opacity:1;transition:none}
+
+/* the picture is one <svg>, so the pointer must reach its parts, not the layer */
+.slide.pgap .ob-step{pointer-events:none}
+.slide.pgap .ob-step > *{pointer-events:auto}
+.slide.pgap .ob-scrim{pointer-events:none}
+
+/* ---- gt03 (frag_gt03.css) ---- */
+/* ============================================================================
+   gt03 - "Small N, one coefficient, and a reading list nobody audited"
+   Per-slide rules for the .sgap build. Every class is prefixed sg- because an
+   inline SVG <style> is NOT scoped to its subtree (VISUAL_SPEC 5) - so all SVG
+   text styling lives HERE, in ordinary scoped CSS, and the slide ships with no
+   inline <style> at all.
+
+   The .obuild block below is a DEFENSIVE, scoped copy of the house build
+   grammar, so the fragment renders correctly even if the generic deck shell has
+   not yet picked up the shared .obuild rules. Values are identical to the deck's
+   own, so where both exist they agree.
+   ========================================================================== */
+
+/* ---- house build grammar, scoped to this slide -------------------------- */
+/* 1770/640 = 2.766 is the space MEASURED as available under a two-line title and
+   a two-line sub at 1280/1366/1440/1600. The house rule's max-height:66cqh is
+   deliberately overridden: with width:100% a max-height does not shrink the box,
+   it SQUASHES it, and the first render of this slide came back 20% short
+   vertically with every glyph compressed with it. */
+.sgap .ob-pic{position:relative;width:100%;aspect-ratio:1770/640;margin:0 auto;
+  max-height:none;border-radius:4px;overflow:hidden;background:#0a1830}
+.sgap .ob-step{position:absolute;inset:0;transform:none;pointer-events:none}
+.sgap .ob-step > *{pointer-events:auto}
+.sgap .ob-note{position:absolute;left:var(--x);top:var(--y);width:var(--w);
+  background:rgba(10,24,47,.94);border:1px solid rgba(219,173,80,.55);
+  border-left:3px solid var(--gold);border-radius:5px;padding:.72em .9em;
+  box-shadow:0 8px 26px rgba(0,0,0,.55);transition:opacity .2s ease}
+.sgap .ob-note .k{color:var(--gold);font-weight:700;font-size:1.72cqw;line-height:1.18;margin-bottom:.2em}
+.sgap .ob-note .d{color:var(--wh);font-size:1.46cqw;line-height:1.42}
+.sgap .ob-note.wide .d{font-size:1.62cqw}
+/* only the CURRENT step keeps its box; every earlier one gives it up */
+.sgap .ob-step:has(~ .ob-step.shown) .ob-note{opacity:0;visibility:hidden;transition:none}
+.sgap .ob-scrim{position:absolute;inset:0;background:rgba(6,16,34,.74);pointer-events:none}
+
+/* ---- the drawn panels ---------------------------------------------------
+   One full-size <svg> per step, viewBox 1770x750 so it matches .ob-pic's own
+   aspect exactly: preserveAspectRatio="none" then neither letterboxes nor
+   distorts. 1 viewBox unit = 0.0524cqw, so the 1.10cqw type floor is 21 units
+   and nothing here is set below 26.                                        */
+.sgap .sg-lay{position:absolute;inset:0;width:100%;height:100%;display:block}
+.sgap .sg-lay text{font-family:var(--font);}
+
+.sgap .sg-eb{font-size:26px;font-weight:700;letter-spacing:.06em;fill:var(--gold)}
+.sgap .sg-num{font-size:68px;font-weight:900;fill:var(--wh)}
+.sgap .sg-numsub{font-size:32px;font-weight:400;fill:var(--lb)}
+.sgap .sg-cap{font-size:24px;font-weight:400;fill:var(--lb)}
+.sgap .sg-capg{font-size:28px;font-weight:700;fill:var(--gold)}
+.sgap .sg-lbl{font-size:24px;font-weight:700;letter-spacing:.08em;fill:var(--lb)}
+
+/* panel 1 - one dot = 1,000 works */
+.sgap .sg-dot{fill:#3f6396}
+.sgap .sg-dotg{fill:var(--gold)}
+
+/* panel 2 - publication and reference counts, drawn to scale */
+.sgap .sg-barc{fill:#4d7fb8}
+.sgap .sg-baro{fill:var(--gold)}
+.sgap .sg-inbar{font-size:24px;font-weight:700;fill:#0a1830;text-anchor:end}
+.sgap .sg-outbar{font-size:24px;font-weight:700;fill:var(--gold)}
+
+/* panel 3 - schematic of the bivariate design */
+.sgap .sg-ax{stroke:var(--lb);stroke-width:3}
+.sgap .sg-fit{stroke:var(--gold);stroke-width:4}
+.sgap .sg-pt{fill:#9db8d6}
+
+/* ---- panel 4 - the one real photographic component ----------------------
+   .obuild .ob-pic img pins EVERY component to inset:0 at 100%x100%, which
+   would stretch this screenshot; the three-class selector outranks it and the
+   explicit right/bottom:auto undo the inset (VISUAL_SPEC 8).               */
+.sgap .ob-pic img.sg-shot{position:absolute;left:var(--x);top:var(--y);width:var(--w);
+  height:auto;right:auto;bottom:auto;border-radius:4px;
+  border:1px solid rgba(157,184,214,.45);box-shadow:0 10px 30px rgba(0,0,0,.55)}
+.sgap .sg-cap5{position:absolute;left:var(--x);top:var(--y);width:var(--w);
+  color:var(--gold);font-size:1.3cqw;font-weight:700;letter-spacing:.06em;line-height:1.2}
+
+/* ---- gt04 (frag_gt04.css) ---- */
+/* =============================================================================
+   frag_gt04.css  ·  slide data-audience="policy academic defence student workshop mixed" data-sid="gt04"  ·  "What RuBase actually is"
+   -----------------------------------------------------------------------------
+   Two parts:
+     A. the house build grammar, copied VERBATIM from deck.html:216-218 / 265-289,
+        included only because generic_deck/index.html does not yet carry it. If the
+        assembling deck already declares these, the duplicates are byte-identical
+        and harmless.
+     B. the per-slide family rules for .rbwhat. Following the deck's own convention
+        (.prod4, .rec1f, .regbrd) every build-slide family redeclares its own
+        .ob-pic / component-image rules rather than relying on a generic one.
+
+   NO hidden state is declared anywhere below. The deck's own
+   `.slide [data-frag]{opacity:0;transition:none}` already hides each step, its SVG,
+   its image and its box together, so nothing here can animate back to hidden after
+   body.measuring lights the slide for autofit. That is the flash defect that
+   shipped 33 times; the way not to reintroduce it is to declare no opacity:0 at all.
+
+   Every SVG class carries the slide prefix rb4-, and the SVG styles live HERE
+   rather than in an inline <style>, because an inline SVG <style> is not scoped to
+   its subtree and bare class names leak page-wide.
+   ========================================================================== */
+
+/* ---------- A · house build grammar (verbatim) ---------------------------- */
+
+/* fragments use OPACITY, not display, so they still occupy layout: the autofit
+   engine measures the fully-built slide and must not resize mid-build. */
+.slide [data-frag]{opacity:0;transform:translateY(.28em);transition:none}
+.slide [data-frag].shown{opacity:1;transform:none;transition:opacity .26s ease,transform .26s ease}
+body.measuring .slide [data-frag]{opacity:1;transform:none;transition:none}
+body.nobuild .slide [data-frag]{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.slide [data-frag]{transition:none}}
+
+.obuild .ob-pic{position:relative;width:100%;aspect-ratio:1770/750;margin:0 auto;
+  max-height:66cqh;border-radius:4px;overflow:hidden;background:#0a1830}
+.obuild .ob-pic img{position:absolute;inset:0;width:100%;height:100%;display:block}
+.obuild .ob-step{position:absolute;inset:0;transform:none}
+.obuild .ob-note{position:absolute;left:var(--x);top:var(--y);width:var(--w);
+  background:rgba(10,24,47,.94);border:1px solid rgba(219,173,80,.55);
+  border-left:3px solid var(--gold);border-radius:5px;padding:.72em .9em;
+  box-shadow:0 8px 26px rgba(0,0,0,.55);transition:opacity .2s ease}
+.obuild .ob-note .k{color:var(--gold);font-weight:700;font-size:1.72cqw;line-height:1.18;margin-bottom:.2em}
+.obuild .ob-note .d{color:var(--wh);font-size:1.46cqw;line-height:1.42}
+.obuild .ob-note.wide .d{font-size:1.62cqw}
+/* only the CURRENT step keeps its box; every earlier one gives it up */
+.obuild .ob-step:has(~ .ob-step.shown) .ob-note{opacity:0;visibility:hidden;transition:none}
+/* the closing card dims the finished picture rather than covering any one part of it */
+.obuild .ob-scrim{position:absolute;inset:0;background:rgba(6,16,34,.74)}
+.obuild .ob-scrim.soft{background:rgba(6,16,34,.34)}
+
+/* a full-size .ob-step layer would otherwise swallow every pointer event and make
+   the components underneath unreachable to the review overlay (VISUAL_SPEC §11). */
+.obuild .ob-step{pointer-events:none}
+.obuild .ob-step > *{pointer-events:auto}
+.obuild .ob-scrim{pointer-events:none}
+
+/* ---------- B · the gt04 family ------------------------------------------- */
+
+.rbwhat .ob-pic{aspect-ratio:1770/750;max-height:70cqh;background:transparent}
+.rbwhat .ob-pic svg.rb4-lay{position:absolute;inset:0;width:100%;height:100%;display:block;
+  pointer-events:none}
+
+/* the deck forces every .ob-pic img to fill the box; a composed slide overrides it.
+   right/bottom are reset explicitly because `inset:0` set them to 0 and a two-class
+   selector does not beat `.obuild .ob-pic img` on its own. */
+.rbwhat .ob-pic img.rb4-shot{position:absolute;inset:auto;left:var(--x);top:var(--y);
+  right:auto;bottom:auto;width:var(--w);height:auto;max-width:none;display:block}
+/* the crop's own dark-navy ground is a shade off the slide's, so the visible window
+   gets a deliberate frame and reads as an inset panel rather than a mismatched patch.
+   A CSS border on the <img> itself would be invisible: clip-path cuts the element box
+   long before the border is painted, so the frame has to be a separate element sized
+   to the CLIP WINDOW, never to the image's own (much larger, mostly off-slide) rect. */
+.rbwhat .rb4-frame{position:absolute;left:var(--x);top:var(--y);width:var(--w);height:var(--h);
+  border:1px solid rgba(157,184,214,.38);border-radius:6px;
+  box-shadow:0 10px 30px rgba(0,0,0,.55)}
+
+/* -- SVG type. Floor is 1.10% of slide width; the picture renders at ~88-93% of
+      slide width, so against this 1770-unit viewBox the floor is ~21-22 units.
+      The smallest size used below is 26. -- */
+.rbwhat .ob-pic svg text{font-family:var(--font)}
+.rbwhat .rb4-hd  {font-size:34px;font-weight:600;fill:#9db8d6}
+.rbwhat .rb4-big {font-size:58px;font-weight:700;fill:#dbad50}
+.rbwhat .rb4-sm  {font-size:30px;font-weight:400;fill:#9db8d6}
+.rbwhat .rb4-gold{font-size:34px;font-weight:700;fill:#dbad50}
+.rbwhat .rb4-dim {font-size:26px;font-weight:400;fill:#6f8bad}
+.rbwhat .rb4-word{font-size:32px;font-weight:700;fill:#dbad50;letter-spacing:.04em}
+.rbwhat .rb4-sub {font-size:26px;font-weight:400;fill:#f3f6fb}
+
+/* the 28 source tiles */
+.rbwhat .rb4-tile{fill:rgba(157,184,214,.10);stroke:#9db8d6;stroke-width:1.6}
+.rbwhat .rb4-tl  {stroke:#9db8d6;stroke-width:2;opacity:.55}
+
+/* the 296,381 chunks: a mass with a countable texture, not a solid block */
+/* the tick sits at the MIDDLE of its 11-unit pattern tile, not at x=0: on the edge
+   half the stroke falls outside the tile, and after the viewBox is scaled down to
+   slide size the surviving half rounds to nothing. The first render of this slide
+   showed a plain empty block for exactly that reason. */
+.rbwhat .rb4-tk      {stroke:#9db8d6;stroke-width:2.4;opacity:.34}
+/* the solid ground and the pattern are two rects on purpose. A CSS `fill` rule BEATS
+   the `fill="url(#rb4-tick)"` presentation attribute, so declaring a fill on the
+   patterned rect silently paints a plain block over the texture &ndash; which is what the
+   second render of this slide showed. .rb4-massfill therefore declares no fill at all. */
+.rbwhat .rb4-massbg  {fill:#0f2545}
+.rbwhat .rb4-mass    {fill:none;stroke:#9db8d6;stroke-width:2.4}
+.rbwhat .rb4-lbl     {fill:rgba(9,24,47,.86)}
+.rbwhat .rb4-arw     {stroke:#dbad50;stroke-width:3;fill:none;stroke-linecap:round;stroke-linejoin:round}
+
+/* the 2.6%: the sliver is drawn to scale against the same 966-unit span */
+.rbwhat .rb4-track {fill:rgba(157,184,214,.07);stroke:#9db8d6;stroke-width:1.6}
+.rbwhat .rb4-sliver{fill:#dbad50}
+.rbwhat .rb4-lead  {stroke:#dbad50;stroke-width:2.4}
+
+/* the four-stage spine */
+.rbwhat .rb4-stage{fill:rgba(23,57,102,.55);stroke:rgba(157,184,214,.45);stroke-width:1.6}
+.rbwhat .rb4-edge {fill:#dbad50}
+.rbwhat .rb4-chev {stroke:#dbad50;stroke-width:4;fill:none;stroke-linecap:round;stroke-linejoin:round}
+
+/* ---- gt05 (frag_gt05.css) ---- */
+@import url("https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,300;0,400;0,600;0,700;0,900;1,400&display=swap");
+
+/* ===== gt05 · Red Lines: the disciplined null ("It is not the interaction") =========
+   ROUTE 2 - the components are CUT out of two real project figures, not redrawn and
+   not a slide render:
+     img/rl/irf_{russia,western,annexed,energy}.png (445x661 each)
+        = the four columns of "Red lines/figures/redline_irf_strike_response.png",
+          cropped SPINE TO SPINE, y=[175,836]: the figure title, the column titles,
+          the rotated row labels, the axis label AND every tick number are cropped
+          away and re-set on this slide in live deck type.
+     img/rl/strikes.png (1990x460)
+        = the lower panel of "Red lines/figures/redline_eventstudy_fullwar_2022_2026.png",
+          cropped to the plot area x=[94,2084] y=[566,1026] with the matplotlib
+          legend at x=[105,421] y=[576,670] painted white.
+   The rasters therefore contain NO WORDS AT ALL. Every word on the slide, axis scale
+   included, is live deck type, because the source figures' tick type renders at
+   0.6-0.9% of slide width - below the 1.10% floor - at any size these panels can take.
+   The palette is redeclared locally so the slide carries the house tokens even while
+   the deck shell still ships its older scaffold values. ==================== */
+
+.rlnc{
+  --bg:#09182f; --db:#132f59; --db2:#173966; --gold:#dbad50;
+  --lb:#9db8d6; --wh:#f3f6fb; --line:rgba(255,255,255,.12); --r:8px;
+  --title-size:4.5cqw; --title-weight:700;
+  --font:"Titillium Web",-apple-system,"Segoe UI",Roboto,Helvetica,sans-serif;
+  background:var(--bg); color:var(--wh); font-family:var(--font);
+  container-type:inline-size;
+  justify-content:flex-start;
+  padding:3.1% 3.6% calc(var(--nav-h, 0px) + 2.2%);
+}
+.rlnc h2{margin:0 0 .30em;color:var(--gold);font-weight:var(--title-weight);
+  font-size:var(--title-size);line-height:1.04;letter-spacing:-.01em;text-wrap:balance}
+.rlnc .sub{margin:-.1em 0 .70em;color:var(--lb);
+  font-size:calc(1.95cqw * min(var(--sc,1), 1));line-height:1.35;max-width:74ch}
+
+/* ---------- build-up fragments ----------
+   Fragments use OPACITY, not display, so they still occupy layout and the autofit
+   engine can measure the fully-built slide. A HIDDEN state carries transition:none,
+   or the slide paints fully built and visibly fades away before the build starts. */
+.rlnc [data-frag]{opacity:0;transform:translateY(.28em);transition:none}
+.rlnc [data-frag].shown{opacity:1;transform:none;transition:opacity .26s ease,transform .26s ease}
+body.measuring .rlnc [data-frag]{opacity:1;transform:none;transition:none}
+body.nobuild  .rlnc [data-frag]{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.rlnc [data-frag]{transition:none}}
+
+/* ---------- the picture ---------- */
+.rlnc .ob-pic{position:relative;width:100%;aspect-ratio:2100/880;margin:0 auto;
+  max-height:66cqh;border-radius:4px;overflow:hidden;background:transparent}
+.rlnc .ob-step{position:absolute;inset:0;transform:none}
+/* a full-size step layer must pass the pointer through, or nothing on the slide can
+   be selected or commented on; its CONTENTS take the pointer instead */
+.rlnc .ob-step{pointer-events:none}
+.rlnc .ob-step > *{pointer-events:auto}
+.rlnc .ob-scrim{pointer-events:none}
+
+/* three classes, so this outranks any generic `.obuild .ob-pic img{inset:0;
+   width:100%;height:100%}` that would otherwise force-stretch a placed component */
+.rlnc .ob-pic img.cmp{position:absolute;right:auto;bottom:auto;height:auto;
+  display:block;border-radius:3px;box-shadow:0 1px 8px rgba(0,0,0,.45)}
+
+/* ---------- the explanation box: exactly one on screen at a time ---------- */
+.rlnc .ob-note{position:absolute;left:var(--x);top:var(--y);width:var(--w);
+  background:rgba(10,24,47,.94);border:1px solid rgba(219,173,80,.55);
+  border-left:3px solid var(--gold);border-radius:5px;padding:.72em .9em;
+  box-shadow:0 8px 26px rgba(0,0,0,.55);transition:opacity .2s ease}
+.rlnc .ob-note .k{color:var(--gold);font-weight:700;font-size:1.72cqw;line-height:1.18;margin-bottom:.22em}
+.rlnc .ob-note .d{color:var(--wh);font-size:1.46cqw;line-height:1.42}
+.rlnc .ob-note.wide .d{font-size:1.62cqw}
+/* only the CURRENT step keeps its box; every earlier one gives it up */
+.rlnc .ob-step:has(~ .ob-step.shown) .ob-note{opacity:0;visibility:hidden;transition:none}
+/* the closing card dims the finished picture rather than covering any one part of it */
+.rlnc .ob-scrim{position:absolute;inset:0;background:rgba(6,16,34,.74)}
+
+/* ---------- live type that replaces what was cropped out of the rasters ---------- */
+.rlnc .rlnc-colhd{position:absolute;text-align:center;color:var(--gold);
+  font-weight:700;font-size:1.30cqw;line-height:1.15;letter-spacing:.005em}
+.rlnc .rlnc-rowlab{position:absolute;left:2.7%;white-space:nowrap;
+  transform:translate(-50%,-50%) rotate(-90deg);transform-origin:50% 50%;
+  color:var(--lb);font-weight:600;font-size:1.22cqw;letter-spacing:.05em}
+.rlnc .rlnc-axis{position:absolute;text-align:right;color:var(--lb);
+  font-size:1.25cqw;line-height:1.25}
+.rlnc .rlnc-evlab{position:absolute;text-align:right;color:var(--gold);
+  font-weight:700;font-size:1.25cqw;line-height:1.2}
+.rlnc .rlnc-evline{position:absolute;width:2px;background:var(--gold);opacity:.9}
+.rlnc .rlnc-src{position:absolute;color:var(--lb);opacity:.78;
+  font-size:1.22cqw;line-height:1.32}
+
+/* live axis type: the rasters carry NO words at all, so the scale is set here */
+.rlnc .rlnc-ylab{position:absolute;text-align:right;color:var(--lb);
+  font-size:1.22cqw;line-height:1;transform:translateY(-50%);padding-right:.45em}
+.rlnc .rlnc-xlab{position:absolute;text-align:center;color:var(--lb);
+  font-size:1.22cqw;line-height:1.2}
+
+/* the live legend that replaces the painted-out matplotlib one, in the same empty
+   corner of the panel that matplotlib itself chose */
+.rlnc .rlnc-leg{position:absolute;color:#1c2a3c;
+  font-weight:600;font-size:1.22cqw;line-height:1.3}
+.rlnc .rlnc-leg i{display:inline-block;width:1.5em;height:.22em;vertical-align:.28em;
+  margin:0 .3em 0 .55em;border-radius:1px}
+
+/* ---- gt06 (frag_gt06.css) ---- */
+/* =============================================================================
+   gt06 — "The Granger network" (section cut1, the CLOSING slide of the Red Lines cut)
+   -----------------------------------------------------------------------------
+   ROUTE 3 (drawn). Routes 1 and 2 were tried first and are unavailable:
+     · route 1 — no generator emits build stages for a Granger-network figure.
+       The Red Lines figure producers on disk (`/tmp/redline_figs.py`,
+       `/tmp/redline_fulltl.py`, per RED_LINES_CAUSAL_FINDINGS.md §3.3) emit the
+       IRF grid and the full-war event study, not a network, and there is no
+       `_layers/` folder anywhere under the Red Lines tree.
+     · route 2 — there is no flat render of this figure to cut. `Red lines/figures/`
+       holds exactly three PNGs (redline_eventstudy_fullwar_2022_2026.png,
+       redline_fulltimeline_2022_2026.png, redline_irf_strike_response.png) and
+       gt05 has already cut all of them. The 17 `sources/red-lines/slide-*.png`
+       are NotebookLM decoration, not a figure.
+   So the whole picture is inline SVG, and the subject is itself a network, which
+   is what SLIDE_BUILD_PATTERN.md route 3 exists for.
+
+   🟥 SCOPING. Every class below is prefixed `gt06-`. An inline SVG <style> is NOT
+   scoped to its own subtree — bare names leak page-wide and silently restyle
+   other figures — so this fragment ships NO inline <style> at all and takes its
+   SVG presentation from this stylesheet instead. That also avoids assemble.sh's
+   "ships BOTH an inline <style> and a sibling .css" warning.
+
+   TYPE FLOOR, measured not assumed. `.slide` is `container-type:inline-size` with
+   padding 3.1%/3.6%, so 1cqw = 0.928% of slide width and the 1.10%-of-slide-width
+   floor is 1.185cqw. Nothing in the boxes is below 1.26cqw.
+   For the SVG the floor has to be carried through the viewBox: .ob-pic is 100% of
+   the slide CONTENT box (0.928W) mapped onto 1770 user units, so one unit is
+   0.0524% of slide width and the floor is 20.98 units. gt01 measured that .ob-pic
+   does NOT keep its declared aspect ratio — it is a flex item in a height-
+   constrained column and came out at ~2.60 against a declared 2.36 — so with
+   preserveAspectRatio="none" the VERTICAL scale can run ~9% short and glyph
+   height with it. The working floor is therefore 20.98 / 0.908 = 23.1 units.
+   The smallest type in this slide is 26 units = 1.24% of slide width even after
+   that squash. Nothing is set below 26.
+
+   GEOMETRY. All art lives in the band y >= 276 of the 750-unit viewBox, i.e. the
+   bottom 63% of the picture. Every .ob-note is anchored at --y:1% and is at most
+   ~34% of the picture tall at --w:64%, so no box can ever sit on revealed art.
+   The one deliberate exception is the closing card, which sits over .ob-scrim —
+   the pattern's declared exception, and it buys legibility, not coverage.
+   ============================================================================= */
+
+/* --- per-slide rules ------------------------------------------------------- */
+
+/* the slide is its own inline-size container, so the cqw units resolve against
+   the slide in ANY host shell. Where `.slide` already declares this the value is
+   identical and re-stating it changes nothing. */
+.gt06{container-type:inline-size}
+
+.gt06 .ob-pic{aspect-ratio:1770/750;max-height:66cqh;background:#0a1830}
+
+.gt06 .ob-pic svg.gt06-lay{position:absolute;inset:0;width:100%;height:100%;
+  display:block;pointer-events:none}
+
+/* `.obuild .ob-pic img{position:absolute;inset:0;width:100%;height:100%}` outranks
+   a plain two-class selector, so any component image added later must reset inset
+   explicitly. Declared for future use; gt06 ships no <img> and needs none. */
+.gt06 .ob-pic img.gt06-shot{position:absolute;inset:auto;right:auto;bottom:auto;
+  left:var(--x);top:var(--y);width:var(--w);height:auto;max-width:none;
+  display:block;border-radius:4px;box-shadow:0 8px 26px rgba(0,0,0,.55)}
+
+/* the closing card sits over a dimmed picture, so it is allowed to cover art */
+.gt06 .ob-note.wide{background:rgba(9,24,47,.96)}
+
+/* --- SVG nodes ------------------------------------------------------------- */
+.gt06 .gt06-nd{fill:#132f59;stroke:rgba(157,184,214,.55);stroke-width:2}
+.gt06 .gt06-ng{fill:#16305c;stroke:#dbad50;stroke-width:3}
+.gt06 .gt06-nr{fill:#16305c;stroke:#c1272d;stroke-width:3}
+.gt06 .gt06-chip{fill:#132f59;stroke:rgba(157,184,214,.30);stroke-width:1.5}
+
+/* --- SVG type -------------------------------------------------------------- */
+.gt06 .gt06-tn{font:600 29px "Titillium Web",system-ui,-apple-system,sans-serif;fill:#f3f6fb}
+.gt06 .gt06-tg{font:700 31px "Titillium Web",system-ui,-apple-system,sans-serif;fill:#dbad50}
+.gt06 .gt06-ts{font:400 26px "Titillium Web",system-ui,-apple-system,sans-serif;fill:#9db8d6}
+.gt06 .gt06-lb{font:400 27px "Titillium Web",system-ui,-apple-system,sans-serif;fill:#9db8d6}
+.gt06 .gt06-cap{font:400 26px "Titillium Web",system-ui,-apple-system,sans-serif;fill:#6f8bad}
+.gt06 .gt06-kick{font:700 28px "Titillium Web",system-ui,-apple-system,sans-serif;fill:#dbad50;
+  letter-spacing:.1em}
+.gt06 .gt06-big{font:700 36px "Titillium Web",system-ui,-apple-system,sans-serif;fill:#dbad50}
+.gt06 .gt06-stat{font:600 32px "Titillium Web",system-ui,-apple-system,sans-serif;fill:#f3f6fb}
+
+/* --- SVG edges ------------------------------------------------------------- */
+/* the bivariate arrow, as it looks before anything is controlled for */
+.gt06 .gt06-e1{fill:none;stroke:#dbad50;stroke-width:7;stroke-linecap:round}
+.gt06 .gt06-ah{fill:#dbad50}
+/* step 2 kills that arrow by overpainting it in the plate colour and redrawing it
+   dashed. SVG layers accumulate — a later step cannot erase an earlier one — so an
+   opaque overdraw is the only honest way to show an edge dying. */
+.gt06 .gt06-kill{fill:none;stroke:#0a1830;stroke-width:15;stroke-linecap:round}
+.gt06 .gt06-ahk{fill:#0a1830;stroke:#0a1830;stroke-width:6;stroke-linejoin:round}
+.gt06 .gt06-dead{fill:none;stroke:#6f8bad;stroke-width:3;stroke-dasharray:13 10}
+.gt06 .gt06-ahd{fill:none;stroke:#6f8bad;stroke-width:2.5;stroke-linejoin:round}
+.gt06 .gt06-disc{fill:#0a1830}
+.gt06 .gt06-x{stroke:#dbad50;stroke-width:6;stroke-linecap:round}
+/* the edges the screen actually returns */
+.gt06 .gt06-ed{fill:none;stroke:#9db8d6;stroke-width:3;opacity:.9}
+.gt06 .gt06-ahl{fill:#9db8d6}
+.gt06 .gt06-eg{fill:none;stroke:#dbad50;stroke-width:5;stroke-linecap:round}
+.gt06 .gt06-ring{fill:none;stroke:#dbad50;stroke-width:3;stroke-dasharray:11 9}
+
+
+/* =============================================================================
+   HOST-DECK MACHINERY — include ONLY if the host shell does not already declare
+   it. _house_shell.html does; a bare scaffold does not. Every declaration below
+   is byte-for-byte the shell's own, so loading it twice is a no-op. Nothing here
+   touches `.slide` layout (display/position), which shells define differently.
+   ============================================================================= */
+
+/* ---------- build-up fragments ----------
+   Fragments use OPACITY, not display, so they still occupy layout: the autofit
+   engine measures the fully-built slide and must not resize mid-build.
+   🟥 The hidden state carries transition:none and the fade lives on .shown.
+   autofit() lights every fragment via body.measuring, and a hidden state that
+   TRANSITIONS then animates back to hidden, so the slide paints fully built and
+   fades away — the flash SDS reported. */
+.slide [data-frag]{opacity:0;transform:translateY(.28em);transition:none}
+.slide [data-frag].shown{opacity:1;transform:none;transition:opacity .26s ease,transform .26s ease}
+body.measuring .slide [data-frag]{opacity:1;transform:none;transition:none}
+body.nobuild .slide [data-frag]{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.slide [data-frag]{transition:none}}
+
+.obuild .ob-pic{position:relative;width:100%;aspect-ratio:1770/750;margin:0 auto;
+  max-height:66cqh;border-radius:4px;overflow:hidden;background:#0a1830}
+.obuild .ob-pic img{position:absolute;inset:0;width:100%;height:100%;display:block}
+.obuild .ob-step{position:absolute;inset:0;transform:none}
+.obuild .ob-note{position:absolute;left:var(--x);top:var(--y);width:var(--w);
+  background:rgba(10,24,47,.94);border:1px solid rgba(219,173,80,.55);
+  border-left:3px solid var(--gold);border-radius:5px;padding:.72em .9em;
+  box-shadow:0 8px 26px rgba(0,0,0,.55);transition:opacity .2s ease}
+.obuild .ob-note .k{color:var(--gold);font-weight:700;font-size:1.72cqw;line-height:1.18;margin-bottom:.2em}
+.obuild .ob-note .d{color:var(--wh);font-size:1.46cqw;line-height:1.42}
+.obuild .ob-note.wide .d{font-size:1.62cqw}
+/* only the CURRENT step keeps its box; every earlier one gives it up */
+.obuild .ob-step:has(~ .ob-step.shown) .ob-note{opacity:0;visibility:hidden;transition:none}
+/* the closing card dims the finished picture rather than covering any one part of it */
+.obuild .ob-scrim{position:absolute;inset:0;background:rgba(6,16,34,.74)}
+.obuild .ob-scrim.soft{background:rgba(6,16,34,.34)}
+
+/* nothing on a slide is clickable unless the full-size step layers pass the
+   pointer through and their CONTENTS take it back */
+.obuild .ob-step{pointer-events:none}
+.obuild .ob-step > *{pointer-events:auto}
+.obuild .ob-scrim{pointer-events:none}
+
+/* ---- gt07 (frag_gt07.css) ---- */
+/* ---- gt07 "Picking and choosing" (WACKO) -----------------------------------
+   The picture is the ORIGINAL WACKO figure "Selective Appropriation: The
+   Curated Canon" (generic_deck/sources/wacko/slide-06.png), taken apart by
+   route 2 into four registered full-canvas layers over a de-tinted background
+   plate: canon / sieve / reject / output. Stacking all four over the plate
+   reproduces the source crop to a mean 1.03/255 per pixel outside the zones
+   where the original's own lettering was removed. Every word on this slide is
+   live deck type; no lettering survives inside any component.
+   Per-family redeclaration, as every other build family in this deck does. */
+
+.gt07 .ob-pic{position:relative;width:min(100%,90cqw);aspect-ratio:1640/710;margin:0 auto;
+  border-radius:4px;overflow:hidden;background:#0a1830}
+.gt07 .ob-pic img{position:absolute;inset:0;width:100%;height:100%;display:block}
+.gt07 .ob-step{position:absolute;inset:0;transform:none}
+.gt07 .ob-note{position:absolute;left:var(--x);top:var(--y);width:var(--w);
+  background:rgba(10,24,47,.94);border:1px solid rgba(219,173,80,.55);
+  border-left:3px solid var(--gold);border-radius:5px;padding:.72em .9em;
+  box-shadow:0 8px 26px rgba(0,0,0,.55);transition:opacity .2s ease}
+.gt07 .ob-note .k{color:var(--gold);font-weight:700;font-size:1.72cqw;line-height:1.18;margin-bottom:.2em}
+.gt07 .ob-note .d{color:var(--wh);font-size:1.46cqw;line-height:1.42}
+.gt07 .ob-note.wide .d{font-size:1.62cqw}
+/* only the CURRENT step keeps its box; every earlier one gives it up.
+   transition:none on the hidden state, or autofit's measuring pass animates
+   the whole built slide back to hidden and the deck "flashes". */
+.gt07 .ob-step:has(~ .ob-step.shown) .ob-note{opacity:0;visibility:hidden;transition:none}
+/* the closing card dims the finished picture rather than covering any one part */
+.gt07 .ob-scrim{position:absolute;inset:0;background:rgba(6,16,34,.74)}
+.gt07 .ob-scrim.soft{background:rgba(6,16,34,.34)}
+
+/* fragment machinery, scoped, so the slide is correct in any shell that
+   toggles .shown. Identical semantics to the deck-wide rules. */
+.gt07 [data-frag]{opacity:0;transform:translateY(.28em);transition:none}
+.gt07 [data-frag].shown{opacity:1;transform:none;transition:opacity .26s ease,transform .26s ease}
+body.measuring .gt07 [data-frag]{opacity:1;transform:none;transition:none}
+body.nobuild .gt07 [data-frag]{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.gt07 [data-frag]{transition:none}}
+
+/* ---- gt08 (frag_gt08.css) ---- */
+/* ===========================================================================
+   frag_gt08.css  -  slide gt08, "120 versus 15" (WACKO, cut 2)
+
+   Everything here is scoped to .gt08. The generic deck shell (index.html)
+   carries no obuild grammar and no house palette, so this file restates both
+   for its own slide - which is also the deck's own habit: .ob-plate,
+   .ob-reveal and img.cmp have no generic rule in deck.html either, each
+   build-slide family redeclares them.
+
+   Two traps this file is written against, both of which have shipped once:
+     - a HIDDEN state must carry transition:none, or autofit's body.measuring
+       pass paints the slide fully built and then animates it away;
+     - `.obuild .ob-pic img` would force-stretch the rings component to
+       inset:0 / 100% x 100%, so the component is addressed by a THIRD class
+       and resets right/bottom explicitly.
+   =========================================================================== */
+
+@import url("https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,300;0,400;0,600;0,700;0,900;1,400&display=swap");
+
+/* ---------- the slide box: house tokens, container for cqw ---------- */
+.slide.gt08{
+  --bg:#09182f; --db:#132f59; --db2:#173966; --gold:#dbad50;
+  --lb:#9db8d6; --wh:#f3f6fb; --line:rgba(255,255,255,.12); --r:8px;
+  --title-size:4.5cqw; --title-weight:700;
+  --font:"Titillium Web",-apple-system,"Segoe UI",Roboto,Helvetica,sans-serif;
+  --sc:1;
+  container-type:inline-size;
+  background:var(--bg); color:var(--wh); font-family:var(--font);
+  padding:3.1% 3.6%;
+  display:none; flex-direction:column; justify-content:flex-start;
+  overflow:hidden;
+}
+.slide.gt08.current, .slide.gt08.on{display:flex}
+
+.slide.gt08 h2{
+  margin:0 0 .34em; color:var(--gold); font-weight:var(--title-weight);
+  font-size:var(--title-size); line-height:1.04; letter-spacing:-.01em;
+  text-wrap:balance;
+}
+.slide.gt08 .sub{
+  margin:-.1em 0 .8em; color:var(--lb);
+  font-size:calc(1.95cqw * min(var(--sc), 1)); line-height:1.35; max-width:62ch;
+}
+
+/* ---------- fragment machinery (opacity, never display) ---------- */
+.slide.gt08 [data-frag]{opacity:0; transform:translateY(.28em); transition:none}
+.slide.gt08 [data-frag].shown{opacity:1; transform:none;
+  transition:opacity .26s ease, transform .26s ease}
+body.measuring .slide.gt08 [data-frag]{opacity:1; transform:none; transition:none}
+body.nobuild  .slide.gt08 [data-frag]{opacity:1; transform:none}
+@media (prefers-reduced-motion:reduce){.slide.gt08 [data-frag]{transition:none}}
+
+/* ---------- the picture and its steps ---------- */
+.gt08 .ob-pic{position:relative; width:100%; aspect-ratio:1770/750; margin:0 auto;
+  max-height:66cqh; border-radius:4px; overflow:hidden; background:#0a1830}
+.gt08 .ob-pic img{position:absolute; inset:0; width:100%; height:100%; display:block}
+.gt08 .ob-step{position:absolute; inset:0; transform:none; pointer-events:none}
+.gt08 .ob-step > *{pointer-events:auto}
+
+.gt08 .ob-note{position:absolute; left:var(--x); top:var(--y); width:var(--w);
+  background:rgba(10,24,47,.94); border:1px solid rgba(219,173,80,.55);
+  border-left:3px solid var(--gold); border-radius:5px; padding:.72em .9em;
+  box-shadow:0 8px 26px rgba(0,0,0,.55); transition:opacity .2s ease}
+.gt08 .ob-note .k{color:var(--gold); font-weight:700; font-size:1.72cqw;
+  line-height:1.18; margin-bottom:.2em}
+.gt08 .ob-note .d{color:var(--wh); font-size:1.46cqw; line-height:1.42}
+.gt08 .ob-note.wide .d{font-size:1.62cqw}
+
+/* only the CURRENT step keeps its box; every earlier one gives it up */
+.gt08 .ob-step:has(~ .ob-step.shown) .ob-note{opacity:0; visibility:hidden; transition:none}
+
+/* the closing card dims the finished picture rather than covering one part of it */
+.gt08 .ob-scrim{position:absolute; inset:0; background:rgba(6,16,34,.74); pointer-events:none}
+
+/* ---------- components ---------- */
+
+/* the base drawing. It is NOT inside a step, so it adds no empty full-size
+   overlay; its groups are lit by the step that owns them. */
+.gt08 .ob-pic svg.g08-svg{position:absolute; inset:0; width:100%; height:100%; display:block}
+.gt08 .g08-svg text{font-family:var(--font)}
+
+/* the one cut component: gold reverberation rings, cut from the WACKO source
+   render sources/wacko/slide-01.png (text-free region, radial alpha baked in).
+   Three classes beat `.gt08 .ob-pic img`, and right/bottom are reset by hand. */
+.gt08 .ob-pic img.g08-rings{
+  inset:auto; left:6.8%; top:33.3%; width:20.3%; height:auto;
+  right:auto; bottom:auto; mix-blend-mode:screen; opacity:.96;
+}
+
+/* hidden drawn groups carry transition:none; the fade lives on the shown state */
+.gt08 .g08-l1,.gt08 .g08-l2,.gt08 .g08-l3,.gt08 .g08-l4,.gt08 .g08-l5{
+  opacity:0; transition:none}
+.gt08 .ob-pic:has(.ob-step.s1.shown) .g08-l1,
+.gt08 .ob-pic:has(.ob-step.s2.shown) .g08-l2,
+.gt08 .ob-pic:has(.ob-step.s3.shown) .g08-l3,
+.gt08 .ob-pic:has(.ob-step.s4.shown) .g08-l4,
+.gt08 .ob-pic:has(.ob-step.s5.shown) .g08-l5{opacity:1; transition:opacity .3s ease}
+
+body.measuring .gt08 .g08-l1, body.measuring .gt08 .g08-l2,
+body.measuring .gt08 .g08-l3, body.measuring .gt08 .g08-l4,
+body.measuring .gt08 .g08-l5,
+body.nobuild  .gt08 .g08-l1, body.nobuild  .gt08 .g08-l2,
+body.nobuild  .gt08 .g08-l3, body.nobuild  .gt08 .g08-l4,
+body.nobuild  .gt08 .g08-l5{opacity:1; transition:none}
+
+/* ---- gt09 (frag_gt09.css) ---- */
+/* =============================================================================
+   gt09 — "<a href="https://rubase.org/p/rfsdp" target="_blank">RFSDP, the master corpus</a>" (key: rfsdp-corpus)
+   Route 3 (drawn). Routes 1 and 2 were tried first and are unavailable:
+     · route 1 — no generator emits stages for this figure. There is no `_layers/`
+       anywhere under ~/rfsdp_harvest/ and no matplotlib/savefig producer for a
+       master-corpus figure; the only two PNGs there
+       (reading_russia_fig1_forward_coverage.png, fig2_cited_by_year.png) are the
+       Chinese forward-citation-coverage charts, a different claim.
+     · route 2 — no flat render of this figure has ever existed, so there is
+       nothing to cut. The nearest on-topic assets in img/ (b3/corpus_timeline.png,
+       b3/fields_cloud.png, bibx/*.png) are screenshots of DIFFERENT corpora and
+       carry their own numbers on their face (11,947 works in set; political
+       science 9,154). Importing them would put figures on this slide that the
+       argument content does not authorise, and bibx/* additionally carry baked-in
+       PowerPoint arrows.
+   So the whole picture is inline SVG. Every class is prefixed `gt09-`, because an
+   inline SVG <style> is NOT scoped to its subtree and bare names leak page-wide.
+
+   NO hidden-state rule is declared for the build. The deck's own
+   `.slide [data-frag]{opacity:0;transition:none}` already hides each step, its SVG
+   and its box together, so nothing here can animate back to hidden after
+   body.measuring lights the slide for autofit.
+   ============================================================================= */
+
+/* --- per-slide rules ------------------------------------------------------- */
+
+/* the slide is its own inline-size container, so the cqw units below resolve
+   against the slide in ANY host shell. In the GaTech deck `.slide` already
+   declares this and the value is identical, so re-stating it changes nothing. */
+.gt09{container-type:inline-size}
+
+.gt09 .ob-pic{aspect-ratio:1770/750;max-height:70cqh;background:transparent}
+
+.gt09 .ob-pic svg.gt09-lay{position:absolute;inset:0;width:100%;height:100%;
+  display:block;pointer-events:none}
+
+/* `.obuild .ob-pic img{position:absolute;inset:0;width:100%;height:100%}` outranks
+   a plain two-class selector, so any composed component image on this slide must
+   reset inset explicitly. Declared for future use; gt09 currently ships no <img>. */
+.gt09 .ob-pic img.gt09-shot{position:absolute;inset:auto;right:auto;bottom:auto;
+  left:var(--x);top:var(--y);width:var(--w);height:auto;max-width:none;
+  display:block;border-radius:4px;box-shadow:0 8px 26px rgba(0,0,0,.55)}
+
+/* the closing card sits over a dimmed picture, so it is allowed to cover art */
+.gt09 .ob-note.wide{background:rgba(9,24,47,.96)}
+
+
+/* =============================================================================
+   HOST-DECK MACHINERY — include ONLY if the host shell does not already declare
+   it. The GaTech deck (deck.html) does; the generic deck scaffold does not yet.
+   Every declaration below is byte-for-byte the deck's own, so loading it twice is
+   a no-op. Nothing here touches `.slide` layout (display/position), which the two
+   shells define differently.
+   ============================================================================= */
+
+/* ---------- build-up fragments ----------
+   Fragments use OPACITY, not display, so they still occupy layout: the autofit
+   engine measures the fully-built slide and must not resize mid-build. */
+.slide [data-frag]{opacity:0;transform:translateY(.28em);transition:none}
+.slide [data-frag].shown{opacity:1;transform:none;transition:opacity .26s ease,transform .26s ease}
+body.measuring .slide [data-frag]{opacity:1;transform:none;transition:none}
+body.nobuild .slide [data-frag]{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.slide [data-frag]{transition:none}}
+
+.obuild .ob-pic{position:relative;width:100%;aspect-ratio:1770/750;margin:0 auto;
+  max-height:66cqh;border-radius:4px;overflow:hidden;background:#0a1830}
+.obuild .ob-pic img{position:absolute;inset:0;width:100%;height:100%;display:block}
+.obuild .ob-step{position:absolute;inset:0;transform:none}
+.obuild .ob-note{position:absolute;left:var(--x);top:var(--y);width:var(--w);
+  background:rgba(10,24,47,.94);border:1px solid rgba(219,173,80,.55);
+  border-left:3px solid var(--gold);border-radius:5px;padding:.72em .9em;
+  box-shadow:0 8px 26px rgba(0,0,0,.55);transition:opacity .2s ease}
+.obuild .ob-note .k{color:var(--gold);font-weight:700;font-size:1.72cqw;line-height:1.18;margin-bottom:.2em}
+.obuild .ob-note .d{color:var(--wh);font-size:1.46cqw;line-height:1.42}
+.obuild .ob-note.wide .d{font-size:1.62cqw}
+/* only the CURRENT step keeps its box; every earlier one gives it up */
+.obuild .ob-step:has(~ .ob-step.shown) .ob-note{opacity:0;visibility:hidden;transition:none}
+/* the closing card dims the finished picture rather than covering any one part of it */
+.obuild .ob-scrim{position:absolute;inset:0;background:rgba(6,16,34,.74)}
+.obuild .ob-scrim.soft{background:rgba(6,16,34,.34)}
+
+/* nothing on a slide is clickable unless the full-size step layers pass the
+   pointer through and their CONTENTS take it back */
+.obuild .ob-step{pointer-events:none}
+.obuild .ob-step > *{pointer-events:auto}
+.obuild .ob-scrim{pointer-events:none}
+
+/* ---- gt10 (frag_gt10.css) ---- */
+/* ============================================================================
+   gt10 - "How we can help you" - the offer slide that closes the generic deck.
+
+   ROUTE 2 (the pptx media). Every component is an individually cut asset with
+   its own alpha channel, composed in HTML: four from the 2025 RuBase deck's
+   PowerPoint /media dump (img/src2025/image4, image9, image69, image74) and
+   three line-art icon cutouts (img/meta/ic1, ic2, ic3). No flat slide render
+   appears anywhere on this slide, and every word on it is live deck type.
+
+   House practice, followed deliberately: each build-slide family redeclares
+   the .ob-* rules for itself rather than leaning on a generic copy, so this
+   file is self-contained and the fragment renders correctly in any shell that
+   carries the palette tokens.
+
+   MOTION RULE (VISUAL_SPEC section 7): every hidden state below carries
+   transition:none; the fade lives only on the shown state. Otherwise autofit's
+   body.measuring pass paints the slide fully built and animates it away, which
+   the room sees as a flash before the build starts.
+   ========================================================================== */
+
+/* ---- fragment machinery, scoped so it cannot fight the deck's own copy ---- */
+.slide.g10 [data-frag]{opacity:0;transform:translateY(.28em);transition:none}
+.slide.g10 [data-frag].shown{opacity:1;transform:none;
+  transition:opacity .26s ease,transform .26s ease}
+body.measuring .slide.g10 [data-frag]{opacity:1;transform:none;transition:none}
+body.nobuild  .slide.g10 [data-frag]{opacity:1;transform:none}
+
+/* ---- slide shell (guards: the generic deck shell sizes h2 in vh) ---------- */
+.slide.g10{background:var(--bg);color:var(--wh);
+  font-family:"Titillium Web",-apple-system,"Segoe UI",Roboto,Helvetica,sans-serif}
+.slide.g10 h2{margin:0 0 .30em;color:var(--gold);font-weight:700;
+  font-size:4.5cqw;line-height:1.04;letter-spacing:-.01em;text-wrap:balance}
+.slide.g10 .sub{margin:-.1em 0 .7em;color:var(--lb);
+  font-size:1.95cqw;line-height:1.35;max-width:62ch}
+
+/* ---- the picture -------------------------------------------------------- */
+.g10 .ob-pic{position:relative;width:100%;aspect-ratio:1720/760;margin:0 auto;
+  max-height:66cqh;border-radius:4px;overflow:hidden;background:transparent}
+
+/* Each step is a full-size transparent layer. It passes the pointer through so
+   its CONTENTS stay reachable to the review overlay (VISUAL_SPEC section 11);
+   without both halves nothing on a build slide is clickable. */
+.g10 .ob-step{position:absolute;inset:0;transform:none;pointer-events:none}
+.g10 .ob-step > *{pointer-events:auto}
+
+/* Component images. Three classes beat `.obuild .ob-pic img{inset:0;
+   width:100%;height:100%}`, which would otherwise stretch every cutout to the
+   full picture box and distort the photographs. right/bottom are reset
+   explicitly for the same reason. */
+.g10 .ob-pic img.cmp{position:absolute;inset:auto;right:auto;bottom:auto;
+  width:auto;height:auto;display:block;object-fit:contain;
+  filter:drop-shadow(0 6px 18px rgba(0,0,0,.55))}
+
+.g10 .ob-pic img.cmp.c1{left:1.5%;  top:8%;  width:15.0%}   /* image74 - person + idea cloud */
+.g10 .ob-pic img.cmp.c2{left:20.0%; top:12%; width:12.0%}   /* image69 - document stack      */
+.g10 .ob-pic img.cmp.c3{left:35.5%; top:21%; width:10.5%}   /* meta/ic2 - structured records */
+.g10 .ob-pic img.cmp.c4{left:48.5%; top:7%;  width:19.0%}   /* image4_wheel - the sunburst   */
+.g10 .ob-pic img.cmp.c5{left:70.0%; top:21%; width:10.0%}   /* meta/ic1 - knowledge graph    */
+.g10 .ob-pic img.cmp.c6{left:83.5%; top:10%; width:12.5%}   /* image9  - branching streams   */
+.g10 .ob-pic img.cmp.c7{left:3.0%;  top:57%; width:10.0%}   /* meta/ic3 - people + loop      */
+
+/* ---- live-type labels that belong to the picture ------------------------- */
+.g10 .lbl{position:absolute;left:var(--x);top:var(--y);width:var(--w);
+  text-align:center;color:var(--gold);font-weight:700;
+  font-size:1.34cqw;line-height:1.22;letter-spacing:.03em;text-transform:uppercase}
+
+/* ---- the chain between the components (CSS triangles, no text) ----------- */
+.g10 .chv{position:absolute;left:var(--x);top:var(--y);width:0;height:0;
+  border-top:.85cqw solid transparent;border-bottom:.85cqw solid transparent;
+  border-left:1.15cqw solid rgba(219,173,80,.85)}
+.g10 .loop{position:absolute;left:18%;right:9%;top:94%;
+  border-top:2px dashed rgba(219,173,80,.55)}
+.g10 .loopcap{position:absolute;left:16.0%;top:92.3%;width:0;height:0;
+  border-top:.7cqw solid transparent;border-bottom:.7cqw solid transparent;
+  border-right:1.0cqw solid rgba(219,173,80,.85)}
+
+/* ---- the explanation box: exactly one on screen at a time --------------- */
+.g10 .ob-note{position:absolute;left:var(--x);top:var(--y);width:var(--w);
+  background:rgba(10,24,47,.94);border:1px solid rgba(219,173,80,.55);
+  border-left:3px solid var(--gold);border-radius:5px;padding:.72em .9em;
+  box-shadow:0 8px 26px rgba(0,0,0,.55);transition:opacity .2s ease}
+.g10 .ob-note .k{color:var(--gold);font-weight:700;font-size:1.72cqw;
+  line-height:1.18;margin-bottom:.2em}
+.g10 .ob-note .d{color:var(--wh);font-size:1.46cqw;line-height:1.42}
+.g10 .ob-note.wide .d{font-size:1.62cqw}
+/* only the CURRENT step keeps its box; every earlier one gives it up */
+.g10 .ob-step:has(~ .ob-step.shown) .ob-note{opacity:0;visibility:hidden;transition:none}
+
+/* the closing card dims the finished picture rather than covering any part */
+.g10 .ob-scrim{position:absolute;inset:0;background:rgba(6,16,34,.74);
+  pointer-events:none}
+
+/* ---- gt11 (frag_gt11.css) ---- */
+/* =============================================================================
+   gt11 &mdash; "The battlefield went transparent" (section cut3, slide 1 of 2)
+   -----------------------------------------------------------------------------
+   ROUTE 2 (compose from real components). Six of the eighteen media files
+   unzipped from OUR OWN deck
+     RuBase/Transparent battlefield/deliverables/powerpoint/transparent_battlefield_deck.pptx
+   staged at img/tb3/ and inventoried in img/tb3/_components.md. Every one is a
+   clean, TEXT-FREE illustration at 1536x1536 in the house navy-and-gold palette,
+   so nothing on this slide carries a baked-in title, caption or layout, and every
+   word you can read is live deck type.
+
+     image1  drone low over a cratered, flooded trench system under storm cloud
+     image7  analyst at a laptop by a rain-streaked window, glowing world map
+     image4  tank in snow under gold light shafts, recon drone above the barrel
+     image13 two fixed-wing drones plus an FPV quad closing on a wrecked launcher
+     image3  supply van, rear doors open and still loaded, burning at night
+     image11 soldier crouched at the bottom of a trench, six quadcopters circling
+
+   NOT used, deliberately: anything from img/tb/. That is Adam Stulberg's AzerMoD
+   deck, 26 of 27 flat full-slide composites; using one would be the png dump this
+   rebuild exists to eliminate. Also left alone are image5/6/8/14/15/16 &ndash; the
+   concealment, EW-bubble and improvised-production images &ndash; because gt12 takes
+   the response and this slide must not close its argument.
+
+   SCOPING. This fragment ships NO inline SVG <style>: an inline <style> is NOT
+   scoped to its own subtree, so bare class names leak page-wide. All SVG
+   presentation lives here, and every class is prefixed `gt11-`.
+
+   TYPE FLOOR, measured rather than assumed. `.slide` is `container-type:inline-size`
+   with padding 3.1%/3.6%, so 1cqw = 0.928% of slide width and the 1.10%-of-slide-
+   width floor is 1.185cqw. The smallest box type is `.d` at 1.46cqw.
+   For the SVG the floor has to be carried through the viewBox: .ob-pic is 100% of
+   the slide CONTENT box (92.8cqw) mapped onto 1770 user units, so one unit is
+   0.05243% of slide width and the floor is 20.98 units. gt01 measured that .ob-pic
+   does not always hold its declared aspect ratio &ndash; it is a flex item in a
+   height-constrained column and can come out ~9% short vertically &ndash; and with
+   preserveAspectRatio="none" glyph height goes with it. The working floor is
+   therefore 20.98 / 0.908 = 23.1 units. Nothing here is set below 26 units.
+   Rendered and measured rather than trusted: the smallest type on this slide comes
+   out at 1.287% of slide width (SVG .gt11-cap / .gt11-lb) and 1.351% (.ob-note .d)
+   at 1280, 1366 and 1600 alike. Floor is 1.10%.
+
+   GEOMETRY, and why no box can sit on revealed art.
+     &middot; picture aspect 1770/750; 1% of picture width = 17.70 units, 1% of
+       picture height = 7.50 units.
+     &middot; MEASURED, not assumed: .ob-pic does NOT render at the declared 2.36.
+       In a 16:9 slide it comes out at 2.44 (1280) to 2.49 (1366 and 1600), i.e.
+       ~5% shorter than declared, so SVG glyph height scales by ~0.944 and every
+       y in units is ~5% higher up the picture than the nominal arithmetic says.
+       Both facts are accounted for below.
+     &middot; the four chain components occupy y 50%&ndash;89.9%, i.e. the bottom
+       band only. They are square (aspect-ratio 1/1 on a width given in % of
+       picture WIDTH), so their height follows the rendered ratio, not the
+       declared one.
+     &middot; the two consequence components occupy x 70%&ndash;98%, y 2%&ndash;34.4%,
+       i.e. the top-right corner only.
+     &middot; every .ob-note is anchored at --x:1.5% --y:2% --w:64%, so its right
+       edge is 65.5% and its measured height is under 34% of the picture. Measured
+       overlap of each box against every already-revealed component and label, at
+       1280/1366/1600 and at every step: ZERO.
+     &middot; the spine, its station labels and the two tag captions sit in the
+       gaps between those zones (units 288, 336gaps between those zones (units 275, 336&ndash;358, 710&ndash;740)ndash;358, 694gaps between those zones (units 275, 336&ndash;358, 710&ndash;740)ndash;730).
+   The single deliberate exception is the closing card, which sits over .ob-scrim.
+   That is the pattern's declared exception and it buys legibility, not coverage.
+   ============================================================================= */
+
+/* --- per-slide rules ------------------------------------------------------- */
+
+/* the slide is its own inline-size container, so cqw resolves against the slide
+   in ANY host shell. Where `.slide` already declares this the value is identical
+   and re-stating it changes nothing. */
+.gt11{container-type:inline-size}
+
+.gt11.obuild .ob-pic{aspect-ratio:1770/750;max-height:66cqh;background:#0a1830}
+
+.gt11 .ob-pic svg.gt11-lay{position:absolute;inset:0;width:100%;height:100%;
+  display:block;pointer-events:none}
+
+/* 🟥 `.obuild .ob-pic img{position:absolute;inset:0;width:100%;height:100%}`
+   outranks a plain two-class selector, which force-stretches every placed
+   component and distorts the illustration. Four classes and an explicit
+   right/bottom reset are what actually wins. */
+.gt11.obuild .ob-pic img.tb{position:absolute;inset:auto;right:auto;bottom:auto;
+  left:var(--x);top:var(--y);width:var(--w);height:auto;aspect-ratio:1/1;
+  max-width:none;object-fit:cover;display:block;border-radius:4px;
+  border:1px solid rgba(157,184,214,.28);
+  box-shadow:0 8px 24px rgba(0,0,0,.55)}
+
+/* the closing card sits over a dimmed picture, so it is allowed to cover art */
+.gt11 .ob-note.wide{background:rgba(9,24,47,.96)}
+
+/* --- SVG type -------------------------------------------------------------- */
+.gt11 .gt11-kick{font:700 30px "Titillium Web",system-ui,-apple-system,sans-serif;
+  fill:#dbad50;letter-spacing:.12em}
+.gt11 .gt11-lb{font:400 26px "Titillium Web",system-ui,-apple-system,sans-serif;fill:#9db8d6}
+.gt11 .gt11-cap{font:400 26px "Titillium Web",system-ui,-apple-system,sans-serif;fill:#6f8bad}
+.gt11 .gt11-tag{font:600 27px "Titillium Web",system-ui,-apple-system,sans-serif;
+  fill:#9db8d6;letter-spacing:.03em}
+.gt11 .gt11-big{font:700 32px "Titillium Web",system-ui,-apple-system,sans-serif;fill:#dbad50}
+
+/* --- SVG chain ------------------------------------------------------------- */
+.gt11 .gt11-dot{fill:#dbad50}
+.gt11 .gt11-ln{stroke:#9db8d6;stroke-width:4;opacity:.85}
+/* the last leg is the one that has collapsed, so it is drawn heavier than the two
+   before it; the compression is stated in type, not in dashes that read as gaps */
+.gt11 .gt11-lnh{stroke:#dbad50;stroke-width:9;stroke-linecap:round}
+.gt11 .gt11-ah{fill:#dbad50}
+
+
+/* =============================================================================
+   HOST-DECK MACHINERY &mdash; include ONLY if the host shell does not already
+   declare it. _house_shell.html does; a bare scaffold does not. Every declaration
+   below is byte-for-byte the shell's own, so loading it twice is a no-op. Nothing
+   here touches `.slide` layout (display/position), which shells define differently.
+   ============================================================================= */
+
+/* ---------- build-up fragments ----------
+   Fragments use OPACITY, not display, so they still occupy layout: the autofit
+   engine measures the fully-built slide and must not resize mid-build.
+   🟥 The hidden state carries transition:none and the fade lives on .shown.
+   autofit() lights every fragment via body.measuring, and a hidden state that
+   TRANSITIONS then animates back to hidden, so the slide paints fully built and
+   visibly fades before the build starts. That defect once lived in 33 rules. */
+.slide [data-frag]{opacity:0;transform:translateY(.28em);transition:none}
+.slide [data-frag].shown{opacity:1;transform:none;transition:opacity .26s ease,transform .26s ease}
+body.measuring .slide [data-frag]{opacity:1;transform:none;transition:none}
+body.nobuild .slide [data-frag]{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.slide [data-frag]{transition:none}}
+
+.obuild .ob-pic{position:relative;width:100%;aspect-ratio:1770/750;margin:0 auto;
+  max-height:66cqh;border-radius:4px;overflow:hidden;background:#0a1830}
+.obuild .ob-pic img{position:absolute;inset:0;width:100%;height:100%;display:block}
+.obuild .ob-step{position:absolute;inset:0;transform:none}
+.obuild .ob-note{position:absolute;left:var(--x);top:var(--y);width:var(--w);
+  background:rgba(10,24,47,.94);border:1px solid rgba(219,173,80,.55);
+  border-left:3px solid var(--gold);border-radius:5px;padding:.72em .9em;
+  box-shadow:0 8px 26px rgba(0,0,0,.55);transition:opacity .2s ease}
+.obuild .ob-note .k{color:var(--gold);font-weight:700;font-size:1.72cqw;line-height:1.18;margin-bottom:.2em}
+.obuild .ob-note .d{color:var(--wh);font-size:1.46cqw;line-height:1.42}
+.obuild .ob-note.wide .d{font-size:1.62cqw}
+/* only the CURRENT step keeps its box; every earlier one gives it up */
+.obuild .ob-step:has(~ .ob-step.shown) .ob-note{opacity:0;visibility:hidden;transition:none}
+/* the closing card dims the finished picture rather than covering any one part */
+.obuild .ob-scrim{position:absolute;inset:0;background:rgba(6,16,34,.74)}
+.obuild .ob-scrim.soft{background:rgba(6,16,34,.34)}
+
+/* nothing on a slide is clickable unless the full-size step layers pass the
+   pointer through and their CONTENTS take it back */
+.obuild .ob-step{pointer-events:none}
+.obuild .ob-step > *{pointer-events:auto}
+.obuild .ob-scrim{pointer-events:none}
+
+/* ---- gt12 (frag_gt12.css) ---- */
+@import url("https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,300;0,400;0,600;0,700;0,900;1,400&display=swap");
+
+/* =============================================================================
+   gt12 - "Concealment comes back, as a product"
+   SECOND and CLOSING slide of Cut 3 (Transparent Battlefield); hands forward to
+   Move 4 (RFSDP, the master corpus).
+   -----------------------------------------------------------------------------
+   ROUTE 2 - COMPONENTS, not a png dump. Six separate, text-free illustrations
+   from img/tb3/ (the /media folder of OUR OWN
+   deliverables/powerpoint/transparent_battlefield_deck.pptx, 18 assets, all
+   1536x1536 except image14 at 1536x1024). Each is a DISTINCT source file and each
+   arrives on its own click:
+       image14  anchor - drone beam on bare ground | troops walking into fog
+       image8   soldier under a tarp in a trench, one shielded lantern
+       image5   APC inside a glowing dome of light, drones circling
+       image6   dugout workshop: 3D printer, soldering iron, stripped gyroscooter
+       image16  kitchen table: consumer quadcopter being modified
+       image18  dark globe wrapped in gold network arcs
+   There is NO .ob-plate and no flat slide render anywhere in this fragment, so
+   the splicer's plate-equals-every-reveal png-dump signature cannot arise.
+   🟥 img/tb/ is DELIBERATELY not touched: that is Adam Stulberg's deck and is
+   26-of-27 flat full-slide composites.
+
+   Every word on the slide - title, subtitle, the two chips on the anchor image,
+   the method block and all seven boxes - is live deck type. The rasters carry no
+   words at all (only a small generator sparkle in one corner, which is left
+   alone rather than cropped, and which sits harmlessly inside the photo).
+
+   TYPE FLOOR, measured not assumed. `.slide` is container-type:inline-size with
+   padding 3.1% / 3.6%, so 1cqw = 0.928% of slide width and the 1.10%-of-slide-
+   width floor is 1.185cqw. The smallest type anywhere in this fragment is
+   1.30cqw = 1.207% of slide width, which clears the floor. Nothing is set below
+   1.30cqw, boxes, chips, method block and source line included.
+
+   GEOMETRY, and why no box can ever sit on revealed art.
+     MEASURED at 1280 / 1366 / 1600 (the container comes out at aspect 2.5-2.7,
+     not the declared 2.333, which is exactly why the images are height-sized):
+       anchor image  x 2 .. 34.6%,  y 4 .. 57.4%
+       strip of five x 2 .. 76.0%,  y 64 .. 95.4%
+       method block  x 79 .. 98%,   y 50 .. <=93% (worst case, 1366)
+       boxes 1-6     x 39 .. 98%,   y 4 .. <=44.6% (worst case, 1366)
+     The box rectangle never meets any component; the method block clears the
+     lowest box by 5.4% of picture height at the tightest width.
+     The closing card is the pattern's one declared exception: it sits over an
+     .ob-scrim that dims the finished picture.
+   🟥 Component images are sized by HEIGHT (`height:N%; width:auto`), never by
+   width. `.ob-pic` is a flex item in a height-constrained column and does NOT
+   reliably keep its declared aspect ratio (gt06 measured ~2.60 against a declared
+   2.36). Width-sized images would then grow TALLER as a fraction of the container
+   and could overrun the strip or the bottom edge; height-sized images just get
+   narrower, so the vertical layout above is deterministic.
+   ============================================================================= */
+
+.gt12{
+  --bg:#09182f; --db:#132f59; --gold:#dbad50;
+  --lb:#9db8d6; --wh:#f3f6fb; --line:rgba(255,255,255,.12);
+  --title-size:4.5cqw; --title-weight:700;
+  --font:"Titillium Web",-apple-system,"Segoe UI",Roboto,Helvetica,sans-serif;
+  background:var(--bg); color:var(--wh); font-family:var(--font);
+  container-type:inline-size;
+  justify-content:flex-start;
+  padding:3.1% 3.6% calc(var(--nav-h, 0px) + 2.2%);
+}
+.gt12 h2{margin:0 0 .30em;color:var(--gold);font-weight:var(--title-weight);
+  font-size:var(--title-size);line-height:1.04;letter-spacing:-.01em;text-wrap:balance}
+.gt12 .sub{margin:-.1em 0 .70em;color:var(--lb);
+  font-size:calc(1.95cqw * min(var(--sc,1), 1));line-height:1.35;max-width:78ch}
+
+/* ---------- build-up fragments ----------
+   🟥 THE HIDDEN STATE CARRIES transition:none. autofit() lights every fragment
+   via body.measuring so it can measure a fully built slide; a hidden state that
+   TRANSITIONS then animates back to hidden and the room sees the finished slide
+   flash and fade before the build starts. The fade lives on .shown only. */
+.gt12 [data-frag]{opacity:0;transform:translateY(.28em);transition:none}
+.gt12 [data-frag].shown{opacity:1;transform:none;transition:opacity .26s ease,transform .26s ease}
+body.measuring .gt12 [data-frag]{opacity:1;transform:none;transition:none}
+body.nobuild  .gt12 [data-frag]{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.gt12 [data-frag]{transition:none}}
+
+/* ---------- the picture ---------- */
+.gt12 .ob-pic{position:relative;width:100%;aspect-ratio:2100/900;margin:0 auto;
+  max-height:66cqh;border-radius:4px;overflow:hidden;background:transparent}
+.gt12 .ob-step{position:absolute;inset:0;transform:none}
+/* a full-size step layer must pass the pointer through, or nothing on the slide
+   can be selected or commented on; its CONTENTS take the pointer instead */
+.gt12 .ob-step{pointer-events:none}
+.gt12 .ob-step > *{pointer-events:auto}
+.gt12 .ob-scrim{pointer-events:none}
+
+/* three classes, so this outranks the generic
+   `.obuild .ob-pic img{position:absolute;inset:0;width:100%;height:100%}`
+   that would otherwise force-stretch and distort every placed photograph */
+.gt12 .ob-pic img.cmp{position:absolute;right:auto;bottom:auto;
+  width:auto;display:block;border-radius:4px;
+  box-shadow:0 2px 14px rgba(0,0,0,.55);
+  border:1px solid rgba(219,173,80,.28)}
+.gt12 .ob-pic img.anchor{border-color:rgba(219,173,80,.5);
+  box-shadow:0 3px 22px rgba(0,0,0,.6)}
+
+/* ---------- the explanation box: exactly one on screen at a time ---------- */
+.gt12 .ob-note{position:absolute;left:var(--x);top:var(--y);width:var(--w);
+  box-sizing:border-box;
+  background:rgba(10,24,47,.94);border:1px solid rgba(219,173,80,.55);
+  border-left:3px solid var(--gold);border-radius:5px;padding:.72em .9em;
+  box-shadow:0 8px 26px rgba(0,0,0,.55);transition:opacity .2s ease}
+.gt12 .ob-note .k{color:var(--gold);font-weight:700;font-size:1.78cqw;line-height:1.18;margin-bottom:.24em}
+.gt12 .ob-note .d{color:var(--wh);font-size:1.50cqw;line-height:1.42}
+.gt12 .ob-note.wide .k{font-size:1.95cqw}
+.gt12 .ob-note.wide .d{font-size:1.62cqw}
+/* only the CURRENT step keeps its box; every earlier one gives it up */
+.gt12 .ob-step:has(~ .ob-step.shown) .ob-note{opacity:0;visibility:hidden;transition:none}
+/* the closing card dims the finished picture rather than covering any one part */
+.gt12 .ob-scrim{position:absolute;inset:0;background:rgba(6,16,34,.76)}
+
+/* ---------- live annotation chips on the anchor image ----------
+   The raster carries no words; these two label its two halves in deck type. */
+.gt12 .gt12-chip{position:absolute;box-sizing:border-box;
+  background:rgba(9,24,47,.86);border:1px solid rgba(219,173,80,.5);
+  border-radius:4px;padding:.28em .5em;
+  color:var(--gold);font-weight:700;font-size:1.30cqw;line-height:1.22;
+  letter-spacing:.01em;text-align:center}
+.gt12 .gt12-chip.alt{color:var(--lb);border-color:rgba(157,184,214,.5)}
+
+/* ---------- the method block: the corpus behind the argument, in live type ---- */
+.gt12 .gt12-meth{position:absolute;box-sizing:border-box;
+  border-left:2px solid rgba(219,173,80,.55);padding-left:.6em}
+.gt12 .gt12-meth .n{color:var(--gold);font-weight:700;font-size:2.05cqw;line-height:1.06}
+.gt12 .gt12-meth .l{color:var(--wh);font-size:1.30cqw;line-height:1.22;margin-bottom:.34em}
+.gt12 .gt12-meth .s{color:var(--lb);opacity:.82;font-size:1.30cqw;line-height:1.26;margin-top:.3em}
+
+/* ---- gt20 (frag_gt20.css) ---- */
+/* ============================================================================
+   gt20 - "The MDTDF" - the framework slide.
+
+   ROUTE 3 (draw it). Five inline-SVG components, no raster anywhere: a nested
+   four-level cascade, seven tick-marked dimension axes, the markers that place
+   ONE issue on all seven at once, the move-one-hold-six independence test, and
+   a flat list set against the lattice of cells a cross-product reaches.
+
+   CLASS PREFIXING (VISUAL_SPEC section 5): every SVG class below is gt20-.
+   An SVG <style> is not scoped to its subtree and bare names leak page-wide;
+   these rules live in this stylesheet instead, which is safer still, but the
+   prefix is kept because eleven fragments splice into ONE document.
+
+   TYPE FLOOR. Slide type is in vw, never px and never vh: the floor is 1.10%
+   of slide width, which is 15.03px at 1366, and the smallest value used here
+   is 1.15vw = 15.7px. SVG text is sized by unitless presentation attributes in
+   the HTML, because inside a viewBox those are USER UNITS, not screen pixels:
+   viewBox 1600x665 renders 1266px wide at a 1366 slide, so 1 unit = 0.7913px
+   and the floor is 19.0 units. The smallest attribute used anywhere is 21.
+
+   MOTION (VISUAL_SPEC section 7): every hidden state carries transition:none.
+   The fade lives only on the shown state. Without this, autofit's
+   body.measuring pass paints the slide fully built and animates it away, which
+   the room sees as a flash before the build has started.
+   ========================================================================== */
+
+/* ---- fragment machinery, scoped so it cannot fight the deck's own copy ---- */
+.slide.gt20 [data-frag]{opacity:0;transform:translateY(.28em);transition:none}
+.slide.gt20 [data-frag].shown{opacity:1;transform:none;
+  transition:opacity .26s ease,transform .26s ease}
+body.measuring .slide.gt20 [data-frag]{opacity:1;transform:none;transition:none}
+body.nobuild  .slide.gt20 [data-frag]{opacity:1;transform:none}
+
+/* ---- slide shell -------------------------------------------------------- */
+.slide.gt20{background:var(--bg,#0a192f);color:var(--wh,#e8edf3);
+  font-family:"Titillium Web",-apple-system,"Segoe UI",Roboto,Helvetica,sans-serif}
+
+/* ---- the picture -------------------------------------------------------- */
+/* aspect matches the 1600x665 viewBox exactly, so object-fit never letterboxes
+   dead space on top of the figure's own margins. */
+.gt20 .ob-pic{position:relative;width:100%;aspect-ratio:1600/665;margin:0 auto;
+  max-height:70cqh;border-radius:4px;overflow:hidden;background:transparent}
+
+/* Each step is a full-size transparent layer. It passes the pointer through so
+   its CONTENTS stay reachable to the review overlay (VISUAL_SPEC section 11);
+   without both halves nothing on a build slide is clickable. */
+.gt20 .ob-step{position:absolute;inset:0;transform:none;pointer-events:none}
+.gt20 .ob-step > *{pointer-events:auto}
+
+/* Three classes, to outrank `.obuild .ob-pic img{inset:0;width:100%;
+   height:100%}` should a future edit put a raster on this slide. right/bottom
+   are reset explicitly for the same reason. */
+.gt20 .ob-pic svg.gt20-svg{position:absolute;inset:0;right:auto;bottom:auto;
+  width:100%;height:100%;display:block;overflow:visible}
+
+/* ==== the drawn components ================================================ */
+/* Section captions above each half of the figure. */
+.gt20-cap{fill:var(--gold,#dbad50);font-weight:700;letter-spacing:.09em;
+  text-transform:uppercase;opacity:.95}
+
+/* --- component 1: the four-level cascade --- */
+.gt20-lvlbox{fill:rgba(19,47,89,.78);stroke:rgba(219,173,80,.34);stroke-width:1.5}
+.gt20-lvlbar{fill:var(--gold,#dbad50)}
+.gt20-lvlname{fill:var(--gold,#dbad50);font-weight:700}
+.gt20-lvlnum{fill:var(--gold,#dbad50);font-weight:900;text-anchor:end;
+  font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.gt20-lvlex{fill:#e8edf3;font-weight:400}
+.gt20-chev{fill:rgba(219,173,80,.8)}
+
+/* --- component 2: the seven dimension axes --- */
+.gt20-axname{fill:var(--gold,#dbad50);font-weight:700}
+.gt20-axcount{fill:#b9d0e8;font-weight:400;letter-spacing:.02em}
+.gt20-axline{stroke:rgba(185,208,232,.55);stroke-width:2}
+.gt20-tick{stroke:rgba(185,208,232,.62);stroke-width:2}
+
+/* --- component 3: one instance, seven simultaneous positions --- */
+.gt20-stem{stroke:rgba(219,173,80,.5);stroke-width:2}
+.gt20-mk{fill:var(--gold,#dbad50);stroke:#0a192f;stroke-width:1.5}
+.gt20-tax{fill:#e8edf3;font-weight:400}
+
+/* --- component 4: move one, hold six --- */
+.gt20-arrow{fill:none;stroke:var(--gold,#dbad50);stroke-width:3;stroke-linecap:round}
+.gt20-arrowhead{fill:var(--gold,#dbad50)}
+.gt20-mkopen{fill:rgba(10,25,47,.9);stroke:var(--gold,#dbad50);stroke-width:3;
+  stroke-dasharray:5 4}
+.gt20-pin{fill:none;stroke:rgba(185,208,232,.75);stroke-width:2;stroke-dasharray:3 5}
+
+/* --- component 5: the flat list against the cross-product lattice --- */
+.gt20-xcap{fill:var(--gold,#dbad50);font-weight:700;text-anchor:middle}
+.gt20-xsub{fill:#e8edf3;font-weight:600;text-anchor:middle}
+.gt20-xell{fill:#b9d0e8;font-weight:700;text-anchor:middle;letter-spacing:.3em}
+.gt20-xvs{fill:var(--gold,#dbad50);font-weight:900;text-anchor:middle;font-style:italic}
+.gt20-flatbar{fill:rgba(185,208,232,.34)}
+.gt20-cell{fill:rgba(185,208,232,.10);stroke:rgba(185,208,232,.16);stroke-width:.7}
+.gt20-cell.lit{fill:rgba(219,173,80,.85);stroke:var(--gold,#dbad50);stroke-width:1}
+
+/* ---- the explanation box: exactly one on screen at a time --------------- */
+.gt20 .ob-note{position:absolute;left:var(--x);top:var(--y);width:var(--w);
+  background:rgba(10,25,47,.95);border:1px solid rgba(219,173,80,.55);
+  border-left:3px solid var(--gold,#dbad50);border-radius:5px;padding:.7em .95em;
+  box-shadow:0 8px 26px rgba(0,0,0,.55);transition:opacity .2s ease}
+.gt20 .ob-note .k{color:var(--gold,#dbad50);font-weight:700;font-size:1.72vw;
+  line-height:1.18;margin-bottom:.22em}
+.gt20 .ob-note .d{color:#e8edf3;font-size:1.42vw;line-height:1.42}
+.gt20 .ob-note.wide .d{font-size:1.52vw}
+/* only the CURRENT step keeps its box; every earlier one gives it up */
+.gt20 .ob-step:has(~ .ob-step.shown) .ob-note{opacity:0;visibility:hidden;transition:none}
+
+/* the closing card dims the finished figure rather than covering any part */
+.gt20 .ob-scrim{position:absolute;inset:0;background:rgba(6,16,34,.80);
+  pointer-events:none}
+
+/* ---- the modal trigger --------------------------------------------------
+   THE TRAP: a <button> does NOT inherit font-size. Without font:inherit plus
+   an explicit size it silently renders at the 13.33px UA default and fails the
+   1.10% floor. Both are set here deliberately; do not remove either. */
+.gt20 .gt20-btn{display:inline-block;margin-top:.5em;font:inherit;
+  font-size:1.24vw;font-weight:700;line-height:1.25;
+  background:rgba(219,173,80,.12);color:var(--gold,#dbad50);
+  border:1px solid rgba(219,173,80,.65);border-radius:4px;
+  padding:.34em .7em;cursor:pointer;text-align:left;
+  transition:background .15s,color .15s}
+.gt20 .gt20-btn:hover,.gt20 .gt20-btn:focus-visible{background:var(--gold,#dbad50);
+  color:#0a192f;outline:none}
+
+/* ---- the modal ----------------------------------------------------------
+   Every id in the markup is gt20-prefixed: all eleven fragments splice into one
+   document, so an unprefixed id would collide with another agent's slide. */
+.slide.gt20 dialog.mdl{width:min(64vw,900px);max-height:80vh;overflow-y:auto;
+  background:#0d2140;color:#e8edf3;border:2px solid var(--gold,#dbad50);
+  border-radius:8px;padding:1.5em 1.7em;
+  box-shadow:0 18px 60px rgba(0,0,0,.7);
+  font-family:"Titillium Web",-apple-system,"Segoe UI",Roboto,Helvetica,sans-serif}
+.slide.gt20 dialog.mdl::backdrop{background:rgba(4,12,26,.82)}
+.slide.gt20 dialog.mdl h3{color:var(--gold,#dbad50);font-size:1.75vw;font-weight:700;
+  line-height:1.16;margin:0 0 .5em}
+.slide.gt20 dialog.mdl .lead{color:#e8edf3;font-size:1.32vw;line-height:1.45;margin:.7em 0 .35em}
+.slide.gt20 dialog.mdl ul{margin:0 0 .3em;padding-left:1.15em}
+.slide.gt20 dialog.mdl li{color:#e8edf3;font-size:1.32vw;line-height:1.44;margin:.28em 0}
+.slide.gt20 dialog.mdl li::marker{color:var(--gold,#dbad50)}
+.slide.gt20 dialog.mdl li b{color:var(--gold,#dbad50);font-weight:700}
+.slide.gt20 dialog.mdl .src{color:#b9d0e8;font-size:1.15vw;line-height:1.4;
+  margin-top:1em;padding-top:.7em;border-top:1px solid rgba(219,173,80,.3)}
+.slide.gt20 dialog.mdl form{margin-top:1.1em;text-align:right}
+.slide.gt20 dialog.mdl .gt20-close{font:inherit;font-size:1.24vw;font-weight:700;
+  background:transparent;color:var(--gold,#dbad50);
+  border:1px solid var(--gold,#dbad50);border-radius:5px;
+  padding:.34em .95em;cursor:pointer;transition:background .15s,color .15s}
+.slide.gt20 dialog.mdl .gt20-close:hover,
+.slide.gt20 dialog.mdl .gt20-close:focus-visible{background:var(--gold,#dbad50);
+  color:#0a192f;outline:none}
+
+/* ---- gt21 (frag_gt21.css) ---- */
+/* ============================================================================
+   gt21 - "The murderboard" - the credibility artefact of the pitch.
+
+   ROUTE 3 (draw it). The whole picture is inline SVG: there is no source
+   figure, because the thing being shown is a run that happened this morning.
+   No .ob-plate, no flat render, no raster of any kind appears on this slide.
+
+   TWO UNIT SYSTEMS, BOTH DELIBERATE
+   ---------------------------------
+   1. HTML type (.sub, .ob-note, the button, the modal) is sized in **vw**.
+      The floor is 1.10% of slide width = 15.0px at 1366. The smallest HTML
+      size on this slide is 1.15vw = 15.7px. Note the button: a <button> does
+      NOT inherit font-family or font-size, so .gt21-tbtn sets both explicitly
+      - without that it silently renders at the 13.33px UA default and fails.
+   2. SVG type is sized in **viewBox user units**, which is what a CSS px means
+      inside an SVG coordinate system - it is NOT a screen pixel and it scales
+      with the figure. viewBox is 1720 wide and the figure spans the full
+      .ob-pic, so screen px = user units * (svg width / 1720). At 1366 in
+      present mode .ob-pic is ~1268px wide, giving a factor of ~0.737: the
+      smallest SVG size here, 24 user units, renders at ~17.7px = 1.30% of
+      slide width, comfortably over the 1.10% floor. Nothing on this slide is
+      below 24 user units.
+
+   ASPECT. .ob-pic carries aspect-ratio 1720/688 and every <svg> uses the same
+   viewBox, so the figure never letterboxes (VISUAL_SPEC section 5) and viewBox
+   units map straight onto the .ob-note --x/--y percentage grid.
+
+   BOX PLACEMENT. The figure stops at y=420 (61% of the picture). Everything
+   below that is a note shelf, so no explanation box ever sits on revealed art.
+   The sha256 strip lands at y 616-672 (90-98%), below where any note reaches.
+   Only the closing card overlaps the picture, and it carries an .ob-scrim -
+   the documented exception in VISUAL_SPEC section 2.
+
+   MOTION. Every hidden state below carries transition:none; the fade lives
+   only on the shown state (VISUAL_SPEC section 7). Otherwise autofit's
+   body.measuring pass paints the slide fully built and animates it away, which
+   the room sees as a flash before the build starts.
+
+   PREFIXING. Every class and every id is prefixed gt21-. All fragments splice
+   into ONE document, and an SVG <style> is not scoped to its subtree - which is
+   also why all SVG styling lives in this file rather than inside the <svg>.
+   ========================================================================== */
+
+/* ---- fragment machinery, scoped so it cannot fight the deck's own copy ---- */
+.slide.gt21 [data-frag]{opacity:0;transform:translateY(.28em);transition:none}
+.slide.gt21 [data-frag].shown{opacity:1;transform:none;
+  transition:opacity .26s ease,transform .26s ease}
+body.measuring .slide.gt21 [data-frag]{opacity:1;transform:none;transition:none}
+body.nobuild  .slide.gt21 [data-frag]{opacity:1;transform:none}
+
+/* ---- the picture -------------------------------------------------------- */
+.gt21 .ob-pic{position:relative;width:100%;aspect-ratio:1720/688;margin:0 auto;
+  max-height:66cqh;border-radius:4px;overflow:hidden;background:transparent}
+
+/* Each step is a full-size transparent layer. It passes the pointer through so
+   its CONTENTS stay reachable to the review overlay (VISUAL_SPEC section 11);
+   without both halves nothing on a build slide is clickable. */
+.gt21 .ob-step{position:absolute;inset:0;transform:none;pointer-events:none}
+.gt21 .ob-step > *{pointer-events:auto}
+/* an unrevealed step is invisible, so nothing inside it may be clickable */
+.gt21 .ob-step:not(.shown) > *{pointer-events:none}
+body.nobuild .gt21 .ob-step > *{pointer-events:auto}
+
+.gt21 .ob-pic svg.gt21-svg{position:absolute;inset:0;width:100%;height:100%;
+  display:block;font-family:var(--font,"Titillium Web",-apple-system,"Segoe UI",Roboto,sans-serif)}
+
+/* ==========================================================================
+   THE FIGURE. All sizes below are viewBox user units (see header note).
+   ========================================================================== */
+
+/* -- the round axis and its column guides -- */
+.gt21 .gt21-axis{stroke:rgba(219,173,80,.30);stroke-width:1.5}
+.gt21 .gt21-guides line{stroke:rgba(255,255,255,.055);stroke-width:1}
+.gt21 .gt21-rl text{fill:var(--gold,#dbad50);font-size:30px;font-weight:700;
+  text-anchor:middle;letter-spacing:1.5px}
+
+/* -- the custodian badge -- */
+.gt21 .gt21-cus-k{fill:var(--gold,#dbad50);font-size:26px;font-weight:700;letter-spacing:2px}
+.gt21 .gt21-cus-d{fill:#9db8d6;font-size:26px;font-weight:400}
+
+/* -- the two model lanes -- */
+.gt21 .gt21-plate{fill:rgba(19,47,89,.72);stroke:rgba(219,173,80,.45);stroke-width:1.5}
+.gt21 .gt21-pk{fill:var(--gold,#dbad50);font-size:34px;font-weight:700;letter-spacing:1.5px}
+.gt21 .gt21-pd{fill:#9db8d6;font-size:26px;font-weight:400}
+
+/* -- each model verdicts the OTHER's candidate -- */
+.gt21 .gt21-cross{fill:none;stroke:rgba(219,173,80,.72);stroke-width:2.5;
+  stroke-dasharray:7 5}
+.gt21 .gt21-ahp{fill:rgba(219,173,80,.85)}
+
+/* -- a round node: the model's own taxa count, and the verdict it issued -- */
+.gt21 .gt21-nbox{fill:rgba(19,47,89,.60);stroke:rgba(255,255,255,.15);stroke-width:1.5}
+.gt21 .gt21-nbox-go{stroke:rgba(219,173,80,.45)}
+.gt21 .gt21-cnt{fill:#f3f6fb;font-size:34px;font-weight:700;text-anchor:middle;
+  font-variant-numeric:tabular-nums}
+.gt21 .gt21-cht{font-size:26px;font-weight:700;text-anchor:middle;letter-spacing:1px}
+.gt21 .gt21-link{stroke:rgba(157,184,214,.45);stroke-width:3}
+
+/* NO_GO reads as refusal without going dark-on-dark: #ffc4b5 is well clear of
+   the luminance floor on the #0a192f ground. */
+.gt21 .gt21-no{fill:rgba(255,150,130,.13);stroke:rgba(255,170,150,.50);stroke-width:1.5}
+.gt21 .gt21-cht-no{fill:#ffc4b5}
+.gt21 .gt21-go{fill:rgba(219,173,80,.20);stroke:rgba(219,173,80,.75);stroke-width:1.5}
+.gt21 .gt21-cht-go{fill:var(--gold,#dbad50)}
+.gt21 .gt21-blind{fill:rgba(157,184,214,.12);stroke:rgba(157,184,214,.45);stroke-width:1.5}
+.gt21 .gt21-cht-blind{fill:#c8d8ea}
+
+/* -- the two dimensions both models reached blind, in round 1 -- */
+.gt21 .gt21-plab{fill:var(--gold,#dbad50);font-size:26px;font-weight:700;letter-spacing:.5px}
+.gt21 .gt21-pill{fill:rgba(219,173,80,.13);stroke:rgba(219,173,80,.55);stroke-width:1.5}
+.gt21 .gt21-pillt{fill:#f3f6fb;font-size:26px;font-weight:600}
+
+/* -- THE VISUAL PAYLOAD: five consecutive refusals on the Sol track -- */
+.gt21 .gt21-hold{fill:rgba(219,173,80,.09);stroke:rgba(219,173,80,.65);
+  stroke-width:2.5;stroke-dasharray:9 6}
+.gt21 .gt21-holdstem{stroke:rgba(219,173,80,.55);stroke-width:2}
+.gt21 .gt21-holdk{fill:var(--gold,#dbad50);font-size:32px;font-weight:700;
+  text-anchor:middle;letter-spacing:2px}
+.gt21 .gt21-holdd{fill:#c8d8ea;font-size:26px;font-weight:600;text-anchor:middle}
+
+/* -- round nine: the two tracks merge into one file -- */
+.gt21 .gt21-merge{fill:none;stroke:rgba(219,173,80,.8);stroke-width:3}
+.gt21 .gt21-final{fill:rgba(219,173,80,.14);stroke:var(--gold,#dbad50);stroke-width:2.5}
+.gt21 .gt21-finall{fill:#9db8d6;font-size:26px;text-anchor:middle}
+.gt21 .gt21-finalv{fill:#f3f6fb;font-size:38px;font-weight:700;text-anchor:middle;
+  font-variant-numeric:tabular-nums}
+.gt21 .gt21-bik{fill:var(--gold,#dbad50);font-size:28px;font-weight:700;
+  text-anchor:middle;letter-spacing:2px}
+.gt21 .gt21-bid{fill:#9db8d6;font-size:26px;text-anchor:middle}
+
+/* -- the evidence line -- */
+.gt21 .gt21-shabox{fill:rgba(219,173,80,.07);stroke:rgba(219,173,80,.35);stroke-width:1.5}
+.gt21 .gt21-shak{fill:var(--gold,#dbad50);font-size:26px;font-weight:700;letter-spacing:1.5px}
+.gt21 .gt21-shav{fill:#e8edf3;font-size:26px;letter-spacing:.6px}
+.gt21 .gt21-mono,.gt21-mono{font-family:"SFMono-Regular",Consolas,"Liberation Mono",Menlo,monospace}
+
+/* ==========================================================================
+   THE EXPLANATION BOXES. Exactly one on screen at a time.
+   ========================================================================== */
+.gt21 .ob-note{position:absolute;left:var(--x);top:var(--y);width:var(--w);
+  background:rgba(10,24,47,.94);border:1px solid rgba(219,173,80,.55);
+  border-left:3px solid var(--gold,#dbad50);border-radius:5px;
+  padding:.62em .8em;font-size:1.30vw;
+  box-shadow:0 8px 26px rgba(0,0,0,.55);transition:opacity .2s ease}
+.gt21 .ob-note .k{color:var(--gold,#dbad50);font-weight:700;font-size:1.55vw;
+  line-height:1.18;margin-bottom:.22em}
+.gt21 .ob-note .d{color:#e8edf3;font-size:1.30vw;line-height:1.42}
+.gt21 .ob-note .d b{color:#f3f6fb;font-weight:700}
+.gt21 .ob-note .d em{color:#e8edf3;font-style:italic}
+.gt21 .ob-note .d b em,.gt21 .ob-note .d em b{color:#f3f6fb;font-weight:700;font-style:italic}
+.gt21 .ob-note.wide .d{font-size:1.42vw}
+/* only the CURRENT step keeps its box; every earlier one gives it up */
+.gt21 .ob-step:has(~ .ob-step.shown) .ob-note{opacity:0;visibility:hidden;transition:none}
+
+/* the closing card dims the finished picture rather than covering any one part */
+.gt21 .ob-scrim{position:absolute;inset:0;background:rgba(6,16,34,.74);
+  pointer-events:none}
+
+/* ==========================================================================
+   THE ROUND-TABLE TRIGGER AND MODAL
+   A <button> inherits neither font-family nor font-size. Both are set here on
+   purpose: without them this control drops to the 13.33px UA default and
+   silently breaks the type floor.
+   ========================================================================== */
+.gt21 .gt21-tbtn{position:absolute;left:70%;top:62.5%;
+  font-family:var(--font,"Titillium Web",-apple-system,"Segoe UI",Roboto,sans-serif);
+  font-size:1.15vw;font-weight:700;line-height:1.2;
+  color:var(--gold,#dbad50);background:rgba(219,173,80,.08);
+  border:1px solid rgba(219,173,80,.6);border-radius:6px;
+  padding:.42em .9em;cursor:pointer;letter-spacing:.02em;
+  transition:background .15s,color .15s}
+.gt21 .gt21-tbtn:hover,.gt21 .gt21-tbtn:focus-visible{
+  background:var(--gold,#dbad50);color:#0a192f;outline:none}
+
+.gt21-mdl{border:2px solid var(--gold,#dbad50);border-radius:10px;
+  background:#0a192f;color:#e8edf3;padding:1.5vw 1.8vw;max-width:66vw;
+  font-family:var(--font,"Titillium Web",-apple-system,"Segoe UI",Roboto,sans-serif);
+  box-shadow:0 24px 70px rgba(0,0,0,.72)}
+.gt21-mdl::backdrop{background:rgba(4,10,22,.80)}
+.gt21-mdl .gt21-mh{color:var(--gold,#dbad50);font-size:1.85vw;font-weight:700;
+  line-height:1.15;margin:0 0 .3em}
+.gt21-mdl .gt21-msub{color:#9db8d6;font-size:1.20vw;line-height:1.45;margin:0 0 .9em;max-width:74ch}
+.gt21-mdl .gt21-mfoot{color:#9db8d6;font-size:1.15vw;line-height:1.5;margin:.9em 0 0;max-width:82ch}
+.gt21-mdl .gt21-mfoot .gt21-mono{color:#e8edf3;font-size:1.10vw;letter-spacing:.3px}
+.gt21-mdl .gt21-mt{border-collapse:collapse;width:100%;font-variant-numeric:tabular-nums}
+.gt21-mdl .gt21-mt th{color:var(--gold,#dbad50);font-size:1.20vw;font-weight:700;
+  text-align:left;padding:.42em .7em;border-bottom:1px solid rgba(219,173,80,.55);
+  text-transform:uppercase;letter-spacing:.05em;white-space:nowrap}
+.gt21-mdl .gt21-mt td{color:#e8edf3;font-size:1.20vw;padding:.36em .7em;
+  border-bottom:1px solid rgba(255,255,255,.10);white-space:nowrap}
+.gt21-mdl .gt21-mt th.n,.gt21-mdl .gt21-mt td.n{text-align:right}
+.gt21-mdl .gt21-mt td.no{color:#ffc4b5;font-weight:700}
+.gt21-mdl .gt21-mt td.go{color:var(--gold,#dbad50);font-weight:700}
+.gt21-mdl .gt21-mt td.q{color:#7e97b4;font-style:italic}
+.gt21-mdl .gt21-mt tr.fin td{background:rgba(219,173,80,.12);font-weight:700}
+.gt21-mdl .gt21-mx{margin-top:1.1em;
+  font-family:var(--font,"Titillium Web",-apple-system,"Segoe UI",Roboto,sans-serif);
+  font-size:1.20vw;font-weight:700;line-height:1.2;
+  color:var(--gold,#dbad50);background:transparent;
+  border:1px solid rgba(219,173,80,.65);border-radius:6px;
+  padding:.42em 1.1em;cursor:pointer}
+.gt21-mdl .gt21-mx:hover,.gt21-mdl .gt21-mx:focus-visible{
+  background:var(--gold,#dbad50);color:#0a192f;outline:none}
+
+@media (prefers-reduced-motion:reduce){
+  .gt21 .ob-note,.gt21 .gt21-tbtn,.slide.gt21 [data-frag]{transition:none}
+}
+
+/* ---- gt22 (frag_gt22.css) ---- */
+/* =============================================================================
+   gt22 - "Seven dimensions" (the 7 HLTPs of the congressional budget-issue
+   taxonomy). This slide REPLACES a rasterised taxonomy image whose labels were
+   unreadable, so readable type is the entire point of the rebuild.
+
+   ROUTE 3 (drawn). Route 1 is unavailable - the taxonomy is a 4-column TSV
+   (TAXONOMY_AGREED_2026-09-01.tsv, 498 data rows) emitted by the murderboard,
+   and no generator anywhere produces staged figure layers from it. Route 2 is
+   unavailable - there is no pptx /media asset for this content; the only prior
+   rendering was the flat raster this slide exists to replace, and dimming that
+   raster and cutting clip-path windows in it is the png dump the splicer
+   refuses. So the whole picture is inline SVG, drawn from the TSV.
+
+   A LAYOUT DECISION, stated so the next author does not "fix" it: a radial /
+   sunburst was tried on paper and rejected. Seven arc labels plus 22 second-level
+   and 61 third-level counts cannot be set on arcs at >=1.10% of slide width in a
+   1770x750 frame without either rotating the labels or dropping to ~14 viewBox
+   units, both of which reproduce the defect this slide is here to remove. A
+   horizontal table-of-bars holds every label horizontal at 24-33 viewBox units.
+   Readability beats the shape.
+
+   ---------------------------------------------------------------------------
+   TYPE-FLOOR ARITHMETIC - why every SVG font-size below is >= 24 viewBox units
+   ---------------------------------------------------------------------------
+   Floor            = 1.10% of slide width = 15.03px on a 1366px-wide slide.
+   viewBox          = 1770 x 750 (aspect 2.360), matching .ob-pic's aspect-ratio.
+   .ob-pic width    = slide width - 2 x 3.6% padding = 0.928 x slide width.
+   Two cases, and the SMALLER scale is the one that must clear the floor:
+     (a) width-fit   : 1366 x 0.928 / 1770                      = 0.7162 px/unit
+     (b) height-fit  : .ob-pic is clamped by max-height:68cqh, and with
+                       preserveAspectRatio="xMidYMid meet" the SVG then scales to
+                       the HEIGHT: 0.68 x 768 / 750             = 0.6963 px/unit
+   Worst case = 0.6963. Minimum viewBox unit = 15.03 / 0.6963   = 21.58.
+   So the smallest size used here is 26, and the ladder measures:
+     33 -> 22.98px = 1.682% of slide   (dimension name)
+     31 -> 21.59px = 1.580%            (the three counts)
+     28 -> 19.50px = 1.427%            (group headers, totals band)
+     26 -> 18.10px = 1.325%            (column headers, glosses, legend)
+   MEASURED, not computed, in the real shell at 1366x768 (shot2.py): the flex
+   column - not max-height - is what actually sizes .ob-pic, giving a scale of
+   0.4363 against an 855px slide, so the 26-unit floor renders at 1.326% of slide
+   width. The first cut of this slide carried a 24-unit floor and measured 1.175%;
+   it passed, but 26 plus a one-line .sub is the margin this rebuild deserves.
+
+   COLUMN ARITHMETIC (viewBox units, art band x 76..1030):
+     name      100..~472  (33u, longest is "Affected Constituency")
+     gloss     100..~500  (26u, longest is "what the money is being spent on")
+     2ND LVL   centred 570 -> 516..624      3RD LVL centred 700 -> 646..754
+     TAXA no.  anchor end 830 -> ~780..830  bar 850..1030, 180u at 107 taxa,
+                                            i.e. 1.6822 units per taxon.
+   Every pair has clear air between it; verified by getBBox in the render, not by
+   eye. The columns moved right when the floor went 24 -> 26: "2ND LVL" and
+   "3RD LVL" grew and collided at the old 585/690 centres.
+   All clear 1.10% with margin, in BOTH cases. Nothing on this slide is px.
+   max-height is 68cqh rather than the shell's 66cqh so the picture is not
+   squashed, and "meet" rather than "none" so that if it ever IS clamped the
+   figure letterboxes instead of distorting the glyphs.
+
+   preserveAspectRatio="meet" also fixes where the art ends horizontally: the
+   drawn band is viewBox x 30..1030, which lands at 3.0%..58.0% of .ob-pic in
+   BOTH cases, so every .ob-note at --x:59% sits on empty ground and can never
+   cover a revealed row.
+
+   PREFIXING: every class is gt22-*. An inline SVG <style> is NOT scoped to its
+   subtree, so bare names leak page-wide - which is precisely why the class
+   definitions live HERE, in a file-scoped `.gt22 .gt22-*` block, and there is no
+   <style> element inside any of the four SVGs.
+
+   HIDDEN STATES: none are declared. The deck's own
+   `.slide [data-frag]{opacity:0;transition:none}` hides each .ob-step together
+   with its SVG and its box, so nothing here can animate back to hidden after
+   body.measuring lights the slide for autofit. The only transition added below
+   is on a :hover, which autofit never triggers.
+   ============================================================================= */
+
+/* the slide is its own inline-size container, so cqw resolves against the slide
+   in ANY host shell. The GaTech deck already declares this identically. */
+.gt22{container-type:inline-size}
+
+.gt22 .ob-pic{aspect-ratio:1770/750;max-height:68cqh;background:transparent}
+
+.gt22 .ob-pic svg.gt22-lay{position:absolute;inset:0;width:100%;height:100%;display:block}
+
+/* `.obuild .ob-pic img{position:absolute;inset:0;width:100%;height:100%}` outranks
+   any plain two-class selector and force-stretches component images. gt22 ships
+   no <img>; this is the scoped reset any future one must use. */
+.gt22 .ob-pic img.gt22-shot{position:absolute;inset:auto;right:auto;bottom:auto;
+  left:var(--x);top:var(--y);width:var(--w);height:auto;max-width:none;display:block;
+  border-radius:4px;box-shadow:0 8px 26px rgba(0,0,0,.55)}
+
+/* --- the pointer contract (VISUAL_SPEC 11): every .ob-step is a full-size
+   transparent layer that would otherwise swallow the pointer, so the buttons in
+   the notes would be unclickable. Both halves are mandatory. ---------------- */
+.gt22 .ob-step{pointer-events:none}
+.gt22 .ob-step > *{pointer-events:auto}
+.gt22 .ob-scrim{pointer-events:none}
+.gt22 .ob-pic svg.gt22-lay{pointer-events:none}
+
+/* --- SVG type and marks. Sizes in viewBox user units; see the arithmetic above. */
+.gt22 .gt22-hdr{font:600 26px "Titillium Web",system-ui,-apple-system,sans-serif;fill:#b9cee5;letter-spacing:.1em}
+.gt22 .gt22-gh {font:700 28px "Titillium Web",system-ui,-apple-system,sans-serif;fill:#dbad50;letter-spacing:.09em}
+.gt22 .gt22-nm {font:700 33px "Titillium Web",system-ui,-apple-system,sans-serif;fill:#f3f6fb}
+.gt22 .gt22-gl {font:400 26px "Titillium Web",system-ui,-apple-system,sans-serif;fill:#b9cee5}
+.gt22 .gt22-num{font:600 31px "Titillium Web",system-ui,-apple-system,sans-serif;fill:#f3f6fb}
+.gt22 .gt22-tx {font:700 31px "Titillium Web",system-ui,-apple-system,sans-serif;fill:#dbad50}
+.gt22 .gt22-lg {font:400 26px "Titillium Web",system-ui,-apple-system,sans-serif;fill:#b9cee5}
+.gt22 .gt22-tot{font:700 28px "Titillium Web",system-ui,-apple-system,sans-serif;fill:#dbad50;letter-spacing:.04em}
+
+.gt22 .gt22-row  {fill:#12294a;stroke:rgba(255,255,255,.15);stroke-width:1.5}
+.gt22 .gt22-rowc {fill:#16305a;stroke:#dbad50;stroke-width:2;stroke-opacity:.8}   /* blind convergence */
+.gt22 .gt22-acc  {fill:#dbad50}
+.gt22 .gt22-bar  {fill:#dbad50;opacity:.82}
+.gt22 .gt22-rule {stroke:rgba(255,255,255,.2);stroke-width:1.5}
+.gt22 .gt22-totbx{fill:rgba(219,173,80,.10);stroke:#dbad50;stroke-opacity:.55;stroke-width:1.5}
+
+/* --- the modal opener inside a note box.
+   THE BUTTON TRAP: a <button> does not inherit font-size, so without an explicit
+   size it silently renders at the 13.33px UA default and fails the floor. 1.30vw
+   = 17.8px at 1366 = 1.30% of slide width. ---------------------------------- */
+.gt22 .gt22-mb{display:inline-block;margin-top:.55em;font-family:inherit;
+  font-size:1.20vw;font-weight:700;line-height:1.25;color:#dbad50;
+  background:rgba(219,173,80,.10);border:1px solid rgba(219,173,80,.6);
+  border-radius:5px;padding:.3em .7em;cursor:pointer;transition:background .15s,color .15s}
+.gt22 .gt22-mb:hover,.gt22 .gt22-mb:focus-visible{background:#dbad50;color:#0a192f;outline:none}
+
+/* the byte-identical SHA on the closing card. 1.12vw = 15.3px at 1366 = 1.12%. */
+.gt22 .gt22-sha{display:block;margin-top:.6em;padding-top:.45em;
+  border-top:1px solid rgba(219,173,80,.3);
+  font-family:"SFMono-Regular",Consolas,"Liberation Mono",Menlo,monospace;
+  font-size:1.25vw;line-height:1.45;color:#b9cee5;word-break:break-all}
+
+/* the closing card sits over a dimmed picture, so it is allowed to cover art */
+.gt22 .ob-note.wide{background:rgba(9,24,47,.96)}
+
+/* --- modals. Every id is gt22-prefixed because all fragments splice into ONE
+   document. showModal() promotes these to the top layer, so they escape both
+   .ob-pic{overflow:hidden} and .slide{overflow:hidden}. Sizes in vw, never px. */
+.gt22-mdl{border:1px solid #dbad50;border-left:4px solid #dbad50;border-radius:8px;
+  background:#0a192f;color:#e8edf3;max-width:62vw;width:62vw;max-height:78vh;
+  overflow:auto;padding:1.5vw 1.8vw;box-shadow:0 18px 60px rgba(0,0,0,.7);
+  font-family:"Titillium Web",-apple-system,"Segoe UI",Roboto,Helvetica,sans-serif}
+.gt22-mdl::backdrop{background:rgba(4,12,26,.78)}
+.gt22-mdl h3{color:#dbad50;font-size:2.05vw;font-weight:700;line-height:1.15;margin:0 0 .5em}
+.gt22-mdl p{font-size:1.32vw;line-height:1.5;margin:0 0 .75em;color:#e8edf3}
+.gt22-mdl p b{color:#dbad50;font-weight:700}
+.gt22-mdl form{margin:.4em 0 0}
+
+
+/* --- type-floor repair gt22: 1.10% of 1366 = 15.03px effective.
+   SVG text is scaled by the viewBox, so a vw size is multiplied by that scale too;
+   these are raw viewBox units computed so raw x scale clears the floor. --- */
+.gt22 .d{font-size:16px}
+.gt22 .gt22-gl{font-size:27px}
+.gt22 .gt22-hdr{font-size:27px}
+.gt22 .gt22-lg{font-size:27px}
+
+/* type-floor enforcement (high specificity; beats the earlier rules) */
+.slide.gt22 .d,.slide.gt22 svg .d{font-size:16px !important}
+
+/* ---- gt23 (frag_gt23.css) ---- */
+/* ===========================================================================
+   frag_gt23.css  -  slide gt23 "Inside a dimension"
+   A four-click drill-down: HLTP > 2nd Level > 3rd Level > actual taxon strings,
+   all read from TAXONOMY_AGREED_2026-09-01.tsv.
+
+   EVERY class is prefixed .gt23- because an inline SVG <style> is not scoped to
+   its subtree and all fragments splice into ONE document.
+
+   TYPE FLOOR: nothing below 1.10vw (= 15.03px at a 1366px viewport). All sizes
+   are vw, never px, never vh. The <button>s carry an explicit font-size and
+   font-family because a form control does NOT inherit them.
+
+   GEOMETRY (percentages of .ob-pic, which is 1770/750):
+     col A  HLTP        left  0.5%  width 14%    right edge 14.5%
+     col B  2nd level   left 17%    width 19%    right edge 36%
+     col C  3rd level   left 38%    width 19%    right edge 57%
+     col D  taxa        left 59%    width 40%    right edge 99%
+     wire trunks sit in the gaps at x = 15.7% / 37.0% / 58.0%
+     tree band ends at 67%; the note band (68% down) is therefore always
+     over EMPTY ground - no .ob-note ever covers a revealed component.
+   =========================================================================== */
+
+/* --- §11 of the visual spec: the full-size step layer must pass the pointer
+       through, its CONTENTS must take it, or nothing on the slide is selectable.
+       Only a SHOWN step is live, so an invisible button is never clickable. --- */
+.gt23 .ob-step{pointer-events:none}
+.gt23 .ob-step.shown > *{pointer-events:auto}
+.gt23 .gt23-wires{pointer-events:none}
+
+/* defensive: .obuild .ob-pic img{inset:0;width:100%;height:100%} outranks a
+   two-class selector. This slide ships no <img>, but the guard costs nothing. */
+.gt23 .ob-pic img.gt23-component{position:absolute;right:auto;bottom:auto;
+  width:auto;height:auto}
+
+/* ---------------- the explanation boxes ---------------- */
+.gt23 .ob-note.gt23-note{left:1%;top:68%;width:57%}
+.gt23 .ob-note .k{font-size:1.34vw;line-height:1.18;color:#dbad50}   /* 18.30px @1366 */
+.gt23 .ob-note .d{font-size:1.18vw;line-height:1.38;color:#e8edf3}   /* 16.12px @1366 */
+
+/* ---------------- shared node chrome ---------------- */
+.gt23 .gt23-hltp,
+.gt23 .gt23-l2,
+.gt23 .gt23-l3{position:absolute;box-sizing:border-box;
+  background:#132f59;border:1px solid rgba(255,255,255,.14);
+  border-left:3px solid #82a0bc;border-radius:5px;
+  display:flex;flex-direction:column;justify-content:center;
+  padding:.28em .6em;overflow:hidden}
+.gt23 .gt23-l2.pick,
+.gt23 .gt23-l3.pick{border-color:#dbad50;border-left-color:#dbad50;
+  background:rgba(219,173,80,.14)}
+
+/* ---------------- col A: the dimension ---------------- */
+.gt23 .gt23-hltp{left:.5%;top:3%;width:14%;height:32%;
+  border-left-color:#dbad50;background:rgba(219,173,80,.13);border-color:#dbad50}
+.gt23 .gt23-hltp .gt23-kick{font-size:1.10vw;line-height:1.25;color:#dbad50;   /* 15.03px */
+  font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+.gt23 .gt23-hltp .n{font-size:1.34vw;line-height:1.16;color:#f3f6fb;           /* 18.30px */
+  font-weight:700;margin:.18em 0 .22em}
+.gt23 .gt23-hltp .c{font-size:1.22vw;line-height:1.2;color:#dbad50;            /* 16.66px */
+  font-weight:700;font-variant-numeric:tabular-nums}
+.gt23 .gt23-hltp .cl{font-size:1.10vw;line-height:1.2;color:#9db8d6}           /* 15.03px */
+
+/* the gauge: taxa carried by each of the seven dimensions, 107 .. 32 */
+.gt23 .gt23-gaugebtn{position:absolute;left:.5%;top:38%;width:14%;
+  box-sizing:border-box;display:flex;flex-direction:column;gap:.3em;
+  background:transparent;border:1px dashed rgba(219,173,80,.42);border-radius:5px;
+  padding:.4em .5em;cursor:pointer;text-align:left;
+  font-family:"Titillium Web",-apple-system,"Segoe UI",Roboto,Helvetica,sans-serif;
+  font-size:1.10vw;line-height:1.22;color:#9db8d6}                             /* 15.03px */
+.gt23 .gt23-gaugebtn:hover,
+.gt23 .gt23-gaugebtn:focus-visible{border-color:#dbad50;color:#e8edf3;outline:none}
+.gt23 .gt23-gauge{display:block;width:100%;height:auto}
+.gt23 .gt23-bar{fill:#82a0bc;opacity:.42}
+.gt23 .gt23-bar-on{fill:#dbad50;opacity:1}
+
+/* ---------------- col B: the four second-level elements ---------------- */
+.gt23 .gt23-l2{left:17%;width:19%;height:17%}
+.gt23 .gt23-b1{top:.5%}
+.gt23 .gt23-b2{top:17%}
+.gt23 .gt23-b3{top:33.5%}
+.gt23 .gt23-b4{top:50%}
+.gt23 .gt23-l2 .n{font-size:1.12vw;line-height:1.15;color:#f3f6fb;font-weight:700}  /* 15.30px */
+.gt23 .gt23-l2 .c{font-size:1.10vw;line-height:1.2;color:#9db8d6;margin-top:.15em}  /* 15.03px */
+.gt23 .gt23-l2.pick .n{color:#dbad50}
+
+/* ---------------- col C: the third-level elements ---------------- */
+.gt23 .gt23-l3{left:38%;width:19%;height:17%}
+.gt23 .gt23-c1{top:2.5%}
+.gt23 .gt23-c2{top:21%}
+.gt23 .gt23-c3{top:39.5%}
+.gt23 .gt23-l3 .n{font-size:1.12vw;line-height:1.15;color:#f3f6fb;font-weight:700}  /* 15.30px */
+.gt23 .gt23-l3 .c{font-size:1.10vw;line-height:1.2;color:#9db8d6;margin-top:.15em}  /* 15.03px */
+.gt23 .gt23-l3.pick .n{color:#dbad50}
+
+.gt23 .gt23-more{position:absolute;left:38%;top:58%;width:19%;height:8%;
+  box-sizing:border-box;background:transparent;border:1px dashed rgba(219,173,80,.5);
+  border-radius:5px;color:#dbad50;cursor:pointer;
+  font-family:"Titillium Web",-apple-system,"Segoe UI",Roboto,Helvetica,sans-serif;
+  font-size:1.10vw;line-height:1.2;font-weight:700}                             /* 15.03px */
+.gt23 .gt23-more:hover,
+.gt23 .gt23-more:focus-visible{background:rgba(219,173,80,.16);outline:none}
+
+/* ---------------- col D: the taxa themselves ---------------- */
+.gt23 .gt23-tax{position:absolute;left:59%;top:1.5%;width:40%;height:97%;
+  box-sizing:border-box;display:flex;flex-direction:column;gap:2px;
+  justify-content:space-between;background:rgba(10,25,47,.72);border:1px solid rgba(219,173,80,.5);
+  border-left:3px solid #dbad50;border-radius:5px;padding:.38em .55em}
+.gt23 .gt23-tax .th{font-size:1.18vw;line-height:1.2;color:#dbad50;             /* 16.12px */
+  font-weight:700;margin-bottom:.15em}
+.gt23 .gt23-tax .tx{font-size:1.12vw;line-height:1.16;color:#e8edf3;            /* 15.30px */
+  padding-left:.85em;position:relative}
+.gt23 .gt23-tax .tx::before{content:"";position:absolute;left:0;top:.42em;
+  width:.34em;height:.34em;background:#dbad50;border-radius:50%}
+
+/* ---------------- the wires ---------------- */
+.gt23 .gt23-wires{position:absolute;inset:0;width:100%;height:100%;display:block}
+.gt23 .gt23-wire{fill:none;stroke:#82a0bc;stroke-width:2;stroke-linejoin:round;
+  stroke-linecap:round;vector-effect:non-scaling-stroke;opacity:.85}
+.gt23 .gt23-wire-hot{stroke:#dbad50;stroke-width:2.5;opacity:1}
+
+/* ---------------- motion: the hidden state carries transition:none ----------
+   autofit() lights every fragment under body.measuring; a hidden state that
+   TRANSITIONS animates back to hidden and the room sees the slide paint fully
+   built and then fade. That defect lived in 33 rules once already.           */
+.gt23 .ob-reveal{opacity:0;transition:none}
+.gt23 .ob-step.shown .ob-reveal{opacity:1;transition:opacity .3s ease}
+body.measuring .gt23 .ob-reveal,
+body.nobuild .gt23 .ob-reveal{opacity:1;transition:none}
+
+/* ---------------- modals (every id prefixed gt23-) ---------------- */
+.gt23 .mdl{border:1px solid #dbad50;border-left:4px solid #dbad50;border-radius:8px;
+  background:#0a192f;color:#e8edf3;padding:1.1em 1.35em 1em;
+  width:min(58vw,880px);max-height:82vh;overflow:auto;
+  box-shadow:0 18px 60px rgba(0,0,0,.65);
+  font-family:"Titillium Web",-apple-system,"Segoe UI",Roboto,Helvetica,sans-serif}
+.gt23 .mdl::backdrop{background:rgba(4,12,26,.82)}
+.gt23 .mdl h3{font-size:1.55vw;line-height:1.15;color:#dbad50;font-weight:700;  /* 21.17px */
+  margin:0 0 .35em}
+.gt23 .mdl .ms{font-size:1.18vw;line-height:1.42;color:#9db8d6;margin-bottom:.85em}  /* 16.12px */
+.gt23 .gt23-mrow{display:grid;grid-template-columns:1fr 4.2em 4.2em 5em;gap:.6em;
+  align-items:baseline;padding:.3em .35em;border-bottom:1px solid rgba(255,255,255,.10);
+  font-size:1.15vw;line-height:1.28;color:#e8edf3;font-variant-numeric:tabular-nums}  /* 15.71px */
+.gt23 .gt23-mrow.gt23-m2{grid-template-columns:1fr 5em}
+.gt23 .gt23-mrow span:not(:first-child){text-align:right;color:#9db8d6}
+.gt23 .gt23-mhead{color:#dbad50;font-weight:700;border-bottom:1px solid #dbad50}
+.gt23 .gt23-mhead span:not(:first-child){color:#dbad50}
+.gt23 .gt23-mpick{background:rgba(219,173,80,.14);border-radius:4px}
+.gt23 .gt23-mpick span{color:#dbad50;font-weight:700}
+.gt23 .gt23-mtot{font-weight:700;border-bottom:0;border-top:1px solid #dbad50;margin-top:.25em}
+.gt23 .gt23-mgrp{font-size:1.18vw;line-height:1.3;color:#dbad50;font-weight:700;  /* 16.12px */
+  margin:.8em 0 .2em;letter-spacing:.02em}
+.gt23 .mdl form{margin-top:1em;display:flex;justify-content:flex-end}
+.gt23 .mdl button{background:transparent;border:1px solid #dbad50;color:#dbad50;
+  border-radius:6px;padding:.34em 1.1em;cursor:pointer;font-weight:700;
+  font-family:"Titillium Web",-apple-system,"Segoe UI",Roboto,Helvetica,sans-serif;
+  font-size:1.15vw;line-height:1.3}                                              /* 15.71px */
+.gt23 .mdl button:hover,
+.gt23 .mdl button:focus-visible{background:#dbad50;color:#0a192f;outline:none}
+
+@media (prefers-reduced-motion:reduce){
+  .gt23 .ob-step.shown .ob-reveal{transition:none}
+}
+
+/* ---- gt24 (frag_gt24.css) ---- */
+/* ============================================================================
+   gt24 - "Inside a second dimension" - Remedy Sought.
+
+   ROUTE 3 (draw it). Four inline-SVG figures and nothing raster: a proportional
+   band showing the whole dimension to scale, then three "racks" - one per
+   second-level element - whose rows are the third-level elements with a
+   measured count bar and one taxon quoted verbatim from the agreed TSV. Depth
+   beyond that lives in four <dialog> modals holding all 92 taxa.
+
+   WHY IT IS COMPOSED THIS WAY (deliberately unlike its sibling slide): the
+   explanation box sits in a FIXED right-hand column, x 70-99%, while every
+   figure is confined to x 0-68%. A box therefore cannot cover already-revealed
+   art at any step - the collision class VISUAL_SPEC section 2 was written for -
+   without needing a scrim on any step but the last.
+
+   TYPE FLOOR. Every size below is in cqw, which on a .slide (container-type:
+   inline-size) is 1% of SLIDE width. Floor 1.10cqw = 15.03px at a 1366px slide.
+   SVG text is sized in viewBox USER UNITS, which is a different scale: each
+   figure is 68% of the picture wide (viewBox 1203.6 units) and the picture is
+   1770 units wide, so at a 1366px slide one user unit = 0.7161px. The floor in
+   user units is therefore 15.03 / 0.7161 = 20.99, and the two SVG sizes used
+   are 22 (15.76px) and 28 (20.05px). Computed, not eyeballed.
+
+   BUTTONS. .gt24-ib and .gt24-more, .gt24-close all carry font-family:inherit
+   and an EXPLICIT font-size. A <button> inherits neither, and silently renders
+   at the 13.33px UA default - below the floor - if you let it.
+
+   MOTION (VISUAL_SPEC section 7). Every hidden state carries transition:none;
+   the fade lives only on the shown state. Otherwise autofit's body.measuring
+   pass paints the slide fully built and animates it away, which the room sees
+   as a flash before the build starts.
+
+   CLASS PREFIXING. Every class here is gt24-prefixed, and every dialog id is
+   gt24-prefixed, because all fragments splice into ONE document.
+   ========================================================================== */
+
+/* ---- fragment machinery, scoped so it cannot fight the deck's own copy ---- */
+.slide.gt24 [data-frag]{opacity:0;transform:translateY(.28em);transition:none}
+.slide.gt24 [data-frag].shown{opacity:1;transform:none;
+  transition:opacity .26s ease,transform .26s ease}
+body.measuring .slide.gt24 [data-frag]{opacity:1;transform:none;transition:none}
+body.nobuild  .slide.gt24 [data-frag]{opacity:1;transform:none}
+
+/* ---- slide shell --------------------------------------------------------- */
+.slide.gt24{background:#0a192f;color:#e8edf3;
+  font-family:"Titillium Web",-apple-system,"Segoe UI",Roboto,Helvetica,sans-serif}
+.slide.gt24 h2{margin:0 0 .28em;color:#dbad50;font-weight:700;
+  font-size:4.5cqw;line-height:1.04;letter-spacing:-.01em;text-wrap:balance}
+.slide.gt24 .sub{margin:-.1em 0 .70em;color:#b9cfe6;
+  font-size:1.95cqw;line-height:1.35;max-width:66ch}
+
+/* ---- the picture --------------------------------------------------------- */
+.gt24 .ob-pic{position:relative;width:100%;aspect-ratio:1770/750;margin:0 auto;
+  max-height:66cqh;border-radius:4px;overflow:hidden;background:transparent}
+
+/* Each step is a full-size transparent layer that passes the pointer THROUGH,
+   so its contents stay reachable to the review overlay (VISUAL_SPEC 11). */
+.gt24 .ob-step{position:absolute;inset:0;transform:none;pointer-events:none}
+.gt24 .ob-step > *{pointer-events:auto}
+.gt24 .ob-scrim{position:absolute;inset:0;background:rgba(6,16,34,.80);
+  pointer-events:none}
+
+/* ---- the four figures ---------------------------------------------------- *
+   Each is left-aligned in the art zone (0-68% of the picture) and its viewBox
+   aspect EQUALS its element aspect, so preserveAspectRatio="meet" letterboxes
+   nothing: element w = .68*1770 = 1203.6 units, element h = pct*750 units.     */
+.gt24 .ob-pic svg.gt24-fig{position:absolute;left:0;right:auto;bottom:auto;
+  width:68%;display:block;overflow:visible}
+.gt24 .gt24-fig-band{top:0;    height:16%}   /* viewBox 1203.6 x 120   */
+.gt24 .gt24-fig-ra  {top:18%;  height:23%}   /* viewBox 1203.6 x 172.5 */
+.gt24 .gt24-fig-cc  {top:43%;  height:23%}   /* viewBox 1203.6 x 172.5 */
+.gt24 .gt24-fig-ia  {top:68%;  height:32%}   /* viewBox 1203.6 x 240   */
+
+.gt24 .gt24-fig text{font-family:"Titillium Web",-apple-system,"Segoe UI",
+  Roboto,Helvetica,sans-serif}
+
+/* ---- the proportional band (step 1) -------------------------------------- */
+.gt24 .gt24-hltp{fill:#dbad50;font-weight:700;letter-spacing:.06em}
+.gt24 .gt24-meta{fill:#b9cfe6;font-weight:400}
+.gt24 .gt24-seg{stroke:rgba(10,25,47,.55);stroke-width:1}
+.gt24 .gt24-tick{stroke:#0a192f;stroke-width:2.5}
+.gt24 .gt24-seglab{fill:#e8edf3;font-weight:700}
+.gt24 .gt24-segsub{fill:#b9cfe6;font-weight:400}
+
+/* ---- a rack: one second-level element, its third-level rows -------------- */
+.gt24 .gt24-l2{fill:#dbad50;font-weight:700;letter-spacing:.055em}
+.gt24 .gt24-rule{stroke:rgba(255,255,255,.10);stroke-width:1}
+.gt24 .gt24-rule-hd{stroke:rgba(219,173,80,.45);stroke-width:1}
+.gt24 .gt24-l3{fill:#e8edf3;font-weight:600}
+.gt24 .gt24-trk{fill:rgba(219,173,80,.15)}
+.gt24 .gt24-cnt{font-weight:700}
+.gt24 .gt24-tax{fill:#b9cfe6;font-weight:400}
+.gt24 .gt24-row:hover .gt24-tax{fill:#e8edf3}
+
+/* ---- the round "i" badge that opens a second-level element's full list ---- *
+   A <button> inherits NEITHER family nor size: both are stated outright.       */
+.gt24 .gt24-ib{position:absolute;left:var(--x);top:var(--y);
+  font-family:"Titillium Web",-apple-system,"Segoe UI",Roboto,Helvetica,sans-serif;
+  font-size:1.30cqw;font-weight:700;line-height:1;font-style:italic;
+  width:2.35cqw;height:2.35cqw;padding:0;border:0;border-radius:50%;
+  color:#0a192f;background:#dbad50;cursor:pointer;
+  display:grid;place-items:center;
+  box-shadow:0 2px 8px rgba(0,0,0,.5);transition:transform .15s}
+.gt24 .gt24-ib:hover,.gt24 .gt24-ib:focus-visible{transform:scale(1.12);outline:none;
+  box-shadow:0 0 0 .25cqw rgba(219,173,80,.35)}
+
+/* ---- the explanation box: exactly one on screen at a time ---------------- */
+.gt24 .ob-note{position:absolute;left:var(--x);top:var(--y);width:var(--w);
+  background:rgba(10,24,47,.94);border:1px solid rgba(219,173,80,.55);
+  border-left:3px solid #dbad50;border-radius:5px;padding:.72em .9em;
+  box-shadow:0 8px 26px rgba(0,0,0,.55);transition:opacity .2s ease}
+.gt24 .ob-note .k{color:#dbad50;font-weight:700;font-size:1.72cqw;
+  line-height:1.18;margin-bottom:.2em}
+.gt24 .ob-note .d{color:#e8edf3;font-size:1.46cqw;line-height:1.42}
+.gt24 .ob-note.wide{background:rgba(10,24,47,.97)}
+.gt24 .ob-note.wide .k{font-size:1.86cqw}
+.gt24 .ob-note.wide .d{font-size:1.62cqw}
+/* only the CURRENT step keeps its box; every earlier one gives it up */
+.gt24 .ob-step:has(~ .ob-step.shown) .ob-note{opacity:0;visibility:hidden;transition:none}
+
+.gt24 .gt24-more{font-family:inherit;font-size:1.40cqw;font-weight:700;
+  line-height:1.2;color:#dbad50;background:transparent;
+  border:1px solid rgba(219,173,80,.6);border-radius:4px;
+  padding:.16em .7em;margin-left:.45em;cursor:pointer;white-space:nowrap}
+.gt24 .gt24-more:hover,.gt24 .gt24-more:focus-visible{background:#dbad50;color:#0a192f;
+  outline:none}
+
+/* ---- the modals ---------------------------------------------------------- *
+   Ids are gt24-prefixed. Opened with showModal(), so the top layer carries them
+   clear of .ob-pic{overflow:hidden} and of the slide's own clipping.           */
+.gt24-mdl{border:2px solid #dbad50;border-radius:10px;padding:0;
+  width:min(76cqw,1080px);max-width:92cqw;max-height:80cqh;overflow:auto;
+  background:#0d2038;color:#e8edf3;
+  font-family:"Titillium Web",-apple-system,"Segoe UI",Roboto,Helvetica,sans-serif;
+  box-shadow:0 18px 60px rgba(0,0,0,.7)}
+.gt24-mdl::backdrop{background:rgba(4,12,26,.88)}
+.gt24-mdl-top{position:sticky;top:0;z-index:2;display:flex;gap:1.2cqw;
+  align-items:flex-start;justify-content:space-between;
+  padding:1.05cqw 1.4cqw .85cqw;background:#0d2038;
+  border-bottom:1px solid rgba(219,173,80,.45)}
+.gt24-mdl-kick{color:#b9cfe6;font-size:1.20cqw;font-weight:600;
+  text-transform:uppercase;letter-spacing:.10em;margin-bottom:.25em}
+.gt24-mdl h3{margin:0;color:#dbad50;font-size:2.00cqw;font-weight:700;line-height:1.14}
+.gt24-mdl-sub{color:#b9cfe6;font-size:1.30cqw;line-height:1.38;margin-top:.28em;
+  max-width:60ch}
+.gt24-close{font-family:inherit;font-size:1.30cqw;font-weight:700;line-height:1.2;
+  color:#0a192f;background:#dbad50;border:0;border-radius:5px;
+  padding:.42em 1.05em;cursor:pointer;flex:0 0 auto}
+.gt24-close:hover,.gt24-close:focus-visible{background:#e8c579;outline:none}
+.gt24-mdl-body{padding:.9cqw 1.4cqw 1.6cqw}
+.gt24-l3blk{margin-top:1.0cqw}
+.gt24-l3blk:first-child{margin-top:.3cqw}
+.gt24-mdl h4{margin:0 0 .35em;color:#e8edf3;font-size:1.45cqw;font-weight:700;
+  line-height:1.2;border-bottom:1px solid rgba(255,255,255,.10);padding-bottom:.22em}
+.gt24-mdl .gt24-n{color:#dbad50;font-size:1.18cqw;font-weight:600;margin-left:.5em}
+.gt24-mdl ul{margin:0;padding-left:1.15em;list-style:none}
+.gt24-mdl li{position:relative;color:#b9cfe6;font-size:1.22cqw;line-height:1.45;
+  padding:.10em 0}
+.gt24-mdl li::before{content:"\2022";color:#dbad50;position:absolute;left:-.85em}
+.gt24-mdl .gt24-sha{display:block;margin-top:.25em;color:#e8edf3;
+  font-family:"SFMono-Regular",Consolas,"Liberation Mono",Menlo,monospace;
+  font-size:1.14cqw;line-height:1.4;word-break:break-all}
+
+@media (prefers-reduced-motion:reduce){
+  .gt24 .gt24-ib,.gt24 .ob-note,.slide.gt24 [data-frag]{transition:none}
+}
+
+
+/* --- type-floor repair gt24: 1.10% of 1366 = 15.03px effective.
+   SVG text is scaled by the viewBox, so a vw size is multiplied by that scale too;
+   these are raw viewBox units computed so raw x scale clears the floor. --- */
+.gt24 .d{font-size:16px}
+.gt24 .gt24-close{font-size:16px}
+.gt24 .gt24-ib{font-size:16px}
+.gt24 .gt24-more{font-size:16px}
+
+/* type-floor enforcement (high specificity; beats the earlier rules) */
+.slide.gt24 .d,.slide.gt24 svg .d{font-size:16px !important}
+
+/* ---- gt25 (frag_gt25.css) ---- */
+/* ---- gt25 &#183; "One issue, seven readings" -------------------------------------
+   The payoff fragment for the lower levels: ONE real congressional issue, read on
+   all seven dimensions at once, with the verbatim taxon from
+   TAXONOMY_AGREED_2026-09-01.tsv on each.
+
+   ROUTE 3 (draw it). There is no source figure for this and never was, so the
+   whole picture is one inline SVG: an issue card, a beam, a prism, and seven rays
+   into seven labelled readings. No plate, no reveal image, nothing rastered.
+
+   ONE SVG, NOT EIGHT. VISUAL_SPEC section 6: every .ob-step is a full-size layer,
+   so a per-step <svg> would stack eight full-size overlays and swallow the pointer.
+   Instead the art is a SINGLE static <svg> child of .ob-pic and each reading is a
+   <g class="gt25-lay gt25-rN"> lit from the step's own .shown class through :has().
+   Each .ob-step therefore carries only its .ob-note - which is exactly what the
+   spec says a box-only step should carry.
+
+   TYPE FLOOR, COMPUTED NOT EYEBALLED. Inline SVG text is measured against the
+   viewBox. Worst case for this fragment:
+     .ob-pic is width:100% of the slide content box (92.8% of slide width after the
+     3.6% side padding) BUT is also clamped by max-height:66cqh, and #stage is the
+     nearest container with block containment. In present mode stage height is
+     slide_width * 9/16, so the clamped picture width is
+       66% * (W * 9/16) * 1770/750 = 0.876 * W.
+     The viewBox is 1770 wide, so a viewBox font-size F renders at
+       F * 0.876 * W / 1770 = 0.000495 * F * W  px.
+     The 1.10%-of-slide-width floor is therefore F >= 22.2.
+   gt01 measured that .ob-pic does NOT always keep its declared aspect (it read 2.60
+   against a declared 2.6 - it is a shrinkable flex item). At 2.60 the meet-fitted
+   SVG loses a further 9.2% of scale, which pushes the floor to F >= 24.5. NOTHING
+   in this fragment is below 26, so the smallest glyph holds at 1.29% of slide width
+   in the nominal case and 1.17% in the shrunk case. Both clear the floor.
+
+   HTML type on this slide uses cqw, which is 1% of the SLIDE's inline size - the
+   stricter and more literal reading of "1.10% of slide width" than vw, since the
+   slide is never wider than the viewport. Nothing is below 1.32cqw (18.0px at
+   1366), and the two <button>s carry an explicit size plus font-family:inherit,
+   because a button does NOT inherit font-size and silently falls to the 13.33px UA
+   default - the trap that shipped today.
+
+   COLOUR. Ground #0a192f; the seven rays run a warm-to-cool ramp anchored at the
+   two house accents, gold #dbad50 through to light blue #82a0bc, so the prism reads
+   as a spectrum without leaving the palette. All PROSE is off-white #e8edf3 or
+   #b9cfe6 (luminance 237 and 205); gold and the ramp are used for accents, rules
+   and headings only, matching every other slide in the deck.
+   ------------------------------------------------------------------------------ */
+
+/* ---------- the picture ---------- */
+.gt25 .ob-pic{aspect-ratio:1770/750;max-height:66cqh;background:#0a192f;border-radius:5px}
+.gt25 .ob-pic > svg.gt25-svg{position:absolute;inset:0;width:100%;height:100%;display:block}
+
+/* ---------- hit-testing (VISUAL_SPEC section 11) ----------------------------
+   A .ob-step is a full-size transparent layer. Without these two rules the LAST
+   step's layer sits over every earlier note and the modal buttons cannot be
+   clicked at all, even though they are visible. The layer passes the pointer
+   through; its contents take it. */
+.gt25 .ob-step{pointer-events:none}
+.gt25 .ob-step > *{pointer-events:auto}
+.gt25 .ob-scrim{pointer-events:none}
+
+/* ---------- the seven readings light one per click --------------------------
+   Hidden state carries transition:none. autofit() lights every fragment under
+   body.measuring, and a hidden state that TRANSITIONS animates back to hidden -
+   the slide paints fully built and fades away, which the room sees as a flash
+   before the build starts. The fade lives on the SHOWN state only. */
+.gt25 .gt25-lay{opacity:0;transition:none}
+.gt25 .ob-pic:has(.gt25-s1.shown) .gt25-r1,
+.gt25 .ob-pic:has(.gt25-s2.shown) .gt25-r2,
+.gt25 .ob-pic:has(.gt25-s3.shown) .gt25-r3,
+.gt25 .ob-pic:has(.gt25-s4.shown) .gt25-r4,
+.gt25 .ob-pic:has(.gt25-s5.shown) .gt25-r5,
+.gt25 .ob-pic:has(.gt25-s6.shown) .gt25-r6,
+.gt25 .ob-pic:has(.gt25-s7.shown) .gt25-r7{opacity:1;transition:opacity .32s ease}
+/* measuring must see the built state, and B (builds off) must show everything */
+body.measuring .gt25 .gt25-lay,
+body.nobuild  .gt25 .gt25-lay{opacity:1;transition:none}
+
+/* ---------- the explanation boxes ----------
+   Slightly tightened from the house default so a 200-character box clears the
+   picture: at --w:27% the content column is ~294px at 1366, 1.40cqw is 19.1px,
+   ~33 characters a line, seven lines, ~232px against a 507px picture. */
+.gt25 .ob-note{background:rgba(9,24,47,.95)}
+.gt25 .ob-note .k{font-size:1.66cqw;line-height:1.16}
+.gt25 .ob-note .d{font-size:1.40cqw;line-height:1.36}
+.gt25 .ob-note.wide .d{font-size:1.58cqw;line-height:1.38}
+
+/* ---------- the two modal triggers ----------
+   A <button> does not inherit font-size. Both are set explicitly AND given
+   font-family:inherit, or they sit at the 13.33px UA default and fail the floor. */
+.gt25 .gt25-mrow{display:flex;gap:.7em;flex-wrap:wrap;margin-top:.75em}
+.gt25 .gt25-mbtn{font-family:inherit;font-size:1.32cqw;font-weight:700;line-height:1.2;
+  background:transparent;border:1px solid #dbad50;color:#dbad50;
+  padding:.36em .8em;border-radius:6px;cursor:pointer;
+  transition:background .15s ease,color .15s ease}
+.gt25 .gt25-mbtn:hover,.gt25 .gt25-mbtn:focus-visible{background:#dbad50;color:#0a192f;outline:none}
+
+/* ---------- modals ----------------------------------------------------------
+   Every id and every selector is prefixed gt25-, because all eleven fragments
+   splice into ONE document. Nothing here defines a bare .mdl, so no other
+   agent's dialog is restyled by this file. Sized in % of the containing block
+   (the viewport, for a top-layer dialog) rather than vh. */
+dialog.mdl.gt25-mdl{width:min(62cqw,880px);max-width:88%;max-height:86%;overflow:auto;
+  background:#0d2340;color:#e8edf3;border:2px solid #dbad50;border-radius:10px;
+  padding:1.5cqw 1.9cqw 1.2cqw;box-shadow:0 18px 60px rgba(0,0,0,.7);
+  font-family:var(--font)}
+dialog.mdl.gt25-mdl::backdrop{background:rgba(4,12,26,.86)}
+dialog.mdl.gt25-mdl h3{font-size:2.10cqw;line-height:1.16;color:#dbad50;font-weight:700;
+  margin:0 0 .5em;letter-spacing:-.005em}
+dialog.mdl.gt25-mdl p{font-size:1.42cqw;line-height:1.5;color:#e8edf3;margin:0 0 .7em}
+dialog.mdl.gt25-mdl p b{color:#dbad50}
+dialog.mdl.gt25-mdl p.gt25-kv{font-size:1.90cqw;line-height:1.3;color:#b9cfe6;
+  font-variant-numeric:tabular-nums;letter-spacing:.02em;
+  background:rgba(219,173,80,.09);border-left:3px solid #dbad50;border-radius:5px;
+  padding:.5em .7em;margin:.2em 0 .8em}
+dialog.mdl.gt25-mdl p.gt25-kv b{color:#dbad50;font-weight:900}
+dialog.mdl.gt25-mdl form{margin:.4em 0 0;text-align:right}
+dialog.mdl.gt25-mdl .gt25-x{font-family:inherit;font-size:1.45cqw;font-weight:700;line-height:1.2;
+  background:#dbad50;border:1px solid #dbad50;color:#0a192f;
+  padding:.36em 1.1em;border-radius:6px;cursor:pointer}
+dialog.mdl.gt25-mdl .gt25-x:hover,dialog.mdl.gt25-mdl .gt25-x:focus-visible{
+  background:transparent;color:#dbad50;outline:none}
+
+
+/* --- type-floor repair gt25: 1.10% of 1366 = 15.03px effective.
+   SVG text is scaled by the viewBox, so a vw size is multiplied by that scale too;
+   these are raw viewBox units computed so raw x scale clears the floor. --- */
+.gt25 .d{font-size:16px}
+.gt25 .gt25-mbtn{font-size:16px}
+.gt25 .gt25-x{font-size:16px}
+.gt25 svg text:not([class]),.gt25 svg tspan:not([class]){font-size:27px}
+
+/* type-floor enforcement (high specificity; beats the earlier rules) */
+.slide.gt25 .d,.slide.gt25 svg .d{font-size:16px !important}
+.slide.gt25 .gt25-x,.slide.gt25 svg .gt25-x{font-size:16px !important}
+
+/* ---- WACKO reconstruction, gt08a-gt08i (2026-09-04) -------------------------
+   Rebuilt from the two PUBLISHED NotebookLM slide decks on the deliverables app
+   (deployed_media/wacko_slides.pdf 15pp, wacko-update_slides.pdf 14pp), which
+   carry ZERO characters of text layer - measured with pdftotext, 0 chars each -
+   so every title and every element here was read off 80/300-dpi renders of the
+   pages themselves, as SDS instructed. Nine slides, one per title Adam typed.
+   TYPE FLOOR: .slide is container-type:inline-size with 3.6% side padding, so
+   1cqw = 0.928% of slide width and the 1.10% floor is 1.185cqw. Nothing here is
+   set under 1.50cqw (= 1.24% of slide width), and none of these sizes carry
+   var(--sc), so autofit can never shrink them through the floor. */
+.wk-row{display:flex;gap:1.15cqw;width:100%}
+.wk-c{flex:1;background:var(--db);border-radius:.45rem;padding:1.05cqw 1.15cqw;
+  border-top:3px solid var(--gold);min-width:0}
+.wk-c.dim{border-top-color:#5b7ea8}
+.wk-k{color:var(--gold);font-weight:600;font-size:1.95cqw;line-height:1.2;margin-bottom:.35cqw}
+.wk-c.dim .wk-k{color:#a8c2de}
+.wk-d{color:var(--lb);font-size:1.62cqw;line-height:1.38}
+.wk-d b{color:var(--wh)}
+.wk-rule{margin-top:1.1cqw;background:rgba(219,173,80,.10);border-left:3px solid var(--gold);
+  border-radius:.3rem;padding:.85cqw 1.15cqw;color:var(--wh);font-size:1.72cqw;line-height:1.36}
+.wk-rule b{color:var(--gold)}
+.wk-note{margin-top:.85cqw;color:#8fa8c4;font-size:1.50cqw;line-height:1.36}
+/* the ratchet ladder: six eras, each step higher than the last and never given back */
+.wk-lad{display:flex;align-items:flex-end;gap:.7cqw;width:100%}
+.wk-st{flex:1;display:flex;flex-direction:column;justify-content:flex-end;min-width:0}
+.wk-bar{flex:0 0 auto;background:linear-gradient(180deg,rgba(219,173,80,.85),rgba(219,173,80,.28));
+  border-top:3px solid var(--gold);border-radius:3px 3px 0 0}
+.wk-st .lab{color:var(--gold);font-weight:600;font-size:1.62cqw;line-height:1.2;margin-bottom:.3cqw}
+.wk-st .yr{color:#8fa8c4;font-size:1.50cqw;line-height:1.2}
+.wk-st .tx{color:var(--lb);font-size:1.50cqw;line-height:1.32;margin-top:.35cqw}
+/* the venue diagnostic matrix */
+.wk-tab{width:100%;border-collapse:collapse;table-layout:fixed}
+.wk-tab th,.wk-tab td{border:1px solid #2f5a8f;padding:.75cqw .8cqw;text-align:left;vertical-align:top}
+.wk-tab thead th{color:var(--gold);font-size:1.80cqw;font-weight:600;background:var(--db)}
+.wk-tab tbody th{color:#a8c2de;font-size:1.55cqw;font-weight:600;width:15%;background:rgba(26,55,97,.55)}
+.wk-tab td{color:var(--lb);font-size:1.55cqw;line-height:1.32}
+.wk-tab td b{color:var(--wh)}
+/* ranked canon authors, bar widths measured off the published chart */
+.wk-rank{display:flex;flex-direction:column;gap:.52cqw;width:100%}
+.wk-rk{display:flex;align-items:center;gap:.8cqw}
+.wk-rk .nm{flex:0 0 20%;color:var(--wh);font-size:1.62cqw;line-height:1.2;text-align:right}
+.wk-rk .bp{flex:1;height:2.05cqw;background:rgba(26,55,97,.6);border-radius:2px;overflow:hidden}
+.wk-rk .bp i{display:block;height:100%;background:var(--gold);opacity:.82;border-radius:2px}
+.wk-rk .rl{flex:0 0 9%;color:#8fa8c4;font-size:1.50cqw;font-variant-numeric:tabular-nums}
+
+/* measured 2026-09-04 at 1280/1366/1600: these two notes overflowed the slide
+   bottom (gt20 by 36px at 1280, gt24 by 5px). top:var(--y) lets a short viewport
+   push a tall note through the bottom edge; a bottom anchor cannot be pushed. */
+.gt20 .ob-note.wide{top:auto;bottom:3%}
+.gt24 .ob-note{top:auto;bottom:3%}
+
+/* ---- gt08a - the ratchet, native SVG (2026-09-05) --------------------------
+   Rebuilt from the WACKO ESR series after the text-card version was rejected.
+   Classes are prefixed wr- because an inline SVG <style> is NOT scoped and bare
+   names leak page-wide. Hidden groups carry transition:none so autofit's
+   body.measuring pass cannot animate the slide back to hidden.
+   TYPE FLOOR: .ob-pic spans the slide CONTENT box (0.928W) mapped onto 1200
+   viewBox units, so 1 unit = 0.0773% of slide width and the 1.10% floor is 14.2
+   units; allowing ~9% vertical squash gives a working floor of 15.7. Nothing in
+   the SVG is set below 18. */
+.slide.wrat .ob-pic{position:relative;width:100%;aspect-ratio:1200/480;margin:0 auto;
+  max-height:72cqh;border-radius:5px;overflow:hidden;background:#0a1830}
+.slide.wrat .ob-pic .wr-svg{position:absolute;inset:0;width:100%;height:100%;display:block}
+.slide.wrat .wr-g{opacity:0;transition:none}
+.slide.wrat:has(.ob-step.s1.shown) .wr-g1,
+.slide.wrat:has(.ob-step.s2.shown) .wr-g1,
+.slide.wrat:has(.ob-step.s3.shown) .wr-g1,
+.slide.wrat:has(.ob-step.s4.shown) .wr-g1,
+.slide.wrat:has(.ob-step.s5.shown) .wr-g1{opacity:1;transition:opacity .3s ease}
+.slide.wrat:has(.ob-step.s2.shown) .wr-g2,
+.slide.wrat:has(.ob-step.s3.shown) .wr-g2,
+.slide.wrat:has(.ob-step.s4.shown) .wr-g2,
+.slide.wrat:has(.ob-step.s5.shown) .wr-g2{opacity:1;transition:opacity .3s ease}
+.slide.wrat:has(.ob-step.s3.shown) .wr-g3,
+.slide.wrat:has(.ob-step.s4.shown) .wr-g3,
+.slide.wrat:has(.ob-step.s5.shown) .wr-g3{opacity:1;transition:opacity .3s ease}
+.slide.wrat:has(.ob-step.s4.shown) .wr-g4,
+.slide.wrat:has(.ob-step.s5.shown) .wr-g4{opacity:1;transition:opacity .3s ease}
+.slide.wrat:has(.ob-step.s5.shown) .wr-g5{opacity:1;transition:opacity .3s ease}
+body.measuring .slide.wrat .wr-g{opacity:1;transition:none}
+body.nobuild  .slide.wrat .wr-g{opacity:1;transition:none}
+.slide.wrat .ob-step{pointer-events:none}
+.slide.wrat .ob-step > *{pointer-events:auto}
+
+/* ---- gt08b - the naturalisation gap, native SVG, measured (2026-09-05) ------
+   nv- prefix because an inline SVG <style> is not scoped. Hidden groups carry
+   transition:none so the measuring pass cannot animate them back to hidden.
+   TYPE FLOOR: 1200 viewBox units across the slide content box (0.928W) => 1 unit
+   = 0.0773% of slide width, floor 14.2 units; nothing here is below 17. */
+.slide.nvenue .ob-pic{position:relative;width:100%;aspect-ratio:1200/520;margin:0 auto;
+  max-height:72cqh;border-radius:5px;overflow:hidden;background:#0a1830}
+.slide.nvenue .ob-pic .nv-svg{position:absolute;inset:0;width:100%;height:100%;display:block}
+.slide.nvenue .nv-g{opacity:0;transition:none}
+.slide.nvenue:has(.ob-step.s1.shown) .nv-g1,
+.slide.nvenue:has(.ob-step.s2.shown) .nv-g1,
+.slide.nvenue:has(.ob-step.s3.shown) .nv-g1,
+.slide.nvenue:has(.ob-step.s4.shown) .nv-g1{opacity:1;transition:opacity .3s ease}
+.slide.nvenue:has(.ob-step.s2.shown) .nv-g2,
+.slide.nvenue:has(.ob-step.s3.shown) .nv-g2,
+.slide.nvenue:has(.ob-step.s4.shown) .nv-g2{opacity:1;transition:opacity .3s ease}
+.slide.nvenue:has(.ob-step.s3.shown) .nv-g3,
+.slide.nvenue:has(.ob-step.s4.shown) .nv-g3{opacity:1;transition:opacity .3s ease}
+.slide.nvenue:has(.ob-step.s4.shown) .nv-g4{opacity:1;transition:opacity .3s ease}
+body.measuring .slide.nvenue .nv-g{opacity:1;transition:none}
+body.nobuild  .slide.nvenue .nv-g{opacity:1;transition:none}
+.slide.nvenue .ob-step{pointer-events:none}
+.slide.nvenue .ob-step > *{pointer-events:auto}
+
+/* ---- gt08d - the Ilyin gap, native SVG, measured (2026-09-05) --------------
+   ig- prefix: an inline SVG <style> is not scoped. Hidden groups carry
+   transition:none. 1200 viewBox units over the slide content box => 1 unit =
+   0.0773% of slide width, 1.10% floor = 14.2 units; nothing below 16 here. */
+.slide.ilyin .ob-pic{position:relative;width:100%;aspect-ratio:1200/520;margin:0 auto;
+  max-height:74cqh;border-radius:5px;overflow:hidden;background:#0a1830}
+.slide.ilyin .ob-pic .ig-svg{position:absolute;inset:0;width:100%;height:100%;display:block}
+.slide.ilyin .ig-g{opacity:0;transition:none}
+.slide.ilyin:has(.ob-step.s1.shown) .ig-g1,
+.slide.ilyin:has(.ob-step.s2.shown) .ig-g1,
+.slide.ilyin:has(.ob-step.s3.shown) .ig-g1{opacity:1;transition:opacity .3s ease}
+.slide.ilyin:has(.ob-step.s2.shown) .ig-g2,
+.slide.ilyin:has(.ob-step.s3.shown) .ig-g2{opacity:1;transition:opacity .3s ease}
+.slide.ilyin:has(.ob-step.s3.shown) .ig-g3{opacity:1;transition:opacity .3s ease}
+body.measuring .slide.ilyin .ig-g{opacity:1;transition:none}
+body.nobuild  .slide.ilyin .ig-g{opacity:1;transition:none}
+.slide.ilyin .ob-step{pointer-events:none}
+.slide.ilyin .ob-step > *{pointer-events:auto}
+
+/* ---- gt08d - the Ilyin gap, native SVG, measured (2026-09-05) --------------
+   ig- prefix: an inline SVG <style> is not scoped. Hidden groups carry
+   transition:none. 1200 viewBox units over the slide content box => 1 unit =
+   0.0773% of slide width, 1.10% floor = 14.2 units; nothing below 16 here. */
+.slide.ilyin .ob-pic{position:relative;width:100%;aspect-ratio:1200/520;margin:0 auto;
+  max-height:74cqh;border-radius:5px;overflow:hidden;background:#0a1830}
+.slide.ilyin .ob-pic .ig-svg{position:absolute;inset:0;width:100%;height:100%;display:block}
+.slide.ilyin .ig-g{opacity:0;transition:none}
+.slide.ilyin:has(.ob-step.s1.shown) .ig-g1,
+.slide.ilyin:has(.ob-step.s2.shown) .ig-g1,
+.slide.ilyin:has(.ob-step.s3.shown) .ig-g1{opacity:1;transition:opacity .3s ease}
+.slide.ilyin:has(.ob-step.s2.shown) .ig-g2,
+.slide.ilyin:has(.ob-step.s3.shown) .ig-g2{opacity:1;transition:opacity .3s ease}
+.slide.ilyin:has(.ob-step.s3.shown) .ig-g3{opacity:1;transition:opacity .3s ease}
+body.measuring .slide.ilyin .ig-g{opacity:1;transition:none}
+body.nobuild  .slide.ilyin .ig-g{opacity:1;transition:none}
+.slide.ilyin .ob-step{pointer-events:none}
+.slide.ilyin .ob-step > *{pointer-events:auto}
+
+/* ---- gt08d - the Ilyin gap, native SVG, measured (2026-09-05) --------------
+   ig- prefix: an inline SVG <style> is not scoped. Hidden groups carry
+   transition:none. 1200 viewBox units over the slide content box => 1 unit =
+   0.0773% of slide width, 1.10% floor = 14.2 units; nothing below 16 here. */
+.slide.ilyin .ob-pic{position:relative;width:100%;aspect-ratio:1200/570;margin:0 auto;
+  max-height:74cqh;border-radius:5px;overflow:hidden;background:#0a1830}
+.slide.ilyin .ob-pic .ig-svg{position:absolute;inset:0;width:100%;height:100%;display:block}
+.slide.ilyin .ig-g{opacity:0;transition:none}
+.slide.ilyin:has(.ob-step.s1.shown) .ig-g1,
+.slide.ilyin:has(.ob-step.s2.shown) .ig-g1,
+.slide.ilyin:has(.ob-step.s3.shown) .ig-g1{opacity:1;transition:opacity .3s ease}
+.slide.ilyin:has(.ob-step.s2.shown) .ig-g2,
+.slide.ilyin:has(.ob-step.s3.shown) .ig-g2{opacity:1;transition:opacity .3s ease}
+.slide.ilyin:has(.ob-step.s3.shown) .ig-g3{opacity:1;transition:opacity .3s ease}
+body.measuring .slide.ilyin .ig-g{opacity:1;transition:none}
+body.nobuild  .slide.ilyin .ig-g{opacity:1;transition:none}
+.slide.ilyin .ob-step{pointer-events:none}
+.slide.ilyin .ob-step > *{pointer-events:auto}
+
+/* ---- WACKO measured slides, native SVG (2026-09-06) ---- */
+.slide.zledger .ob-pic{position:relative;width:100%;aspect-ratio:1200/658;margin:0 auto;max-height:74cqh;border-radius:5px;overflow:hidden;background:#0a1830}
+.slide.zledger .ob-pic svg{position:absolute;inset:0;width:100%;height:100%;display:block}
+.slide.zledger .zz-g{opacity:0;transition:none}
+.slide.zledger:has(.ob-step.s1.shown) .zz-g1,
+.slide.zledger:has(.ob-step.s2.shown) .zz-g1{opacity:1;transition:opacity .3s ease}
+.slide.zledger:has(.ob-step.s2.shown) .zz-g2{opacity:1;transition:opacity .3s ease}
+body.measuring .slide.zledger .zz-g{opacity:1;transition:none}
+body.nobuild .slide.zledger .zz-g{opacity:1;transition:none}
+.slide.zledger .ob-step{pointer-events:none}
+.slide.zledger .ob-step > *{pointer-events:auto}
+.slide.zsilence .ob-pic{position:relative;width:100%;aspect-ratio:1200/560;margin:0 auto;max-height:74cqh;border-radius:5px;overflow:hidden;background:#0a1830}
+.slide.zsilence .ob-pic svg{position:absolute;inset:0;width:100%;height:100%;display:block}
+.slide.zsilence .zz-g{opacity:0;transition:none}
+.slide.zsilence:has(.ob-step.s1.shown) .zz-g1,
+.slide.zsilence:has(.ob-step.s2.shown) .zz-g1{opacity:1;transition:opacity .3s ease}
+.slide.zsilence:has(.ob-step.s2.shown) .zz-g2{opacity:1;transition:opacity .3s ease}
+body.measuring .slide.zsilence .zz-g{opacity:1;transition:none}
+body.nobuild .slide.zsilence .zz-g{opacity:1;transition:none}
+.slide.zsilence .ob-step{pointer-events:none}
+.slide.zsilence .ob-step > *{pointer-events:auto}
+
+/* ---- WACKO measured slides, native SVG (2026-09-06) ---- */
+.slide.zledger .ob-pic{position:relative;width:100%;aspect-ratio:1200/762;margin:0 auto;max-height:74cqh;border-radius:5px;overflow:hidden;background:#0a1830}
+.slide.zledger .ob-pic svg{position:absolute;inset:0;width:100%;height:100%;display:block}
+.slide.zledger .zz-g{opacity:0;transition:none}
+.slide.zledger:has(.ob-step.s1.shown) .zz-g1,
+.slide.zledger:has(.ob-step.s2.shown) .zz-g1{opacity:1;transition:opacity .3s ease}
+.slide.zledger:has(.ob-step.s2.shown) .zz-g2{opacity:1;transition:opacity .3s ease}
+body.measuring .slide.zledger .zz-g{opacity:1;transition:none}
+body.nobuild .slide.zledger .zz-g{opacity:1;transition:none}
+.slide.zledger .ob-step{pointer-events:none}
+.slide.zledger .ob-step > *{pointer-events:auto}
+.slide.zsilence .ob-pic{position:relative;width:100%;aspect-ratio:1200/660;margin:0 auto;max-height:74cqh;border-radius:5px;overflow:hidden;background:#0a1830}
+.slide.zsilence .ob-pic svg{position:absolute;inset:0;width:100%;height:100%;display:block}
+.slide.zsilence .zz-g{opacity:0;transition:none}
+.slide.zsilence:has(.ob-step.s1.shown) .zz-g1,
+.slide.zsilence:has(.ob-step.s2.shown) .zz-g1{opacity:1;transition:opacity .3s ease}
+.slide.zsilence:has(.ob-step.s2.shown) .zz-g2{opacity:1;transition:opacity .3s ease}
+body.measuring .slide.zsilence .zz-g{opacity:1;transition:none}
+body.nobuild .slide.zsilence .zz-g{opacity:1;transition:none}
+.slide.zsilence .ob-step{pointer-events:none}
+.slide.zsilence .ob-step > *{pointer-events:auto}
+.slide.zvenue .ob-pic{position:relative;width:100%;aspect-ratio:1200/620;margin:0 auto;max-height:74cqh;border-radius:5px;overflow:hidden;background:#0a1830}
+.slide.zvenue .ob-pic svg{position:absolute;inset:0;width:100%;height:100%;display:block}
+.slide.zvenue .zz-g{opacity:0;transition:none}
+.slide.zvenue:has(.ob-step.s1.shown) .zz-g1,
+.slide.zvenue:has(.ob-step.s2.shown) .zz-g1{opacity:1;transition:opacity .3s ease}
+.slide.zvenue:has(.ob-step.s2.shown) .zz-g2{opacity:1;transition:opacity .3s ease}
+body.measuring .slide.zvenue .zz-g{opacity:1;transition:none}
+body.nobuild .slide.zvenue .zz-g{opacity:1;transition:none}
+.slide.zvenue .ob-step{pointer-events:none}
+.slide.zvenue .ob-step > *{pointer-events:auto}
+.slide.zhltp .ob-pic{position:relative;width:100%;aspect-ratio:1200/600;margin:0 auto;max-height:74cqh;border-radius:5px;overflow:hidden;background:#0a1830}
+.slide.zhltp .ob-pic svg{position:absolute;inset:0;width:100%;height:100%;display:block}
+.slide.zhltp .zz-g{opacity:0;transition:none}
+.slide.zhltp:has(.ob-step.s1.shown) .zz-g1,
+.slide.zhltp:has(.ob-step.s2.shown) .zz-g1{opacity:1;transition:opacity .3s ease}
+.slide.zhltp:has(.ob-step.s2.shown) .zz-g2{opacity:1;transition:opacity .3s ease}
+body.measuring .slide.zhltp .zz-g{opacity:1;transition:none}
+body.nobuild .slide.zhltp .zz-g{opacity:1;transition:none}
+.slide.zhltp .ob-step{pointer-events:none}
+.slide.zhltp .ob-step > *{pointer-events:auto}
+.slide.zcorpus .ob-pic{position:relative;width:100%;aspect-ratio:1200/480;margin:0 auto;max-height:74cqh;border-radius:5px;overflow:hidden;background:#0a1830}
+.slide.zcorpus .ob-pic svg{position:absolute;inset:0;width:100%;height:100%;display:block}
+.slide.zcorpus .zz-g{opacity:0;transition:none}
+.slide.zcorpus:has(.ob-step.s1.shown) .zz-g1,
+.slide.zcorpus:has(.ob-step.s2.shown) .zz-g1{opacity:1;transition:opacity .3s ease}
+.slide.zcorpus:has(.ob-step.s2.shown) .zz-g2{opacity:1;transition:opacity .3s ease}
+body.measuring .slide.zcorpus .zz-g{opacity:1;transition:none}
+body.nobuild .slide.zcorpus .zz-g{opacity:1;transition:none}
+.slide.zcorpus .ob-step{pointer-events:none}
+.slide.zcorpus .ob-step > *{pointer-events:auto}
+.slide.zframe .ob-pic{position:relative;width:100%;aspect-ratio:1200/470;margin:0 auto;max-height:74cqh;border-radius:5px;overflow:hidden;background:#0a1830}
+.slide.zframe .ob-pic svg{position:absolute;inset:0;width:100%;height:100%;display:block}
+.slide.zframe .zz-g{opacity:0;transition:none}
+.slide.zframe:has(.ob-step.s1.shown) .zz-g1,
+.slide.zframe:has(.ob-step.s2.shown) .zz-g1,
+.slide.zframe:has(.ob-step.s3.shown) .zz-g1,
+.slide.zframe:has(.ob-step.s4.shown) .zz-g1,
+.slide.zframe:has(.ob-step.s5.shown) .zz-g1{opacity:1;transition:opacity .3s ease}
+.slide.zframe:has(.ob-step.s2.shown) .zz-g2,
+.slide.zframe:has(.ob-step.s3.shown) .zz-g2,
+.slide.zframe:has(.ob-step.s4.shown) .zz-g2,
+.slide.zframe:has(.ob-step.s5.shown) .zz-g2{opacity:1;transition:opacity .3s ease}
+.slide.zframe:has(.ob-step.s3.shown) .zz-g3,
+.slide.zframe:has(.ob-step.s4.shown) .zz-g3,
+.slide.zframe:has(.ob-step.s5.shown) .zz-g3{opacity:1;transition:opacity .3s ease}
+.slide.zframe:has(.ob-step.s4.shown) .zz-g4,
+.slide.zframe:has(.ob-step.s5.shown) .zz-g4{opacity:1;transition:opacity .3s ease}
+.slide.zframe:has(.ob-step.s5.shown) .zz-g5{opacity:1;transition:opacity .3s ease}
+body.measuring .slide.zframe .zz-g{opacity:1;transition:none}
+body.nobuild .slide.zframe .zz-g{opacity:1;transition:none}
+.slide.zframe .ob-step{pointer-events:none}
+.slide.zframe .ob-step > *{pointer-events:auto}
+.slide.zvenue .ob-pic{position:relative;width:100%;aspect-ratio:1200/620;margin:0 auto;max-height:74cqh;border-radius:5px;overflow:hidden;background:#0a1830}
+.slide.zvenue .ob-pic svg{position:absolute;inset:0;width:100%;height:100%;display:block}
+.slide.zvenue .zz-g{opacity:0;transition:none}
+.slide.zvenue:has(.ob-step.s1.shown) .zz-g1,
+.slide.zvenue:has(.ob-step.s2.shown) .zz-g1{opacity:1;transition:opacity .3s ease}
+.slide.zvenue:has(.ob-step.s2.shown) .zz-g2{opacity:1;transition:opacity .3s ease}
+body.measuring .slide.zvenue .zz-g{opacity:1;transition:none}
+body.nobuild .slide.zvenue .zz-g{opacity:1;transition:none}
+.slide.zvenue .ob-step{pointer-events:none}
+.slide.zvenue .ob-step > *{pointer-events:auto}
+.slide.zhltp .ob-pic{position:relative;width:100%;aspect-ratio:1200/600;margin:0 auto;max-height:74cqh;border-radius:5px;overflow:hidden;background:#0a1830}
+.slide.zhltp .ob-pic svg{position:absolute;inset:0;width:100%;height:100%;display:block}
+.slide.zhltp .zz-g{opacity:0;transition:none}
+.slide.zhltp:has(.ob-step.s1.shown) .zz-g1,
+.slide.zhltp:has(.ob-step.s2.shown) .zz-g1{opacity:1;transition:opacity .3s ease}
+.slide.zhltp:has(.ob-step.s2.shown) .zz-g2{opacity:1;transition:opacity .3s ease}
+body.measuring .slide.zhltp .zz-g{opacity:1;transition:none}
+body.nobuild .slide.zhltp .zz-g{opacity:1;transition:none}
+.slide.zhltp .ob-step{pointer-events:none}
+.slide.zhltp .ob-step > *{pointer-events:auto}
+.slide.zcorpus .ob-pic{position:relative;width:100%;aspect-ratio:1200/540;margin:0 auto;max-height:74cqh;border-radius:5px;overflow:hidden;background:#0a1830}
+.slide.zcorpus .ob-pic svg{position:absolute;inset:0;width:100%;height:100%;display:block}
+.slide.zcorpus .zz-g{opacity:0;transition:none}
+.slide.zcorpus:has(.ob-step.s1.shown) .zz-g1,
+.slide.zcorpus:has(.ob-step.s2.shown) .zz-g1{opacity:1;transition:opacity .3s ease}
+.slide.zcorpus:has(.ob-step.s2.shown) .zz-g2{opacity:1;transition:opacity .3s ease}
+body.measuring .slide.zcorpus .zz-g{opacity:1;transition:none}
+body.nobuild .slide.zcorpus .zz-g{opacity:1;transition:none}
+.slide.zcorpus .ob-step{pointer-events:none}
+.slide.zcorpus .ob-step > *{pointer-events:auto}
+.slide.zframe .ob-pic{position:relative;width:100%;aspect-ratio:1200/470;margin:0 auto;max-height:74cqh;border-radius:5px;overflow:hidden;background:#0a1830}
+.slide.zframe .ob-pic svg{position:absolute;inset:0;width:100%;height:100%;display:block}
+.slide.zframe .zz-g{opacity:0;transition:none}
+.slide.zframe:has(.ob-step.s1.shown) .zz-g1,
+.slide.zframe:has(.ob-step.s2.shown) .zz-g1,
+.slide.zframe:has(.ob-step.s3.shown) .zz-g1,
+.slide.zframe:has(.ob-step.s4.shown) .zz-g1,
+.slide.zframe:has(.ob-step.s5.shown) .zz-g1{opacity:1;transition:opacity .3s ease}
+.slide.zframe:has(.ob-step.s2.shown) .zz-g2,
+.slide.zframe:has(.ob-step.s3.shown) .zz-g2,
+.slide.zframe:has(.ob-step.s4.shown) .zz-g2,
+.slide.zframe:has(.ob-step.s5.shown) .zz-g2{opacity:1;transition:opacity .3s ease}
+.slide.zframe:has(.ob-step.s3.shown) .zz-g3,
+.slide.zframe:has(.ob-step.s4.shown) .zz-g3,
+.slide.zframe:has(.ob-step.s5.shown) .zz-g3{opacity:1;transition:opacity .3s ease}
+.slide.zframe:has(.ob-step.s4.shown) .zz-g4,
+.slide.zframe:has(.ob-step.s5.shown) .zz-g4{opacity:1;transition:opacity .3s ease}
+.slide.zframe:has(.ob-step.s5.shown) .zz-g5{opacity:1;transition:opacity .3s ease}
+body.measuring .slide.zframe .zz-g{opacity:1;transition:none}
+body.nobuild .slide.zframe .zz-g{opacity:1;transition:none}
+.slide.zframe .ob-step{pointer-events:none}
+.slide.zframe .ob-step > *{pointer-events:auto}
+</style>
+<style>
+/* ---- Yerevan editions strip (added 2026-09-08) ---- */
+.yv-editions{width:min(1100px,92%);margin:0 auto 1.4rem;text-align:left}
+.yv-ed-h{color:var(--gold);font-weight:700;font-size:1.02rem;letter-spacing:.02em;margin:0 0 .55rem}
+.yv-ed-g{display:flex;gap:.9rem;flex-wrap:wrap}
+.yv-ed{flex:1 1 300px;display:block;text-decoration:none;background:var(--db);
+  border:1px solid rgba(219,173,80,.35);border-top:3px solid var(--gold);border-radius:.45rem;
+  padding:.72rem .9rem;transition:border-color .15s ease,transform .15s ease}
+.yv-ed:hover{border-color:var(--gold);transform:translateY(-2px)}
+.yv-ed b{display:block;color:var(--gold);font-size:1rem;margin-bottom:.15rem}
+.yv-ed span{display:block;color:var(--lb);font-size:.9rem;line-height:1.38}
+</style>
+<style id="presentation-only-chrome">
+/* SDS 2026-09-09: Present means slide only; review/navigation return on exit. */
+body.present .prograil,body.present .audrow,body.present .audnow,
+body.present #gtr-bar,body.present #gtr-layer,body.present #gtr-panel,
+body.present #gtr-box,body.present #gtr-flash,body.present #gtr-hist,
+body.present #notes,body.present #ov,body.present #qrOverlay{display:none!important}
+body.present::after{display:none!important}
+body.present #stage.on{padding:0!important}
+</style>
+<link id="gtr-favicon" rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='13' fill='%230d1f3c'/%3E%3Cpath d='M14 17h36a5 5 0 0 1 5 5v18a5 5 0 0 1-5 5H30l-11 9v-9h-5a5 5 0 0 1-5-5V22a5 5 0 0 1 5-5z' fill='%23dbad50'/%3E%3Ccircle cx='24' cy='31' r='3.4' fill='%230d1f3c'/%3E%3Ccircle cx='34' cy='31' r='3.4' fill='%230d1f3c'/%3E%3Ccircle cx='44' cy='31' r='3.4' fill='%230d1f3c'/%3E%3C/svg%3E"><script>(function(){try{var t=document.title||"";if(t.indexOf("\uD83D\uDCAC")!==0)document.title="\uD83D\uDCAC "+t;}catch(e){}})();</script></head>
+<body>
+<section class="slide" data-sid="x"><h2>fixture</h2></section>
+</body></html>

@@ -1,0 +1,202 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>sre_audit fixtures - real defects that shipped, and clean slides it must not flag</title>
+<!--
+  Every case here is taken from the PASP method deck on 2026-09-17, after the audit's own overflow
+  and hole metrics were found to be both over- and under-reporting within one session.
+
+  BAD-* must be flagged. CLEAN-* must not. The clean cases matter more: two rewrites of the overflow
+  check each "fixed" a defect and invented a worse one, and only a slide whose render is visibly
+  clean could prove it. Keep the real failing shapes; do not simplify them into something tidier.
+-->
+<style>
+  body{margin:0;background:#0a192f;font:14px system-ui,sans-serif;color:#e8edf3}
+  .slide{position:relative;width:1280px;height:720px;padding:48px 56px;box-sizing:border-box;
+         background:#0a192f;overflow:hidden}
+  h2{color:#dbad50;font-size:40px;margin:0 0 6px}
+  p.sub{color:#82a0bc;font-size:19px;margin:0 0 18px}
+  .ob-pic{position:relative;width:100%;aspect-ratio:1280/560;background:#0a1830;overflow:hidden}
+  .ob-pic svg{position:absolute;inset:0;width:100%;height:100%}
+  .ob-note{position:absolute;left:var(--x);top:var(--y);width:var(--w);
+           background:rgba(10,24,47,.94);border:1px solid rgba(219,173,80,.55);
+           border-left:3px solid #dbad50;border-radius:5px;padding:.72em .9em}
+  .ob-note .k{color:#dbad50;font-weight:700;font-size:17px}
+  .ob-note .d{color:#e8edf3;font-size:15px;line-height:1.42}
+  .bx{fill:#132f59;stroke:#9db8d6;stroke-width:1.5}
+  .h{font:700 19px system-ui,sans-serif;fill:#dbad50}
+  .d{font:400 16px system-ui,sans-serif;fill:#f3f6fb}
+</style>
+
+<!-- BAD-1: the p0a019 line that shipped cut mid-word. It runs past its own card AND past the
+     viewBox, so .ob-pic's overflow:hidden clips it - the exact case a DOM check misses. -->
+<section class="slide" data-sid="BAD-overflow-clipped" data-t="BAD clipped line">
+  <h2>Known error rates</h2>
+  <p class="sub">A line too long for its card, clipped by the picture box.</p>
+  <div class="ob-pic">
+    <svg viewBox="0 0 1000 406" preserveAspectRatio="xMidYMid meet">
+      <rect class="bx" x="670" y="18" width="300" height="226" rx="8"/>
+      <text class="h" x="690" y="54">Known error rates</text>
+      <text class="d" x="690" y="96">Actor binding 93.3% on 150 cases.</text>
+      <text class="d" x="690" y="152">ALLEGE is 1.03% of frames at the time stance was built &#8211;</text>
+    </svg>
+  </div>
+</section>
+
+<!-- BAD-2: p0a004's two <text> lines one pixel apart, printing through each other. -->
+<section class="slide" data-sid="BAD-superimposed" data-t="BAD superimposed">
+  <h2>An arm is not a speaker</h2>
+  <p class="sub">Two lines at y=173 and y=174.</p>
+  <div class="ob-pic">
+    <svg viewBox="0 0 1000 406" preserveAspectRatio="xMidYMid meet">
+      <rect class="bx" x="600" y="137" width="360" height="84" rx="8"/>
+      <text class="h" x="622" y="156">AN ARM IS NOT A SPEAKER</text>
+      <text class="d" x="622" y="174">officialdom is 2.5&#8211;4.5% by arm</text>
+      <text class="d" x="622" y="173">but 79% by named voice</text>
+    </svg>
+  </div>
+</section>
+
+<!-- CLEAN-1: p0a011's five sibling cards. Every label fits its OWN card. A host rule that only
+     required the box to START left of the text judged card 5's label against card 1 and reported
+     nine overflows on this exact shape. -->
+<section class="slide" data-sid="CLEAN-sibling-cards" data-t="CLEAN sibling cards">
+  <h2>Reporting is not claiming</h2>
+  <p class="sub">Five cards in a row, each label inside its own card.</p>
+  <div class="ob-pic">
+    <svg viewBox="0 0 1000 406" preserveAspectRatio="xMidYMid meet">
+      <rect class="bx" x="20"  y="24" width="180" height="110" rx="8"/>
+      <text class="h" x="36"  y="52">ASSERT</text><text class="d" x="36"  y="80">the source says it</text>
+      <rect class="bx" x="216" y="24" width="180" height="110" rx="8"/>
+      <text class="h" x="232" y="52">ATTRIBUTE</text><text class="d" x="232" y="80">X said it</text>
+      <rect class="bx" x="412" y="24" width="180" height="110" rx="8"/>
+      <text class="h" x="428" y="52">HEDGE</text><text class="d" x="428" y="80">the source qualifies</text>
+      <rect class="bx" x="608" y="24" width="180" height="110" rx="8"/>
+      <text class="h" x="624" y="52">EVALUATE</text><text class="d" x="624" y="80">the source judges</text>
+      <rect class="bx" x="804" y="24" width="180" height="110" rx="8"/>
+      <text class="h" x="820" y="52">ALLEGE</text><text class="d" x="820" y="80">X claims it</text>
+    </svg>
+  </div>
+</section>
+
+<!-- CLEAN-2: p0a009 step 1's shape. Art at the top, note under it, empty below, and an element
+     positioned PAST the picture box's bottom edge so overflow:hidden clips it away. The metric
+     reported a 0.392 hole here while a pixel sample of that band found zero non-background pixels. -->
+<section class="slide" data-sid="CLEAN-clipped-below" data-t="CLEAN trailing gap">
+  <h2>Making different wordings the same claim</h2>
+  <p class="sub">Trailing gap, not a hole: nothing paints below.</p>
+  <div class="ob-pic">
+    <svg viewBox="0 0 1000 406" preserveAspectRatio="xMidYMid meet">
+      <rect class="bx" x="40" y="24" width="880" height="70" rx="8"/>
+      <text class="h" x="62" y="50">LIGHT VERBS COLLAPSE</text>
+      <text class="d" x="62" y="78">&#1085;&#1072;&#1085;&#1077;&#1089;&#1090;&#1080; &#1091;&#1076;&#1072;&#1088; (to deliver a strike)</text>
+      <path d="M40 690 L200 690" stroke="#dbad50" stroke-width="2" fill="none"/>
+      <text class="d" x="240" y="700">clipped away by the picture box</text>
+    </svg>
+    <div class="ob-note" style="--x:4%;--y:26%;--w:92%">
+      <div class="k">The same action, however it was phrased</div>
+      <div class="d">Russian expresses many actions as a light verb plus a noun.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CLEAN-3: a label stacked over a big number, and a tight pair of adjacent lines. Neither is a
+     collision, but an AREA-ratio test called both one: an SVG text box carries the font's full
+     ascent and descent, so a 30px number overlaps its own 17px label by half that label's area
+     while rendering perfectly. Real shapes from p0a005 and p0a0t4. -->
+<section class="slide" data-sid="CLEAN-stacked-number" data-t="CLEAN stacked number">
+  <h2>Eight themes, 939 leaves</h2>
+  <p class="sub">A label over a big number, and two tight adjacent lines.</p>
+  <div class="ob-pic">
+    <svg viewBox="0 0 1000 406" preserveAspectRatio="xMidYMid meet">
+      <rect class="bx" x="40" y="24" width="220" height="110" rx="8"/>
+      <text class="h" x="60" y="54">L2</text>
+      <text x="60" y="94" style="font:700 40px system-ui,sans-serif;fill:#f3f6fb">37</text>
+      <text class="d" x="60" y="118">sub-themes</text>
+      <rect class="bx" x="300" y="24" width="480" height="110" rx="8"/>
+      <text class="h" x="320" y="54">T2 &#183; Escalation</text>
+      <text x="320" y="78" style="font:400 13px system-ui,sans-serif;fill:#9db8d6">&#1101;&#1089;&#1082;&#1072;&#1083;&#1072;&#1094;&#1080;&#1103; &#1080; &#1091;&#1087;&#1088;&#1072;&#1074;&#1083;&#1077;&#1085;&#1080;&#1077; &#1088;&#1080;&#1089;&#1082;&#1072;&#1084;&#1080;</text>
+      <text x="320" y="92" style="font:400 15px system-ui,sans-serif;fill:#f3f6fb">14,851 sources &#183; from 1997</text>
+    </svg>
+  </div>
+</section>
+
+<!-- BAD-3: p0a016's label written BEFORE its own bar. SVG has no z-index, so the bar paints over
+     the text and the label rendered sliced in half. `collide` is blind to this: the thing on top is
+     a rectangle, not text. The clean row below it has the same shape with the label clear of its bar. -->
+<section class="slide" data-sid="BAD-occluded" data-t="BAD label under a bar">
+  <h2>Who is actually speaking</h2>
+  <p class="sub">A label written before its own bar, and one written clear of it.</p>
+  <div class="ob-pic">
+    <svg viewBox="0 0 1000 406" preserveAspectRatio="xMidYMid meet">
+      <text class="d" x="40" y="179">officialdom by NAMED VOICE</text>
+      <rect x="40" y="172" width="420" height="20" rx="4" fill="#5fa8a0"/>
+      <text class="d" x="40" y="260">officialdom by ARM</text>
+      <rect x="40" y="272" width="120" height="20" rx="4" fill="#dbad50"/>
+    </svg>
+  </div>
+</section>
+
+
+<!-- BAD-crossstep: two build steps; step 2 draws a dashed path across step 1's shelves (ada-open shape). -->
+<section class="slide" data-sid="BAD-crossstep" data-t="BAD-crossstep">
+  <h2>Crossing art</h2>
+  <p class="sub">Step 2 draws across step 1.</p>
+  <div class="ob-pic">
+    <div class="ob-step" style="position:absolute;inset:0"><svg viewBox="0 0 1000 406" preserveAspectRatio="xMidYMid meet">
+      <rect x="40" y="60" width="500" height="40" fill="#5fa8a0"/><rect x="40" y="140" width="500" height="40" fill="#5fa8a0"/>
+      <rect x="40" y="220" width="500" height="40" fill="#5fa8a0"/></svg></div>
+    <div class="ob-step" style="position:absolute;inset:0"><svg viewBox="0 0 1000 406" preserveAspectRatio="xMidYMid meet">
+      <path d="M60 66 L520 94" stroke="#e07a6a" stroke-width="3" fill="none"/>
+      <rect x="70" y="145" width="460" height="30" fill="#e07a6a" opacity=".35"/></svg></div>
+  </div>
+</section>
+
+<!-- CLEAN-crossstep-declared: two build steps; step 2 draws a dashed path across step 1's shelves (ada-open shape). -->
+<section class="slide" data-sid="CLEAN-crossstep-declared" data-t="CLEAN-crossstep-declared">
+  <h2>Crossing art</h2>
+  <p class="sub">Step 2 draws across step 1.</p>
+  <div class="ob-pic">
+    <div class="ob-step" style="position:absolute;inset:0"><svg viewBox="0 0 1000 406" preserveAspectRatio="xMidYMid meet">
+      <rect x="40" y="60" width="500" height="40" fill="#5fa8a0"/><rect x="40" y="140" width="500" height="40" fill="#5fa8a0"/>
+      <rect x="40" y="220" width="500" height="40" fill="#5fa8a0"/></svg></div>
+    <div class="ob-step" style="position:absolute;inset:0"><svg viewBox="0 0 1000 406" preserveAspectRatio="xMidYMid meet">
+      <path data-crossstep-ok="deliberate overlay: the crossing is the metaphor" d="M60 66 L520 94" stroke="#e07a6a" stroke-width="3" fill="none"/>
+      <rect data-crossstep-ok="deliberate overlay: the crossing is the metaphor" x="70" y="145" width="460" height="30" fill="#e07a6a" opacity=".35"/></svg></div>
+  </div>
+</section>
+
+<!-- BAD-crossstep-bare: two build steps; step 2 draws a dashed path across step 1's shelves (ada-open shape). -->
+<section class="slide" data-sid="BAD-crossstep-bare" data-t="BAD-crossstep-bare">
+  <h2>Crossing art</h2>
+  <p class="sub">Step 2 draws across step 1.</p>
+  <div class="ob-pic">
+    <div class="ob-step" style="position:absolute;inset:0"><svg viewBox="0 0 1000 406" preserveAspectRatio="xMidYMid meet">
+      <rect x="40" y="60" width="500" height="40" fill="#5fa8a0"/><rect x="40" y="140" width="500" height="40" fill="#5fa8a0"/>
+      <rect x="40" y="220" width="500" height="40" fill="#5fa8a0"/></svg></div>
+    <div class="ob-step" style="position:absolute;inset:0"><svg viewBox="0 0 1000 406" preserveAspectRatio="xMidYMid meet">
+      <path data-crossstep-ok="" d="M60 66 L520 94" stroke="#e07a6a" stroke-width="3" fill="none"/>
+      <rect data-crossstep-ok="" x="70" y="145" width="460" height="30" fill="#e07a6a" opacity=".35"/></svg></div>
+  </div>
+</section>
+<style>.slide{display:none}.slide.on{display:block}</style>
+<script>
+// Minimal shim so sre_audit.py can drive this fixture exactly as it drives a real deck:
+// it calls present(), go(i), setFrags(cur,k) and reads .slide.on. No build steps here, so
+// setFrags is a no-op and every fixture slide is a single state.
+var slides = [], cur = 0;
+document.addEventListener('DOMContentLoaded', function () {
+  slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
+  if (slides.length) slides[0].classList.add('on');
+});
+function go(i) {
+  if (!slides.length) slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
+  if (i < 0) i = 0;
+  if (i >= slides.length) i = slides.length - 1;
+  slides.forEach(function (s) { s.classList.remove('on'); });
+  cur = i;
+  slides[cur].classList.add('on');
+}
+function setFrags(i, k) { /* no build steps in the fixtures */ }
+function present() { document.body.classList.add('present'); if (!document.querySelector('.slide.on')) go(0); }
+</script>
+</body>

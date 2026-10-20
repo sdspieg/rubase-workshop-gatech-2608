@@ -76,9 +76,17 @@ async def run(deck, width, sids):
     async with async_playwright() as p:
         b = await p.chromium.launch()
         pg = await b.new_page(viewport={'width': width, 'height': 768})
-        await pg.goto(f'file://{deck}#13')
+        # 🟥 #1, NOT A HARDCODED #13. The deck routes `#N` to showDeck(N-1), so on any deck with
+        # fewer than 13 slides the old hash fell out of range, nothing was ever put in the DOM, and
+        # this tool printed "0 slides measured ... 0 below the floor ... 0 overprinted" - a PASS that
+        # had measured NOTHING. Found 2026-09-16 on a 5-slide deck. A gate that can silently measure
+        # zero is worse than no gate, because it is read as evidence. So the count is asserted too.
+        await pg.goto(f'file://{deck}#1', timeout=180000)
         await pg.wait_for_timeout(1600)
         n = await pg.evaluate("document.querySelectorAll('.slide').length")
+        if n == 0:
+            raise SystemExit(f"render_audit: 0 slides in the DOM for {deck} - refusing to report a "
+                             f"pass on an empty measurement")
         for i in range(n):
             sid = await pg.evaluate(f"document.querySelectorAll('.slide')[{i}].dataset.sid")
             if sids and sid not in sids:

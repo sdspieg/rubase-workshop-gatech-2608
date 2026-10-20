@@ -165,14 +165,15 @@ prose. That is the failure this gate exists for.
 ## 10 · The gates, in one command
 
 ```bash
-bash tools/preflight.sh [baseline.json]
-python3 tools/box_collisions.py --deck deck.html      # box on already-revealed art
-python3 tools/render_audit.py   --deck deck.html      # rendered type, occupancy, overprint
-python3 tools/triage_fragments.py <scratchpad> --apply
+bash tools/preflight.sh [baseline.json] deck.html presentation.html
 ```
 
-And then **read the render**. Every tool here has a documented blind spot; `verify_build.py` prints
-PASS while measuring nothing when it has no `--manifest`. The picture is the acceptance test.
+The preflight runs the static and rendered checks, creates a new hash-manifested render run, and
+stops until **every state-0-through-final PNG at all four viewports is read and acknowledged by
+name**. An existing `qa/` folder is never consumed. After acknowledgement, rerun preflight: only a
+current HTML hash, current manifest and PNG hashes, all checks passed, and exact per-state eyes-on
+coverage can produce `PREFLIGHT OK`. The lower-level audit tools remain useful diagnostically, but
+none of them alone is permission to ship.
 
 ---
 

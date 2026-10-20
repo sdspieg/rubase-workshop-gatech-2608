@@ -94,6 +94,42 @@ def check_svg_class_scoping(html, out):
     return not collisions
 
 
+def check_review_layer_captured(html, out):
+    """A deck cut from a SERVED page carries the review host's injected layer with it.
+
+    Incident, 2026-10-20 (CENTREPEACE/Helsinki): both decks for Adam were built from
+    the review host, so the presentation shipped with a `gtr-favicon` speech-bubble
+    icon and an inline `document.title = "\uD83D\uDCAC " + t` script baked into the
+    FILE. It passed every "is review.js present?" check - because review.js genuinely
+    was not there - while the tab the Finnish hosts would open showed a comment-bubble
+    favicon and a title reading as a review copy. The glyph was written as an escaped
+    surrogate pair, so grepping for the literal character found nothing.
+
+    LESSONS.md already warned that the review server injects user, favicon and title
+    prefix; that warning could not catch this, because it was about COMPARING hashes,
+    not about what a rebuild swallows. Hence a check.
+
+    What does NOT fail: `body.present #gtr-bar{display:none}` and its siblings. Those
+    are the deck's own rules for hiding the review bar when it IS injected, and they
+    belong in the source.
+    """
+    bad = []
+    if re.search(r'id=["\']gtr-favicon["\']', html):
+        bad.append('a captured <link id="gtr-favicon"> - the review host\'s speech-bubble icon')
+    if '__GTR_USER__' in html:
+        bad.append('a captured __GTR_USER__ placeholder from the review host')
+    if re.search(r'<script[^>]+src=[^>]*review[^>]*>', html):
+        bad.append('a <script src=...review...> injected by the review host')
+    for m in re.finditer(r'document\.title\s*=\s*["\'][^"\']{0,20}["\']\s*\+', html):
+        frag = m.group(0)
+        if 'uD83D' in frag or chr(0x1F4AC) in frag:
+            bad.append('an inline script prefixing document.title with the comment bubble')
+    for b in bad:
+        out.append(f'REVIEW LAYER CAPTURED: {b} - this deck was cut from a SERVED page, '
+                   f'not from its source; strip it before shipping')
+    return not bad
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--deck', default=str(pathlib.Path(__file__).resolve().parent.parent / 'deck.html'))
@@ -114,7 +150,7 @@ def main():
 
     out, ok = [], True
     for fn, arg in ((check_hidden_state_fades, css), (check_font_floor, css),
-                    (check_svg_class_scoping, html)):
+                    (check_svg_class_scoping, html), (check_review_layer_captured, html)):
         ok &= fn(arg, out)
 
     for line in out:

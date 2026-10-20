@@ -1,30 +1,53 @@
 #!/usr/bin/env bash
-# Every gate this deck has, in one command. Run before any commit that touches deck.html.
-#
-# These exist because each of them catches a defect that ALREADY shipped once, was
-# fixed, and came back - the rule was written down and violated anyway. A check that
-# runs is worth more than a rule that is remembered.
-set -u
-cd "$(dirname "$0")/.." || exit 1
-fail=0
-
-echo "== 1. regressions: flash / type floor / SVG class scoping =="
-python3 tools/check_regressions.py || fail=1
-
-echo
-echo "== 2. inventory: png dumps, text walls, sub-floor labels =="
-python3 tools/slide_inventory.py --out /tmp/inventory_now.json || fail=1
-
-if [ -f "${1:-}" ]; then
-  echo
-  echo "== 3. visual gate: no slide may become less visual =="
-  python3 tools/slide_inventory.py --compare "$1" || fail=1
-else
-  echo
-  echo "== 3. visual gate: SKIPPED - pass an earlier inventory.json as \$1 to compare =="
-  echo "   take a baseline BEFORE editing:  python3 tools/slide_inventory.py --out /tmp/before.json"
+# The single shipping preflight. It preserves the caller's project directory and runs the
+# hash-bound verifier over every deck.html/presentation.html source named or found there.
+set -uo pipefail
+TOOLS="$(cd "$(dirname "$0")" && pwd)"
+PROJECT_DIR="$PWD"
+baseline=""
+if [ "${1:-}" != "" ] && [ -f "$1" ] && [[ "$1" == *.json ]]; then
+  baseline="$(readlink -f "$1")"
+  shift
 fi
 
-echo
-[ "$fail" -eq 0 ] && echo "PREFLIGHT OK" || echo "PREFLIGHT FAILED"
+decks=("$@")
+if [ "${#decks[@]}" -eq 0 ]; then
+  [ -f "$PROJECT_DIR/deck.html" ] && decks+=("$PROJECT_DIR/deck.html")
+  [ -f "$PROJECT_DIR/presentation.html" ] && decks+=("$PROJECT_DIR/presentation.html")
+fi
+if [ "${#decks[@]}" -eq 0 ]; then
+  echo "PREFLIGHT FAILED: no deck.html or presentation.html in $PROJECT_DIR"
+  exit 2
+fi
+
+fail=0
+for deck in "${decks[@]}"; do
+  deck="$(readlink -f "$deck")"
+  echo "== hash-bound visual verification: $deck =="
+  cmd=(python3 "$TOOLS/deck_verify.py" --deck "$deck")
+  [ -n "$baseline" ] && cmd+=(--baseline "$baseline")
+  if "${cmd[@]}"; then
+    # GENEALOGY (mandatory, SDS 2026-10-08): a deck that passes verification is entered in the
+    # slide genealogy of all of SDS's decks at its current bytes. Registration is idempotent (an
+    # unchanged deck is a no-op) and the result is re-checked, so a deck can never be called
+    # shippable while missing from, or stale in, the genealogy.
+    if [ -n "${HTML_SLIDES_GENEALOGY_SKIP:-}" ]; then
+      echo "GENEALOGY SKIPPED by HTML_SLIDES_GENEALOGY_SKIP: ${HTML_SLIDES_GENEALOGY_SKIP}"
+      mkdir -p "$HOME/.claude/state"
+      printf '%s\t%s\t%s\n' "$(date -Is)" "$deck" "$HTML_SLIDES_GENEALOGY_SKIP" >> "$HOME/.claude/state/html-slides-genealogy-skips.log"
+    else
+      if ! bash "$TOOLS/register_genealogy.sh" --check "$deck" >/dev/null 2>&1; then
+        echo "== registering in the slide genealogy: $deck =="
+        bash "$TOOLS/register_genealogy.sh" "$deck" 2>&1 | grep -E "^(registered|already|REFUSE|GENEALOGY|genealogy_ok|rendered_ok)"
+      fi
+      bash "$TOOLS/register_genealogy.sh" --check "$deck" || { echo "GENEALOGY FAILED: $deck is not registered at its current hash"; fail=1; }
+    fi
+  else
+    fail=1
+  fi
+  echo
+done
+
+[ "$fail" -eq 0 ] && echo "PREFLIGHT OK — every exact deck is shippable" \
+                    || echo "PREFLIGHT FAILED OR PENDING EYES-ON REVIEW"
 exit "$fail"
